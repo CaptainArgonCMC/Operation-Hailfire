@@ -1,3 +1,7 @@
+var programCode = function(processingInstance) {
+with (processingInstance) {
+size(600, 600); 
+
 /**
 /-------------------\
 |    ESCAPE (v2)    |
@@ -17049,6 +17053,8 @@ draw = function() {
     popMatrix();
 };
 //} END "DRAW CODE"
-
-/**
-**/
+}};
+// Get the canvas that ProcessingJS will use
+var canvas = document.getElementById("mycanvas"); 
+// Pass the function to ProcessingJS constructor
+var processingInstance = new Processing(canvas, programCode);
