@@ -56,9 +56,9 @@ var codes = [
 		"Valik Tivian 4","8/27/23 at 11:45",["Valik","Tivian","Male",-336726,-9875401],[["Light Rounds","Ammo",60],["Light Rounds","Ammo",16],[0,"Medical",4],[1,"Medical",1],[3,"Medical",1],["Heavy Rounds","Ammo",50],["Heavy Rounds","Ammo",50],[["Stock","Tactical Stock"],"Attachment",2],[["Magazine","Extended Mag"],"Attachment",2],[0,"Grenade",2],["Heavy Rounds","Ammo",33],["EMPTY","EMPTY","EMPTY"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"]],[4,[2,1],[10,1],[8,1],[4,2],"EMPTY",],[7,"EMPTY","EMPTY",[6,2],"EMPTY",[1,0],],2, 2,[],["stim",29.742287094077916,"armor",2,"armorhealth",110],[],["Normal","Normal"],["Hangars",0]
 	],
 ];
-
+background(255, 0, 0);
 // UNCOMMENT THE FOLLOWING "/*" TO PLAY
-
+/*
 // "PJS SETUP" {
 noStroke();
 textAlign(CENTER, CENTER);
