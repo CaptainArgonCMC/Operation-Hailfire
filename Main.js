@@ -2,70 +2,9 @@ var programCode = function(processingInstance) {
 with (processingInstance) {
 size(600, 600); 
 frameRate(60);
+background(0);
 
-/**
-/-------------------\
-|    ESCAPE (v2)    |
-|  [Captain Argon]  |
-\-------------------/
-
-USING RENEGADE I ENGINE BY CAPTAIN ARGON
-
-Began: 1/6/19, 00:00:00 UTC
-Finished:
-Released:
-Total Time:
-
-Credits
-{
-(NOTE: Everyone who played a role in developing this game, whether that was in the form of suggestions or major pieces of code, has received credit.)
-> Non-Pirate (@nonpirate) for major game play suggestions, grammar corrections in the plotline, and more beyond that -- especially correcting the dumb mistakes I often made. He was the greatest help to this game, and without him, this game would look a lot different.
-> Arnakt Fen (@stygiusdarkire) for other plotline suggestions. Although he has gone inactive and the plot was changed since then, the hours we spent commenting back and forth about literature and other such topics weren't wasted. Ti'Vah!
-> Quantum Coding (@QuantumCodingSays) for being a beta tester. Thanks!
-> Kruxe (@minigenius2) for checking through the code for inneficencies a few times. He offered great advice!
-> Owen Foley (@owenpfoley) for some game play suggestions. Though he got in on the action later than Non-Pirate and Arnakt Fen, he still helped a lot.
-> Pamela (@pamela) for her work constructing the programming courses here on KA. Without her, this project could never have occurred.
-> OOPS! Studios! (@Cristianop1) made the loading algorithm I used in this game. It was far more efficient than the original basic image loading functionality I'd been planning on implementing.
-> KWC (@MKaelin368) for the `construct()` function, which helps with some random thing (I think it helps patch memory leaks?) in the program, therefore ... making it more efficient? I'm not totally sure, to be honest. (Plus protection for long loops!)
-> The Lightning Programmer (???) for typing in the delete key. He has since gone inactive.
-> Sal Khan (@sal) for his awesome work on Khan Academy, and for reminding me I can use matrices to solve systems of linear equations!
-> AquA217 (@acer217) for her help with testing the game in early stages.
-> JentGent (@JentacularGent) for teaching me how to sort arrays from biggest to smallest and vice versa.
-> Guilherme (KA Help Center) for helping me when I had a problem with line collisions. She lead me to a helpful KA article (https://www.khanacademy.org/computing/ap-computer-science-principles/x2d2f703b37b450a3:digital-information/x2d2f703b37b450a3:number-limits-overflow-and-roundoff/a/number-limits-overflow-and-roundoff) about how numbers are stored and how this affects some basic functionality. (For instance, 0.1 + 0.1 + 0.1 doesn't return 0.3; instead, it returns 0.30000000000000004!)
-> Maverick (@CataclysmicDestruction) for some timely inspiration at a point when I was getting vaguely exasperated at this game.
-> Ski (@thelegendski) for helping make certain array functions more efficient. (In a game of this size, this little things like that can really help performance!)
-> Timothy (@ty11ty) for beta testing!
-> Coder Guy (@KingCobraVenom) for beta testing!
-> CZS (@theMinstrel) for beta testing and a piece of code to accurate find the height of a text box
-> Michael (on StackOverflow) for allowing me to convert radians to degrees without having to edit the entirety of the code
-}
-**/
-
-// Make servers a solid block so that you can't go in between them
-// Make NPCs continue on path when they've wiped out an enemy
-
-var codes = [
-	[
-		"Valik Tivian 1","8/26/23 at 11:43",["Valik","Tivian","Male",-336726,-9875401],[["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["EMPTY","EMPTY","EMPTY"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"]],["NONE","EMPTY","EMPTY","EMPTY","EMPTY","EMPTY",],["NONE","EMPTY","EMPTY","EMPTY","EMPTY","EMPTY",],0, 0,[],["cw",2],[],["Normal","Normal"],["Prisons",1]
-	],
-	[
-		"Valik Tivian 2","8/26/23 at 11:50",["Valik","Tivian","Male",-336726,-9875401],[["Light Rounds","Ammo",60],["Light Rounds","Ammo",60],["Light Rounds","Ammo",60],[0,"Medical",4],["Light Rounds","Ammo",60],["Light Rounds","Ammo",60],[0,"Grenade",2],[1,"Medical",2],[3,"Medical",2],["Heavy Rounds","Ammo",50],["Heavy Rounds","Ammo",45],["EMPTY","EMPTY","EMPTY"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"]],[4,[2,1],[10,1],[5,0],[4,2],"EMPTY",],[7,"EMPTY","EMPTY","EMPTY","EMPTY",[0,2],],2, 2,[],["health",235.75710322485145,"stim",41.860067545031434,"armor",2],[],["Normal","Normal"],["Infirmary",0]
-	],
-	[
-		"Valik Tivian 3","8/26/23 at 16:18",["Valik","Tivian","Male",-336726,-9875401],[["Light Rounds","Ammo",60],["Light Rounds","Ammo",60],[0,"Medical",4],[1,"Medical",2],[3,"Medical",1],["Heavy Rounds","Ammo",50],["Heavy Rounds","Ammo",45],[["Stock","Tactical Stock"],"Attachment",2],[["Magazine","Quickdraw Mag"],"Attachment",1],[["Magazine","Extended Mag"],"Attachment",2],["Light Rounds","Ammo",60],[0,"Grenade",2],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"]],[4,[2,1],[10,1],[5,0],[4,2],"EMPTY",],[7,"EMPTY","EMPTY","EMPTY","EMPTY",[1,0],],2, 2,[],["health",107.31657881274872,"stim",91.09794144153565,"cw",1,"mselect",2],[],["Normal","Normal"],["Defenses",0]
-	],
-	[
-		"Valik Tivian 4","8/27/23 at 11:45",["Valik","Tivian","Male",-336726,-9875401],[["Light Rounds","Ammo",60],["Light Rounds","Ammo",16],[0,"Medical",4],[1,"Medical",1],[3,"Medical",1],["Heavy Rounds","Ammo",50],["Heavy Rounds","Ammo",50],[["Stock","Tactical Stock"],"Attachment",2],[["Magazine","Extended Mag"],"Attachment",2],[0,"Grenade",2],["Heavy Rounds","Ammo",33],["EMPTY","EMPTY","EMPTY"],["LOCKED","LOCKED","LOCKED"],["LOCKED","LOCKED","LOCKED"]],[4,[2,1],[10,1],[8,1],[4,2],"EMPTY",],[7,"EMPTY","EMPTY",[6,2],"EMPTY",[1,0],],2, 2,[],["stim",29.742287094077916,"armor",2,"armorhealth",110],[],["Normal","Normal"],["Hangars",0]
-	],
-];
-background(255, 0, 0);
-
-// "PJS SETUP" {
-noStroke();
-textAlign(CENTER, CENTER);
-rectMode(CENTER);
-imageMode(CENTER);
-smooth();
+// See credits
 var rotFn = processingInstance.rotate;
 processingInstance.rotate = function(angle) {
 	return rotFn(processingInstance.radians(angle));
@@ -82,16 +21,70 @@ var tanFn = processingInstance.tan;
 processingInstance.tan = function(angle) {
 	return tanFn(processingInstance.radians(angle));
 }
+
+// Here is where to copy your saved games!
+var codes = [
+    [
+        "Automatic Save Code", "Sat Mar 21 14:53:39 2020", ["Valik", "Tivian", "Male", color(250, 220, 170), color(220, 110, 30)], [["Green-Level", "Ammo", 60], ["EMPTY", "EMPTY", "EMPTY"], ["EMPTY", "EMPTY", "EMPTY"], ["EMPTY", "EMPTY", "EMPTY"], ["EMPTY", "EMPTY", "EMPTY"], ["EMPTY", "EMPTY", "EMPTY"], ["EMPTY", "EMPTY", "EMPTY"], ["EMPTY", "EMPTY", "EMPTY"], ["LOCKED", "LOCKED", "LOCKED"], ["LOCKED", "LOCKED", "LOCKED"], ["LOCKED", "LOCKED", "LOCKED"], ["LOCKED", "LOCKED", "LOCKED"], ["LOCKED", "LOCKED", "LOCKED"], ["LOCKED", "LOCKED", "LOCKED"]], [8, "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"], [1, "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"], 0, 0, [], ["cw", 0, "hastyon", true, "tyonlvls", ["4a", "4b", "4b", "4b", "4a", "4b", "4a", "4b", "4a", "4a", "4b", "4b"]], [/*PARTNER SPECIAL*/], ["Normal","Normal"], ["test", 1],
+    ],
+];
+
+// TO-DO: (1) Change it so that collisions are also line-to-line; (2) Change order of wall array so it's based off of proximity to player, then change it so that shadows are drawn on individual blocks
+
+/**
+/-------------------\
+|     DARKSTAR:     |
+|     AWAKENING     |
+|  [Captain Argon]  |
+\-------------------/
+
+USING RENEGADE I-B ENGINE BY CAPTAIN ARGON
+
+Began: 1/6/19, 00:00:00 UTC
+Finished:
+Released:
+Total Time:
+
+Credits
+{
+(NOTE: Everyone who played a role in developing this game, whether that was in the form of suggestions or major pieces of code, has received credit.)
+> Non-Pirate (@nonpirate) for major game play suggestions, grammar corrections in the plotline, and more beyond that -- especially correcting the dumb mistakes I often made. He was the greatest help to this game!
+> Arnakt Fen (@stygiusdarkire) for being himself. Ti'vah!
+> Quantum Coding (@QuantumCodingSays) for being a beta tester. Thanks!
+> Kruxe (@minigenius2) for checking through the code for inneficencies a few times. He offered great advice!
+> Owen Foley (@owenpfoley) for some game play suggestions. Though he got in on the action later than Non-Pirate and Arnakt Fen, he still helped a lot.
+> Pamela (@pamela) for her work constructing the programming courses here on KA.
+> OOPS! Studios! (@Cristianop1) made the loading algorithm I used in this game. It was far more efficient than the original basic image loading functionality I'd been planning on implementing.
+> KWC (@MKaelin368) for the `construct()` function, which helps patch memory leaks; also, he helped protection for long loops.
+> The Lightning Programmer (???) for typing in the delete key. He has since gone inactive.
+> Sal Khan (@sal) for his awesome work on Khan Academy, and for reminding me I can use matrices to solve systems of linear equations!
+> AquA217 (@acer217) for her help with testing the game in early stages.
+> JentGent (@JentacularGent) for teaching me how to sort arrays from biggest to smallest and vice versa.
+> Guilherme (KA Help Center) for helping me when I had a problem with line collisions.
+> Maverick (@CataclysmicDestruction) for some timely inspiration at a point when I was getting vaguely exasperated at this game.
+> Ski (@thelegendski) for helping make certain array functions more efficient. (In a game of this size, this little things like that can really help performance!)
+> Timothy (@ty11ty) for beta testing!
+> Coder Guy (@KingCobraVenom) for beta testing!
+> CZS (@theMinstrel) for beta testing and a piece of code to accurate find the height of a text box
+}
+**/
+
+// "PJS SETUP" {
+noStroke();
+textAlign(CENTER, CENTER);
+rectMode(CENTER);
+imageMode(CENTER);
+smooth();
 //} END "PJS SETUP"
 
 // "MAIN VARIABLES" {
 // (1) "BASIC ARRAYS/OBJECTS" {
 var fonts = {
-    TimesNewRoman8: createFont("Times New Roman", 8),
-    TimesNewRoman9: createFont("Times New Roman", 9),
-    TimesNewRoman10: createFont("Times New Roman", 10),
-    TimesNewRoman11: createFont("Times New Roman", 11),
-    TimesNewRoman12: createFont("Times New Roman", 12),
+    TNR8: createFont("Times New Roman", 8),
+    TNR9: createFont("Times New Roman", 9),
+    TNR10: createFont("Times New Roman", 10),
+    TNR11: createFont("Times New Roman", 11),
+    TNR12: createFont("Times New Roman", 12),
     Calibri10: createFont("Calibri", 10),
     Calibri11: createFont("Calibri", 11),
     Calibri12: createFont("Calibri", 12),
@@ -102,23 +95,23 @@ var fonts = {
     Calibri12Italics: createFont("Calibri Italics", 12),
     Calibri14Italics: createFont("Calibri Italics", 14),
     Calibri18Italics: createFont("Calibri Italics", 18),
-    CalibriBold14: createFont("Calibri Bold", 14),
-    CalibriBold18: createFont("Calibri Bold", 18),
+    Calibri14Bold: createFont("Calibri Bold", 14),
+    Calibri18Bold: createFont("Calibri Bold", 18),
     EurostileBold22: createFont("Eurostile Bold", 22),
-    AgencyFB6: createFont("Agency FB Bold", 6),
-    AgencyFB14: createFont("Agency FB Bold", 14),
-    AgencyFB20: createFont("Agency FB Bold", 20),
-    AgencyFB25: createFont("Agency FB Bold", 25),
-    AgencyFB30: createFont("Agency FB Bold", 30),
-    AgencyFB36: createFont("Agency FB Bold", 36),
-    AgencyFB40: createFont("Agency FB Bold", 40),
-    AgencyFB100: createFont("Agency FB Bold", 100),
-    AgencyFB20Italics: createFont("Agency FB Italics", 20),
-    AgencyFB20Simple: createFont("Agency FB", 20),
-    CenturyGothic12: createFont("Century Gothic", 12),
-    CenturyGothic30: createFont("Century Gothic", 30),
-    CenturyGothic35: createFont("Century Gothic", 35),
-    CenturyGothic40: createFont("Century Gothic", 40),
+    AFB6: createFont("Agency FB Bold", 6),
+    AFB14: createFont("Agency FB Bold", 14),
+    AFB20: createFont("Agency FB Bold", 20),
+    AFB25: createFont("Agency FB Bold", 25),
+    AFB30: createFont("Agency FB Bold", 30),
+    AFB36: createFont("Agency FB Bold", 36),
+    AFB40: createFont("Agency FB Bold", 40),
+    AFB100: createFont("Agency FB Bold", 100),
+    AFB20Italics: createFont("Agency FB Italics", 20),
+    AFB20Simple: createFont("Agency FB", 20),
+    CG12: createFont("Century Gothic", 12),
+    CG30: createFont("Century Gothic", 30),
+    CG35: createFont("Century Gothic", 35),
+    CG40: createFont("Century Gothic", 40),
 }, commandKeys = {
     up: [87, "W", "Move Up"],
     left: [65, "A", "Move Left"],
@@ -139,14 +132,34 @@ var fonts = {
     inventory: [90, "Z", "Open Inventory"],
     datapad: [77, "M", "Open Datapad"],
     menu: [80, "P", "Pause"],
-}, keys = [], enemies = [], allies = [], squads = [], walls = [], bullets = [], booms = [], boom, bombs = [], smokeClouds = [], objectives = [], tips = [], allLoot = [], weathers = [], weathers2 = [], UIpieces = [], UIpiecesInventory = [], UIpiecesDatapad = [], UIpiecesPause = [], UIpiecesPause2 = [], boxes = [], levelEnds = [], cliffs = [], debriz = [], debris, datapadOn = 0, gunFocusingOn = 0, doors = [], computers = [], turrets = [], usingConsole = "NOT", canPressT = true, allLetters = "abcdefghijklmnopqrstuvwxyz1234567890-=[];',./~!@#$%^&*()_+{}:\"<>?|\\ ", allLetters2 = "abcdefghijklmnopqrstuvwxyz1234567890-'", backgroundImage, backgroundImage2, datapadOn = 0, seeTarget, rectArc, inBox, checkLock, rectCircle, transition = [false, 0, "", "Fade", 10], playerInfo = ["Valik", "Tivian", "Male"], gameDifficulty = ["Normal", "Normal"], gameMap = ["Prisons", 0], playerData = [], partnerData = [], orders = [], timeOnLevel = 0, makeSave, settingsScroll = -30, settingsSelected = "NONE", fpsOptions = [40, 45, 50, 55, 60, 70, 90, 120, 4], transitionOptions = [5, 10, 15, 20, 1], maps, saveMadeMessage, loadOn = [0, 0], loadScreenTime = 0, images, message2 = ["", 0], MOUSEX = 0, MOUSEY = 0, falseDoors = [], freePlay = false, spawnPoints = [], gameModes = ["Defender", "Warzone", 0], gameMaps = ["Servers", "Hangar Bay", 0], maxEnemies = [1, 2, 3, 4, 5, 6, 7, 8, 3], maxTeammates = [1, 2, 3, 4, 5, 6, 7, 8, 3], crateDelay = [30, 60, 90, 120, 2], gameDescriptions = ["Ward off waves of enemies!", "A violent team battle in the dead of night ... "], mapDescriptions = ["A small map arrayed around a central room. [WIP]", "A large hangar bay and control room. [WIP]"], respawnRate = [0, 0], character;
-allLetters.split("");
-allLetters2.split("");
-textFont(fonts.TimesNewRoman10);
+    push: [49, "1"], // Tyon Push; 1
+    pull: [50, "2"], // Tyon Pull; 2
+    speed: [51, "3"], // Tyon Speed; 3
+    influence: [52, "4"], // Tyon Influence; 4
+    heal: [53, "5"], // Tyon Heal; 5
+    immobilize: [54, "6"], // Tyon Immobilize; 6
+    lightning: [55, "7"], // Tyon Lightning; 7
+    rage: [56, "8"], // Tyon Rage; 8
+    absorb: [57, "9"], // Tyon Absorb; 9
+    protect: [48, "0"], // Tyon Protect; 0
+    drain: [189, "-"], // Tyon Drain; -
+    sight: [187, "="], // Tyon Sight; =
+}, keys = [], enemies = [], allies = [], squads = [], walls = [], bullets = [], booms = [], boom, bombs = [], smokeClouds = [], objectives = [], tips = [], allLoot = [], weathers = [], weathers2 = [], UIpieces = [], UIpiecesInventory = [], UIpiecesDatapad = [], UIpiecesPause = [], UIpiecesPause2 = [], boxes = [], levelEnds = [], cliffs = [], debriz = [], doors = [], computers = [], turrets = [], playerData = [], partnerData = [], orders = [], falseDoors = [], attachChoices = [], scopeChances = [], scopeChoices = [], ammoNames = [], wallWireFrames = [];
 //}
-// (2) "DEVELOPER  VARIABLES" {
-var version = "1.1.0", devMode = false, godMode = false, undyingMode = false, wallDarkness = true, trueFPS = this.__frameRate, endCinematic = false, subArrays = [], noClip = false;
-var capitalize = function(s) {
+// (2) "UNDEFINED VARIABLES" {
+var console, findDamage, objective, tip, unlockDoors, openDoors, levelEnd, debris, backgroundImage, backgroundImage2, seeTarget, rectArc, inBox, checkLock, rectCircle, makeSave, maps, saveMadeMessage, images, weather, character, wallWireFrame;
+//}
+// (3) "OTHER VARIABLES" {
+var version = "1.1.0", devMode = false, godMode = false, undyingMode = false, wallDarkness = true, trueFPS = this.__frameRate, endCinematic = false, subArrays = [], noClip = false, datapadOn = 0, gunFocusingOn = 0, tyonFocusingOn = 0, usingConsole = "NOT", canPressT = true, allLetters = "abcdefghijklmnopqrstuvwxyz1234567890-=[];',./~!@#$%^&*()_+{}:\"<>?|\\ ", allLetters2 = "abcdefghijklmnopqrstuvwxyz1234567890-'", transition = [false, 0, "", "Fade", 10], playerInfo = ["Valik", "Tivian", "Male"], gameDifficulty = ["Normal", "Normal"], gameMap = ["KoliosI", 0], timeOnLevel = 0, settingsScroll = -30, settingsSelected = "NONE", fpsOptions = [40, 45, 50, 55, 60, 70, 90, 120, 4], transitionOptions = [5, 10, 15, 20, 1], loadOn = [0, 0], loadScreenTime = 0, message2 = ["", 0], MOUSEX = 0, MOUSEY = 0, screenShake = 0, compensateFPS = 1, wantedFPS = 60, timeDilation = 1, lootBoxSize = 0, lootName = "", lootAmmo = "", lootAmmoTextWidth = 0, lootText = "", lootTextWidth = 0, lootBoxHeight = 0, onLoot = "NONE", boxFinalWidth = 0, lootOn = "NONE", lootBoxFinalAlpha = 200, lootTextAlpha = lootBoxFinalAlpha, whichButton = "A", whichButtonWidth = 0, byConsole = [false, 0, textWidth("Use console") + 10, textWidth("Open crate") + 10, textWidth("Access turret") + 10], consoleType = "Use console", mapImages = [], graphicOptions = ["Low", "High", 0], graphicQuality = 0, selectedSaveCode = 0, saveCode = codes[selectedSaveCode], scene = "loadSave", lastScene = "game", nextScene = "game", mode = 1, grenadeButtonTime = 0, medButtonTime = 0, draggingLoot = "NONE", releasedLeft = false, cinematic = ["1", 0, [0, 0, 1]], subtitles = "", pDetails = ["he", "him", "his", "Sir"], gOptions = ["Male", "Female", 0], skinOptions = [["Pale 1", color(250, 220, 170)], ["Pale 2", color(250, 240, 230)], ["Dark 1", color(165, 140, 120)], ["Dark 2", color(125, 100, 80)], 0], hairOptions = [["Black", color(0)], ["Brown 1", color(220, 110, 30)], ["Brown 2", color(105, 80, 55)], ["Blond 1", color(250, 240, 190)], ["Blond 2", color(255, 240, 220)], ["Red-Gold", color(185, 115, 50)], 0], widths, difficulty = ["Very Low", "Low", "Normal", "High", "Very High", 2], pHealth = ["Very Low", "Low", "Normal", "High", "Very High", 2], monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], squareRoot2 = sqrt(2), squareRootGunDistance = sqrt(105), squareRootGunDistance2 = sqrt(233), squareRootGunDistance3 = 12, grenadeDistance = dist(8, 0, 0, 0), grenadeRot = atan2(-8, 0), atan_1 = atan2(13, -8), atan_2 = atan2(10, -8), attachChances = ["Common", "Uncommon", "Uncommon", "Rare", "Legendary"], defAmmo = "RPG Ammo";
+//}
+// (3) "FUNCTIONS" {
+var findTextWidth = function(which) {
+    if (which !== "Middle Mouse Button" && which !== "Right Mouse Button" && which !== "Left Mouse Button") {
+        return textWidth(which);
+    } else {
+        return 20;
+    }},
+capitalize = function(s) {
     if (s.length > 0) {
         s = s.replace(s[0], s[0].toUpperCase());
         for (var i = 0; i < s.length; i++) {
@@ -266,7 +279,6 @@ clearArrays = function() {
     weathers.clear();
     turrets.clear();
     falseDoors.clear();
-    spawnPoints.clear();
 },
 convertToKey = function(input, kc) {
     if (input === RIGHT) {
@@ -277,6 +289,14 @@ convertToKey = function(input, kc) {
         return [SHIFT, "Shift"];
     } else if (kc === 32) {
         return [32, "Spacebar"];
+    } else if (kc === 38) {
+        return [38, "Up Arrow"];
+    } else if (kc === 37) {
+        return [37, "Left Arrow"];
+    } else if (kc === 39) {
+        return [39, "Right Arrow"];
+    } else if (kc === 40) {
+        return [40, "Down Arrow"];
     } else {
         for (var i = 0; i < allLetters.length; i++) {
             if (key.toString().toUpperCase() === allLetters[i].toUpperCase()) {
@@ -284,46 +304,8 @@ convertToKey = function(input, kc) {
             }
         }
     }
-};
-for (var i = 0; i < codes.length; i++) {
-    var a = codes[i];
-    codes[i].name = a[0];
-    codes[i].date = a[1];
-    codes[i].playerInfo = {
-        firstName: a[2][0],
-        lastName: a[2][1],
-        gender: a[2][2],
-        skinColor: a[2][3],
-        hairColor: a[2][4],
-    };
-    codes[i].inventory = copyArray2(a[3]);
-    codes[i].firstWeapon = [a[4][0],a[4][1],a[4][2],a[4][3],a[4][4],a[4][5]];
-    codes[i].secondWeapon = [a[5][0],a[5][1],a[5][2],a[5][3],a[5][4],a[5][5]];
-    codes[i].meleeWeapon = a[6];
-    codes[i].backpack = a[7];
-    codes[i].objectives = copyArray2(a[8]);
-    codes[i].player = copyArray2(a[9]);
-    codes[i].partner = copyArray2(a[10]);
-    codes[i].difficulty = a[11];
-    codes[i].map = {
-        which: a[12][0],
-        phase: a[12][1],
-    };
-}
-//}
-// (3) "UNDEFINED VARIABLES" {
-var console, findDamage, objective, tip, unlockDoors, openDoors, levelEnd;
-var findTextWidth = function(which) {
-    if (which !== "Middle Mouse Button" && which !== "Right Mouse Button" && which !== "Left Mouse Button") {
-        return textWidth(which);
-    } else {
-        return 20;
-    }
-};
-//}
-// (4) "APPEARANCE VARIABLES" {
-var screenShake = 0, compensateFPS = 1, wantedFPS = 60, timeDilation = 1, lootBoxSize = 0, lootName = "", lootAmmo = "", lootAmmoTextWidth = 0, lootText = "", lootTextWidth = 0, lootBoxHeight = 0, onLoot = "NONE", boxFinalWidth = 0, lootOn = "NONE", lootBoxFinalAlpha = 200, lootTextAlpha = lootBoxFinalAlpha, whichButton = "A", whichButtonWidth = 0, byConsole = [false, 0, textWidth("Use console") + 10, textWidth("Open crate") + 10, textWidth("Access turret") + 10], consoleType = "Use console", mapImages = [], graphicOptions = ["Low", "High", 0], graphicQuality = 0;
-var text2 = function(txt, constraint) {
+},
+text2 = function(txt, constraint) {
     var m = txt.split(" "), curStart = 0, curWidth = 0, lines = [""];
     for (var i = 0; i < m.length; i++){
         if (curWidth + textWidth(m[i]) > constraint) {
@@ -341,11 +323,8 @@ var text3 = function(txt, x, y, lHeight) {
     for (var i = 0; i < txt.length; i++) {
         text(txt[i], x, y + i * lHeight);
     }
-};
-//}
-// (5) "GAME PLAY VARIABLES" {
-var selectedSaveCode = 0, saveCode = codes[selectedSaveCode], scene = "load", lastScene = "game", nextScene = "game", mode = 1, grenadeButtonTime = 0, medButtonTime = 0, draggingLoot = "NONE", releasedLeft = false, cinematic = ["1", 0, [0, 0, 1]], subtitles = "", pDetails = ["he", "him", "his", "Sir"], gOptions = ["Male", "Female", 0], skinOptions = [["Pale 1", color(250, 240, 230)], ["Pale 2", color(250, 220, 170)], ["Dark 1", color(165, 140, 120)], ["Dark 2", color(125, 100, 80)], 1], hairOptions = [["Black", color(0)], ["Brown 1", color(220, 110, 30)], ["Brown 2", color(105, 80, 55)], ["Blond 1", color(250, 240, 190)], ["Blond 2", color(255, 240, 220)], ["Red-Gold", color(185, 115, 50)], 2], widths, difficulty = ["Very Low", "Low", "Normal", "High", "Very High", 2], pHealth = ["Very Low", "Low", "Normal", "High", "Very High", 2];
-var pressed = function(w) {
+},
+pressed = function(w) {
     var which = w[0];
     if (((which === "LMB" && (mouseIsPressed && mouseButton === LEFT)) || (which === "RMB" && (mouseIsPressed && mouseButton === RIGHT)) || (which !== "LMB" && which !== "RMB" && keys[which])) && !console.activated) {
         return true;
@@ -390,11 +369,117 @@ dealDamage = function(Damage, obj, DH, DU) {
     }
     return totalDamage;
 },
+dealDamage2 = function(obj, input, gain, gain2) {
+    obj.energyPool += (gain === true) ? (input * obj.energyRegain) : 0;
+    return ((obj === allies[0] && godMode && scene !== "cinematic") ? 0 : ((gain2 === true || gain2 === undefined) ? (input / obj.energyReduction) : 0));
+},
 dist2 = function(x1, y1, x2, y2, proximity) {
     if (sq(x2 - x1) + sq(y2 - y1) <= sq(proximity)) {
         return true;
     } else {
         return false;
+    }
+},
+convertTyonToNumber = function() {
+    if (pressed(commandKeys.push)) {
+        return 0;
+    } else if (pressed(commandKeys.pull)) {
+        return 1;
+    } else if (pressed(commandKeys.speed)) {
+        return 2;
+    } else if (pressed(commandKeys.influence)) {
+        return 3;
+    } else if (pressed(commandKeys.heal)) {
+        return 4;
+    } else if (pressed(commandKeys.immobilize)) {
+        return 5;
+    } else if (pressed(commandKeys.lightning)) {
+        return 6;
+    } else if (pressed(commandKeys.rage)) {
+        return 7;
+    } else if (pressed(commandKeys.absorb)) {
+        return 8;
+    } else if (pressed(commandKeys.protect)) {
+        return 9;
+    } else if (pressed(commandKeys.drain)) {
+        return 10;
+    } else if (pressed(commandKeys.sight)) {
+        return 11;
+    }
+},
+tyonLevelToNumber = function(num) {
+    if (num === "1") {
+        return 1;
+    } else if (num === "2") {
+        return 2;
+    } else if (num === "3") {
+        return 3;
+    } else if (num === "4a") {
+        return 4;
+    } else if (num === "4b") {
+        return 5;
+    } else {
+        return 0;
+    }
+},
+tyonNumberToLevel = function(num) {
+    if (num === 1) {
+        return "1";
+    } else if (num === 2) {
+        return "2";
+    } else if (num === 3) {
+        return "3";
+    } else if (num === 4) {
+        return "4a";
+    } else if (num === 5) {
+        return "4b";
+    } else {
+        return "0";
+    }
+},
+convertNumberToTyon = function(num) {
+    var which = ["Push", "Pull", "Speed", "Confuse", "Heal", "Immobilize", "Lightning", "Rage", "Protect", "Absorb", "Drain", "Sight"];
+    return which[num];
+},
+convertTyonToNumber2 = function(which) {
+    return findInIndex(["Push", "Pull", "Speed", "Confuse", "Heal", "Immobilize", "Lightning", "Rage", "Protect", "Absorb", "Drain", "Sight"], which);
+},
+checkForPress = function(obj) {
+    if (pressed(commandKeys.push)) {
+        obj.tyonUsed2[0] = true;
+    }
+    if (pressed(commandKeys.pull)) {
+        obj.tyonUsed2[1] = true;
+    }
+    if (pressed(commandKeys.speed)) {
+        obj.tyonUsed2[2] = true;
+    }
+    if (pressed(commandKeys.influence)) {
+        obj.tyonUsed2[3] = true;
+    }
+    if (pressed(commandKeys.heal)) {
+        obj.tyonUsed2[4] = true;
+    }
+    if (pressed(commandKeys.immobilize)) {
+        obj.tyonUsed2[5] = true;
+    }
+    if (pressed(commandKeys.lightning)) {
+        obj.tyonUsed2[6] = true;
+    }
+    if (pressed(commandKeys.rage)) {
+        obj.tyonUsed2[7] = true;
+    }
+    if (pressed(commandKeys.absorb)) {
+        obj.tyonUsed2[8] = true;
+    }
+    if (pressed(commandKeys.protect)) {
+        obj.tyonUsed2[9] = true;
+    }
+    if (pressed(commandKeys.drain)) {
+        obj.tyonUsed2[10] = true;
+    }
+    if (pressed(commandKeys.sight)) {
+        obj.tyonUsed2[11] = true;
     }
 },
 loopDif = function(x, y, z) {
@@ -448,6 +533,9 @@ checkAttachment = function(gun) {
                     ret = true;
                 }
             }
+            if (b[1] === "Ammo" && which.ammo === b[0]) {
+                ret = true;
+            }
         }
     } else {
         if (gun === 0 && allies[0].gun1 !== "NONE" && draggingLoot[0] !== "First Weapon Inventory") {
@@ -489,11 +577,8 @@ canAct = function() {
     } else {
         return true;
     }
-};
-var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-//}
-// (6) "DE-LAGGING VARIABLES" {
-var construct = function(whichObject, definingArguments, newTarget) {
+},
+construct = function(whichObject, definingArguments, newTarget) {
     var obj = Object.create(whichObject.prototype);
     return (newTarget || whichObject).apply(obj, definingArguments), obj;
 },
@@ -505,8 +590,25 @@ createObj = function(arr, obj, objs) {
 setTimeout = function(time) {
     this[["KAInfiniteLoopSetTimeout"]](time);
     this[["KAInfiniteLoopCount"]] = -Infinity;
+},
+standardForm = function(l) {
+    var m = (l[3] - l[1]) / (l[2] - l[0]);
+    return [-m, 1, -l[1] + m * l[0]];
+},
+distToLine = function(l, pt) {
+    if (l[0] === l[2]) {
+        return abs(l[0] - pt[0]);
+    } else if (l[1] === l[3]) {
+        return abs(l[1] - pt[1]);
+    } else {
+        var a = standardForm(l);
+        return abs(a[0] * pt[0] + a[1] * pt[1] + a[2]) / sqrt(sq(a[0]) + sq(a[1]));
+    }
 };
-var squareRoot2 = sqrt(2), squareRootGunDistance = sqrt(105), squareRootGunDistance2 = sqrt(233), squareRootGunDistance3 = 12, grenadeDistance = dist(8, 0, 0, 0), grenadeRot = atan2(-8, 0), atan_1 = atan2(13, -8), atan_2 = atan2(10, -8);
+//}
+// (4) "OTHER" {
+allLetters.split("");
+allLetters2.split("");
 //}
 //} END "MAIN VARIABLES"
 
@@ -536,12 +638,12 @@ var drawImages = function() {
     }
 };
 var renderImage = function(img, x, y, w, h) {
-    if (img.length !== undefined) {
+    /*if (img.length !== undefined) {
         var a = w / img[1], b = h / img[2], c = a < b ? "w" : "h";
         image(img[0], x, y, 400 * (c === "w" ? a : b) / 5, 400 * (c === "h" ? b : a) / 5);
     } else {
         image(img, x, y, w || (400 / 5), h || (400 / 5));
-    }
+    }*/
 };
 var createBackgroundImage = function() {
     filter(GRAY);
@@ -629,7 +731,7 @@ var bulletIndicator = function(rot, s, a, c) {
     noStroke();
 };
 var scopeImg = function(txt) {
-            textFont(fonts.AgencyFB6);
+            textFont(fonts.AFB6);
             stroke(255);
             strokeWeight(1);
             noFill();
@@ -675,9 +777,9 @@ var argonImagingCompany = function(x, y, size) {
     scale(size);
     noStroke();
     fill(255);
-    textFont(fonts.CenturyGothic40);
+    textFont(fonts.CG40);
     text("Argon", 0, 10);
-    textFont(fonts.CenturyGothic30);
+    textFont(fonts.CG30);
     text("Imaging", 0, 41);
     ellipse(0, -30, 40, 40);
     stroke(255);
@@ -696,9 +798,9 @@ var argonGames = function(x, y, size) {
     translate(x, y);
     scale(size);
     fill(255);
-    textFont(fonts.CenturyGothic40);
+    textFont(fonts.CG40);
     text("Argon", 0, 10);
-    textFont(fonts.CenturyGothic35);
+    textFont(fonts.CG35);
     text("Games", 0, 45);
     noStroke();
     rect(0, -33, 50, 24);
@@ -713,103 +815,6 @@ var argonGames = function(x, y, size) {
     rect(-22, -30, 18, 6, 8);
     popMatrix();
 };
-var advancedShuttle = function(x, y, r, s, e) {
-    pushMatrix();
-    translate(x, y);
-    rotate(r);
-    scale(s);
-    noStroke();
-    pushMatrix();
-    scale(1.2, 1.1);
-    translate(0, -5);
-    noFill();
-    stroke(75);
-    strokeWeight(10);
-    arc(-55, -60, 88, 256, 0, 85);
-    arc(-54, 120, 100, 47, 270, 340);
-    arc(54, 120, 100, 47, 200, 270);
-    arc(55, -60, 88, 256, 95, 180);
-    pushMatrix();
-    translate(0, 6);
-    scale(0.9);
-    noFill();
-    stroke(95);
-    strokeWeight(11);
-    arc(-58, -68, 98, 281, 0, 90);
-    arc(-54, 122.5, 101, 52, 270, 340);
-    arc(54, 122.5, 101, 52, 200, 270);
-    arc(58, -68, 98, 281, 90, 180);
-    noStroke();
-    fill(95);
-    rect(0, 84, 120, 28);
-    rect(0, 90, 40, 40);
-    triangle(-44, 80, 44, 80, 0, -60);
-    popMatrix();
-    fill(255, 0, 0, 150);
-    arc(-11.5, -60, 8, 10, 180, 270);
-    arc(12, -60, 8, 10, 270, 360);
-    stroke(60);
-    strokeWeight(1);
-    line(-40, 70, -40, 84);
-    line(40, 70, 40, 84);
-    strokeWeight(1.1);
-    line(-33, 70, -33, 84);
-    line(33, 70, 33, 84);
-    strokeWeight(1.3);
-    line(-26, 70, -26, 84);
-    line(26, 70, 26, 84);
-    strokeWeight(1.6);
-    line(-19, 70, -19, 84);
-    line(19, 70, 19, 84);
-    noStroke();
-    fill(0, 200, 255, 50);
-    for (var i = 0; i < 10; i++) {
-        ellipse(random(-55, -53), 106, random(8, 10), random(e * 0.5, e));
-        ellipse(random(53, 55), 106, random(8, 10), random(e * 0.5, e));
-    }
-    fill(50);
-    ellipse(54, 59, 12, 26);
-    ellipse(-54, 59, 12, 26);
-    ellipse(-54, 106, 12, 10);
-    ellipse(54, 106, 12, 10);
-    rect(54, 82, 12, 46);
-    rect(-54, 82, 12, 46);
-    fill(65);
-    ellipse(54, 58, 8, 20);
-    ellipse(-54, 58, 8, 20);
-    ellipse(-54, 106, 8, 6);
-    ellipse(54, 106, 8, 6);
-    rect(54, 83, 8, 46);
-    rect(-54, 83, 8, 46);
-    popMatrix();
-    fill(50);
-    rect(0, 6, 30, 216);
-    ellipse(0, 116, 30, 20);
-    ellipse(0, -100, 30, 60);
-    fill(65);
-    ellipse(0, -98, 24, 58);
-    ellipse(0, 114, 24, 18);
-    rect(0, 6, 24, 212);
-    fill(0);
-    stroke(30);
-    strokeWeight(1);
-    arc(1, -102, 18, 44, -90, 5);
-    arc(-1, -102, 18, 44, 175, 270);
-    noStroke();
-    fill(65);
-    ellipse(0, -100, 10, 10);
-    ellipse(0, -124, 6, 6);
-    stroke(0);
-    strokeWeight(2.5);
-    line(-4, 40, -4, 20);
-    line(4, 40, 4, 20);
-    strokeWeight(2);
-    stroke(100);
-    fill(75);
-    ellipse(0, 40, 16, 16);
-    noStroke();
-    popMatrix();
-};
 var blast = function(x, y, s) {
     pushMatrix();
     translate(x, y);
@@ -820,92 +825,6 @@ var blast = function(x, y, s) {
         rotate(i);
         triangle(-random(s / 20, s / 15), 0, random(s / 20, s / 15), 0, 0, random(s / 5, s / 2));
         popMatrix();
-    }
-    popMatrix();
-};
-var notSoAdvancedShuttle = function(x, y, r, s, flaming) {
-    pushMatrix();
-    translate(x, y);
-    rotate(r);
-    scale(s);
-    translate(0, 5);
-    fill(0);
-    rect(34, -40, 8, 80, 4);
-    rect(44, -34, 8, 70, 4);
-    rect(-34, -40, 8, 80, 4);
-    rect(-44, -34, 8, 70, 4);
-    rect(0, -115, 52, 30);
-    ellipse(26, -115, 4, 30);
-    ellipse(-26, -115, 4, 30);
-    stroke(0);
-    strokeWeight(8);
-    line(102, 144, 32, 154);
-    line(-102, 144, -32, 154);
-    noStroke();
-    fill(255);
-    polygon(0, -80, 110, -25, 110, 140, 0, 160, -110, 140, -111, -25);
-    stroke(220);
-    noFill();
-    strokeWeight(6);
-    arc(50, -80, 60, 50, 120, 180);
-    line(37, -57, 100, -30);
-    arc(98, -15, 24, 30, -70, 0);
-    line(110, -15, 113, 140);
-    line(113, 140, 35, 150);
-    arc(40, 161, 40, 22, 180, 250);
-    arc(-50, -80, 60, 50, 0, 60);
-    line(-37, -57, -100, -30);
-    arc(-98, -15, 24, 30, 180, 250);
-    line(-110, -15, -113, 140);
-    line(-113, 140, -35, 150);
-    arc(-40, 161, 40, 22, -70, 0);
-    noStroke();
-    fill(220);
-    arc(0, -150, 50, 90, 180, 360);
-    rect(0, 11, 50, 322);
-    arc(0, 172, 50, 20, 0, 180);
-    fill(255);
-    arc(0, -150, 40, 80, 180, 360);
-    rect(0, 10, 40, 320);
-    arc(0, 170, 40, 14, 0, 180);
-    fill(0);
-    arc(2, -150, 28, 70, -90, 5);
-    arc(-2, -150, 28, 70, 175, 270);
-    fill(255);
-    ellipse(0, -145, 16, 20);
-    fill(220);
-    ellipse(35, -40, 10, 10);
-    ellipse(35, -26, 10, 10);
-    stroke(0, 50);
-    line(35, 25, 35, 75);
-    line(45, 25, 45, 75);
-    line(-35, 25, -35, 75);
-    line(-45, 25, -45, 75);
-    strokeWeight(4);
-    for (var i = -102; i < -30; i += 10) {
-        line(i, 120 + (i + 102) / 8, i, 132 + (i + 102) / 8);
-    }
-    for (var i = 102; i > 30; i -= 10) {
-        line(i, 120 - (i - 102) / 8, i, 132 - (i - 102) / 8);
-    }
-    if (flaming) {
-        var a = ["blast1", "blast2", "blast3"];
-        image(images[a[0]], -62, 0);
-        image(images[a[1]], 80, 125);
-        image(images[a[2]], 4, 160);
-        noStroke();
-        for (var i = 0; i < 30; i++) {
-            fill(random(200, 255), random(0, 100), 0, 20);
-            ellipse(-62 + random(-5, 5), random(-5, 5), random(10, 15), random(10, 15));
-        }
-        for (var i = 0; i < 30; i++) {
-            fill(random(200, 255), random(0, 100), 0, 20);
-            ellipse(80 + random(-5, 5), 125 + random(-5, 5), random(10, 15), random(10, 15));
-        }
-        for (var i = 0; i < 30; i++) {
-            fill(random(200, 255), random(0, 100), 0, 20);
-            ellipse(4 + random(-5, 5), 160 + random(-5, 5), random(10, 15), random(10, 15));
-        }
     }
     popMatrix();
 };
@@ -932,7 +851,7 @@ var displayMap = function(which) {
             var a = maps[b[0]].images[i], c = maps[b[0]].draw[i];
             for (var j = 0; j < a.length; j++) {
                 for (var k = 0; k < a[j].length; k++) {
-                    image(a[j][k], c[2][0] + j * 400 + 200, c[2][1] + k * 400 + 200);
+                    //image(a[j][k], c[2][0] + j * 400 + 200, c[2][1] + k * 400 + 200);
                 }
             }
         }
@@ -1005,7 +924,7 @@ var splinters = function(x, y, s) {
 images = {
     "escape logo": function() {
         scale(1, 1.5);
-        textFont(fonts.AgencyFB100);
+        textFont(fonts.AFB100);
         translate(-textWidth("2") / 2, 0);
         outlineText("ESCAPE", color(200), color(255), 16, 2);
         fill(255, 0, 0);
@@ -1245,7 +1164,7 @@ images = {
         line(108, 330, 213, 330);
         line(213, 292, 292, 292);
         fill(255);
-        textFont(fonts.AgencyFB14);
+        textFont(fonts.AFB14);
         text("Cells", 160, 283);
         text("Armory", 252, 271);
         text("Command Center", 160, 214);
@@ -1314,7 +1233,7 @@ images = {
         line(318, 223, 318, 260);
         line(338, 223, 338, 260);
         fill(255);
-        textFont(fonts.AgencyFB14);
+        textFont(fonts.AFB14);
         text("Medical\nCenter", 296, 243);
         text("Storage", 261, 194);
         text("Door Controls", 182, 194);
@@ -1407,7 +1326,7 @@ images = {
         point(284, 108);
         point(116, 108);
         fill(255);
-        textFont(fonts.AgencyFB14);
+        textFont(fonts.AFB14);
         text("Turrets", 158, 108);
         text("Turrets", 242, 108);
         text("Exterior Platform", 200, 224);
@@ -1507,7 +1426,7 @@ images = {
         line(260, 169, 260, 225);
         line(260, 225, 314, 225);
         fill(255);
-        textFont(fonts.AgencyFB14);
+        textFont(fonts.AFB14);
         text("Hangar 1", 149, 197);
         text("Hangar 2", 287, 197);
         return get(0, 0, 400, 400);
@@ -1545,94 +1464,33 @@ images = {
         strokeWeight(20);
         point(82, 206);
         fill(255);
-        textFont(fonts.AgencyFB14);
+        textFont(fonts.AFB14);
         text("Control\nRoom", 82, 175);
         return get(0, 0, 400, 400);
     },
-    "serversMap": function() {
+    "tutorialMap": function() {
         translate(-200, -200);
         strokeWeight(2);
         strokeCap(SQUARE);
         stroke(255, 150, 150);
-        line(120, 111, 140, 111);
-        line(190, 111, 210, 111);
-        line(282, 111, 302, 111);
-        line(281, 125, 281, 145);
-        line(281, 182, 281, 302);
-        line(293, 203, 313, 203);
-        line(293, 249, 313, 249);
-        line(190, 341, 210, 341);
-        line(190, 306, 210, 306);
-        line(190, 144, 210, 144);
-        line(258, 215, 258, 235);
-        line(142, 215, 142, 235);
-        line(109, 249, 129, 249);
-        line(109, 157, 129, 157);
-        line(119, 279, 119, 299);
-        line(73, 279, 73, 299);
+        line(312, 152, 338, 152);
+        line(40, 89, 40, 120);
+        line(232, 89, 232, 300);
         stroke(150, 255, 150);
-        line(119, 89, 303, 89);
-        line(303, 89, 303, 111);
-        line(303, 111, 349, 111);
-        line(349, 111, 349, 180);
-        line(349, 180, 315, 180);
-        line(315, 180, 315, 341);
-        line(315, 341, 291, 341);
-        line(291, 341, 291, 329);
-        line(291, 329, 211, 329);
-        line(211, 329, 211, 341);
-        line(189, 341, 189, 329);
-        line(189, 329, 165, 329);
-        line(165, 329, 165, 341);
-        line(165, 341, 142, 341);
-        line(142, 341, 142, 329);
-        line(142, 329, 50, 329);
-        line(50, 329, 50, 110);
-        line(50, 111, 119, 111);
-        line(119, 111, 119, 88);
-        line(141, 111, 153, 111);
-        line(153, 111, 153, 122);
-        line(153, 122, 177, 122);
-        line(177, 122, 177, 111);
-        line(177, 111, 189, 111);
-        line(211, 111, 222, 111);
-        line(222, 111, 222, 122);
-        line(222, 122, 256, 122);
-        line(256, 122, 256, 111);
-        line(256, 111, 281, 111);
-        line(281, 111, 281, 124);
-        line(281, 143, 281, 181);
-        line(281, 200, 281, 249);
-        line(281, 203, 293, 203);
-        line(281, 249, 293, 249);
-        line(281, 272, 292, 272);
-        line(292, 272, 292, 306);
-        line(292, 306, 281, 306);
-        line(281, 306, 281, 271);
-        line(258, 306, 211, 306);
-        line(189, 306, 142, 306);
-        line(142, 306, 142, 236);
-        line(142, 214, 142, 144);
-        line(142, 144, 189, 144);
-        line(211, 144, 258, 144);
-        line(258, 144, 258, 214);
-        line(258, 236, 258, 306);
-        line(142, 157, 130, 157);
-        line(108, 157, 95, 157);
-        line(96, 157, 96, 249);
-        line(96, 249, 108, 249);
-        line(130, 249, 142, 249);
-        line(119, 272, 72, 272);
-        line(73, 272, 73, 278);
-        line(73, 300, 73, 306);
-        line(73, 306, 119, 306);
-        line(119, 306, 119, 300);
-        line(119, 278, 119, 272);
+        line(40, 89, 360, 89);
+        line(40, 119, 232, 119);
+        line(232, 119, 232, 203);
+        line(232, 229, 232, 312);
+        line(232, 312, 40, 312);
+        line(40, 119, 40, 312);
+        line(360, 89, 360, 200);
+        line(360, 200, 232, 200);
+        line(338, 152, 360, 152);
+        line(312, 152, 232, 152);
         fill(255);
-        textFont(fonts.AgencyFB14);
-        text("Servers", 200, 225);
-        text("North Hallway", 200, 100);
-        text("South Corridor", 200, 318);
+        textFont(fonts.AFB14);
+        text("Storage Room", 300, 175);
+        text("North Hallway", 140, 104);
         return get(0, 0, 400, 400);
     },
     "lock": function() {
@@ -1649,6 +1507,221 @@ images = {
         return get(0, 0, 400, 400);
     },
 };
+var tyonGraphics = {
+    "Push": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        fill(255);
+        ellipse(0, 0, 4, 4);
+        stroke(255);
+        strokeWeight(2);
+        strokeCap(SQUARE);
+        noFill();
+        arc(0, 0, 10, 10, -25, 25);
+        arc(0, 0, 10, 10, 65, 115);
+        arc(0, 0, 10, 10, 155, 205);
+        arc(0, 0, 10, 10, 245, 295);
+        popMatrix();
+        strokeCap(ROUND);
+        noStroke();
+    },
+    "Pull": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        fill(255);
+        ellipse(0, 0, 4, 4);
+        stroke(255);
+        strokeWeight(2);
+        strokeCap(SQUARE);
+        noFill();
+        arc(-10, 0, 10, 10, -25, 25);
+        arc(0, -10, 10, 10, 65, 115);
+        arc(10, 0, 10, 10, 155, 205);
+        arc(0, 10, 10, 10, 245, 295);
+        popMatrix();
+        strokeCap(ROUND);
+        noStroke();
+    },
+    "Speed": function(x, y) {
+        noStroke();
+        pushMatrix();
+        translate(x, y);
+        scale(1.7, 2);
+        fill(255);
+        quad(-5, -4, -5, 4, -3, 3.2, -3, -3.2);
+        quad(-2, -2.8, -2, 2.8, 0, 2, 0, -2);
+        triangle(1, -1.6, 1, 1.6, 5, 0);
+        popMatrix();
+    },
+    "Confuse": function(x, y) {
+        stroke(255);
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        fill(255);
+        noFill();
+        strokeWeight(2);
+        ellipse(0, 2.5, 6, 6);
+        line2(-3, 2.5, 160, 4);
+        line2(-2.5, -0.2, 175, 5);
+        line2(-0.6, -0.7, 180, 5);
+        line2(1.3, -0.2, 185, 5);
+        line2(3, 1, 190, 5);
+        popMatrix();
+        noStroke();
+    },
+    "Heal": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        fill(255);
+        noStroke();
+        rect(0, 0, 4, 18, 2);
+        rect(0, 0, 18, 4, 2);
+        popMatrix();
+    },
+    "Immobilize": function(x, y) {
+        stroke(255);
+        pushMatrix();
+        translate(x, y);
+        scale(1.3);
+        noFill();
+        strokeWeight(1);
+        quad(0, -2.5, 2.5, 0, 0, 2.5, -2.5, 0);
+        strokeWeight(2);
+        ellipse(0, 0, 6, 6);
+        strokeCap(SQUARE);
+        arc(0, 0, 12, 12, -25, 25);
+        arc(0, 0, 12, 12, 65, 115);
+        arc(0, 0, 12, 12, 155, 205);    
+        arc(0, 0, 12, 12, 245, 295);
+        popMatrix();
+    },
+    "Lightning": function(x, y) {
+        pushMatrix();
+        noStroke();
+        translate(x, y);
+        scale(1.5);
+        fill(255);
+        beginShape();
+        vertex(2, -6);
+        vertex(-2, 1);
+        vertex(-0.5, 0.5);
+        vertex(-2, 6);
+        vertex(2, -1);
+        vertex(0.5, -0.5);
+        endShape();
+        beginShape();
+        vertex(6, -6);
+        vertex(2, 1);
+        vertex(3.5, 0.5);
+        vertex(2, 6);
+        vertex(6, -1);
+        vertex(4.5, -0.5);  
+        endShape();
+        beginShape();
+        vertex(-2, -6);
+        vertex(-6, 1);
+        vertex(-4.5, 0.5);
+        vertex(-6, 6);
+        vertex(-2, -1);
+        vertex(-3.5, -0.5);
+        endShape();
+        popMatrix();
+    },
+    "Rage": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        noFill();
+        stroke(255);
+        strokeWeight(1.5);
+        line(-3, -3, 3, 3);
+        line(-3, 3, 3, -3);
+        line(0, -5, 1, -4);
+        line(0, -5, -1, -4);
+        line(0, 5, 1, 4);
+        line(0, 5, -1, 4);
+        line(-5, 0, -4, 1);
+        line(-5, 0, -4, -1);
+        line(5, 0, 4, 1);
+        line(5, 0, 4, -1);
+        popMatrix();
+    },
+    "Protect": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        noFill();
+        stroke(255);
+        strokeWeight(1.25);
+        arc(0, 0, 8, 8, 110, 250);
+        arc(0, 0, 8, 8, -70, 70);
+        arc(0, 0, 12, 12, 192, 348);
+        arc(0, 0, 12, 12, 12, 168);
+        ellipse(0, 0, 4, 4);
+        popMatrix();
+    }, 
+    "Absorb": function(x, y) {
+        pushMatrix();
+        noStroke();
+        translate(x, y);
+        scale(1.5);
+        noFill();
+        stroke(255);
+        strokeWeight(1.25);
+        ellipse(0, 0, 4, 4);
+        line(-4, -4, -4, 4);
+        line(-4, -4, -2, -4);
+        line(-4, 4, -2, 4);
+        line(4, -4, 4, 4);
+        line(4, -4, 2, -4);
+        line(4, 4, 2, 4);
+        line(-6, -6, 6, -6);
+        line(-6, -6, -6, -2);
+        line(6, -6, 6, -2);
+        line(-6, 6, 6, 6);
+        line(-6, 6, -6, 2);
+        line(6, 6, 6, 2);
+        popMatrix();
+    },
+    "Drain": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        noFill();
+        stroke(255);
+        strokeWeight(1.5);
+        line(-3, -3, 3, 3);
+        line(-3, 3, 3, -3);
+        line(0, -4, 1, -5);
+        line(0, -4, -1, -5);
+        line(0, 4, 1, 5);
+        line(0, 4, -1, 5);
+        line(-4, 0, -5, 1);
+        line(-4, 0, -5, -1);
+        line(4, 0, 5, 1);
+        line(4, 0, 5, -1);
+        popMatrix();
+    },
+    "Sight": function(x, y) {
+        pushMatrix();
+        translate(x, y);
+        scale(1.5);
+        noFill();
+        stroke(255);
+        strokeWeight(1);
+        arc(-2, 0, 4, 5, -30, 30);
+        arc(-1, 2, 10, 8, 190, 270);
+        arc(-1, 2, 8, 8, 270, 290);
+        line2(-5.8, 1.5, -90, 6);
+        line2(3, 0, -90, 3);
+        line2(3, -1.5, -110, 3);
+        line2(3, 1.5, -70, 3);
+        popMatrix();
+    },
+};
 //}
 //} END "GRAPHICS"
 
@@ -1656,502 +1729,148 @@ images = {
 var guns = [
     // PISTOLS
     [
-    "P180 Blaster Pistol", "Pistol", "Light Rounds", "The P180 is a simple handgun with a small magazine and little firepower. Fortunately, it's better than nothing.", "A light handgun.", "Semi-Auto", "Hands", 5, 7, 1, 100, 12, 500, [0, 15], 0, [], 60, "Mag-Fed", 10, 4, 2, 8, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Magazine", "Extended Mag"], [["Mag", [9, 12, 15]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [100, 80, 60]], ["Fire", [8, 6, 4]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.95, 0.85, 0.75]]]]], "Normal Scope", ["hands", [[-1, 2], [1, 5]]], function() {
-        translate(0, -1.25);
-        fill(255);
-        polygon(-13, -7, 14, -7, 13, -2, -8, -1, -14, -2);
-        quad(-11, -2, -6, -2, -9, 10, -14, 9);
-        rect(0, -6.5, 6, 2);
-        stroke(255);
-        strokeWeight(1);
-        noFill();
-        arc(-7, -2, 14, 10, -45, 110);
-        arc(0, -2, 10, 10, 150, 180);
-        return [get(0, 0, 400, 400), 28, 18];
-    }, function() {
-        strokeWeight(4);
-        stroke(200);
-        line(0, 0, 0, 15);
-        return get(0, 0, 400, 400);
-    }, "Common"
-    ], // (0) P180 Blaster Pistol
+    "P53", "Pistol", "Green-Level", "A light handgun, the P53 is mediocre at best. It’s damage is low, it’s not full-auto, and it isn't super accurate. However, the weapon's reload time is impeccable.", "A light handgun for close-in fighting.", "Semi-Auto", "Hands", 2, 8, 1, 95, 15, 700, [0, 15], 0, [], 60, "Mag-Fed", 8, 5, 2, 10, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Magazine", "Extended Mag"], [["Mag", [10, 12, 14, 16, 18]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [55, 50, 45, 40, 30]], ["Fire", [7, 6, 5, 4, 3]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.7]]]]], "Normal Scope", ["hands", [[-1, 2], [1, 5]]], function() {}, function() {}, "Common"
+    ], // (0) P53
     [
-    "P834 Assault Pistol", "Pistol", "Light Rounds", "A rapid-fire handgun with a medium-sized magazine and fast reload, the P834 is handy in tight situations. Unfortunately, it has a problem with firing spread.", "A high-powered, full-auto pistol.", "Full-Auto", "Hands", 7, 20, 1, 90, 7, 800, [0, 15], 0, [], 120, "Mag-Fed", 5, 5, 2.5, 11, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Muzzle", "Silencer"], [["Noise", [6, 5, 4]]]], [["Magazine", "Extended Mag"], [["Mag", [23, 26, 30]]]], ], "Normal Scope", ["hands", [[-1, 2], [1, 5]]], function() {
-        translate(0.25, -1.7);
-        fill(255);
-        rect(-1, -4, 26, 4, 4, 4, 0, 0);
-        polygon(-14, -2, 12, -2, 11, -1, -12, 1);
-        rect(12, -3, 4, 2);
-        rect(-5, -5.5, 10, 2, 2);
-        quad(-12, 0, -7, 0, -10, 10, -14.5, 9);
-        stroke(255);
-        strokeWeight(1);
-        noFill();
-        arc(-1, 0, 10, 10, 150, 180);
-        rect(-6, 0, 10, 8, 0, 0, 4, 0);
-        return [get(0, 0, 400, 400), 29, 17];
-    }, function() {
-        strokeWeight(4);
-        stroke(0);
-        line(0, 0, 0, 15);
-        return get(0, 0, 400, 400);
-    }, "Uncommon"
-    ], // (1) P834 Assault Pistol
+    "R7036", "Pistol", "5mm", "A revolver with good damage but low firing speed, the R7053 will deal with quite a few enemies. It has a solid magazine size of six, coupled with a quick reloading time.", "A high-powered revolver.", "Semi-Auto", "Hands", 5, 6, 1, 120, 60, 800, [0, 15], 0, [], 180, "Round-by-Round", 30, 6, 4, 14, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]]], "Normal Scope", ["hands", [[-1, 2], [1, 5]]], function() {}, function() {}, "Common"
+    ], // (1) R7036
+    [
+    "P7017a", "Pistol", "5mm", "The P7017a has a large magazine for its size, and does remarkable damage. The accuracy could use improvements, but otherwise it's an amazing weapon.", "Fair damage and magazine size.", "Semi-Auto", "Hands", 6, 15, 1, 95, 15, 850, [0, 20], 0, [], 120, "Mag-Fed", 10, 7, 4, 18, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Magazine", "Extended Mag"], [["Mag", [17, 19, 21, 23, 25]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.7]]]]], "Normal Scope", ["hands", [[-1, 2], [1, 5]]], function() {}, function() {}, "Uncommon"
+    ], // (2) P7017a
+    [
+    "P725", "Pistol", "Green-Level", "The P725 is a burstfire pistol with 24 bullets in its magazine. It’s damage isn’t spectacular, but it's still a powerful yet common gun.", "A burstfire pistol with good damage.", "Burstfire", "Hands", 2, 24, 1, 85, 22, 850, [0, 18], 0, [], 90, "Mag-Fed", 5, 6, 5, 15, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Magazine", "Extended Mag"], [["Mag", [27, 30, 33, 36, 39]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [85, 80, 75, 70, 60]], ["Fire", [3, 3, 3, 2, 2]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.7]]]]], "Normal Scope", ["Burstfire", "3", "hands", [[-1, 2], [1, 5]]], function() {}, function() {}, "Uncommon"
+    ], // (3) P725
+    [
+    "RT-71", "Pistol", "5mm", "A full-auto pistol with great damage, the RT-71 is incredibly dangerous. Certainly, recoil doesn't make it easy to wield, but it's still capable of wiping out enemies.", "Fair damage, amazing fire rate.", "Full-Auto", "Hands", 5, 15, 1, 75, 16, 950, [0, 17], 0, [], 90, "Mag-Fed", 3, 4, 3, 17, 1, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Magazine", "Extended Mag"], [["Mag", [17, 19, 21, 23, 25]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [85, 80, 75, 70, 60]], ["Fire", [3, 3, 2, 2, 1]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.96, 0.92, 0.88, 0.84, 0.8]]]]], "Second Scope", [], function() {}, function() {}, "Rare"
+    ], // (4) RT-71
     // SHOTGUNS
     [
-    "S31 Sawed-Off", "Shotgun", "Shotgun Rounds", "A quick firing but low-damage solution for your problems, the S31 doesn't have a whole lot more to offer than that. Still, it has a rapid reload time.", "A handy two-hit shotgun.", "Semi-Auto", "Hands", 7, 2, 5, 80, 8, 300, [0, 20], 0, [], 120, "Round-by-Round", 5, 15, 5, 20, 1, [[["Muzzle", "Choke"], [["Accuracy", [0.9, 0.8, 0.7]], ]], ], "Shotgun Scope", ["hands", [[-1, 2], [0, 14]]], function() {
-        translate(1, 0);
-        fill(255);
-        rect(5, -4, 30, 2, 2);
-        polygon(-16, -3.4, -10, -5, 20, -4.2, -5, -2, -15, 0.7);
-        pushMatrix();
-        translate(-10, -5);
-        rotate(40);
-        rect(0, 0, 4, 1.5, 5);
-        popMatrix();
-        stroke(255);
-        strokeWeight(4);
-        noFill();
-        arc(-10, 6, 20, 18, 190, 235);
-        arc(-10, 6, 20, 17, 190, 235);
-        strokeWeight(1);
-        arc(-15, -5, 70, 6, 25, 90);
-        arc(-7, -1, 10, 6, -40, 90);
-        line(-7, 2, -10, 2);
-        arc(-10, 0, 4, 4, 90, 180);
-        arc(-3, -2.5, 10, 10, 150, 180);
-        return [get(0, 0, 400, 400), 43, 14];
-    }, function() {
-        strokeWeight(5);
-        stroke(75, 50, 15);
-        line(0, 0, 0, 7);
-        stroke(50);
-        line(0, 7, 0, 20);
-        return get(0, 0, 400, 400);
-    }, "Common"
-    ], // (2) S31 Sawed-Off Shotgun
+    "Astol Mk-3", "Shotgun", "12 Gauge", "One of the most notorious light shotguns on the market, the Astol Mark 3 is used by pretty much every gangstar as a secondary handgun. With only three shots and horrible accuracy, it isn't super great, though ... ", "An infamous light shotgun.", "Semi-Auto", "Hands", 6, 3, 4, 85, 15, 350, [0, 15], 0, [], 120, "Round-by-Round", 30, 20, 8, 28, 1, [[["Magazine", "Quickdraw Mag"], [["Reload", [112, 104, 96, 88, 80]], ["Fire", [27, 24, 21, 18, 15]]]], [["Muzzle", "Choke"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.75]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]]], "Shotgun Scope", [], function() {}, function() {}, "Common"
+    ], // (5) Astol Mk-3
     [
-    "S7891", "Shotgun", "Shotgun Rounds", "An old-fashioned hunting shotgun, the S3531 has low firing speed and a small magazine. However, its spread is decently controlled, and its damage should make you proud.", "A powerful hunting shotgun.", "Semi-Auto", "Shoulder", 6, 6, 7, 90, 9, 500, [0, 35], 0, [], 300, "Round-by-Round", 40, 20, 15, 35, 1, [[["Muzzle", "Choke"], [["Accuracy", [0.9, 0.8, 0.7]]]], [["Stock", "Bullet Loops"], [["Reload", [280, 260, 240]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Scope", "2x"], [["Scope", 2], ]], [["Scope", "3x"], [["Scope", 3]]]], "Shotgun Scope", ["animationDelay", 25, "hands", [[-1, 5], [2, 22, 2, 14]]], function() {
-        translate(0, -2.4);
-        fill(255);
-        quad(-35, 0, -35, 8, -20, 4, -20, -1);
-        rect(10, -2, 50, 2, 0, 2, 2, 0);
-        rect(0, 0, 40, 2, 0, 0, 2, 0);
-        rect(10, 1, 12, 2, 2);
-        polygon(-22, 0, -15, -3, -12, 0, -17, 3, -19, 5, -21, 1);
-        stroke(255);
-        noFill();
-        strokeWeight(1);
-        arc(-7, 4.5, 22, 8.5, 180, 240);
-        arc(-20, 4.5, 3, 2, 270, 360);
-        arc(-15, 0, 10, 5, 180, 270);
-        arc(-5, 0, 10, 10, 155, 180);
-        arc(-9, 0, 8, 8, 0, 120);
-        line(-11.25, 3.25, -12.5, 0);
-        return [get(0, 0, 400, 400), 70, 12];
-    }, function() {
-        strokeWeight(5);
-        stroke(75, 50, 15);
-        line(0, 0, 0, 7.5);
-        stroke(75);
-        line(0, 7.5, 0, 35);
-        return get(0, 0, 400, 400);
-    }, "Uncommon"
-    ], // (3) S7891
+    "S3531", "Shotgun", "12 Gauge", "A normal, old-fashioned hunting shotgun, the S3531 has low firing speed and a small magazine. However, it’s spread isn’t horrible, and its damage is okay.", "A powerful hunting shotgun.", "Semi-Auto", "Shoulder", 5, 5, 7, 100, 15, 500, [0, 35], 0, [], 240, "Round-by-Round", 40, 15, 10, 25, 1, [[["Muzzle", "Choke"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.75]]]], [["Muzzle", "Duckbill"], [["Accuracy", [1.05, 1.1, 1.15, 1.2, 1.25]]]], [["Stock", "Bullet Loops"], [["Reload", [228, 216, 204, 192, 180]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]]], "Shotgun Scope", ["hands", [[-1, 6], [2, 24, 2, 14]], "animationDelay", 25], function() {}, function() {}, "Common"
+    ], // (6) S3531
+    [
+    "S7199", "Shotgun", "12 Gauge", "It may have only two bullets, but this gun fires quickly, does good damage, and has fairly low spread. A fine gun overall.", "Pumps out two shots in quick succession.", "Semi-Auto", "Shoulder", 6, 2, 6, 110, 15, 400, [0, 40], 0, [], 120, "Round-by-Round", 10, 12, 8, 28, 1, [[["Stock", "Bullet Loops"], [["Reload", [114, 108, 102, 96, 90]]]], [["Muzzle", "Choke"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.75]]]], [["Muzzle", "Duckbill"], [["Accuracy", [1.05, 1.1, 1.15, 1.2, 1.25]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]]], "Shotgun Scope", ["hands", [[-1, 6], [2, 26, 2, 18]]], function() {}, function() {}, "Uncommon"
+    ], // (7) S7199
+    [
+    "Dragon 109", "Shotgun", "12 Gauge", "A pump-action shotgun with 10 shots in its magazine, the Dragon 109 is surprisingly accurate, though its damage could use a small upgrade. Either way, it's not something to play around with!", "Ten shots, semi-automatic.", "Semi-Auto", "Shoulder", 6, 10, 7, 125, 14, 900, [0, 40], 0, [], 300, "Round-by-Round", 45, 4, 16, 20, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.95, 0.9, 0.85, 0.8, 0.7]]]], [["Stock", "Bullet Loops"], [["Reload", [288, 276, 264, 252, 240]]]], [["Muzzle", "Accelerator"], [["Velocity", [135, 145, 155, 170, 190]], ["Damage", [15, 16, 17, 18, 20]]]], [["Muzzle", "Choke"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.75]]]], [["Muzzle", "Duckbill"], [["Accuracy", [1.05, 1.1, 1.15, 1.2, 1.25]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]]], "Shotgun Scope", ["hands", [[-1, 7], [2, 26, 2, 19]], "animationDelay", 20], function() {}, function() {}, "Uncommon"
+    ], // (8) Dragon 109
+    [
+    "Sarka 13-F", "Shotgun", "12 Gauge", "A powerful full-auto shotgun, the S13F has 7 bullets in its magazine. It has a surprisingly rapid firing speed, good damage, and some nice attachment possibilities.", "A powerful assault shotgun.", "Full-Auto", "Shoulder", 8, 7, 8, 105, 8, 550, [0, 40], 0, [], 240, "Mag-Fed", 30, 15, 7, 30, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Stock", "Tactical Stock"], [["Recoil", [0.95, 0.9, 0.85, 0.8, 0.7]]]], [["Muzzle", "Silencer"], [["Noise", [6, 5, 4, 3, 2]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Muzzle", "Accelerator"], [["Velocity", [115, 125, 140, 155, 170]], ["Damage", [11, 14, 17, 20, 24]]]], [["Muzzle", "Choke"], [["Accuracy", [0.95, 0.9, 0.85, 0.8, 0.75]]]], [["Muzzle", "Duckbill"], [["Accuracy", [1.05, 1.1, 1.15, 1.2, 1.25]]]], [["Magazine", "Extended Mag"], [["Mag", [8, 9, 10, 11, 12]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [225, 210, 195, 180, 150]], ["Fire", [28, 26, 24, 22, 20]]]], [["Magazine", "Drum Mag"], [["Mag", [12, 14, 16, 18, 20]], ["Reload", [360, 345, 330, 315, 300]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Shotgun Scope", ["hands", [[-2, 7], [1, 23]]], function() {}, function() {}, "Rare"
+    ], // (9) Sarka 13-F
     // SUBMACHINE GUNS
     [
-    "Karis SMG", "SMG", "Light Rounds", "Offering a balance between fire rate and damage, the Karis SMG can spit out highly-accurate bullets without stop. Plus, its wide range of modification options is quite handy.", "Rapid fire", "Full-Auto", "Shoulder", 4, 30, 1, 100, 11, 1100, [0, 30], 0, [], 180, "Mag-Fed", 5, 5, 1.25, 12, 1, [[["Muzzle", "Silencer"], [["Noise", [4, 3, 2]]]], [["Muzzle", "Compensator"], [["Recoil", [0.95, 0.9, 0.8]]]], [["Muzzle", "Accelerator"], [["Velocity", [115, 130, 150]], ["Damage", [12, 13, 14]]]], [["Magazine", "Extended Mag"], [["Mag", [33, 36, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [160, 140, 120]], ["Fire", [4, 4, 3]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Scope", "2x"], [["Scope", 2], ]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4], ]], [["Foregrip", "Light Grip"], [["Accuracy", [0.97, 0.94, 0.9]], ["Recoil", [0.99, 0.97, 0.95]], ]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.95, 0.9, 0.8]], ]], ], "Second Scope", ["hands", [[-1, 10], [1, 25]]], function() {
-        translate(0.5, -2);  
-        fill(255);
-        rect(10, -3, 40, 2);
-        rect(29.5, -3, 1, 3);
-        rect(-4, 0, 20, 2);
-        rect(4, 2, 10, 2);
-        rect(-6.6, -3, 6, 8);
-        triangle(-3.6, -7, -3.6, 0, -2, 0);
-        rect(10, -4.4, 34, 2);
-        polygon(-9, -7, -9, 0, -15, 0, -15, -4);
-        polygon(26, -7, 28, -7, 29, -3, 28, 0, 27, 0, 26, -3);
-        polygon(10, 1.8, 10, -4, -10, -4, -10, 0, 9, 1.8);
-        polygon(28, -2, 23, -1, 13, -1, 10, 0, 0, -2);
-        stroke(255);
-        strokeWeight(2);
-        noFill();
-        quad(-30, -4, -29, 3, -15, 1, -15, -4);
-        arc(-15, 4, 10, 6, 270, 320);
-        quad(-11, 2, -14, 8, -12.5, 8.5, -9, 2);
-        arc(-15, -8, 8, 8, 50, 90);
-        arc(-9.8, -2, 8, 8, 240, 270);
-        arc(23, -8, 8, 8, 30, 90);
-        strokeWeight(1);
-        line(-9, 3, -7, 4);
-        line(-7, 4, -2, 4);
-        line(-2, 4, -1, 3);
-        arc(0, 0, 10, 10, 150, 180);
-        strokeCap(SQUARE);
-        strokeWeight(4);
-        arc(18, 0, 20, 40, 150, 175);
-        strokeCap(ROUND);
-        return [get(0, 0, 400, 400), 62, 19];
-    }, function() {
-        strokeWeight(4);
-        stroke(50);
-        line(0, 0, 0, 7.5);
-        strokeWeight(5);
-        stroke(0);
-        line(0, 7.5, 0, 30);
-        return get(0, 0, 400, 400);
-    }, "Common"
-    ], // (4) Karis SMG
+    "ZRX 15", "SMG", "5mm", "The ZRX 15 features duel-rotating barrels that need a bit of time to pick up speed; when they're ready, they deal out mean damage with great fire rate and power!", "Needs time to fire.", "Full-Auto", "Shoulder", 6, 30, 1, 130, 14, 1100, [0, 30], 0, [], 120, "Mag-Fed", 3, 5, 3, 19, 1, [[["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Muzzle", "Accelerator"], [["Velocity", [140, 150, 160, 170, 185]], ["Damage", [16, 18, 20, 22, 25]]]], [["Magazine", "Extended Mag"], [["Mag", [34, 38, 42, 46, 50]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [114, 108, 102, 96, 90]], ["Fire", [3, 3, 3, 2, 2]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Second Scope", ["Spool", "30", "hands", [[-2, 7], [1, 20]]], function() {}, function() {}, "Common"
+    ], // (10) ZRX 15
+    [
+    "AN-105", "SMG", "Green-Level", "The AN-105's fire rate is incredibly fast, and its damage is remarkable for its light ammo type, but the accuracy is horrible and is best for a spray-and-pray fight.", "Hose 'em with energy.", "Full-Auto", "Shoulder", 7, 30, 1, 90, 17, 1200, [0, 22], 0, [], 120, "Mag-Fed", 2, 12, 1, 22, 1, [[["Muzzle", "Silencer"], [["Noise", [6, 5, 4, 3, 2]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Magazine", "Extended Mag"], [["Mag", [32, 34, 36, 38, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [114, 108, 102, 96, 90]], ["Fire", [2, 2, 2, 1, 1]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]]], "Normal Scope", ["hands", [[-1, 6], [1, 18]]], function() {}, function() {}, "Common"
+    ], // (11) AN-105
+    [
+    "VS-3R", "SMG", "Green-Level", "An unremarkable SMG with a mediocre fire rate, low damage, and a similarly nondescript magazine size, the VS-3R is the perfect fit for anyone that wants a balance between recoil and power!", "Pump out shots quickly.", "Full-Auto", "Shoulder", 4, 30, 1, 105, 17, 1750, [0, 32], 0, [], 150, "Mag-Fed", 5, 2, 0.75, 8, 1, [[["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Vertical Grip"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Half Grip"], [["Veer", [0.95, 0.9, 0.85, 0.8, 0.75]], ["Recoil", [1.01, 1.02, 1.03, 1.04, 1.05]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.96, 0.92, 0.88, 0.84, 0.8]]]], [["Magazine", "Extended Mag"], [["Mag", [32, 34, 36, 38, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [138, 126, 114, 102, 90]], ["Fire", [4, 4, 3, 3, 3]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Normal Scope", ["hands", [[-2, 7], [1, 22]]], function() {}, function() {}, "Unommon"
+    ], // (12) VS-3R
+    [
+    "Vicksburg SMG", "SMG", "5mm", "A light SMG firing subsonic rounds with incredible accuracy and fair damage, the Vicksburg’s only problem is that it can only fit 20 bullets and lacks most of the customary attachment choices one might expect.", "A stream of bullets.", "Full-Auto", "Shoulder", 2, 20, 1, 51, 15, 1500, [0, 30], 0, [], 120, "Mag-Fed", 3, 0.2, 0.2, 2, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [6, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Magazine", "Extended Mag"], [["Mag", [24, 28, 32, 36, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [114, 108, 102, 96, 90]], ["Fire", [3, 3, 3, 2, 2]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Normal Scope", ["hands", [[-1, 14], [1, 23]]], function() {}, function() {}, "Rare"
+    ], // (13) Vicksburg SMG
+    [
+    "Ascendant", "SMG", "Green-Level", "A modernized SMG, the Ascendant has a fair firing rate and great reload time. Its damage and magazine size are also higher than normal, making this a must-have!", "Low damage, but lots to fire.", "Full-Auto", "Shoulder", 6, 35, 1, 140, 20, 1200, [0, 35], 0, [], 90, "Mag-Fed", 6, 1, 0.5, 7, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Muzzle", "Accelerator"], [["Velocity", [150, 160, 170, 185, 200]], ["Damage", [22, 24, 26, 28, 30]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Vertical Grip"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Half Grip"], [["Veer", [0.95, 0.9, 0.85, 0.8, 0.75]], ["Recoil", [1.01, 1.02, 1.03, 1.04, 1.05]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.96, 0.92, 0.88, 0.84, 0.8]]]], [["Magazine", "Extended Mag"], [["Mag", [37, 39, 41, 43, 45]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [85, 80, 75, 70, 60]], ["Fire", [5, 5, 4, 4, 3]]]], [["Magazine", "Drum Mag"], [["Mag", [40, 45, 50, 55, 60]], ["Reload", [210, 195, 180, 165, 150]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Normal Scope", ["hands", [[-1, 8], [1, 24]]], function() {}, function() {}, "Rare"
+    ], // (14) Ascendant
     // ASSAULT RIFLES
     [
-    "K79 Rifle", "AR", "Heavy Rounds", "A decent fire rate combined with high damage helps make the K79 a great choice regardless of the situation.", "A steady AR.", "Burstfire", "Shoulder", 7, 30, 1, 130, 20, 1500, [0, 40], 0, [], 240, "Mag-Fed", 7, 3.5, 5, 11, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.95, 0.9, 0.8]], ]], [["Muzzle", "Silencer"], [["Noise", [6, 5, 4]]]], [["Muzzle", "Compensator"], [["Recoil", [0.97, 0.94, 0.9]], ]], [["Muzzle", "Accelerator"], [["Velocity", [140, 150, 160]], ["Damage", [21, 23, 25]], ]], [["Magazine", "Extended Mag"], [["Mag", [33, 36, 40]], ]], [["Magazine", "Quickdraw Mag"], [["Reload", [220, 200, 180]], ["Fire", [6, 6, 5]], ]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Scope", "2x"], [["Scope", 2], ]], [["Scope", "3x"], [["Scope", 3], ]], [["Scope", "4x"], [["Scope", 4], ]], [["Foregrip", "Vertical Grip"], [["Accuracy", [0.99, 0.97, 0.95]], ["Recoil", [0.97, 0.94, 0.9]], ]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.95, 0.9, 0.8]]]]], "Normal Scope", ["hands", [[-1, 11], [1, 30]], "Burstfire", "3"], function() {
-        translate(0, -3);
-        fill(255);
-        rect(0, -4, 80, 2);
-        rect(39.5, -4, 1, 3);
-        polygon(-40, -3, -38, 5, -28, 3, -25, -1, -25, -3);
-        polygon(-20, -3, -17, -1, -16, 1, -14, 1, -14, -1, -14, -3);
-        quad(-40, -5, -35, -5.5, -28, -5.5, -25, -5);
-        quad(-18, 0, -20, 8, -15, 9, -13, 0);
-        rect(5, -2, 40, 2, 0, 0, 2, 0);
-        quad(-5, -1, -5, 5, 1, 5, 2, -1);
-        polygon(-20, -5, -19, -6, -4, -7, 2, -7, 3, -2);
-        arc(0, -5, 76, 2, 270, 360);
-        arc(0, -3, 76, 2, 0, 90);
-        rect(-22, -3, 6, 3, 2);
-        for (var i = 0; i < 17; i++) {
-            rect(i * 2 + 3, -5.5 + i / 36, 1, 2);
-        }
-        stroke(255);
-        strokeWeight(2);
-        noFill();
-        arc(-21, 9, 10, 26, 270, 320);
-        arc(-23, -1, 6, 6, 200, 250);
-        arc(-11, 1, 6, 8, 160, 210);
-        arc(-7, 1, 6, 8, -30, 35);
-        strokeWeight(1);
-        arc(-5, -1, 10, 10, 150, 180);
-        line(-14, 3, -10, 4);
-        line(-10, 4, -5, 4);
-        line(37, -5, 37, -8);
-        line(1, -5, 1, -7);
-        line(-3, -5, -3, -7);
-        arc(21, -2, 4, 8, 0, 30);
-        arc(18, -2, 4, 8, 150, 180);
-        rect(19, -2, 6, 2);
-        strokeCap(SQUARE);
-        strokeWeight(5);
-        arc(7.5, 0, 20, 40, 140, 170);
-        strokeCap(ROUND);
-        return [get(0, 0, 400, 400), 80, 24];
-    }, function() {
-        strokeWeight(2);
-        stroke(200);
-        line(0, 10, 0, 40);
-        strokeWeight(4);
-        stroke(50);
-        line(0, 0, 0, 10);
-        strokeWeight(5);
-        stroke(0);
-        line(0, 10, 0, 37);
-        return get(0, 0, 400, 400);
-    }, "Common"
-    ], // (5) K79 Rifle
+    "K-1", "AR", "6mm", "Firing only in burstfire 3-shot mode, the K-1 may not look like much on the surface. However, despite a similarly lackluster magazine size, it offers great damage.", "A steady burstfire AR.", "Burstfire", "Shoulder", 7, 18, 1, 120, 30, 1500, [0, 40], 0, [], 150, "Mag-Fed", 8, 4, 4, 15, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Muzzle", "Accelerator"], [["Velocity", [130, 140, 150, 160, 170]], ["Damage", [33, 36, 39, 42, 45]]]], [["Magazine", "Extended Mag"], [["Mag", [21, 24, 27, 30, 33]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [144, 138, 132, 126, 120]], ["Fire", [7, 6, 6, 5, 5]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Normal Scope", ["Burstfire", "3", "hands", [[-2, 8], [1, 25]]], function() {}, function() {}, "Common"
+    ], // (15) K-1
     [
-    "LX T7 Rifle", "AR", "Metallic Bolts", "Despite its low fire rate, the LX T7 has a damage worthy of a marksman rifle. Don't underestimate its low modibility, either; it hardly needs any upgrades", "Slow fire rate with great damage.", "Full-Auto", "Shoulder", 10, 20, 1, 150, 35, 1800, [0, 32], 0, [], 180, "Mag-Fed", 20, 4, 5, 13, 1.2, [[["Stock", "Tactical Stock"], [["Recoil", [0.95, 0.9, 0.8]], ]], [["Muzzle", "Compensator"], [["Recoil", [0.97, 0.94, 0.9]], ]], [["Magazine", "Quickdraw Mag"], [["Reload", [160, 140, 120]], ["Fire", [19, 17, 15]], ]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Scope", "2x"], [["Scope", 2], ]], [["Scope", "3x"], [["Scope", 3], ]], [["Scope", "4x"], [["Scope", 4], ]]], "Normal Scope", ["hands", [[-1, 9], [1, 20]]], function() {
-        translate(0, -2.5);
-        fill(255);
-        rect(1, -2, 62, 2);
-        rect(7, -2, 30, 3, 4);
-        rect(29, -2, 6, 3, 1);
-        polygon(-29, -3, -28.2, 5, -26, 5, -24, 2, -22, 1, -22, -2);
-        polygon(-13, -3, -13, -4, -11, -5.5, 10, -5.5, 12, -4, 12, -3);
-        quad(-16, -2, -16, 1.5, 4, 1.5, 6, -2);
-        quad(-16.5, 1, -18, 8, -14.5, 9, -12.5, 1.5);
-        quad(-7, 0, -6, 6, 0, 5, 0, 0);
-        rect(8, 2, 3, 8, 2);
-        rect(8, -1, 8, 2, 2);
-        stroke(255);
-        strokeWeight(2);
-        noFill();
-        polygon(-31, -3, -30, 5, -26, 5, -24, 2, -22, 1, -22, -2);
-        line(-31, -3, -30, 6);
-        arc(-18.5, 1, 6, 4, 190, 350);
-        triangle(-22, -2, -13, -3, -10, -2);
-        arc(3, 4, 7, 7, 180, 270);
-        strokeWeight(1);
-        arc(-6, 1, 10, 10, 150, 180);
-        line(-13, 4, -11, 5);
-        line(-11, 5, -6, 4.5);
-        strokeCap(SQUARE);
-        strokeWeight(5);
-        arc(6.5, -2, 20, 40, 145, 170);
-        strokeCap(ROUND);
-        return [get(0, 0, 400, 400), 64, 17];
-    }, function() {
-        strokeWeight(2);
-        stroke(0);
-        line(0, 0, 0, 32);
-        strokeWeight(3);
-        stroke(50);
-        line(0, 29, 0, 32);
-        strokeWeight(4);
-        stroke(50);
-        line(0, 0, 0, 5);
-        strokeWeight(5);
-        stroke(75, 0, 0);
-        line(0, 5, 0, 22);
-        return get(0, 0, 400, 400);
-    }, "Rare"
-    ], // (6) LX T7 Rifle
+    "R-403", "AR", "6mm", "The R-403 shouldn't be underestimated. It deals out solid damage with low recoil, offers a suitable magazine size, and has a steady fire rate. Despite its weak attachments, it's a capable rifle.", "Steady fire rate with great damage.", "Full-Auto", "Shoulder", 6, 30, 1, 130, 19, 1800, [0, 32], 0, [], 180, "Mag-Fed", 6, 3, 0.75, 8, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [6, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Muzzle", "Accelerator"], [["Velocity", [140, 155, 170, 185, 200]], ["Damage", [20, 21, 22, 23, 25]]]], [["Magazine", "Extended Mag"], [["Mag", [32, 34, 36, 38, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [168, 156, 144, 132, 120]], ["Fire", [5, 5, 5, 4, 4]]]], [["Magazine", "Drum Mag"], [["Mag", [40, 45, 50, 55, 60]], ["Reload", [300, 285, 270, 255, 240]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Normal Scope", ["hands", [[-1, 8], [1, 24]]], function() {}, function() {}, "Uncommon"
+    ], // (16) R-403
+    [
+    "Ark 33 SAW", "AR", "7mm", "Batter through enemies with this weapon! Built for Federation military usage, it has impressive muzzle speed and damage. However, its recoil isn't spectacular, and it could use some attachments.", "Low recoil with high damage.", "Full-Auto", "Shoulder", 8, 30, 1, 150, 22, 1600, [0, 35], 0, [], 180, "Mag-Fed", 8, 2, 1, 11, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [6, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Magazine", "Extended Mag"], [["Mag", [32, 35, 38, 40, 45]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [168, 156, 144, 132, 120]], ["Fire", [7, 7, 6, 6, 5]]]], [["Magazine", "Drum Mag"], [["Mag", [45, 50, 55, 60, 75]], ["Reload", [300, 285, 270, 255, 240]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Normal Scope", ["hands", [[-1, 7], [1, 24]]], function() {}, function() {}, "Uncommon"
+    ], // (17) Ark 33 SAW
+    [
+    "Belfast 707", "AR", "Yellow-Level", "A close-range gun with impressive damage and fire rate, the Belfast 707 lacks accuracy but remains capable of gunning down enemies left and right. Reloading and attachments are the only hassle.", "Trigger happy.", "Full-Auto", "Shoulder", 8, 30, 1, 125, 23, 1800, [0, 35], 0, [], 240, "Mag-Fed", 4, 6, 1, 16, 1, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Magazine", "Extended Mag"], [["Mag", [32, 34, 36, 38, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [228, 216, 204, 192, 180]], ["Fire", [4, 3, 3, 2, 2]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]]], "Normal Scope", ["hands", [[-1, 14], [1, 22]]], function() {}, function() {}, "Rare"
+    ], // (18) Belfast 707
+    [
+    "S-51", "AR", "Orange-Level", "Tears through enemies of all sizes and shapes. Its damage makes up for its smaller mag-size, although reload time isn’t spectacular. Its firing speed is steady, perfect for its model.", "This weapon offers great damage and accuracy.", "Full-Auto", "Shoulder", 6, 20, 1, 150, 25, 2000, [0, 35], 0, [], 150, "Mag-Fed", 7, 1, 1, 8, 1.05, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Magazine", "Extended Mag"], [["Mag", [22, 24, 26, 28, 30]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [138, 126, 114, 102, 90]], ["Fire", [6, 6, 5, 5, 4]]]], [["Magazine", "Drum Mag"], [["Mag", [40, 45, 50, 55, 60]], ["Reload", [270, 255, 240, 225, 210]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]]], "Normal Scope", ["hands", [[-1, 7], [1, 20]]], function() {}, function() {}, "Rare"
+    ], // (19) S-51
+    // MARKSMAN RIFLES
+    [
+    "Mk 24 SPR", "Marksman Rifle", "Orange-Level", "A basic semi-automatic sniper rifle, the Mark 24 deals out fair damage with unremarkable accuracy. Not the greatest weapon, though, despite its advantages.", "Easy to use, but powerful.", "Semi-Auto", "Shoulder", 9, 10, 1, 160, 50, 1800, [0, 40], 0, [], 180, "Mag-Fed", 15, 2, 6, 12, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [8, 7, 6, 4, 2]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Vertical Grip"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Half Grip"], [["Veer", [0.95, 0.9, 0.85, 0.8, 0.75]], ["Recoil", [1.01, 1.02, 1.03, 1.04, 1.05]]]], [["Magazine", "Extended Mag"], [["Mag", [12, 14, 16, 18, 20]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [168, 156, 144, 132, 120]], ["Fire", [14, 13, 12, 11, 10]]]], [["Magazine", "Drum Mag"], [["Mag", [20, 25, 30, 35, 40]], ["Reload", [300, 285, 270, 255, 240]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-1, 7], [1, 26]]], function() {}, function() {}, "Common"
+    ], // (20) Mk 24 SPR
+    [
+    "V19", "Marksman Rifle", "Yellow-Level", "The V19 has a relatively large magazine for its class and reliable damage. However, it lacks diversity in attachment capabilities. Regardless, it’s a useful weapon.", "Big magazine, big damage.", "Semi-Auto", "Shoulder", 6, 20, 1, 130, 45, 1500, [0, 30], 0, [], 120, "Mag-Fed", 10, 3, 2, 11, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Magazine", "Extended Mag"], [["Mag", [22, 24, 26, 28, 30]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [114, 108, 102, 96, 90]], ["Fire", [9, 8, 7, 6, 5]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]]], "Sniper", ["hands", [[-1, 6], [1, 20]]], function() {}, function() {}, "Uncommon"
+    ], // (21) V19
+    [
+    "MR 117a", "Marksman Rifle", "6mm", "Despite the fact that it may look like an ancient antique, the MR 117a remains one of the most powerful rifles. It has an impressive magazine, and its damage and recoil are both impressive.", "A classic rifle for easy sniping.", "Semi-Auto", "Shoulder", 8, 30, 1, 135, 65, 2500, [0, 42], 0, [], 180, "Mag-Fed", 4, 3, 1.5, 15, 1.1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Muzzle", "Silencer"], [["Noise", [7, 6, 5, 4, 3]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Muzzle", "Accelerator"], [["Velocity", [145, 160, 180, 205, 235]], ["Damage", [68, 71, 74, 77, 80]]]], [["Magazine", "Extended Mag"], [["Mag", [32, 34, 36, 38, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [168, 156, 144, 132, 120]], ["Fire", [4, 4, 3, 3, 3]]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-1, 7], [1, 25]]], function() {}, function() {}, "Rare"
+    ], // (22) MR 117a
+    [
+    "Mk 73 SWS", "Marksman Rifle", "7mm", "A full auto sniper, the Mark 73 has good damage and initial accuracy, but recoil can be hard to master. Definitely a gun for the pros.", "Full-auto, and dangerous.", "Full-Auto", "Shoulder", 10, 10, 1, 155, 40, 2200, [0, 40], 0, [], 180, "Mag-Fed", 10, 3, 2, 15, 1.05, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Muzzle", "Silencer"], [["Noise", [9, 8, 7, 5, 3]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Foregrip", "Half Grip"], [["Veer", [0.95, 0.9, 0.85, 0.8, 0.75]], ["Recoil", [1.01, 1.02, 1.03, 1.04, 1.05]]]], [["Magazine", "Extended Mag"], [["Mag", [12, 14, 16, 18, 20]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [168, 156, 144, 132, 120]], ["Fire", [9, 8, 7, 6, 5]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Second Scope", ["hands", [[-1, 7], [1, 24]]], function() {}, function() {}, "Rare"
+    ], // (23) Mk 73 SWS
+    [
+    "V7 Rifle", "Marksman Rifle", "Yellow-Level", "An illegal sniper rifle banned galaxy-wide, the V7 Rifle has high damage and a slow fire rate. It may not fit many attachments, but it's incredibly dangerous.", "Silent but deadly.", "Semi-Auto", "Shoulder", 1, 10, 1, 180, 100, 3200, [0, 40], 0, [], 180, "Mag-Fed", 30, 5, 4, 12, 1.05, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Accelerator"], [["Velocity", [190, 200, 220, 240, 270]], ["Damage", [102, 104, 106, 108, 110]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [168, 156, 144, 132, 120]], ["Fire", [28, 26, 24, 22, 20]]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-1, 8], [2, 24]]], function() {}, function() {}, "Legendary"
+    ], // (24) V7 Rifle
     // SNIPER RIFLES
     [
-    "Mk 89 SR", "Sniper Rifle", "Heavy Rounds", "A low fire rate might detract from this weapon's appeal, but its high damage more than accounts for that.", "One shot, one kill.", "Semi-Auto", "Shoulder", 10, 5, 1, 200, 70, 2000, [0, 40], 0, [], 240, "Round-by-Round", 90, 20, 10, 30, 1, [[["Stock", "Tactical Stock"], [["Accuracy", [0.97, 0.94, 0.9]], ["Recoil", [0.97, 0.94, 0.9]], ]], [["Stock", "Bullet Loops"], [["Reload", [220, 200, 180]], ]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Scope", "2x"], [["Scope", 2], ]], [["Scope", "3x"], [["Scope", 3], ]], [["Scope", "4x"], [["Scope", 4], ]], [["Scope", "6x"], [["Scope", 6], ]]], "Sniper", ["animationDelay", 66, "hands", [[2, 25], [-1, 10, -2, 2]]], function() {
-        translate(0, -1);
-        fill(255);
-        rect(13, -3, 54, 2, 1, 0, 0, 0);
-        triangle(-14, -2, -15, -2, -14, -3);
-        rect(-32, -2, 12, 1, 2);
-        arc(38, -4, 4, 3, 180, 270);
-        polygon(-40, -2, -40, 0, -11, 0, -11, 1, -1, 1, 0, -1, 15, -1, 15, -2);
-        polygon(-40, 0, -39, 7, -30, 6, -28, 2, -25, 2, -18, 5, -18, 0);
-        rect(15, -2, 2, 2, 2);
-        rect(-10, -4, 5, 1, 2);
-        rect(-2, -4, 5, 1, 2);
-        stroke(255);
-        noFill();
-        strokeWeight(2);
-        arc(-16, -1, 18, 12, 90, 180);
-        ellipse(-15, 2, 6, 5);
-        line(-15.9, 5.1, -12, 4);
-        triangle(-12, 4, -11, 0, -12, 0);
-        strokeWeight(1);
-        arc(-4, 0, 10, 10, 150, 180);
-        arc(-9, 1, 10, 6, -40, 90);
-        line(-9, 4, -12, 4);
-        return [get(0, 0, 400, 400), 80, 13];
-    }, function() {
-        strokeWeight(5);
-        stroke(110, 60, 15);
-        line(0, 0, 0, 13);
-        stroke(70, 50, 30);
-        line(0, 13, 0, 28);
-        strokeWeight(2);
-        stroke(0);
-        line(0, 13, 0, 40);
-        noFill();
-        point(-4, 10);
-        strokeWeight(1);
-        arc(0, 10, 8, 6, 90, 180);
-        return get(0, 0, 400, 400);
-    }, "Uncommon"
-    ], // (7) Mk 89 SR
+    "Valor 19-C", "Sniper Rifle", "Yellow-Level", "Known to some as a \"gentlemanly gun,\" the Valor 19-C is pretty much only ever used for hunting creatures. Its damage is nothing to be proud of, though its fire rate is good for a weapon of its type.", "A gentlemanly weapon.", "Semi-Auto", "Shoulder", 7, 7, 1, 120, 50, 2000, [0, 33], 0, [], 240, "Round-by-Round", 60, 3, 5, 10, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Stock", "Bullet Loops"], [["Reload", [228, 216, 204, 192, 180]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]]], "Sniper", ["hands", [[-2, 8, -1, 2], [0, 24]], "animationDelay", 30], function() {}, function() {}, "Common"
+    ], // (25) Valor 19-C
+    [
+    "T17", "Sniper Rifle", "6mm", "A bolt-action sniper rifle with awesome damage but low firing speed, the T17 is a great weapon for ranged attacks. However, it has a long reload time.", "Kills unarmored enemies easily.", "Semi-Auto", "Shoulder", 7, 5, 1, 160, 105, 2500, [0, 35], 0, [], 180, "Round-by-Round", 60, 2, 8, 10, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-2, 8, -1, 2], [0, 24]], "animationDelay", 25], function() {}, function() {}, "Uncommon"
+    ], // (26) T17
+    [
+    "MV9", "Sniper Rifle", "7mm", "A dangerous sniper that will deal out more damage than a little headache, the MV9 is best coupled with some kind of full-auto weapon.", "More damage, smaller magazine.", "Semi-Auto", "Shoulder", 8, 3, 1, 190, 150, 3000, [0, 40], 0, [], 120, "Mag-Fed", 65, 3, 10, 13, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Foregrip", "Horizontal Grip"], [["Accuracy", [0.99, 0.98, 0.97, 0.96, 0.95]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Foregrip", "Vertical Grip"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Magazine", "Extended Mag"], [["Mag", [4, 5, 6, 7, 9]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [114, 108, 102, 96, 90]], ["Fire", [70, 65, 60, 55, 50]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-2, 9, -1, 3], [0, 25]], "animationDelay", 35], function() {}, function() {}, "Rare"
+    ], // (27) MV9
+    [
+    "Korim 3", "Sniper Rifle", "Orange-Level", "The Korim 3 has incredible damage, but a low firing speed that makes it hard to use. However, it's not anything you want a kid to handle.", "Deals with pretty much anybody.", "Semi-Auto", "Shoulder", 10, 5, 1, 220, 200, 5000, [0, 40], 0, [], 240, "Mag-Fed", 80, 1, 9, 10, 1, [[["Stock", "Cheek Pad"], [["Accuracy", [0.98, 0.96, 0.94, 0.92, 0.9]], ["Recoil", [0.99, 0.98, 0.97, 0.96, 0.95]]]], [["Muzzle", "Silencer"], [["Noise", [5, 4, 3, 2, 1]]]], [["Magazine", "Extended Mag"], [["Mag", [6, 7, 8, 9, 10]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [228, 216, 204, 192, 180]], ["Fire", [85, 80, 75, 70, 60]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-2, 9, -1, 2], [0, 25]], "animationDelay", 60], function() {}, function() {}, "Rare"
+    ], // (28) Korim 3
+    [
+    "S18K", "Sniper Rifle", "Red-Level", "The S18K's damage is unparalleled, but be wary -- its ammo is hard to find. It might cause some hesitancy, as it's magazine only fits a single round. Don't worry, though; that's more than enough.", "Get lots of ammo.", "Semi-Auto", "Shoulder", 10, 1, 1, 400, 500, 10000, [0, 40], 150, [], 120, "Round-by-Round", 50, 0, 5, 5, 1.1, [[["Muzzle", "Silencer"], [["Noise", [9, 8, 7, 6, 5]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]], [["Scope", "8x"], [["Scope", 8]]], [["Scope", "16x"], [["Scope", 16]]]], "Sniper", ["hands", [[-2, 10, -1, 2], [0, 22]], "animationDelay", 20], function() {}, function() {}, "Legendary"
+    ], // (29) S18K
     // LIGHT MACHINE GUNS
     [
-    "M8 SAW", "LMG", "Heavy Rounds", "The low magazine size and high reload times of this weapon are balanced out by good damage, fire rate, and modibility.", "Medium range weapon.", "Full-Auto", "Shoulder", 6, 25, 1, 110, 15, 3000, [0, 30], 0, [], 300, "Mag-Fed", 8, 5, 5, 20, 1.1, [[["Muzzle", "Compensator"], [["Recoil", [0.95, 0.9, 0.8]]]], [["Muzzle", "Accelerator"], [["Velocity", [125, 150, 170]], ["Damage", [16, 18, 20]]]], [["Magazine", "Extended Mag"], [["Mag", [30, 35, 40]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [270, 240, 210]], ["Fire", [6, 5, 4]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Foregrip", "Light Grip"], [["Accuracy", [0.95, 0.9, 0.8]], ["Recoil", [0.98, 0.95, 0.9]]]], [["Foregrip", "Laser Sight"], [["Accuracy", [0.9, 0.8, 0.7]]]], [["Foregrip", "Vertical Grip"], [["Recoil", [0.9, 0.8, 0.7]]]], [["Stock", "Tactical Stock"], [["Recoil", [0.95, 0.9, 0.8]]]]], "Normal Scope", ["hands", [[-1, 12], [1, 22]]], function() {
-        translate(0, -3.5);
-        fill(255);
-        rect(0, 0, 60, 2);
-        quad(-27.5, 7.5, -30, 0, -18, 0, -20, 5);
-        rect(-2.5, -1, 20, 4, 0, 1, 0, 0);
-        rect(6, 0, 34, 4, 1);
-        ellipse(-24, -1, 12, 1);
-        rect(1, 2, 13, 2, 1);
-        for (var i = 0; i < 10; i++) {
-            rect(8 + i * 1.5, 2, 1, 1);
-        }
-        pushMatrix();
-        translate(1, 3);
-        rect(0, -1, 10, 3, 2);
-        rotate(-15);
-        rect(0, 0, 5, 10, 2);
-        rect(0, 4, 5.5, 2, 2);
-        popMatrix();
-        stroke(255);
-        strokeWeight(1);
-        noFill();
-        arc(26, 0, 3, 6, 120, 240);
-        arc(26, 0, 1, 6, 120, 240);
-        arc(-9, 2, 8, 6, 0, 140);
-        arc(-7, 1.5, 2, 4, 120, 180);
-        strokeWeight(2);
-        arc(-24, 0, 10, 20, 140, 180);
-        arc(-18, -1.75, 12, 3, 0, 90);
-        arc(-16, 3, 8, 6, -160, 10);
-        line(-12, 3, -13, 8);
-        line(-13, 8, -11.5, 8.5);
-        line(-11.5, 8.5, -10, 0);
-        line(-12, 8, -11, 0);
-        arc(-8, 3, 5, 4, 180, 270);
-        noStroke();
-        return [get(0, 0, 400, 400), 60, 13];
-    }, function() {
-        noStroke();
-        fill(145, 130, 100);
-        rect(0, 16, 10, 5);
-        strokeWeight(1);
-        stroke(0);
-        line(0, 0, 0, 30);
-        line(-2, 18, 2, 18);
-        strokeWeight(2);
-        stroke(180, 155, 125);
-        line(0, 0, 0, 24);
-        strokeWeight(4);
-        stroke(200, 175, 145);
-        line(0, 7, 0, 19);
-        return get(0, 0, 400, 400);
-    }, "Uncommon"
-    ], // (8) M8 SAW
+    "Belfast L-39", "LMG", "Orange-Level", "The Belfast isn't an impressive weapon. Though it may have a sizeable magazine, it has a slow fire rate and its reload is certainly nothing to boast about.", "Fair damage, but slow fire rate.", "Full-Auto", "Shoulder", 5, 40, 1, 95, 15, 2000, [0, 30], 0, [], 240, "Mag-Fed", 12, 1, 1.5, 9, 1.1, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Muzzle", "Compensator"], [["Recoil", [0.98, 0.96, 0.94, 0.92, 0.9]]]], [["Magazine", "Extended Mag"], [["Mag", [44, 48, 52, 56, 60]]]], [["Magazine", "Quickdraw Mag"], [["Reload", [228, 216, 204, 192, 180]], ["Fire", [11, 10, 9, 8, 7]]]], [["Magazine", "Drum Mag"], [["Mag", [52, 64, 76, 88, 100]], ["Reload", [360, 345, 330, 315, 300]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]]], "Circle", ["hands", [[-1, 8], [0, 24]]], function() {}, function() {}, "Unommon"
+    ], // (30) Belfast L-39
     [
-    "RA-L11 Repeater", "LMG", "Metallic Bolts", "The powerful nature of this weapon is certainly unquestionable. A fast fire rate, large magazine size, and mediocre damage all contribute to an amazing weapon.", "An all around great gun.", "Full-Auto", "Shoulder", 7, 100, 1, 70, 10, 2500, [0, 35], 0, [], 300, "Mag-Fed", 7, 8, 4, 22, 1.2, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.9]], ]], [["Muzzle", "Compensator"], [["Recoil", [0.97, 0.94, 0.9]], ]], [["Magazine", "Extended Mag"], [["Mag", [125, 150, 200]], ]], [["Magazine", "Quickdraw Mag"], [["Reload", [280, 260, 240]], ["Fire", [6, 5, 4]], ]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5], ]], [["Scope", "2x"], [["Scope", 2], ]], [["Scope", "4x"], [["Scope", 4], ]], ], "Circle", ["hands", [[-1, 7], [1, 25]]], function() {
-        translate(0, -1.25);
-        fill(255);
-        rect(2, -3, 66, 2, 1);
-        rect(9, -1, 50, 1.5, 1);
-        rect(6, -2, 52, 5, 0, 1, 1, 0);
-        rect(-20, -4, 20, 1);
-        rect(-1, -5, 6, 1);
-        rect(-8, 2, 10, 5);
-        rect(16, 0, 14, 3, 2);
-        rect(16, 2, 3, 10, 1);
-        rect(-27, 0, 2, 8);
-        polygon(-30, -4, -30, -6, -18, -7, -12, -7, -12, -4);
-        rect(0, -6, 8, 2, 0, 1, 1, 0);
-        rect(-8, -6.4, 8, 1.2);
-        for (var i = -12; i < 3; i++) {
-            rect(i * 1.5, -6.8, 1, 1);
-        }
-        pushMatrix();
-        translate(-8, 4.5);
-        rotate(85);
-        rect(0, 0, 10, 8, 1);
-        popMatrix();
-        strokeWeight(2);
-        noFill();
-        stroke(255);
-        point(-21, -2);
-        line(-34, -5, -34, 5);
-        line(-31, 5, -26, 5);
-        line(-31, 5, -22, 6);
-        arc(-25, 2, 8, 5, 30, 120);
-        arc(-24, 1.5, 6, 6, 90, 270);
-        arc(-23, 1, 5, 5, 270, 360);
-        strokeWeight(3);
-        line(-21.3, 5.5, -19, -2);
-        strokeWeight(4);
-        line(-30, -4, -30, 4);
-        arc(7, 3.2, 20, 9.4, 190, 270);
-        strokeWeight(1);
-        line(-34, -3, -31, -3);
-        line(-34, 3, -31, 3);
-        line(-20, 3.5, -12, 3.5);
-        arc(-12, -0.5, 10, 10, 150, 180);
-        return [get(0, 0, 400, 400), 70, 18];
-    }, function() {
-        noStroke();
-        fill(0);
-        rect(0, 13.5, 12, 6);
-        strokeWeight(1);
-        stroke(0);
-        line(0, 0, 0, 35);
-        strokeWeight(4);
-        stroke(200);
-        line(0, 10, 0, 30);
-        stroke(100);
-        line(-1, 0, 1, 0);
-        strokeWeight(5);
-        line(0, 4, 0, 15);
-        return get(0, 0, 400, 400);
-    }, "Rare"
-    ], // (9) RA-L11 Repeater
+    "M353", "LMG", "6mm", "The M353 is where it’s at. With a 75 bullet magazine capacity, great firing speed, and fair accuracy for its weapon type, the M353 is dangerous. Unfortunately, it's heavy and not an instant kill.", "Great accuracy and fire rate.", "Full-Auto", "Shoulder", 6, 75, 1, 115, 18, 2000, [0, 35], 0, [], 240, "Mag-Fed", 5, 2, 0.5, 6, 1.2, [[["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]], [["Scope", "6x"], [["Scope", 6]]]], "Circle", ["hands", [[-1, 6], [1, 22]]], function() {}, function() {}, "Uncommon"
+    ], // (31) M353
+    [
+    "NOL-1 LMG", "LMG", "7mm", "The NOL-1 holds 100 bullets in its massive magazine, allowing you to spray n' pray to your heart's content. Not amazing damage, and its recoil won’t help, but still not something you want to hit yourself with.", "Excellent fire rate and damage.", "Full-Auto", "Shoulder", 7, 100, 1, 100, 16, 2000, [0, 40], 0, [], 360, "Mag-Fed", 5, 5, 2, 17, 1.2, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Magazine", "Drum Mag"], [["Mag", [120, 140, 160, 180, 200]], ["Reload", [480, 465, 450, 435, 420]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]]], "Circle", ["hands", [[-2, 8], [1, 24]]], function() {}, function() {}, "Rare"
+    ], // (32) NOL-1 LMG
+    [
+    "Shredder", "LMG", "7mm", "A chain gun with some 200 bullets in its magazine, the Shredder has an incredible fire rate, but slow reloading, a lack of attachments, and horrible reload. Damage is remarkably high, though!", "Rain bullets down on enemies.", "Full-Auto", "Shoulder", 7, 200, 1, 140, 20, 2200, [0, 40], 0, [], 420, "Mag-Fed", 2, 4, 0.25, 15, 1.4, [[["Magazine", "Drum Mag"], [["Mag", [240, 280, 320, 360, 400]], ["Reload", [540, 525, 510, 495, 480]]]]], "Circle", ["Spool", "60"], function() {}, function() {}, "Rare"
+    ], // (33) Shredder
+    [
+    "Arch K5", "LMG", "Red-Level", "For some odd reason, the Arch K5 is classified as an LMG despite the fact that it's magazine size is tiny and it fires explosive shots.", "Boom!", "Full-Auto", "Shoulder", 2, 5, 1, 60, 25, 1000, [0, 30], 100, [], 180, "Mag-Fed", 6, 4, 2, 10, 1.2, [[["Stock", "Tactical Stock"], [["Recoil", [0.97, 0.94, 0.91, 0.88, 0.85]]]], [["Magazine", "Extended Mag"], [["Mag", [6, 7, 8, 9, 10]]]], [["Scope", "Red Dot"], [["ScopeAccuracy", 0.5]]], [["Scope", "2x"], [["Scope", 2]]], [["Scope", "3x"], [["Scope", 3]]], [["Scope", "4x"], [["Scope", 4]]]], "Circle", ["hands", [[-1, 12], [0, 20]]], function() {}, function() {}, "Legendary"
+    ], // (34) Arch K5
     // MISCALLANEOUS WEAPONS
     [
-    "RPG-39c", "RPG", "Rockets", "A single explosive shot from this weapon is enough to take out enemies in a large radius. Unfortunately, ammo conservation will be an issue.", "One shot, five kills.", "Semi-Auto", "Shoulder", 6, 1, 1, 70, 60, 600, [0, 17.5], 1.5, [], 180, "Round-by-Round", 180, 10, 15, 25, 1.6, [], "Circle", ["MuzzleFlash", "false", "drawnOnTop", true, "hands", [[-2, 2], [2, 12]]], function() {
-        translate(0, -2.5);
-        fill(255);
-        rect(5, 0, 60, 10, 2);
-        rect(-25, 0, 6, 8);
-        quad(-28, -4, -28, 4, -35, 5, -35, -5);
-        rect(29, 8, 4, 12, 2);
-        pushMatrix();
-        translate(5, 8);
-        rotate(5);
-        rect(0, 0, 6, 16, 2);
-        popMatrix();
-        noFill();
-        stroke(255);
-        strokeWeight(2);
-        arc(9, 5, 10, 8, 0, 140);
-        arc(1, 7.2, 4, 6, -90, 0);
-        arc(-23, 13, 10, 20, -90, 0);
-        line(-15, 13, -14, 0);
-        line(-16, 13, -16, 0);
-        line(-17, 13, -18.5, 0);
-        polygon(-14, -5, -12, -7, 12, -7, 14, -5);
-        polygon(34, -4, 34, -7, 24, -7, 22, -5);
-        line(0, -7, 0, -10);
-        line(29, -7, 29, -10);
-        strokeWeight(1);
-        arc(14, 4, 10, 10, 150, 180);
-        return [get(0, 0, 400, 400), 70, 28];
-    }, function() {
-        noStroke();
-        fill(0);
-        rect(0, 1.25, 8, 32.5, 1);
-        triangle(0, 0, 4, -20, -4, -20);
-        return get(0, 0, 400, 400);
-    }, "Rare"
-    ], // (10) RPG-39c
+    "VEL-X Grenade Launcher", "Grenade Launcher", "45mm Grenade", "Only featuring a single shot, the VEL-X doesn't look like much; however, it has impressive damage and range, and can't be underestimated! It's only equipped on certain exo-suits.", "", "Semi-Auto", "Shoulder", 3, 1, 1, 20, 20, 200, [0, 30], 150, [], 180, "Round-by-Round", 30, 2, 3, 5, 1.1, [], "Circle", ["Ground", "false", "Reload", "auto", "MuzzleFlash", false, "hands", [[0, 0], [0, 0]]], function() {}, function() {}, "Impossible"
+    ], // (35) VEL-X Grenade Launcher
     [
-    "AMW-19 Flamethrower", "Flamethrower", "Fuel", "A light wrist-mounted flamethrower, the AMW-19 only fires for about a second-and-a-half; despite this, it still does impressive damage to any type of opponent.", "", "Full-Auto", "Shoulder", 1, 100, 1, 20, 4, 250, [0, 6], 0, [], 180, "Mag-Fed", 0.5, 3.5, 0, 3.5, 1, [], "Circle", ["Ground", "false", "Reload", "auto", "MuzzleFlash", "false", "hands", [[0, 3], [0, 0]]], function() {
-        translate(0, 1);
-        fill(255);
-        rect(0, 0, 20, 12, 2);
-        rect(0, -6, 12, 7, 2);
-        rect(6, -7.5, 4, 2, 1);
-        strokeWeight(2);
-        stroke(255);
-        noFill();
-        line(9, -5, -9, -6);
-        line(-9, -6, -9, 6);
-        line(-9, 6, 9, 5);
-        return [get(0, 0, 400, 400), 20, 17];
-    }, function() {
-        fill(0);
-        rect(0, 2, 6, 8, 2);
-        fill(200);
-        rect(0, 4, 4, 4, 2);
-        return get(0, 0, 400, 400);
-    }, "Rare"
-    ], // (11) AMW-19 Flamethrower
+    "T-4U Grenade Launcher", "Grenade Launcher", "45mm Grenade", "Featuring a capable five shots in its magazine, the T-4U has fair range and great damage; amazing for suppressive fire against heavy opponents!", "", "Full-Auto", "Shoulder", 2, 5, 1, 20, 20, 200, [0, 30], 120, [], 180, "Round-by-Round", 20, 5, 5, 15, 1.2, [], "Circle", ["Ground", "false", "Reload", "auto", "hands", [[-1, 6], [1, 26]]], function() {}, function() {}, "Impossible"
+    ], // (36) T-4U Grenade Launcher
     [
-    "HAW-R2 Chain Gun", "AR", "Metallic Bolts", "A powerful weapon with high damage but weak reload time.", "", "Full-Auto", "Hands", 5, 20, 1, 300, 20, 500, [0, 10], 0, [], 240, "Mag-Fed", 1, 10, 7, 30, 5, [], "Circle", ["Ground", "false", "Reload", "auto", "Spool", 80, "hands", [[0, 0], [0, 0]]], function() {
-        fill(255);
-        rect(9, 0, 2, 7, 1);
-        rect(-5, 0, 10, 6);
-        stroke(255);
-        strokeWeight(1.5);
-        noFill();
-        line(9, 0, 0, 0);
-        line(9, -2, 0, -2);
-        line(9, 2, 0, 2);
-        strokeWeight(2);
-        line(-1, -3, -9, -3.5);
-        line(-1, 3, -9, 3.5);
-        line(-9, -4, -9, 4);
-        return [get(0, 0, 400, 400), 20, 10];
-    }, function() {
-        fill(100);
-        rect(0, 5, 4, 10);
-        fill(0);
-        rect(0, 9.5, 6, 1);
-        strokeWeight(5);
-        stroke(0);
-        line(0, -1, 0, -3);
-        return get(0, 0, 400, 400);
-    }, "Rare"
-    ], // (12) HAW-R2 Chain Gun
+    "M7-A Flamethrower", "Flamethrower", "Fuel", "Shooting a steady jet of flame for about 8 seconds, the M7-A is a military flamethrower that's great for close-range combat. It is a weapon to be afraid of!", "", "Full-Auto", "Shoulder", 1, 500, 1, 20, 5, 300, [0, 30], 0, [], 240, "Full-Auto", 1, 3, 0, 3, 1.2, [], "Circle", ["Ground", "false", "Reload", "auto", "MuzzleFlash", false, "hands", [[-1, 6], [0, 22]]], function() {}, function() {}, "Impossible"
+    ], // (37) M7-A Flamethrower
+    [
+    "AMW-19 Flamethrower", "Flamethrower", "Fuel", "A light wrist-mounted flamethrower, the AMW-19 only fires for about a second-and-a-half; despite this, it still does impressive damage to any type of opponent.", "", "Full-Auto", "Shoulder", 1, 100, 1, 20, 4, 250, [0, 10], 0, [], 180, "Full-Auto", 1, 3.5, 0, 3.5, 1, [], "Circle", ["Ground", "false", "Reload", "auto", "MuzzleFlash", false, "hands", [[0, 10], [0, 10]]], function() {}, function() {}, "Impossible"
+    ], // (38) AMW-19 Flamethrower
+    [
+    "RPG-19a", "RPG", "RPG Ammo", "A single RPG shot in the barrel is enough for this weapon. It's capable of handling any mid-range enemies you see, and definitely cannot be underestimated!", "", "Semi-Auto", "Shoulder", 6, 1, 1, 70, 60, 600, [0, 15], 250, [], 180, "Round-by-Round", 20, 8, 12, 20, 1.2, [], "Circle", ["Ground", "false", "Reload", "auto", "drawnOnTop", true, "hands", [[-2, 2], [2, 16]]], function() {}, function() {}, "Impossible"
+    ], // (39) RPG-19a
+    [
+    "Belfast X-17 RPG", "RPG", "RPG Ammo", "Capable of firing four shots, this weapon is a scary sight to behold. It deals out impressive explosive range that'll make you fall in love with it instantly!", "", "Semi-Auto", "Shoulder", 6, 4, 1, 50, 80, 600, [0, 30], 220, [], 180, "Round-by-Round", 40, 10, 10, 20, 1.2, [], "Normal Scope", ["Ground", "false", "Reload", "auto", "hands", [[-1, 7], [2, 22]]], function() {}, function() {}, "Impossible"
+    ], // (40) Belfast X-17 RPG
+    [
+    "AL-39 Blaster", "Blaster", "Red-Level", "A powerful blaster installed on Sentry-class Robotic Gaurds.", "", "Full-Auto", "Shoulder", 5, 10, 1, 140, 10, 1200, [0, 10], 0, [], 60, "Mag-Fed", 4, 5, 4, 12, 1, [], "Normal Scope", ["Ground", "false", "Reload", "auto", "hands", [[0, 0], [0, 0]], "MuzzleFlash", false], function() {}, function() {}, "Impossible"
+    ], // (41) AL-39 Blaster
+    [
+    "RGD-L Blaster", "Blaster", "Red-Level", "A powerful shotgun blaster installed on Protector-class Robotic Gaurds.", "", "Full-Auto", "Shoulder", 7, 5, 5, 100, 5, 1000, [0, 15], 0, [], 120, "Mag-Fed", 15, 5, 7, 18, 1, [], "Normal Scope", ["Ground", "false", "Reload", "auto", "hands", [[0, 0], [0, 0]], "MuzzleFlash", false], function() {}, function() {}, "Impossible"
+    ], // (42) RGD-L Blaster
+    // TURRETS
+    [
+    "ALPX Blaster", "AR", "Green-Level", "", "", "Full-Auto", "Hands", 6, 20, 1, 80, 15, 700, [0, 30], false, [], 180, "Mag-Fed", 12, 3, 3, 10, 1, [], "Circle", ["MuzzleFlash", false, "hands", [[-1, 5], [1, 12]]], function() {}, function() {}, "Impossible"
+    ], // (43) ALPX Blaster
+    [
+    "AKL Avenger", "AR", "12 Gauge", "", "", "Semi-Auto", "Hands", 8, 5, 10, 90, 5, 500, [0, 35], false, [], 240, "Mag-Fed", 30, 12, 5, 25, 1.1, [], "Shotgun Scope", ["MuzzleFlash", false, "hands", [[-1, 5], [1, 12]]], function() {}, function() {}, "Impossible"
+    ], // (44) AKL Avenger
 ];
 var attacks = {
     "Punch": function(obj) {
@@ -2511,286 +2230,703 @@ var attacks = {
     },
 };
 var melee = [
-    [
-    "Fists", "Bare hands; only good for close-range attacks against weaker or dying enemies.", 25, 10, ["Punch", "Punch2"], [], [[8, 11], [-8, 11], [8, 11], [-8, 11]], function() {
-        return get(0, 0, 400, 400);
-    }, function() {
-        translate(1.5, -0.25);
-        fill(255);
-        arc(0, 0.5, 16, 13, 90, 180);
-        arc(-0.5, -3, 10, 7.5, 180, 270);
-        rect(-5, 0.7, 8, 10);
-        ellipse(-9, 0.7, 4, 10);
-        stroke(255);
-        strokeWeight(4);
-        line(-0.5, -4.8, 3.3, -4.5);
-        line(-3, -2, -0.5, -4.8);
-        line(0, 0, 6.15, 0);
-        line(0, -3, 5.5, -3);
-        line(0, 3, 5.3, 3);
-        strokeWeight(3);
-        line(0, 5.5, 4.5, 5.4);
-        return [get(0, 0, 400, 400), 20, 15];
-        }, [], 0, "Impossible"
-    ],
-    [
-    "Knife", "Great for quick jabs, but its low damage and range aren't great.", 30, 15, ["Stab", "Swing2"], [], [[-8, 11], [-2, 28], [8, 11], [-8, 11]], function() {
-        pushMatrix();
-        rotate(atan2(28 - 11, -2 + 8) - 90);
-        stroke(70, 50, 20);
-        noFill();
-        strokeWeight(2);
-        line(0, 0, 0, 3);
-        strokeWeight(1);
-        stroke(200);
-        arc(0, 4, 8, 2, 50, 130);
-        triangle(-0.5, 3, 0.5, 3, 0, 18);
-        popMatrix();
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(255);
-        rect(-13, 0, 10, 4, 2, 0, 0, 2);
-        triangle(14, -1, 14, 1, 18, 0);
-        stroke(255);
-        noFill();
-        strokeWeight(2);
-        arc(-6, 0, 4, 16, 140, 220);
-        polygon(-8, -1, 14, 0, -8, 1);
-        return [get(0, 0, 400, 400), 36, 14];
-    }, [], 1, "Common"
-    ],
-    [
-    "Sword", "A wider range allows for great versatility, but the reload could be shorter.", 50, 50, ["Swing3", "Stab2"], [], [[-8, 11], [-6, 35], [-8, 12], [-8, 10]], function() {
-        pushMatrix();
-        rotate(atan2(35 - 11, -6 + 8) - 90);
-        stroke(75);
-        noFill();
-        strokeWeight(2);
-        line(0, 0, 0, 3);
-        stroke(200);
-        line(0, 3, 0, 20);
-        strokeWeight(1);
-        arc(0, 4, 18, 2, 50, 130);
-        triangle(-0.5, 20, 0.5, 20, 0, 24);
-        popMatrix();
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(255);
-        quad(-23, -1.5, -23, 1.5, -14, 2, -14, -2);
-        ellipse(-23, 0, 2, 3);
-        rect(2, 0, 32, 4);
-        triangle(18, -2, 18, 2, 24, 0);
-        stroke(255);
-        noFill();
-        strokeWeight(2);
-        arc(-13, 0, 2, 16, 135, 225);
-        return [get(0, 0, 400, 400), 48, 14];
-    }, [], 2, "Uncommon"
-    ],
-    [
-    "Shield", "A modernized defensive mechanism featuring light shielding to absorb blasterfire, this is an effective tool for avoiding death.", 30, 40, ["Swing2", "Punch2"], ["Punch", "Stab", "Swing", "Swing2"], [[-16, 9], [0, 15], [8, 11], [-8, 11]], function() {
-        pushMatrix();
-        rotate(atan2(6, 16) - 90);
-        noFill();
-        stroke(200);
-        strokeWeight(4);
-        arc(0, 0, 4, 20, 110, 250);
-        popMatrix();
-        return get(0, 0, 400, 400);
-    }, function() {
-        translate(0, -0.25);
-        scale(0.5);
-        fill(255);
-        polygon(-17, -16, 17, -16, 13, 3, 0, 18, -13, 3);
-        stroke(255);
-        noFill();
-        strokeWeight(2);
-        arc(-8.5, -17, 18, 3, 20, 160);
-        arc(8.5, -17, 18, 3, 20, 160);
-        arc(-21.5, -16, 77, 80, 0, 55);
-        arc(21.5, -16, 77, 80, 125, 180);
-        return [get(0, 0, 400, 400), 19, 19];
-    }, ["Shield", true, "ONBACK", 140, "back", [-3, -3]], 3, "Rare"
-    ],
-    [
-    "Needle", "A medical needle -- don't reuse it!", 20, 10, ["Stab", "Punch2"], [], [[-8, 11], [-8, 26], [8, 11], [-8, 11]], function() {
-        stroke(0);
-        strokeWeight(1);
-        line(0, 0, 0, 15);
-        strokeWeight(2);
-        stroke(0, 255, 255, 100);
-        line(0, 0, 0, 10);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(255);
-        rect(0, 0, 30, 1);
-        rect(-12, 0, 6, 3);
-        rect(-14.5, 0, 1, 4, 1);
-        rect(-9, 0, 1, 8, 1);
-        rect(0, 0, 18, 4);
-        ellipse(9, 0, 1, 4);
-        rect(9, 0, 6, 2);
-        ellipse(12, 0, 1, 2);
-        return [get(0, 0, 400, 400), 30, 9];
-    }, ["Ground", false], 1, "Impossible"
-    ],
+	[
+		"Fists","Bare hands; only good for close-range attacks against weaker or dying enemies.",25,10,["Punch","Punch2",],[],[[8,11],[-8,11],[8,11],[-8,11],],function() {}, function() {},[],0,"Impossible"
+	],
+	[
+		"Knife","Great for quick jabs, but its low damage and range aren't great.",30,15,["Stab","Swing2",],[],[[-8,11],[-2,28],[8,11],[-8,11],],function() {}, function() {},[],1,"Common"
+	],
+	[
+		"Sword","A wider range allows for great versatility, but the reload could be shorter.",50,50,["Swing2","Stab",],["Stab",],[[-8,11],[-6,35],[8,11],[-8,11],],function() {}, function() {},["Threaten","Spin",],2,"Uncommon"
+	],
+	[
+		"Spear","The long range of this weapon is much more effective for stabbing, but the reload is unremarkable.",45,50,["Stab2",],[],[[-8,35],[-8,45],[-8,8],[-8,15],],function() {}, function() {},[],3,"Uncommon"
+	],
+	[
+		"Staff","Though archaic, this weapon is nonetheless useful; it's long range and quick reload more than make up for its outdatedness.",60,40,["Stab3","Swing3","Stab4","Swing","Swing4",],[],[[-26,4],[26,24],[6,16],[-10,10],],function() {}, function() {},[],3,"Uncommon"
+	],
+	[
+		"Kaztari","An interesting weapon featuring a long pole and with a blade afixed to it, the Kaztari is very effective for long- or mid-range attacks.",55,60,["Swing","Stab4",],["Swing","Stab",],[[20,24],[26,27],[42,31],[6,17],[-10,8],],function() {}, function() {},[],4,"Rare"
+	],
+	[
+		"Warhammer","Though its reload may be long, this weapon's sheer damage and power are enough for any good warrior to love it.",105,90,["Swing",],["Swing","Stab",],[[15,19],[13,23],[7,20],[6,14.5],[-10,8],],function() {}, function() {},[],4,"Rare"
+	],
+	[
+		"Shield","A modernized defensive mechanism featuring light shielding to absorb blasterfire, this is an effective tool for avoiding death.",30,40,["Swing2","Punch2",],["Punch","Stab","Swing","Swing2",],[[-16,9],[0,15],[8,11],[-8,11],],function() {}, function() {},["Shield",true,"ONBACK",120,],5,"Legendary"
+	],
 ];
 var attachments = {
 	"Muzzle":{
-		"Silencer":["Muzzle Suppressor","Decreases noise level of weapon.",function(){
-	        fill(255);
-            rect(0, 0, 20, 4, 1);
-            return [get(0, 0, 400, 400), 20, 4];
-		}],"Compensator":["Recoil Compensator","Decreases recoil level.",function(){
-            fill(255);
-            ellipse(8, 0, 1, 4);
-            ellipse(-8, 0, 1, 4);
-            stroke(255);
-            noFill();
-            strokeWeight(1);
-            for (var i = -2; i <= 2; i++) {
-                ellipse(i * 3, 0, 2.5, 2.5);
-            }
-            for (var i = -1.5; i <= 1.5; i++) {
-                arc(i * 3, -2, 3, 2, 30, 150);
-                arc(i * 3, 2, 3, 2, 210, 330);
-            }
-            line(-7.5, -1.5, -6, -1.5);
-            line(-7.5, -1.5, -7.5, 1.5);
-            line(-7.5, 1.5, -6, 1.5);
-            line(7.5, -1.5, 6, -1.5);
-            line(7.5, -1.5, 7.5, 1.5);
-            line(7.5, 1.5, 6, 1.5);
-            return [get(0, 0, 400, 400), 17, 4];
-		}],"Accelerator":["Bullet Accelerator","Increases damage and muzzle velocity.",function(){
-            fill(255);
-            rect(0, 0, 20, 3, 0);
-            rect(0, 0, 14, 4, 1);
-            return [get(0, 0, 400, 400), 20, 4];
-		}],"Choke":["Muzzle Choke","Decreases flechette spread.",function(){
-            fill(255);
-            rect(-1, 0, 18, 4, 1);
-            rect(5, 0, 9, 5);
-            ellipse(9.5, 0, 1, 5);
-            ellipse(0.5, 0, 2, 5);
-            return [get(0, 0, 400, 400), 20, 5];
-		}],
+		"Silencer":["Muzzle Suppressor","Decreases noise level of weapon.",function(){}],"Compensator":["Recoil Compensator","Decreases recoil level.",function(){}],"Accelerator":["Bullet Accelerator","Increases damage and muzzle velocity.",function(){}],"Choke":["Muzzle Choke","Decreases flechette spread.",function(){}],"Duckbill":["Muzzle Duckbill","Increases flechette spread.",function(){}],
 	},
 	"Foregrip":{
-		"Vertical Grip":["Vertical Grip","Substantial decrease to recoil.",function(){
-            translate(-1.75, 0.75);
-            fill(255);
-            polygon(0, -6.5, -2, 5, 1, 5, 3.5, -6.5);
-            noFill();
-            stroke(255);
-            strokeWeight(1);
-            for (var i = -1.5; i <= 1.5; i++) {
-                arc(-i / 2 + 4, i * 2.5, 4, 4, 150, 210);
-            }
-            line(0, -5, -2.1, 4.9);
-            line(-2, 5, 1.5, 5);
-            arc(5.5, -5.3, 4, 2.5, 180, 270);
-            arc(-2, -5, 4, 3, 270, 360);
-            line(6.3, -6.6, -3, -6.6);
-            return [get(0, 0, 400, 400), 11, 13];
-		}],"Light Grip":["Light Grip","Improved accuracy and minor loss of recoil.",function(){
-            translate(0.5, -0.5);
-            fill(255);
-            polygon(-10, -3, 10, -3, 9, -1, -10, -1);
-            stroke(255);
-            noFill();
-            strokeWeight(2);
-            line(-10, -2, -6, 3);
-            line(-6, 3, 2, -2);
-            return [get(0, 0, 400, 400), 21, 7];
-		}],"Laser Sight":["Laser Sight","Substantial increase in accuracy.",function(){
-		    translate(0, -0.25);
-            fill(255);
-            rect(-3, 0, 12, 3, 2, 0, 0, 2);
-            ellipse(3, 0, 1, 3);
-            rect(-2, 1, 8, 2, 1);
-            fill(255, 150);
-            triangle(0, 0, 9, -1, 9, 1);
-            return [get(0, 0, 400, 400), 18, 3.5];
-		}],
+		"Horizontal Grip":["Horizontal Grip","Minor accuracy increase and improved recoil.",function(){}],"Vertical Grip":["Vertical Grip","Substantial decrease to recoil.",function(){}],"Light Grip":["Light Grip","Improved accuracy and minor loss of recoil.",function(){}],"Half Grip":["Half Grip","Large increase in accuracy, reduced stability.",function(){}],"Laser Sight":["Laser Sight","Substantial increase in accuracy",function(){}],
 	},
 	"Scope":{
-		"Red Dot":["Red Dot Scope","Increase to accuracy while ADS.",function(){
-            scopeImg("rd");
-            return [get(0, 0, 400, 400), 13, 13];
-		}],"2x":["2x Scope","Minor increase to ADS range.",function(){
-		    scopeImg("2x");
-            return [get(0, 0, 400, 400), 13, 13];
-		}],"3x":["3x Scope","Mediocre increase to ADS range.",function(){
-		    scopeImg("3x");
-            return [get(0, 0, 400, 400), 13, 13];
-		}],"4x":["4x Scope","Fair increase to ADS range.",function(){
-		    scopeImg("4x");
-            return [get(0, 0, 400, 400), 13, 13];
-		}],"6x":["6x Scope","Significant increase to ADS range.",function(){
-		    scopeImg("6x");
-            return [get(0, 0, 400, 400), 13, 13];
-		}]
+		"Red Dot":["Red Dot Scope","Increase to accuracy while ADS.",function(){}],"2x":["2x Scope","Minor increase to ADS range.",function(){}],"3x":["3x Scope","Mediocre increase to ADS range.",function(){}],"4x":["4x Scope","Fair increase to ADS range.",function(){}],"6x":["6x Scope","Significant increase to ADS range.",function(){}],"8x":["8x Scope","Large increase to ADS range.",function(){}],"16x":["16x Scope","Massive increase to ADS range.",function(){}],
 	},
 	"Magazine":{
-		"Extended Mag":["Extended Magazine","Increases magazine size.",function(){
-            stroke(255);
-            noFill();
-            strokeWeight(8);
-            strokeCap(SQUARE);
-            arc(8.5, -9, 20, 40, 130, 180);
-            strokeCap(ROUND);
-            return [get(0, 0, 400, 400), 12, 18];
-		}],"Quickdraw Mag":["Quickdraw Magazine","Quicker fire rate and reloading.",function(){
-		    translate(0, -1);
-            stroke(255);
-            noFill();
-            strokeWeight(8);
-            strokeCap(SQUARE);
-            arc(9, -9, 20, 50, 140, 180);
-            strokeCap(ROUND);
-            strokeWeight(1.5);
-            arc(1.35, 7, 6.5, 6.5, -20, 160);
-            return [get(0, 0, 400, 400), 12, 20];
-		}]
+		"Extended Mag":["Extended Magazine","Increases magazine size.",function(){}],"Quickdraw Mag":["Quickdraw Magazine","Quicker fire rate and reloading.",function(){}],"Drum Mag":["Drum Magazine","Large increase to magazine size at the expense of reloading time.",function(){}],
 	},
 	"Stock":{
-		"Tactical Stock":["Tactical Stock","Substantial decrease to recoil.",function(){
-            fill(255);
-            rect(-9, 0, 2, 10, 1, 0, 0, 1);
-            rect(-7, -3, 4, 1);
-            rect(-7, 3, 4, 1);
-            rect(-5.5, 0, 3, 10);
-            rect(2, -3, 12, 4, 0, 1, 0, 0);
-            rect(8, -2.5, 4, 3);
-            strokeWeight(2);
-            stroke(255);
-            noFill();
-            line(-4, 4, 0, 3);
-            line(0, 3, 3, 0);
-            line(3, 0, 7, -1);
-            arc(-1, 2, 8, 8, 180, 270);
-            arc(0, 0, 4, 4, 270, 400);
-            return [get(0, 0, 400, 400), 20, 10];
-		}],"Bullet Loops":["Bullet Loops","Faster reload time.",function(){
-		    translate(0, 0.25);
-            fill(255);
-            rect(0, 0, 20, 4, 1);
-            for (var i = -2; i <= 2; i++) {
-                rect(i * 3.5, 0, 2.5, 6, 1);
-                rect(i * 3.5, -3, 2.8, 1);
-            }
-            return [get(0, 0, 400, 400), 20, 7];
-		}],
+		"Cheek Pad":["Cheek Pad","Increased accuracy and less recoil.",function(){}],"Tactical Stock":["Tactical Stock","Substantial decrease to recoil.",function(){}],"Bullet Loops":["Bullet Loops","Faster reload time.",function(){}],
 	},
 };
 var scopes = {
 	"Red Dot": ["Red Dot",1,1,"Common"],
-	"2x": ["2x",sqrt(2),1,"Common"],
+	"2x": ["2x",sqrt(2),2,"Common"],
 	"3x": ["3x",sqrt(3),2,"Uncommon"],
-	"4x": ["4x",2,2,"Uncommon"],
+	"4x": ["4x",2,3,"Uncommon"],
 	"6x": ["6x",sqrt(6),3,"Rare"],
+	"8x": ["8x",sqrt(8),4,"Rare"],
+	"16x": ["16x",4,5,"Legendary"],
 };
+var abilities = [
+    [
+        "Push", ["i"], function(obj, lvl) {
+            var otherSide = allies;
+            if (obj.side === "ally") {
+                otherSide = enemies;
+            }
+            var range = 100, radius = 45, dam = 0, stun = 0, dam2 = 5;
+            if (lvl === "2") {
+                range = 150;
+                radius = 60;
+                dam2 = 10;
+            } else if (lvl === "3") {
+                range = 200;
+                radius = 90;
+                dam2 = 15;
+            } else if (lvl === "4a") {
+                range = 250;
+                radius = 180;
+                dam = 10;
+                stun = 20;
+                dam2 = 25;
+            } else if (lvl === "4b") {
+                range = 300;
+                radius = 360;
+                dam2 = 20;
+            }
+            obj.energyPool -= 15;
+            for (var i = 0; i < otherSide.length; i++) {
+                var a = otherSide[i], b = absValue(atan2(a.y - obj.y, a.x - obj.x) + 90, 360), c = absValue(absValue(obj.rot + 180, 360) - b, 360);
+                if (sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(range) && (c <= radius / 2 || c >= 360 - radius / 2) && seeTarget([obj.x, obj.y], [a.x, a.y], true)) {
+                    a.pushMomentum.push([b - 90, dist(obj.x, obj.y, a.x, a.y), range / (1 + a.energyRegain)]);
+                    a.health -= dealDamage2(a, dam);
+                    a.stunTime += dealDamage2(a, stun);
+                    a.energyPool += 15 * a.energyRegain;
+                }
+            }
+            for (var i = 0; i < walls.length; i++) {
+                if (walls[i].health < Infinity) {
+                    if (rectArc([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [obj.x, obj.y, range, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2])) {
+                        walls[i].health -= dam2;
+            println(walls[i].health);
+                    }
+                }
+            }
+            fill(255, 50);
+            arc(obj.x, obj.y, range * 2, range * 2, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2);
+        }, function(obj, lvl) {
+            obj.tyonTime[0] -= compensateFPS;
+        }, function(obj, lvl) {}, [["Cost", "15 energy", "Range", "100 pixels", "Radius", "45 degrees", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "150 pixels", "Radius", "60 degrees", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "200 pixels", "Radius", "90 degrees", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "250 pixels", "Radius", "180 degrees", "Damage", "10", "Stun", ".3 seconds", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "300 pixels", "Duration", "Instantaneous"]], 15, [0, 0, 0, 0, 0], ["A brief rush of energy that pushes closeby enemies within a tight arc away.", "A brief rush of energy that pushes closeby enemies within a mediocre arc away.", "A brief rush of energy that pushes closeby enemies within a large arc away.", "A brief rush of energy that pushes closeby enemies within a substantial arc away and deals damage.", "A brief rush of energy that pushes all closeby enemies away."], [60]
+    ], // (0) Push
+    [
+        "Pull", ["i"], function(obj, lvl) {
+            var otherSide = allies;
+            if (obj.side === "ally") {
+                otherSide = enemies;
+            }
+            var range = 100, radius = 45, dam = 0, stun = 0, dam2 = 5;
+            if (lvl === "2") {
+                range = 150;
+                radius = 60;
+                dam2 = 10;
+            } else if (lvl === "3") {
+                range = 200;
+                radius = 90;
+                dam2 = 15;
+            } else if (lvl === "4a") {
+                range = 250;
+                radius = 180;
+                dam = 10;
+                stun = 20;
+                dam2 = 25;
+            } else if (lvl === "4b") {
+                range = 300;
+                radius = 360;
+                dam2 = 20;
+            }
+            obj.energyPool -= 15;
+            for (var i = 0; i < otherSide.length; i++) {
+                var a = otherSide[i], b = absValue(atan2(a.y - obj.y, a.x - obj.x) + 90, 360), c = absValue(absValue(obj.rot + 180, 360) - b, 360);
+                if (sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(range) && (c <= radius / 2 || c >= 360 - radius / 2) && seeTarget([obj.x, obj.y], [a.x, a.y], true)) {
+                    a.pushMomentum.push([b - 90, dist(obj.x, obj.y, a.x, a.y), 20]);
+                    a.health -= dealDamage2(a, dam);
+                    a.stunTime += dealDamage2(a, stun);
+                    a.energyPool += 15 * a.energyRegain;
+                }
+            }
+            for (var i = 0; i < walls.length; i++) {
+                if (walls[i].health < Infinity) {
+                    if (rectArc([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [obj.x, obj.y, range, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2])) {
+                        walls[i].health -= dam2;
+                    }
+                }
+            }
+            fill(255, 50);
+            arc(obj.x, obj.y, range * 2, range * 2, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2);
+        }, function(obj, lvl) {
+            obj.tyonTime[1] -= compensateFPS;
+        }, function(obj, lvl) {}, [["Cost", "15 energy", "Range", "100 pixels", "Radius", "45 degrees", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "150 pixels", "Radius", "60 degrees", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "200 pixels", "Radius", "90 degrees", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "250 pixels", "Radius", "180 degrees", "Damage", "10", "Stun", ".3 seconds", "Duration", "Instantaneous"], ["Cost", "15 energy", "Range", "300 pixels", "Duration", "Instantaneous"]], 15, [0, 0, 0, 0, 0], ["A brief rush of energy that pulls all closeby enemies within a tight arc.", "A brief rush of energy that pulls closeby enemies within a mediocre arc.", "A brief rush of energy that pulls closeby enemies within a large arc.", "A brief rush of energy that pulls closeby enemies within a substantial arc and deals damage.", "A brief rush of energy that pulls all closeby enemies."], [60]
+    ], // (1) Pull
+    [
+        "Speed", ["d"], function(obj, lvl) {
+            var increase = 1.25;
+            if (lvl === "2") {
+                increase = 1.5;
+            } else if (lvl === "3") {
+                increase = 1.75;
+            } else if (lvl === "4a") {
+                increase = 2;
+            } else if (lvl === "4b") {
+                increase = 2.25;
+                obj.health -= 15;
+            }
+            obj.maxSpeed2 *= increase;
+            obj.energyPool -= 50;
+            if (obj === allies[0] && scene !== "cinematic") {
+                timeDilation *= increase / 2;
+            }
+        }, function(obj, lvl) {
+            obj.tyonTime[2] -= compensateFPS;
+            fill(255, 0, 255, 50);
+            ellipse(obj.x, obj.y, obj.width + 20, obj.width + 20);
+        }, function(obj, lvl) {
+            var increase = 1.25;
+            if (lvl === "2") {
+                increase = 1.5;
+            } else if (lvl === "3") {
+                increase = 1.75;
+            } else if (lvl === "4a") {
+                increase = 2;
+            } else if (lvl === "4b") {
+                increase = 2.25;
+            }
+            obj.maxSpeed2 /= increase;
+            if (obj === allies[0] && scene !== "cinematic") {
+                timeDilation /= increase / 2;
+            }
+        }, [["Cost", "50 energy", "Speed Increase", "25%", "Duration", "5 seconds"], ["Cost", "50 energy", "Speed Increase", "50%", "Duration", "5 seconds"], ["Cost", "50 energy", "Speed Increase", "75%", "Duration", "5 seconds"], ["Cost", "50 energy", "Speed Increase", "100%", "Duration", "5 seconds"], ["Cost", "50 energy", "Speed Increase", "125%", "Duration", "5 seconds"]], 50, [300, 300, 300, 300, 300], ["Grants a small increase to movement speed.", "Grants a mediocre increase to movement speed.", "Grants a large increase to movement speed.", "Grants a substantial increase to movement speed.", "Grants a huge increase to movement speed at the cost of some health."], [120]
+    ], // (2) Speed
+    [
+        "Confuse", ["d"], function(obj, lvl) {
+            var otherSide = allies;
+            if (obj.side === "ally") {
+                otherSide = enemies;
+            }
+            var range = 150, radius = 45, maxEnemies = 1, speedReduction = 0, stunLength = 300, maxIntelligence = 5, curEnemies = 0;
+            if (lvl === "2") {
+                range = 175;
+                radius = 60;
+                maxEnemies = 2;
+                stunLength = 600;
+                maxIntelligence = 6;
+            } else if (lvl === "3") {
+                range = 200;
+                radius = 90;
+                maxEnemies = 3;
+                stunLength = 1200;
+                maxIntelligence = 7;
+            } else if (lvl === "4a") {
+                range = 300;
+                radius = 360;
+                maxEnemies = Infinity;
+                stunLength = 1200;
+                maxIntelligence = 8;
+            } else if (lvl === "4b") {
+                maxEnemies = Infinity;
+                obj.maxSpeed2 *= 0.75;
+            }
+            if (lvl !== "4b") {
+                for (var i = 0; i < otherSide.length; i++) {
+                    var a = otherSide[i], b = absValue(atan2(a.y - obj.y, a.x - obj.x) + 90, 360), c = absValue(absValue(obj.rot + 180, 360) - b, 360);
+                    if (a.skillTyon <= maxIntelligence && sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(range) && (c <= radius / 2 || c >= 360 - radius / 2) && seeTarget([obj.x, obj.y], [a.x, a.y], true)) {
+                        a.stunTime = constrain(a.stunTime, 0, Infinity) + dealDamage2(a, stunLength);
+                        a.stunType = "Confused";
+                        a.energyPool += 20 * a.energyRegain;
+                        curEnemies++;
+                        if (curEnemies >= maxEnemies) {
+                            i = otherSide.length;
+                        }
+                    }
+                }
+            } else {
+                obj.stealthTime = 900;
+            }
+            obj.energyPool -= 20;
+            fill(255, 50);
+            arc(obj.x, obj.y, range * 2, range * 2, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2);
+        }, function(obj, lvl) {
+            obj.tyonTime[3] -= compensateFPS;
+        }, function(obj, lvl) {
+            if (lvl === "4b") {
+                obj.maxSpeed2 /= 0.75;
+            }
+        }, [["Cost", "20 energy", "Range", "150 pixels", "Radius", "45 degrees", "Maximum Enemies", "1", "Stun Duration", "5 seconds"], ["Cost", "20 energy", "Range", "175 pixels", "Radius", "60 degrees", "Maximum Enemies", "2", "Stun Duration", "10 seconds"], ["Cost", "20 energy", "Range", "200 pixels", "Radius", "90 degrees", "Maximum Enemies", "3", "Stun Duration", "15 seconds"], ["Cost", "20 energy", "Range", "300 pixels", "Stun Duration", "20 seconds"], ["Cost", "20 energy", "Duration", "15 seconds", "Speed Reduction", "25%"]], 20, [300, 600, 1200, 1200, 900], ["Momentarily stuns one nearby enemy.", "Briefly stuns two nearby enemies.", "Stuns three nearby enemies.", "Incapacitates all nearby enemies for some time.", "Player is hidden from all enemies' views at the cost of speed."], [120]
+    ], // (3) Confuse
+    [
+        "Heal", ["d"], function(obj, lvl) {
+            if (obj.health < obj.maxHealth || lvl === "4b") {
+                var speedEffect = 0.25;
+                if (lvl === "2") {
+                    speedEffect = 0.5;
+                } else if (lvl === "3") {
+                    speedEffect = 0.75;
+                } else if (lvl === "4a") {
+                    speedEffect = 0.9;
+                } else if (lvl === "4b") {
+                    speedEffect = 0.75;
+                }
+                obj.maxSpeed2 *= speedEffect;
+            } else {
+                obj.tyonTime[4] = -1;
+                obj.tyonReload[4] = -1;
+                obj.tyonUsed[4] = false;
+            }
+        }, function(obj, lvl) {
+            var side = allies;
+            if (obj.side === "enemy") {
+                side = enemies;
+            }
+            var healEffect = 1 / 6/*1 / 3*/;
+            if (lvl === "2") {
+                healEffect = 1 / 5/*1 / 2.4*/;
+            } else if (lvl === "3") {
+                healEffect = 1 / 4/*1 / 1.8*/;
+            } else if (lvl === "4a") {
+                healEffect = 1 / 3/*1*/;
+            } else if (lvl === "4b") {
+                healEffect = 1 / 4/*1 / 2.4*/;
+                for (var i = 0; i < side.length; i++) {
+                    var a = side[i];
+                    if (a !== obj && sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(150)) {
+                        a.health += healEffect * compensateFPS;
+                    }
+                }
+                fill(0, 200, 0, 50);
+                ellipse(obj.x, obj.y, 300, 300);
+            }
+            if (obj.health < obj.maxHealth || lvl === "4b") {
+                obj.health += healEffect * compensateFPS * obj.maxHealth / 100;
+                obj.energyPool -= healEffect * compensateFPS;
+                obj.tyonTime[4] -= compensateFPS;
+            } else {
+                obj.tyonTime[4] = -1;
+            }
+            fill(200, 200, 0, 50);
+            ellipse(obj.x, obj.y, obj.width + 20, obj.width + 20);
+        }, function(obj, lvl) {
+            var side = allies;
+            if (obj.side === "enemy") {
+                side = enemies;
+            }
+            var speedEffect = 0.25;
+            if (lvl === "2") {
+                speedEffect = 0.5;
+            } else if (lvl === "3") {
+                speedEffect = 0.75;
+            } else if (lvl === "4a") {
+                speedEffect = 0.9;
+            } else if (lvl === "4b") {
+                speedEffect = 0.75;
+            }
+            obj.maxSpeed2 /= speedEffect;
+        }, [["Cost", "10 energy per second", "Duration", "10 seconds", "Health Restored", "10 per second", "Speed Reduction", "75%"], ["Cost", "12 energy per second", "Duration", "8.3 seconds", "Health Restored", "12 per second", "Speed Reduction", "50%"], ["Cost", "15 energy per second", "Duration", "6.6 seconds", "Health Restored", "15 per second", "Speed Reduction", "25%"], ["Cost", "20 energy per second", "Duration", "5 seconds", "Health Restored", "20 per second", "Speed Reduction", "10%"], ["Cost", "15 energy per second", "Range", "150 pixels", "Duration", "6.6 seconds", "Health Restored", "15 per second", "Speed Reduction", "25%"]], 5, [600, 500, 400, 300, 400], ["Gradually heals the player at the cost of speed.", "Slowly heals the player at the cost of speed.", "Heals the player at the cost of speed.", "Rapidly heals the player with a minor loss of speed.", "Heals the player and nearby allies."], [30]
+    ], // (4) Heal
+    [
+        "Immobilize", ["a"], function(obj, lvl) {
+        }, function(obj, lvl, arkator) {
+            if ((!pressed(commandKeys.immobilize) && !obj.NPC) || (!arkator && obj.NPC)) {
+                obj.tyonTime[5] -= compensateFPS;
+            }
+            var otherSide = allies;
+            if (obj.side === "ally") {
+                otherSide = enemies;
+            }
+            var range = 50, damage = 5;
+            if (lvl === "2") {
+                range = 100;
+                damage = 10;
+            } else if (lvl === "3") {
+                range = 150;
+                damage = 15;
+            } else if (lvl === "4a") {
+                range = 300;
+                damage = 20;
+            } else if (lvl === "4b") {
+                range = 250;
+                damage = 25;
+            }
+            for (var i = 0; i < otherSide.length; i++) {
+                var a = otherSide[i];
+                if (sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(range) && seeTarget([obj.x, obj.y], [a.x, a.y], true)) {
+                    a.health -= dealDamage2(a, damage / 60 * compensateFPS);
+                    a.stunTime = 20;
+                    a.energyPool += (compensateFPS / 4.5) * a.energyReduction;
+                }
+            }
+            obj.energyPool -= compensateFPS / 4.5;
+            fill(255, 50);
+            ellipse(obj.x, obj.y, range * 2, range * 2);
+        }, function(obj, lvl) {
+        }, [["Cost", "13 energy per second", "Duration", "Until energy is drained", "Range", "50 pixels", "Damage", "5 per second"], ["Cost", "13 energy per second", "Duration", "Until energy is drained", "Range", "100 pixels", "Damage", "10 per second"], ["Cost", "13 energy per second", "Duration", "Until energy is drained", "Range", "200 pixels", "Damage", "15 per second"], ["Cost", "13 energy per second", "Duration", "Until energy is drained", "Range", "300 pixels", "Damage", "20 per second"], ["Cost", "13 energy per second", "Duration", "Until energy is drained", "Range", "250 pixels", "Damage", "25 per second"]], 15, [1, 1, 1, 1, 1], ["Freezes closeby enemies for a short period of time while dealing damage.", "Freezes closeby enemies for some time while dealing damage.", "Freezes enemies for a long period of time and harms them considerably.", "Freezes enemies within a substantial range and deals damage.", "Freezes enemies within a large range and deals large amounts of damage."], [60]
+    ], // (5) Immobilize
+    [
+        "Lightning", ["a", "a", "a", "a", "i"], function(obj, lvl) {
+            if (lvl === "4b") {
+                booms.push(construct(boom, [obj.x, obj.y, 250, [180, false, 150, "Tyon", 30, obj.side]]));
+                obj.energyPool -= 30;
+                fill(0, 0, 255, 50);
+                ellipse(obj.x, obj.y, 250, 250);
+                for (var i = 0; i < walls.length; i++) {
+                    if (walls[i].health < Infinity) {
+                        if (rectCircle([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [obj.x, obj.y, 250, obj.side])) {
+                            walls[i].health -= 200;
+                        }
+                    }
+                }
+            }
+        }, function(obj, lvl, arkator) {
+            if ((!pressed(commandKeys.lightning) && !obj.NPC) || (!arkator && obj.NPC) || lvl === "4b") {
+                obj.tyonTime[6] -= compensateFPS;
+            } else {
+            }
+            if (lvl !== "4b") {
+                var otherSide = allies;
+                if (obj.side === "ally") {
+                    otherSide = enemies;
+                }
+                var range = 200, radius = 45, damage = 20;
+                if (lvl === "2") {
+                    range = 250;
+                    radius = 60;
+                    damage = 35;
+                } else if (lvl === "3") {
+                    range = 300;
+                    radius = 90;
+                    damage = 60;
+                } else if (lvl === "4a") {
+                    range = 300;
+                    radius = 120;
+                    damage = 100;
+                }
+                for (var i = 0; i < otherSide.length; i++) {
+                    var a = otherSide[i], b = absValue(atan2(a.y - obj.y, a.x - obj.x) + 90, 360), c = absValue(absValue(obj.rot + 180, 360) - b, 360);
+                    if (sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(range) && (c <= radius / 2 || c >= 360 - radius / 2) && seeTarget([obj.x, obj.y], [a.x, a.y], true)) {
+                        a.health -= dealDamage2(a, damage / 60 * compensateFPS);
+                        a.stunTime += compensateFPS;
+                        a.energyPool += compensateFPS * a.energyRegain;
+                        if (!a.onlyReduce) {
+                            a.energyPool += dealDamage2(a, compensateFPS / 3, true);
+                        }
+                    }
+                }
+                obj.energyPool -= compensateFPS;
+                for (var i = 0; i < walls.length; i++) {
+                    if (walls[i].health < Infinity) {
+                        if (rectArc([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [obj.x, obj.y, range, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2])) {
+                            walls[i].health -= damage / 60 * compensateFPS;
+                        }
+                    }
+                }
+                fill(255, 50);
+                arc(obj.x, obj.y, range * 2, range * 2, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2);
+            }
+        }, function(obj, lvl) {
+        }, [["Cost", "60 energy per second", "Duration", "Until energy is drained", "Range", "200 pixels", "Radius", "45 degrees", "Damage", "20 per second"], ["Cost", "60 energy per second", "Duration", "Until energy is drained", "Range", "250 pixels", "Radius", "60 degrees", "Damage", "35 per second"], ["Cost", "60 energy per second", "Duration", "Until energy is drained", "Range", "300 pixels", "Radius", "90 degrees", "Damage", "60 per second"], ["Cost", "60 energy per second", "Duration", "Until energy is drained", "Range", "300 pixels", "Radius", "120 degrees", "Damage", "100 per second"], ["Cost", "30 energy", "Range", "250 pixels", "Damage", "200", "Duration", "Instantaneous"]], [10, 10, 10, 10, 30], [1, 1, 1, 1, 0], ["Electrocutes closeby enemies within a tight arc.", "Electrocutes closeby enemies within a small arc.", "Electrocutes closeby enemies within a large arc.", "Electrocutes enemies within a substantial arc.", "Create a blast of energy that harms all nearby enemies."], [30, 30, 30, 30, 60]
+    ], // (6) Lightning
+    [
+        "Rage", ["d"], function(obj, lvl) {
+            var otherSide = allies;
+            if (obj.side === "ally") {
+                otherSide = enemies;
+            }
+            var increase = 1.25, increase2 = 1.1;
+            if (lvl === "2") {
+                increase = 1.35;
+                increase2 = 1.15;
+            } else if (lvl === "3") {
+                increase = 1.5;
+                increase2 = 1.2;
+            } else if (lvl === "4a") {
+                increase = 1.75;
+                increase2 = 1.3;
+            } else if (lvl === "4b") {
+                increase = 1.5;
+                increase2 = 1.25;
+            }
+            obj.maxSpeed2 *= increase;
+            obj.damageReduction *= increase;
+            obj.energyReduction *= increase2;
+            if (obj === allies[0] && scene !== "cinematic") {
+                timeDilation *= increase / 2;
+            }
+            obj.onlyReduce = true;
+        }, function(obj, lvl) {
+            obj.energyPool -= compensateFPS / 6;
+            obj.tyonTime[7] -= compensateFPS;
+            var health = 10;
+            if (lvl === "2") {
+                health = 10;
+            } else if (lvl === "3") {
+                health = 5;
+            } else if (lvl === "4a") {
+                health = 5;
+            } else if (lvl === "4b") {
+                health = 2;
+            }
+            obj.health = constrain(obj.health - compensateFPS * (health / 60), 1, obj.maxHealth);
+            fill(255, 0, 0, 50);
+            ellipse(obj.x, obj.y, obj.width + 20, obj.width + 20);
+        }, function(obj, lvl) {
+            var increase = 1.25, increase2 = 1.1;
+            if (lvl === "2") {
+                increase = 1.35;
+                increase2 = 1.15;
+            } else if (lvl === "3") {
+                increase = 1.5;
+                increase2 = 1.2;
+            } else if (lvl === "4a") {
+                increase = 1.75;
+                increase2 = 1.3;
+            } else if (lvl === "4b") {
+                increase = 1.5;
+                increase2 = 1.25;
+            }
+            obj.maxSpeed2 /= increase;
+            obj.damageReduction /= increase;
+            obj.energyReduction /= increase2;
+            if (obj === allies[0] && scene !== "cinematic") {
+                timeDilation /= increase / 2;
+            }
+            obj.onlyReduce = false;
+        }, [["Cost", "10 energy per second", "Speed Increase", "25%", "Damage Reduction", "25%", "Tyon Damage Reduction", "10%", "Health Reduction", "10 per second", "Duration", "5 seconds"], ["Cost", "10 energy per second", "Speed Increase", "35%", "Damage Reduction", "35%", "Tyon Damage Reduction", "15%", "Health Reduction", "10 per second", "Duration", "5 seconds"], ["Cost", "10 energy per second", "Speed Increase", "50%", "Damage Reduction", "50%", "Tyon Damage Reduction", "20%", "Health Reduction", "5 per second", "Duration", "5 seconds"], ["Cost", "10 energy per second", "Speed Increase", "75%", "Damage Reduction", "75%", "Tyon Damage Reduction", "30%", "Health Reduction", "5 per second", "Duration", "5 seconds"], ["Cost", "10 energy per second", "Speed Increase", "50%", "Damage Reduction", "50%", "Tyon Damage Reduction", "25%", "Health Reduction", "2 per second", "Duration", "5 seconds"]], 15, [300, 300, 300, 300, 300], ["Gives a small increase to movement speed and decreases incoming damage at the cost of health.", "Gives a mediocre increase to movement speed and decreases incoming damage at the cost of health.", "Gives a large increase to movement speed and decreases incoming damage at the cost of health.", "Gives a huge increase to movement speed and decreases incoming damage at the cost of health.", "Substantially increases movement speed and decreases incoming damage at the cost of health."], [120]
+    ], // (7) Rage
+    [
+        "Protect", ["d"], function(obj, lvl) {
+            var increase = 1.2;
+            if (lvl === "2") {
+                increase = 1.35;
+            } else if (lvl === "3") {
+                increase = 1.5;
+            } else if (lvl === "4a") {
+                increase = 1.75;
+            } else if (lvl === "4b") {
+                increase = 1.95;
+            }
+            obj.damageReduction *= increase;
+            obj.energyPool -= 30;
+        }, function(obj, lvl) {
+            obj.tyonTime[8] -= compensateFPS;
+            var cost = 5;
+            if (lvl === "2") {
+                cost = 4;
+            } else if (lvl === "3") {
+                cost = 3;
+            } else if (lvl === "4a") {
+                cost = 1;
+            } else if (lvl === "4b") {
+                cost = 2;
+            }
+            obj.energyPool -= compensateFPS * cost / 60;
+            if (lvl === "4a") {
+                obj.health += compensateFPS / 30;
+            }
+            fill(0, 255, 0, 50);
+            ellipse(obj.x, obj.y, obj.width + 20, obj.width + 20);
+        }, function(obj, lvl) {
+            var increase = 1.2;
+            if (lvl === "2") {
+                increase = 1.35;
+            } else if (lvl === "3") {
+                increase = 1.5;
+            } else if (lvl === "4a") {
+                increase = 1.75;
+            } else if (lvl === "4b") {
+                increase = 1.95;
+            }
+            obj.damageReduction /= increase;
+        }, [["Cost\n", "30 energy\n5 energy per second", "Damage Reduction", "20%", "Duration", "10 seconds"], ["Cost\n", "30 energy\n4 energy per second", "Damage Reduction", "35%", "Duration", "10 seconds"], ["Cost\n", "30 energy\n3 energy per second", "Damage Reduction", "50%", "Duration", "10 seconds"], ["Cost\n", "30 energy\n1 energy per second", "Damage Reduction", "75%", "Health Restored", "2 per second", "Duration", "10 seconds"], ["Cost\n", "30 energy\n2 energy per second", "Damage Reduction", "95%", "Duration", "10 seconds"]], 32, [600, 600, 600, 600, 600], ["Grants a small decrease to incoming damage.", "Grants a mediocre decrease to incoming damage.", "Grants a large decrease to incoming damage.", "Grants a substantial decrease to incoming damage and gives minor healing.", "Grants a huge decrease to incoming damage."], [60]
+    ], // (8) Protect
+    [
+        "Absorb", ["d"], function(obj, lvl) {
+            var increase = 1.2, regain = 0.2;
+            if (lvl === "2") {
+                increase = 1.35;
+                regain = 0.3;
+            } else if (lvl === "3") {
+                increase = 1.5;
+                regain = 0.4;
+            } else if (lvl === "4a") {
+                increase = 1.75;
+                regain = 0.75;
+            } else if (lvl === "4b") {
+                increase = 1.95;
+                regain = 0.5;
+            }
+            obj.energyReduction *= increase;
+            obj.energyRegain += regain;
+            obj.energyPool -= 30;
+        }, function(obj, lvl) {
+            obj.tyonTime[9] -= compensateFPS;
+            var cost = 5;
+            if (lvl === "2") {
+                cost = 4;
+            } else if (lvl === "3") {
+                cost = 3;
+            } else if (lvl === "4a") {
+                cost = 1;
+            } else if (lvl === "4b") {
+                cost = 2;
+            }
+            obj.energyPool -= compensateFPS * cost / 60;
+            if (lvl === "4a") {
+                obj.health += compensateFPS / 30;
+            }
+            fill(0, 0, 255, 50);
+            ellipse(obj.x, obj.y, obj.width + 20, obj.width + 20);
+        }, function(obj, lvl) {
+            var increase = 1.2;
+            if (lvl === "2") {
+                increase = 1.35;
+            } else if (lvl === "3") {
+                increase = 1.5;
+            } else if (lvl === "4a") {
+                increase = 1.75;
+            } else if (lvl === "4b") {
+                increase = 1.95;
+            }
+            obj.energyReduction /= increase;
+        }, [["Cost\n", "30 energy\n5 energy per second", "Tyon Damage Reduction", "20%", "Energy Regain", "20%", "Duration", "10 seconds"], ["Cost\n", "30 energy\n4 energy per second", "Tyon Damage Reduction", "35%", "Energy Regain", "30%", "Duration", "10 seconds"], ["Cost\n", "30 energy\n3 energy per second", "Tyon Damage Reduction", "50%", "Energy Regain", "40%", "Duration", "10 seconds"], ["Cost\n", "30 energy\n1 energy per second", "Tyon Damage Reduction", "75%", "Energy Regain", "75%", "Health Restored", "2 per second", "Duration", "10 seconds"], ["Cost\n", "30 energy\n2 energy per second", "Tyon Damage Reduction", "95%", "Energy Regain", "50%", "Duration", "10 seconds"]], 32, [600, 600, 600, 600, 600], ["Grants a small decrease to incoming energy damage and recovers some energy when an attack is absorbed.", "Grants a mediocre decrease to incoming energy damage and recovers some energy when an attack is absorbed.", "Grants a large decrease to incoming energy damage and recovers some energy when an attack is absorbed.", "Substantially decreases incoming energy damage and recovers some energy when an attack is absorbed. Some health is regained passively while used.", "Grants a huge decrease to incoming energy damage and recovers some energy when an attack is absorbed."], [60]
+    ], // (9) Absorb
+    [
+        "Drain", ["a"], function(obj, lvl) {
+        }, function(obj, lvl, arkator) {
+            if ((!pressed(commandKeys.drain) && !obj.NPC) || (!arkator && obj.NPC)) {
+                obj.tyonTime[10] -= compensateFPS;
+            }
+            var otherSide = allies;
+            if (obj.side === "ally") {
+                otherSide = enemies;
+            }
+            var range = 150, radius = 45, maxEnemies = 1, curEnemies = 0, take = 1 / 12, cost = 1 / 3;
+            if (lvl === "2") {
+                range = 175;
+                radius = 60;
+                maxEnemies = 2;
+                take = 7.5 / 60;
+                cost = 1 / 4;
+            } else if (lvl === "3") {
+                range = 200;
+                radius = 90;
+                maxEnemies = 3;
+                take = 1 / 6;
+                cost = 1 / 5;
+            } else if (lvl === "4a") {
+                range = 300;
+                radius = 180;
+                maxEnemies = Infinity;
+                take = 1 / 4;
+                cost = 1 / 6;
+            } else if (lvl === "4b") {
+                range = 200;
+                radius = 360;
+                maxEnemies = Infinity;
+                take = 1 / 4;
+                cost = 1 / 6;
+            }
+            take *= compensateFPS;
+            for (var i = 0; i < otherSide.length; i++) {
+                var a = otherSide[i], b = absValue(atan2(a.y - obj.y, a.x - obj.x) + 90, 360), c = absValue(absValue(obj.rot + 180, 360) - b, 360);
+                if (sq(obj.x - a.x) + sq(obj.y - a.y) <= sq(range) && (c <= radius / 2 || c >= 360 - radius / 2) && seeTarget([obj.x, obj.y], [a.x, a.y], true)) {
+                    var d = dealDamage2(a, take, true);
+                    a.health -= d;
+                    obj.health += d;
+                    curEnemies++;
+                    if (curEnemies >= maxEnemies) {
+                        i = otherSide.length;
+                    }
+                }
+            }
+            obj.energyPool -= cost * compensateFPS;
+            fill(255, 0, 0, 50);
+            arc(obj.x, obj.y, range * 2, range * 2, obj.rot + 90 - radius / 2, obj.rot + 90 + radius / 2);
+        }, function(obj, lvl) {
+        }, [["Cost", "20 energy per second", "Range", "50 pixels", "Damage", "5 per second", "Duration", "Until energy is drained"], ["Cost", "15 energy per second", "Range", "100 pixels", "Damage", "10 per second", "Duration", "Until energy is drained"], ["Cost", "12 energy per second", "Range", "200 pixels", "Damage", "15 per second", "Duration", "Until energy is drained"], ["Cost", "10 energy per second", "Range", "300 pixels", "Damage", "20 per second", "Duration", "Until energy is drained"], ["Cost", "10 energy per second", "Range", "250 pixels", "Damage", "25 per second", "Duration", "Until energy is drained"]], 15, [1, 1, 1, 1, 1], ["Gradually drains health and energy from one enemy within a tight arc and gives it to the player.", "Slowly drains health and energy from two enemies within a small arc and gives it to the player.", "Gradually drains health and energy from three enemies within a large arc and gives it to the player.", "Drains nearby eneimes' health and energy within a substantial arc and grants it to the player.", "Drains nearby enemies' health and energy and gives it to the player."], [30]
+    ], // (10) Drain
+    [
+        "Sight", ["d"], function(obj, lvl) {
+            var increase = 2;
+            if (lvl === "2") {
+                increase = 4;
+            } else if (lvl === "3") {
+                increase = 6;
+            } else if (lvl === "4a") {
+                increase = 8;
+                obj.maxSpeed2 *= 1.2;
+                obj.seeHealth = true;
+            } else if (lvl === "4b") {
+                increase = 16;
+            }
+            obj.canScope = false;
+            obj.sightActive = true;
+            obj.scope2 = sqrt(increase);
+            obj.energyPool -= 20;
+            obj.seeAll = true;
+        }, function(obj, lvl) {
+            obj.tyonTime[11] -= compensateFPS;
+            var cost = 1 / 12;
+            if (lvl === "2") {
+                cost = 1 / 15;
+            } else if (lvl === "3") {
+                cost = 1 / 20;
+            } else if (lvl === "4a") {
+                cost = 1 / 30;
+            } else if (lvl === "4b") {
+                cost = 1 / 30;
+            }
+            obj.energyPool -= cost;
+            fill(255, 255, 0, 50);
+            ellipse(obj.x, obj.y, obj.width + 20, obj.width + 20);
+        }, function(obj, lvl) {
+            if (lvl === "4a") {
+                obj.maxSpeed2 /= 1.2;
+            }
+            obj.canScope = true;
+            obj.sightActive = false;
+            obj.scope2 = 1;
+            obj.seeAll = false;
+            obj.seeHealth = false;
+        }, [["Cost\n", "20 energy\n5 energy per second", "Sight Increase", "2x", "Duration", "5 seconds"], ["Cost\n", "20 energy\n4 energy per second", "Sight Increase", "4x", "Duration", "5 seconds"], ["Cost\n", "20 energy\n3 energy per second", "Sight Increase", "6x", "Duration", "5 seconds"], ["Cost\n", "20 energy\n2 energy per second", "Sight Increase", "8x", "Speed Increase", "20%", "Duration", "5 seconds"], ["Cost\n", "20 energy\n2 energy per second", "Sight Increase", "16x", "Duration", "5 seconds"]], 25, [300, 300, 300, 300, 300], ["Slightly increases the player's field of view and allows the player to see enemies through barriers.", "Increases the player's field of view a mediocre amount and allows the player to see enemies through barriers.", "Largely increases the player's field of view and allows the player to see enemies through barriers.", "Increases the player's field of view a substantial amount and allows the player to see enemies and their health through barriers. Grants a minor increase to movement speed.", "Increases the player's field of view an enormous amount and allows the player to see enemies through barriers."], [120]
+    ], // (11) Sight
+];
+var cancellationChart = [
+    // 0 = can't; 1 = cancel; 2 = good; cancellationChart[wantToUse][currentUsing]
+    "332112222222",
+    "332112222222",
+    "001212222222",
+    "002110002202",
+    "002210002202",
+    "002111221122",
+    "002112021122",
+    "002112211122",
+    "002220001202",
+    "002220002102",
+    "002112221102",
+    "002222222221",
+];
 var grenades = [
 	[
 		"Frag Grenade","Explosion over large area; high damage.",225,90,30,"Frag",2,1,function() {
@@ -2861,711 +2997,330 @@ var grenades = [
 ];
 var armor = [
 	[
-		"None","No armor equipped.",0,0,0,"None",function() {return get(0, 0, 400, 400);},function() {return get(0, 0, 400, 400);},false,"Impossible",
+		"None","No armor equipped.",0,0,0,"None",function() {},function() {},false,"Impossible",
 	],
 	[
-		"Light Vest","25% damage reduction, 150 durability",0.25,150,0,1,function() {
-		    fill(200);
-		    rect(0, 0, 26, 12);
-		    ellipse(0, -6, 26, 2);
-		    ellipse(0, 6, 26, 4);
-		    return get(0, 0, 400, 400);
-		},function() {
-            translate(0, 0.2);
-            scale(1, 0.8);
-            fill(255);
-            rect(0, 5, 14, 6);
-            ellipse(0, 8, 14, 4);
-            polygon(-5, 3, 5, 3, 3, 0, 3, -6, -3, -6, -3, 0);
-            stroke(255);
-            strokeWeight(2);
-            noFill();
-            line(-6, 2, -3, 0);
-            line(6, 2, 3, 0);
-            arc(13, -3, 20, 18, 160, 180);
-            arc(-13, -3, 20, 18, 0, 20);
-            line(3, -3, 3, -6);
-            line(-3, -3, -3, -6);
-            arc(0, -9, 7, 6, 0, 180);
-            strokeWeight(3);
-            line(2, -1, 4, -9);
-            line(-2, -1, -4, -9);
-            return [get(0, 0, 400, 400), 16, 17 * 8 / 7];
-		},true,"Common",
+		"Light Vest","20% damage reduction, 200 durability",0.2,200,0,1,function() {},function() {},true,"Common",
 	],
 	[
-	    "Assault Vest","50% damage reduction, 250 durability",0.5,250,0,2,function() {
-	        fill(100);
-		    rect(0, 0, 26, 12);
-		    ellipse(0, -6, 26, 2);
-		    ellipse(0, 6, 26, 4);
-		    return get(0, 0, 400, 400);
-	    }, function() {
-            fill(255);
-            translate(0, 0.75);
-            scale(1, 0.8);
-            fill(255);
-            rect(0, 3, 14, 10);
-            ellipse(0, 8, 14, 4);
-            polygon(-6, -11, 0, -9, 6, -11, 4, -4, 6, 0, -6, 0, -4, -4);
-            stroke(255);
-            strokeWeight(2);
-            noFill();
-            arc(8.4, -6, 8, 10, 127, 230);
-            arc(-8.4, -6, 8, 10, -50, 53);
-            arc(4, -9, 6, 4, 270, 320);
-            arc(-4, -9, 6, 4, 220, 270);
-            line(-4, -11, -3, -11);
-            line(4, -11, 3, -11);
-            arc(0, -11, 5, 6, 0, 180);
-            return [get(0, 0, 400, 400), 17, 18 * 17 / 15];
-	    },true,"Uncommon",
+		"Police Vest","35% damage reduction, 300 durability",0.35,300,0,2,function() {},function() {},true,"Common",
 	],
 	[
-	    "Heavy Armor","75% damage reduction, 400 durability",0.75,400,0,3,function() {
-	        fill(75, 0, 0);
-		    rect(0, 0, 34, 10, 2);
-	        fill(100, 0, 0);
-		    rect(0, 0, 26, 14);
-		    ellipse(0, -7, 26, 5);
-		    ellipse(0, 7, 26, 5);
-		    return get(0, 0, 400, 400);
-	    }, function() {
-            scale(0.85, 1);
-            fill(255);
-            ellipse(0, 7, 14, 2);
-            polygon(-7, 7, 7, 7, 7, -1, 5, -8, 2.5, -8, 2.5, -6, -2.5, -6, -2.5, -8, -5, -8, -7, -1);
-            triangle(5, -8, 5, -6.5, 9.5, -5);
-            triangle(-5, -8, -5, -6.5, -9.5, -5);
-            stroke(255);
-            strokeWeight(2);
-            noFill();
-            arc(0, -7.84, 5.4, 4, 25, 155);
-            strokeWeight(1);
-            arc(-3.75, 2.4, 16, 20.1, 230, 260);
-            arc(3.75, 2.4, 16, 20.1, 280, 310);
-            return [get(0, 0, 400, 400), 18, 18];
-	    },true,"Rare"
+		"Scout Armor","30% damage reduction, 250 durability, +10% movement",0.3,250,0.1,2,function() {},function() {},true,"Uncommon",
+	],
+	[
+		"Assault Vest","50% damage reduction, 700 durability",0.5,700,0,3,function() {},function() {},true,"Uncommon",
+	],
+	[
+		"Military Armor","65% damage reduction, 550 durability",0.65,550,0,4,function() {},function() {},true,"Rare",
+	],
+	[
+		"Guardsman Armor","60% damage reduction, 650 durability, +15% movement",0.6,650,0.15,4,function() {},function() {},true,"Rare",
+	],
+	[
+		"Commando Armor","80% damage reduction, 1000 durability, +5% movement",0.8,1000,0.05,5,function() {},function() {},true,"Legendary",
+	],
+	[
+		"Z-105 Exosuit","90% damage reduction, 1500 health, -25% movement",0.9,1500,-0.25,5,function() {},function() {},false,"Impossible",
+	],
+	[
+		"Z-106 Exosuit","80% damage reduction, 1200 durability",0.8,1200,0,5,function() {},function() {},false,"Impossible",
+	],
+	[
+		"Ukovia's Armor","75% damage reduction, 1000 durability",0.75,1000,0,5,function() {},function() {},false,"Impossible",
+	],
+	[
+		"X-19 Exosuit","75% damage reduction, 1500 durability",0.75,1500,0,5,function() {},function() {},false,"Impossible",
+	],
+	[
+		"Mk. I Suit","90% damage reduction, 1200 durability",0.9,1200,0,5,function() {},function() {},false,"Impossible",
 	],
 ];
 var backpack = [
 	[
-		"Bag","No backpack; eight spots.",8,"Bag",function() {return get(0, 0, 400, 400);},function() {return get(0, 0, 400, 400);},"Impossible"
+		"Bag","No backpack; eight spots.",8,"Bag",function() {},function() {},"Impossible"
 	],
 	[
-		"Light Pack","2 additional backpack spots.",10,1,function() {
-		    fill(200);
-		    ellipse(0, -4, 20, 18);
-		    return get(0, 0, 400, 400);
-		},function() {
-            translate(0, -2.5);
-            fill(255);
-            ellipse(0, 7, 10, 6);
-            rect(0, 1, 4, 10);
-            arc(-1, 7, 8, 23, 180, 270);
-            arc(1, 7, 8, 23, 270, 360);
-            ellipse(0, -3.8, 4, 2);
-            stroke(255);
-            noFill();
-            strokeWeight(1);
-            arc(-4, -1, 4, 7, 180, 360);
-            arc(4, -1, 4, 7, -180, 0);
-            arc(-4, -1, 4, 16, 0, 180);
-            arc(4, -1, 4, 16, 0, 180);
-            return [get(0, 0, 400, 400), 15, 15 * 15 / 13];
-		},"Common"
+		"Light Pack","1 additional backpack spot.",9,1,function() {},function() {},"Common"
 	],
 	[
-		"Assault Pack","4 additional backpack spots.",12,2,function() {
-		    fill(100);
-		    ellipse(0, -5, 22, 20);
-		    return get(0, 0, 400, 400);
-		},function() {
-            translate(0, -2);
-            fill(255);
-            ellipse(0, 7, 12, 7);
-            polygon(-6, 3, -6, 7, 6, 7, 6, 3, 4, -4, -4, -4);
-            arc(-3, 3, 6, 15, 180, 270);
-            arc(3, 3, 6, 15, 270, 360);
-            ellipse(0, -4, 7, 2);
-            stroke(255);
-            noFill();
-            strokeWeight(1);
-            arc(5, -1, 5, 16, 0, 180);
-            arc(-5, -1, 5, 16, 0, 180);
-            arc(-4.5, -1, 6, 10, 180, 360);
-            arc(4.5, -1, 6, 10, 180, 360);
-            arc(5, -1, 5, 10, 180, 360);
-            arc(-5, -1, 5, 10, 180, 360);
-            arc(4, -1, 7, 14, 0, 180);
-            arc(-4, -1, 7, 14, 0, 180);
-            return [get(0, 0, 400, 400), 18, 17 * 9 / 8];
-		},"Uncommon"
+		"Backpack","2 additional backpack spots.",10,2,function() {},function() {},"Uncommon"
 	],
 	[
-		"Commando Pack","6 additional backpack spots.",14,3,function() {
-		    fill(0);
-		    rect(0, -5, 24, 22, 2);
-		    fill(100);
-		    rect(0, -11, 28, 6, 2);
-		    return get(0, 0, 400, 400);
-		},function() {
-            translate(0, 1.5);
-            fill(255);
-            rect(0, 0, 12, 16, 2);
-            rect(0, -5, 13, 6, 2, 2, 0, 0);
-            ellipse(0, -2, 13, 4);
-            rect(0, 3, 13.5, 4, 1);
-            rect(0, 1, 14.1, 2, 1, 1, 0, 0);
-            strokeWeight(1.2);
-            noFill();
-            stroke(255);
-            arc(3.5, -6.5, 3, 8.2, 180, 270);
-            arc(-3.5, -6.5, 3, 8.2, 270, 360);
-            strokeWeight(1.5);
-            arc(3.5, -6.5, 2, 8, 270, 360);
-            arc(-3.5, -6.5, 2, 8, 180, 270);
-            return [get(0, 0, 400, 400), 16, 20 * 8 / 7];
-		},"Rare"
+		"Hiking Pack","3 additional backpack spots.",11,3,function() {},function() {},"Uncommon"
+	],
+	[
+		"Military Pack","4 additional backpack spots.",12,4,function() {},function() {},"Rare"
+	],
+	[
+		"Commando Pack","6 additional backpack spots.",14,5,function() {},function() {},"Legendary"
 	],
 ];
 var ammo = {
-	"Light Rounds": ["Light Rounds",2.5,1694484580,-14236,60,30,[],[],function() {
-        translate(0, 0.5);
-        fill(255);
-        rect(0, 1, 4, 5);
-        rect(0, 0, 3, 8);
-        rect(0, 4.5, 4, 1, 0, 0, 1, 1);
-        arc(0, -2, 4, 8, 180, 360);
-        return [get(0, 0, 400, 400), 4, 11];
-	},"Common"],
-	"Heavy Rounds": ["Heavy Rounds",3,1690894280,-3604536,50,25,[],[],function() {
-	    translate(0, 1);
-        fill(255);
-        polygon(-2, -2, -1.5, -3, 1.5, -3, 2, -2, 2, 5, -2, 5);
-        rect(0, 6, 4, 1, 0, 0, 1, 1);
-        rect(0, 4, 3, 4);
-        arc(-0.4, -1, 3.5, 15, 284, 360);
-        arc(0.4, -1, 3.5, 15, 180, 256);
-        return [get(0, 0, 400, 400), 4, 15];
-	}, "Common"],
-	"Metallic Bolts": ["Metallic Bolts",3.5,1690880255,-3618561,40,20,[],[],function() {
-	    translate(0, 1);
-        fill(255);
-        polygon(-2, -2, -1.5, -3, 1.5, -3, 2, -2, 2, 1, -2, 1);
-        rect(0, 5, 4, 3, 0, 0, 1, 1);
-        rect(0, 2, 3.7, 8);
-        arc(-0.4, -1, 4, 15, 282, 360);
-        arc(0.4, -1, 4, 15, 180, 258);
-        return [get(0, 0, 400, 400), 4, 15];
-	}, "Uncommon"],
-	"Shotgun Rounds": ["Shotgun Rounds",6,1690880200,-65536,15,5,[],[],function() {
-        fill(255);
-        rect(0, 0, 4, 8, 1);
-        rect(0, 3.5, 5, 1, 1, 1, 0, 0);
-        return [get(0, 0, 400, 400), 5, 8];
-	}, "Uncommon"],
-	"Fuel": ["Fuel",2,845440100,-3631616,500,250,["Ground",false,"Fire",true,"b",100,"rd",[10,15],"gd",[5,8],"bd",[30,40],"ad",[50,100],"fd",[13,15]],[],function() {
-	    translate(0, 0.75);
-        fill(255);
-        rect(0, 1, 6, 12);
-        ellipse(0, -5, 6, 6);
-        ellipse(0, 7, 6, 1);
-        rect(0, -5, 3, 8);
-        return [get(0, 0, 400, 400), 6, 17];
-	},"Impossible"],
-	"Rockets": ["Rockets",10,1694498815,-16777216,2,1,["Ground",false,"RPG",true,"smokeTrail",true],[],function() {
-	    rotate(45);
-        fill(255);
-        rect(0, 2, 1, 6, 1);
-        polygon(-0.25, -4.5, -0.25, -5, 0.25, -5, 0.25, -4.5, 1, -1, 1, 1, 0.5, 2, -0.5, 2, -1, 1, -1, -1);
-        return [get(0, 0, 400, 400), 2, 10];
-	},"Impossible"],
-	"Debris": ["Debris",3,0,0,0,0,["Ground",false],[],function(){return get(0, 0, 400, 400);},"Impossible"],
+	"Green-Level": ["Green-Level Energy",3,-1775042791,-13435111,60,30,[],[],function(){},"Common"],
+	"Yellow-Level": ["Yellow-Level Energy",4,1694498610,-206,50,25,[],[],function(){},"Common"],
+	"Orange-Level": ["Orange-Level Energy",4,-1761634816,-27136,40,20,[],[],function(){},"Uncommon"],
+	"Red-Level": ["Red-Level Energy",5,1694446130,-52686,8,4,[],[],function(){},"Legendary"],
+	"5mm": ["5mm Ammunition",2.5,1694484580,-14236,60,30,[],[],function(){},"Common"],
+	"6mm": ["6mm Ammunition",3,1690894280,-3604536,50,25,[],[],function(){},"Uncommon"],
+	"7mm": ["7mm Ammunition",3.5,1690880255,-3618561,40,20,[],[],function(){},"Uncommon"],
+	"12 Gauge": ["12 Gauge Shotgun Rounds",6,1690880200,-65536,15,5,[],[],function(){},"Common"],
+	"45mm Grenade": ["45mm Grenade",6,1694498815,-1,10,5,["Ground",false,"Grenade",true],[],function(){},"Impossible"],
+	"Fuel": ["Fuel",2,845440100,-3631616,500,250,["Ground",false,"Fire",true,"b",100,"rd",[10,15],"gd",[5,8],"bd",[30,40],"ad",[50,100],"fd",[13,15]],[],function(){},"Impossible"],
+	"RPG Ammo": ["Rockets",10,1694498815,-16777216,2,1,["Ground",false,"RPG",true,"smokeTrail",true],[],function(){},"Impossible"],
+	"Debris": ["Debris",3,0,0,0,0,["Ground",false],[],function(){},"Impossible"],
 	"Debris2": ["Debris",2,-39936,0,0,0,["Ground",false],[],function(){return get(0, 0, 400, 400);},"Impossible"],
 	"Debris3": ["Debris",2,-65536,0,0,0,["Ground",false],[],function(){return get(0, 0, 400, 400);},"Impossible"],
 	"Debris4": ["Debris",2,-256,0,0,0,["Ground",false],[],function(){return get(0, 0, 400, 400);},"Impossible"]
 };
 var medical = [
 	[
-		"Bandage","Returns 25% health; 2 second use time",120,25,4,1,2,"Health",function() {
-		    fill(200, 190, 160);
-		    rect(0, 0, 10, 4);
-		    fill(255);
-		    rect(0, 0, 5, 5);
-		    return get(0, 0, 400, 400);
-		},function() {
-            fill(255);
-            rect(7, 0, 8, 6, 0, 2, 2, 0);
-            rect(-7, 0, 8, 6, 2, 0, 0, 2);
-            strokeWeight(1);
-            stroke(255);
-            noFill();
-            for (var i = -1; i <= 1; i++) {
-                for (var j = -1; j <= 1; j++) {
-                    ellipse(i * 2, j * 2, 2, 2);
-                }
-            }
-            rect(-0.5, -0.5, 6, 6, 1);
-		    return [get(0, 0, 400, 400), 22, 7];
-		}, "Common"
+		"Syringe","Returns 25% health; 3 second use time",180,25,4,1,2,"Health",function() {},function() {}, "Common"
 	],
 	[
-		"Medkit","Returns 100% health; 5 second use time.",300,100,2,1,1,"Health",function() {
-		    fill(255);
-		    rect(0, 0, 8, 8);
-		    fill(255, 0, 0);
-		    rect(0, 0, 1, 6);
-		    rect(0, 0, 6, 1);
-		    return get(0, 0, 400, 400);
-		},function() {
-            fill(255);
-            strokeWeight(1);
-            rect(4, -3, 6, 4, 0, 2, 0, 0);
-            rect(-4, -3, 6, 4, 2, 0, 0, 0);
-            rect(-4, 3, 6, 4, 0, 0, 0, 2);
-            rect(4, 3, 6, 4, 0, 0, 2, 0);
-            rect(5.5, 0, 3, 4);
-            rect(-5.5, 0, 3, 4);
-            rect(0, -4.5, 3, 1);
-            rect(0, 4.5, 3, 1);
-            noFill();
-            stroke(255);
-            arc(0, -3, 3, 3, 180, 360);
-            arc(0, 3, 3, 3, 0, 180);
-            arc(3, 0, 3, 3, -90, 90);
-            arc(-3, 0, 3, 3, 90, 270);
-            polygon(-1.5, -3, -1.5, -1.5, -3, -1.5);
-            polygon(1.5, -3, 1.5, -1.5, 3, -1.5);
-            polygon(-1.5, 3, -1.5, 1.5, -3, 1.5);
-            polygon(1.5, 3, 1.5, 1.5, 3, 1.5);
-            return [get(0, 0, 400, 400), 18, 90 / 7];
-		}, "Uncommon"
+		"Medkit","Returns 100% health; 6 second use time.",360,100,2,1,1,"Health",function() {},function() {}, "Uncommon"
 	],
 	[
-		"Energy Drink","Grants 25% adrenaline (increases speed and slowly restores health); 2 second use time.",120,25,4,1,2,"Adrenaline",function() {
-		    fill(0, 100, 255);
-		    ellipse(0, 0, 5, 5);
-		    return get(0, 0, 400, 400);
-		},function() {
-		    translate(0, 0.6);
-            fill(255);
-            rect(0, 0, 6, 12);
-            ellipse(0, 6, 6, 1);
-            ellipse(0, -6, 6, 1);
-            rect(0, 5.5, 5, 2);
-            rect(0, -6.5, 6, 0.5, 1);
-            strokeWeight(0.5);
-            stroke(255);
-            line(1.5, -6, 2, -7.5);
-            return [get(0, 0, 400, 400), 6, 15];
-		}, "Common"
+		"Energy Drink","Grants 25% adrenaline (increases speed and slowly restores health); 3 second use time.",180,25,4,1,2,"Adrenaline",function() {},function() {}, "Common"
 	],
 	[
-		"Stim Injector","Grants 100% adrenaline (increases speed and slowly restores health); 5 second use time.",300,100,2,1,1,"Adrenaline",function() {
-            stroke(0);
-            strokeWeight(1);
-            line(0, 0, 0, 15);
-            strokeWeight(2);
-            stroke(0, 255, 255, 100);
-            line(0, 0, 0, 10);
-            return get(0, 0, 400, 400);
-		},function() {
-            fill(255);
-            rect(0, 0, 30, 1);
-            rect(-12, 0, 6, 3);
-            rect(-14.5, 0, 1, 4, 1);
-            rect(-9, 0, 1, 8, 1);
-            rect(0, 0, 18, 4);
-            ellipse(9, 0, 1, 4);
-            rect(9, 0, 6, 2);
-            ellipse(12, 0, 1, 2);
-            return [get(0, 0, 400, 400), 30, 9];
-		}, "Uncommon"
+		"Stim Injector","Grants 100% adrenaline (increases speed and slowly restores health); 6 second use time.",360,100,2,1,1,"Adrenaline",function() {},function() {}, "Uncommon"
 	],
 ];
 var npcTypes = {
-    // Side (0), Loadout (1), Skill (2), Armor (3), Size (4), Health (5), Speed (6), Graphic (7)
+    // Side (0), Loadout (1), Skill (2), Armor (3), Size (4), Health (5), Speed (6), Graphic (7), Magic (8), Energy Pool (9)
     // Skill (2): [Aim, Reaction, Evasion, Aggression, Intelligence]
-    "Player": ["ally", ["NONE", "NONE", 0], [0, 0, 0, 0, 7], 0, 20, 200, 2.5, function() {
-        return playerGraphic(playerInfo[2], playerInfo[3], playerInfo[4]);
-    }],
-    "Guard_0": ["enemy", [0, "NONE", 0], [1, 1, 1, 5, 0], 0, 20, 20, 2, function() {
-        body(0, -100, 30, color(0, 50, 0), color(0, 100, 0));
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_1": ["enemy", [0, "NONE", 0], [4, 4, 2, 5, 4], 0, 20, 50, 2, function() {
-        body(0, -100, 30, color(0, 70, 0), color(0, 120, 0));
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(50), color(30));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_2": ["enemy", [2, "NONE", 0], [5, 5, 2, 6, 5], 0, 20, 60, 2, function() {
-        body(0, -100, 30, 0, 150);
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_3": ["enemy", [3, "NONE", 0], [4, 6, 4, 8, 5], 1, 20, 40, 2.2, function() {
-        body(0, -100, 30, color(70, 50, 50), color(120, 50, 50));
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_4": ["enemy", [4, "NONE", 0], [6, 5, 5, 5, 8], 1, 20, 50, 2, function() {
-        body(0, -100, 30, 100, 150);
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Sergeant": ["enemy", [5, "NONE", 0], [7, 6, 3, 6, 8], 1, 20, 50, 2, function() {
-        body(0, -100, 30, 50, 100);
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(50), color(70));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Lieutenant": ["enemy", [1, "NONE", 0], [8, 6, 6, 7, 8], 2, 20, 60, 2, function() {
-        body(0, -100, 30, 50, 100);
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        fill(105, 80, 55);
-        stroke(135, 110, 85);
-        ellipse(0, -3, 20, 17);
-        ellipse(0, -12, 6, 6);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Captain": ["enemy", [0, "NONE", 0], [9, 7, 5, 5, 9], 3, 20, 50, 2.2, function() {
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(235), color(255));
-        fill(0);
-        stroke(50);
-        ellipse(0, 2, 15, 12);
-        body(0, -100, 30, color(0, 50, 125), color(0, 50, 175));
-        ellipse(0, -3, 21, 17);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Colonel": ["enemy", ["NONE", "NONE", 3], [10, 10, 5, 8, 8], 3, 20, 100, 2.5, function(){
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(235), color(255));
-        fill(100, 100, 0);
-        stroke(155, 155, 0);
-        ellipse(0, 2, 15, 12);
-        body(0, -100, 30, color(0, 50, 125), color(0, 50, 175));
-        ellipse(0, -3, 21, 17);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Gunner": ["enemy", ["NONE", "NONE", 0], [7, 7, 1, 7, 5], 0, 20, 40, 2, function() {
-        body(0, -100, 30, 200, 255);
-        head(0, 0, 20, color(125, 100, 80), color(105, 80, 60));
-        head(0, 100, 6, color(50), color(30));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Specialist": ["enemy", [9, "NONE", 0], [5, 5, 4, 9, 5], 2, 25, 75, 2, function() {
-        head(0, 0, 25, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 7.5, color(90, 150, 90), color(90, 130, 90));
-        body(0, -100, 37.5, color(90, 130, 90), color(90, 150, 90));
-        rect(0, 0, 20, 18, 5);
-        ellipse(0, -3, 25, 20);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Sniper": ["enemy", [7, "NONE", 0], [8, 4, 6, 6, 5], 1, 20, 50, 2.2, function() {
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        body(0, -100, 30, color(200), color(255));
-        ellipse(0, -2, 20, 18);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Guard_Rockettrooper": ["enemy", [10, "NONE", 0], [6, 4, 2, 4, 5], 2, 25, 60, 2, function() {
-        body(0, -100, 37.5, 0, 50);
-        head(0, 0, 25, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 7.5, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Tech": ["enemy", ["NONE", "NONE", 0], [10, 5, 4, 8, 8], 0, 20, 30, 2.5, function() {
-        body(0, -100, 30, color(0, 200, 0), color(0, 255, 0));
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(200), color(255));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Defense_Bot": ["enemy", [12, "NONE", 0], [6, 8, 1, 8, 5], 0, 30, 100, 2, function() {
-        head(0, 0, 30, color(150), color(120));
-        stroke(200, 0, 0);
-        strokeWeight(5);
-        line(-8, -11, -6, 12);
-        line(8, -11, 6, 12);
-        strokeWeight(2);
-        stroke(170);
-        fill(140);
-        polygon(4, 10, 0, 11, -4, 10, -8, -8, 0, -9, 8, -8, 4, 10);
-        strokeWeight(4);
-        stroke(0, 200, 255);
-        line(-3, 8, 0, 9);
-        line(0, 9, 3, 8);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Medical_Bot": ["enemy", ["NONE", "NONE", 4], [7, 7, 1, 7, 1], 0, 20, 100, 1.5, function() {
-        head(0, 0, 20, color(200), color(180));
-        stroke(255, 0, 0);
-        line(0, -7, 0, -1);
-        line(-3, -4, 3, -4);
-        stroke(0, 200, 255);
-        noFill();
-        arc(0, 0, 16, 15, 60, 120);
-        line(4, 6, -4, 6);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Elite_Trooper": ["enemy", [6, "NONE", 0], [9, 6, 4, 7, 9], 3, 20, 50, 2.1, function() {
-        body(0, -100, 30, 0, 50);
-        head(0, 0, 20, color(50), color(70));
-        head(0, 100, 6, color(50), color(30));
-        stroke(255, 0, 0);
-        noFill();
-        strokeWeight(3);
-        arc(0, 0, 15, 15, 60, 120);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Elite_Trooper_Captain": ["enemy", [11, "NONE", 0], [10, 8, 6, 6, 10], 3, 20, 100, 2.1, function() {
-        body(0, -100, 30, color(120, 0, 0), color(170, 0, 0));
-        head(0, 0, 20, color(120, 0, 0), color(170, 0, 0));
-        head(0, 100, 6, color(170, 0, 0), color(120, 0, 0));
-        stroke(0);
-        noFill();
-        strokeWeight(3);
-        arc(0, 0, 15, 15, 60, 120);
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Red_Team": ["enemy", [0, "NONE", 0], [10, 10, 10, 10, 10], 0, 20, 100, 2.5, function() {
-        body(0, -100, 30, color(100, 0, 0), color(150, 0, 0));
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
-    "Blue_Team": ["ally", [0, "NONE", 0], [10, 10, 10, 10, 10], 0, 20, 100, 2.5, function() {
-        body(0, -100, 30, color(0, 0, 100), color(0, 0, 150));
-        head(0, 0, 20, color(250, 220, 170), color(230, 200, 150));
-        head(0, 100, 6, color(250, 220, 170), color(230, 200, 150));
-        return [get(150, 50, 100, 100), get(150, 150, 100, 100), get(150, 250, 100, 100)];
-    }],
+    "Player": ["ally", ["NONE", "NONE", 0], [0, 0, 0, 0, 7], 0, 20, 100, 2.5, function() {}],
+    "Dummy": ["enemy", ["NONE", "NONE", 0], [0, 0, 0, 0, 0], 0, 20, 100, 0, function() {}],
+    "Dawn_Henchman": ["enemy", ["NONE", "NONE", 0], [6, 5, 1, 8, 6], 0, 20, 120, 2.2, function() {}],
+    "Dawn_Sniper_1": ["enemy", [25, "NONE", 0], [6, 2, 1, 3, 2], 0, 20, 40, 2.2, function() {}],
+    "Dawn_Sniper_2": ["enemy", [20, "NONE", 0], [7, 3, 1, 2, 2], 0, 20, 50, 2.3, function() {}],
+    "Dawn_Guard_1": ["enemy", [0, "NONE", 0], [4, 3, 3, 4, 2], 0, 20, 50, 2.2, function() {}],
+    "Dawn_Guard_2": ["enemy", [5, "NONE", 0], [5, 4, 2, 2, 2], 0, 20, 50, 2.3, function() {}],
+    "Dawn_Guard_3": ["enemy", [15, "NONE", 0], [5, 3, 4, 4, 5], 1, 20, 60, 2.5, function() {}],
+    "Dawn_Guard_4": ["enemy", [1, "NONE", 0], [6, 5, 4, 5, 5], 1, 20, 65, 2.5, function() {}],
+    "Dawn_Hunter_1": ["enemy", [6, "NONE", 0], [6, 4, 4, 6, 4], 2, 20, 60, 2.5, function() {}],
+    "Dawn_Hunter_2": ["enemy", [7, "NONE", 0], [6, 4, 4, 6, 4], 2, 20, 60, 2.5, function() {}],
+    "Dawn_Captain": ["enemy", [2, "NONE", 0], [6, 5, 5, 7, 5], 3, 20, 80, 2.5, function() {}],
+    "Dawn_Prison_Bot": ["enemy", [41, "NONE", 0], [7, 7, 1, 7, 10], 0, 25, 100, 1.5, function() {}],
+    "Dawn_Prisoner": ["enemy", [0, "NONE", 0], [6, 10, 1, 8, 1], 0, 25, 20, 2, function() {}],
+    "Partner": ["enemy", [20, "NONE", 0], [8, 7, 6, 7, 8], 5, 20, 200, 2.5, function() {}],
+    "Pedestrian_1": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_2": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 25, 100, 1, function() {}],
+    "Pedestrian_3": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_4": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_5": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_6": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 15, 100, 1, function() {}],
+    "Pedestrian_7": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_8": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_9": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Pedestrian_10": ["ally", ["NONE", "NONE", 0], [1, 5, 10, 1, 0], 0, 20, 100, 1, function() {}],
+    "Fed_Guard": ["ally", [30, "NONE", 0], [8, 7, 8, 8, 0], 6, 20, 100, 2.5, function() {}],
+    "Fed_Guard_Lieutenant": ["ally", [2, "NONE", 0], [9, 8, 8, 8, 0], 6, 20, 150, 2.5, function() {}],
+    "Fed_Guard_Captain": ["ally", [17, "NONE", 0], [10, 9, 9, 9, 0], 7, 20, 250, 2.5, function() {}],
+    "Peacekeeper": ["ally", [34, "NONE", 0], [5, 5, 5, 5, 5], 4, 25, 100, 2.5, function() {}],
+    "Councilmember": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 100, 1.25, function() {}],
+    "Arkator_1": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 100, 1, function() {}],
+    "Port_Worker": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 40, 1, function() {}],
+    "Port_Overseer": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 25, 60, 0.75, function() {}],
+    "Cyin_Security_Officer": ["ally", [11, "NONE", 0], [10, 10, 1, 1, 1], 2, 20, 50, 2.5, function() {}],
+    "Cyin_Security_Captain": ["ally", [16, "NONE", 0], [10, 10, 1, 1, 1], 3, 20, 50, 2.5, function() {}],
+    "Cyin_Clerk": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 1, function() {}],
+    "Dawn_Soldier_1": ["enemy", [10, "NONE", 0], [5, 4, 3, 5, 3], 1, 20, 60, 2.5, function() {}],
+    "Dawn_Soldier_2": ["enemy", [11, "NONE", 0], [6, 5, 2, 5, 3], 1, 20, 65, 2.5, function() {}],
+    "Dawn_Soldier_3": ["enemy", [15, "NONE", 0], [6, 4, 3, 6, 4], 2, 20, 60, 2.5, function() {}],
+    "Dawn_Soldier_4": ["enemy", [16, "NONE", 0], [6, 5, 5, 6, 4], 2, 22, 50, 2.5, function() {}],
+    "Dawn_Gunner": ["enemy", [30, "NONE", 0], [5, 6, 1, 7, 2], 4, 25, 60, 1.75, function() {}],
+    "Dawn_Pilot": ["enemy", [2, "NONE", 0], [7, 5, 4, 6, 4], 1, 20, 50, 2.5, function() {}],
+    "Dawn_Lieutenant": ["enemy", [11, "NONE", 0], [6, 5, 5, 5, 6], 2, 20, 60, 2.5, function() {}],
+    "Dawn_Lieutenant_2": ["enemy", [16, "NONE", 0], [7, 6, 4, 3, 7], 2, 20, 70, 2.5, function() {}],
+    "Iethan_Warrior": ["enemy", ["NONE", "NONE", 1], [9, 7, 6, 8, 10], 7, 20, 100, 2.5, function() {}, ["3", "3", "2", "2", "0", "3", "2", "2", "0", "0", "2", "3"], 100],
+    "Isha_Ail'an": ["enemy", [3, "NONE", 1], [8, 7, 6, 7, 8], 5, 20, 100, 2.5, function() {}],
+    "Skar_Darin": ["enemy", [31, "NONE", 0], [6, 6, 2, 9, 5], 6, 25, 150, 2.25, function() {}],
+    "Dawn_Space_Guard_1": ["enemy", [16, "NONE", 0], [6, 6, 4, 7, 7], 4, 20, 60, 2.5, function() {}],
+    "Dawn_Space_Guard_2": ["enemy", [21, "NONE", 0], [7, 5, 1, 5, 6], 2, 20, 50, 2.1, function() {}],
+    "Dawn_Space_Guard_3": ["enemy", [26, "NONE", 0], [8, 5, 1, 4, 6], 2, 20, 45, 2, function() {}],
+    "Dawn_Technician": ["enemy", [0, "NONE", 0], [5, 3, 2, 3, 8], 1, 20, 40, 2.5, function() {}],
+    "Ukovia": ["enemy", [38, "NONE", 0], [8, 8, 8, 8, 10], 7, 20, 150, 2.5, function() {}],
+    "Mine_Crawler": ["enemy", ["NONE", "NONE", 0], [10, 8, 1, 10, 1], 0, 15, 20, 3, function() {}],
+    "Station_Tech_1": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Station_Tech_2": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Station_Tech_3": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Protector_Robot": ["ally", [42, "NONE", 0], [8, 8, 2, 6, 10], 0, 20, 100, 2.5, function() {}],
+    "Station_Ped_1": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Station_Ped_2": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Station_Ped_3": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Max": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 20, 50, 2.5, function() {}],
+    "Junker_1": ["enemy", [6, "NONE", 0], [8, 7, 3, 7, 9], 0, 20, 100, 2.5, function() {}],
+    "Junker_2": ["enemy", [12, "NONE", 0], [7, 7, 2, 8, 9], 0, 20, 100, 2.5, function() {}],
+    "Junker_3": ["enemy", [21, "NONE", 0], [8, 7, 3, 7, 9], 0, 20, 100, 2.5, function() {}],
+    "Junker_4": ["enemy", [31, "NONE", 0], [7, 6, 1, 7, 9], 0, 20, 100, 2.5, function() {}],
+    "Maintenance_Bot": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 15, 100, 0.5, function() {}],
+    "Izok_Guard_1": ["ally", [18, "NONE", 0], [6, 5, 4, 6, 7], 6, 20, 80, 2.5, function() {}],
+    "Izok_Guard_2": ["ally", [31, "NONE", 0], [4, 4, 1, 8, 7], 6, 22, 100, 2.5, function() {}],
+    "Izok_Guard_3": ["ally", [7, "NONE", 0], [5, 8, 5, 6, 7], 6, 20, 120, 2.5, function() {}],
+    "Izok_Guard_4": ["ally", [2, "NONE", 0], [7, 6, 5, 6, 7], 6, 20, 80, 2.5, function() {}],
+    "Izok_Guard_Captain": ["ally", [2, "NONE", 0], [9, 8, 5, 8, 9], 6, 20, 150, 2.5, function() {}],
+    "King_Adarn": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 25, 100, 2, function() {}],
+    "Queen_Talia": ["ally", ["NONE", "NONE", 0], [10, 10, 1, 1, 1], 0, 18, 100, 2, function() {}],
+    "Izok_Rebel_1": ["enemy", [0, "NONE", 0], [6, 5, 3, 6, 0], 0, 20, 50, 2.5, function() {}],
+    "Izok_Rebel_2": ["enemy", [5, "NONE", 0], [4, 4, 3, 7, 0], 0, 20, 50, 2.5, function() {}],
+    "Izok_Rebel_3": ["enemy", [10, "NONE", 0], [4, 6, 6, 6, 0], 1, 20, 50, 2.5, function() {}],
+    "Izok_Rebel_4": ["enemy", [11, "NONE", 0], [5, 6, 6, 7, 0], 2, 20, 60, 2.6, function() {}],
+    "Izok_Rebel_5": ["enemy", [30, "NONE", 0], [5, 3, 1, 8, 0], 2, 22, 70, 2.3, function() {}],
+    "Izok_Rebel_6": ["enemy", [15, "NONE", 0], [8, 5, 2, 7, 0], 1, 20, 60, 2.5, function() {}],
+    "Izok_Rebel_Sniper_1": ["enemy", [21, "NONE", 0], [8, 5, 5, 7, 0], 3, 20, 40, 2.5, function() {}],
+    "Izok_Rebel_Sniper_2": ["enemy", [26, "NONE", 0], [9, 5, 5, 7, 0], 3, 20, 40, 2.5, function() {}],
+    "Izok_Rebel_Elite_1": ["enemy", [2, "NONE", 0], [6, 4, 5, 6, 0], 2, 20, 60, 2.5, function() {}],
+    "Izok_Rebel_Elite_2": ["enemy", [31, "NONE", 0], [5, 2, 1, 8, 0], 4, 25, 70, 2.5, function() {}],
+    "Izok_Rebel_Elite_3": ["enemy", [12, "NONE", 0], [7, 6, 4, 7, 0], 3, 18, 50, 2.5, function() {}],
+    "Izok_Rebel_Elite_4": ["enemy", [16, "NONE", 0], [7, 5, 5, 8, 0], 1, 20, 70, 2.5, function() {}],
+    "Izok_Rebel_Elite_5": ["enemy", [17, "NONE", 0], [5, 4, 5, 7, 0], 4, 20, 60, 2.5, function() {}],
+    "Imperial_Trooper": ["enemy", [16, "NONE", 0], [6, 5, 3, 6, 0], 4, 20, 75, 2.5, function() {}],
+    "Imperial_Assault_Trooper": ["enemy", [16, "NONE", 0], [5, 4, 2, 8, 0], 4, 20, 100, 2.4, function() {}],
+    "Imperial_Heavy_Trooper": ["enemy", [31, "NONE", 0], [6, 4, 1, 8, 0], 5, 25, 100, 2.4, function() {}],
+    "Imperial_Sniper": ["enemy", [22, "NONE", 0], [9, 5, 5, 5, 0], 3, 20, 50, 2.5, function() {}],
+    "Imperial_Shotgun_Trooper": ["enemy", [6, "NONE", 0], [6, 5, 4, 8, 0], 4, 22, 60, 2.4, function() {}],
+    "Imperial_Sergeant": ["enemy", [12, "NONE", 0], [7, 6, 6, 8, 0], 5, 20, 65, 2.5, function() {}],
+    "Imperial_Lieutenant": ["enemy", [16, "NONE", 0], [8, 7, 6, 7, 0], 5, 20, 70, 2.5, function() {}],
+    "Imperial_Captain": ["enemy", [2, "NONE", 0], [8, 7, 6, 7, 0], 5, 20, 100, 2.5, function() {}],
+    "Imperial_Flametrooper": ["enemy", [37, "NONE", 0], [5, 4, 1, 8, 0], 12, 30, 100, 2.25, function() {}],
+    "Imperial_Rockettrooper": ["enemy", [39, "NONE", 0], [8, 5, 1, 5, 0], 7, 25, 100, 2, function() {}],
+    "Imperial_Pilot": ["enemy", [1, "NONE", 0], [5, 5, 5, 5, 0], 0, 20, 50, 2.5, function() {}],
+    "Imperial_Bomber_Pilot": ["enemy", [1, "NONE", 0], [5, 5, 5, 5, 0], 1, 20, 50, 2.5, function() {}],
+    "Imperial_Space_Force_Captain": ["enemy", [2, "NONE", 0], [7, 5, 5, 2, 0], 1, 20, 100, 2.5, function() {}],
+    "Imperial_Naval_Officer": ["enemy", [1, "NONE", 0], [7, 5, 5, 2, 0], 0, 20, 60, 2.5, function() {}],
+    "Imperial_Naval_Captain": ["enemy", [4, "NONE", 0], [8, 7, 8, 8, 0], 0, 20, 120, 2.5, function() {}],
+    "Arathean_1": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 6, 5], 0, 20, 200, 2.5, function() {}],
+    "Arathean_2": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 6, 5], 0, 20, 225, 2.5, function() {}],
+    "Arathean_3": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 6, 5], 0, 20, 200, 2.5, function() {}],
+    "Arathean_4": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 6, 5], 0, 20, 200, 2.5, function() {}],
+    "Arathean_5": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 6, 5], 0, 20, 200, 2.5, function() {}],
+    "Kyle": ["ally", ["NONE", "NONE", 0], [10, 9, 6, 10, 7], 0, 20, 200, 2.5, function() {}, ["3", "3", "3", "2", "4b", "3", "2", "3", "4a", "4a", "0", "4b"]],
+    "Gedron": ["ally", ["NONE", "NONE", 0], [10, 10, 10, 5, 8], 0, 20, 200, 2.5, function() {}, ["4a", "4a", "4a", "0", "4a", "3", "3", "3", "4a", "4a", "3", "4b"]],
+    "Arathean_Strike_Team_1": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 10, 5], 0, 20, 200, 2.5, function() {}, ["3", "3", "3", "3", "3", "3", "3", "3", "4a", "4a", "0", "4a"]],
+    "Arathean_Strike_Team_2": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 10, 5], 0, 20, 225, 2.5, function() {}, ["4a", "4a", "4a", "0", "4a", "3", "3", "3", "4b", "4b", "0", "4a"]],
+    "Arathean_Strike_Team_3": ["ally", ["NONE", "NONE", 0], [10, 7, 8, 10, 5], 0, 20, 200, 2.5, function() {}, ["4b", "4b", "4b", "0", "4b", "4a", "4a", "4b", "4a", "4a", "4b", "4a"]],
+    "Iethan_Acolyte": ["enemy", ["NONE", "NONE", 0], [10, 10, 5, 10, 6], 0, 20, 200, 2.5, function() {}, ["3", "3", "3", "0", "0", "3", "3", "2", "0", "3", "2", "3"]],
+    "Arkator_2": ["enemy", ["NONE", "NONE", 0], [10, 10, 10, 10, 10], 0, 20, 500, 2.5, function() {}, ["4b", "4b", "4b", "4b", "4b", "4b", "4b", "4b", "4a", "4a", "4b", "4a"], 150],
 };
 var levelColors = [
     0, // Nothing
-    -3309774, // Level 1 -- Bronze
-    -2894893, // Level 2 -- Silver
-    -1652736, // Level 3 -- Gold
+    -1, // Level 1 -- White
+    -10158236, // Level 2 -- Green
+    -16725791, // Level 3 -- Blue
+    -2333441, // Level 4 -- Purple
+    -39836, // Level 5 -- Red
 ];
 var doorTypes = {
-    "Cell_Door": [70, 8, "Slide", 10, function() {
-        fill(100);
-        rect(0, 0, 70, 8);
-        fill(255, 0, 0, 100);
-        rect(0, 0, 34, 4, 3);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(100);
-        rect(0, 0, 70, 8);
-        fill(100, 255, 0, 100);
-        rect(0, 0, 34, 4, 3);
-        return get(0, 0, 400, 400);
-    }, true],
-    "Door_1": [40, 8, "Slide", 10, function() {
-        fill(100);
-        rect(0, 0, 40, 8);
-        fill(255, 0, 0, 100);
-        rect(0, 0, 24, 4, 3);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(100);
-        rect(0, 0, 40, 8);
-        fill(100, 255, 0, 100);
-        rect(0, 0, 24, 4, 3);
-        return get(0, 0, 400, 400);
-    }, true],
-    "Door_2": [50, 8, "Slide", 10, function() {
-        fill(100);
-        rect(0, 0, 50, 8);
-        fill(255, 0, 0, 100);
-        rect(0, 0, 29, 4, 3);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(100);
-        rect(0, 0, 50, 8);
-        fill(100, 255, 0, 100);
-        rect(0, 0, 29, 4, 3);
-        return get(0, 0, 400, 400);
-    }, true],
-    "Door_3": [100, 14, "Slide", 50, function() {
-        fill(100);
-        rect(0, 0, 100, 14);
-        fill(255, 0, 0, 100);
-        rect(0, 3, 79, 8, 10, 10, 0, 0);
-    }, function() {
-        fill(100);
-        rect(0, 0, 100, 14);
-        fill(255, 0, 0, 100);
-        rect(0, 3, 79, 8, 10, 10, 0, 0);
-    }, true],
-    "Laser_1": [100, 8, "Disappear", 10, function() {
-        return get(0, 0, 400, 400);
-    }, function() {
-        return get(0, 0, 400, 400);
-    }, false],
-    "Console_1": [30, 50, "Press", 0, function() {
-        fill(200);
-        rect(0, 0, 30, 50);
-        fill(150);
-        rect(0, 5, 24, 29);
-        fill(255, 0, 0, 100);
-        rect(0, 5, 20, 25);
-        fill(50);
-        rect(0, -15, 20, 4, 4);
-        fill(0);
-        ellipse(7, -15, 8, 8);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(200);
-        rect(0, 0, 30, 50);
-        fill(150);
-        rect(0, 5, 24, 29);
-        fill(0, 255, 0, 100);
-        rect(0, 5, 20, 25);
-        fill(50);
-        rect(0, -15, 20, 4, 4);
-        fill(0);
-        ellipse(-7, -15, 8, 8);
-        return get(0, 0, 400, 400);
-    }, true],
-    "Console_2": [4, 40, "Press", 0, function() {
-        fill(0);
-        rect(2, -17, 4, 4);
-        rect(2, -12, 4, 4);
-        fill(200);
-        rect(0, 0, 4, 40);
-        fill(255, 0, 0, 100);
-        rect(1, 5, 2, 26);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(0);
-        rect(2, -17, 4, 4);
-        rect(2, -12, 4, 4);
-        fill(200);
-        rect(0, 0, 4, 40);
-        fill(0, 255, 0, 100);
-        rect(1, 5, 2, 26);
-        return get(0, 0, 400, 400);
-    }, true],
-    "Console_3": [4, 8, "Press", 0, function() {
-        fill(255, 0, 0, 100);
-        rect(2, 0, 4, 4);
-        fill(0);
-        rect(0, 0, 4, 8);
-        return get(0, 0, 400, 400);
-    }, function() {
-        fill(0, 255, 0, 100);
-        rect(2, 0, 4, 4);
-        fill(0);
-        rect(0, 0, 4, 8);
-        return get(0, 0, 400, 400);
-    }, true],
+    "Door_1": [250, 8, "Slide", 30, function() {}, function() {}, true],
+    "Door_2": [50, 8, "Slide", 10, function() {}, function () {}, true],
+    "Door_3": [400, 30, "Slide", 100, function() {}, function () {}, true],
+    "Door_4": [100, 8, "Slide", 10, function() {}, function() {}, true],
+    "Door_5": [40, 8, "Slide", 10, function() {}, function () {}, true],
+    "Laser_1": [250, 8, "Disappear", 10, function() {}, function() {}, false],
+    "Laser_2": [100, 8, "Disappear", 10, function() {}, function() {}, false],
+    "Console_1": [30, 50, "Press", 0, function() {}, function() {}, true],
+    "Console_2": [4, 8, "Press", 0, function() {}, function() {}, true],
 };
 var crates = [
-    [[["Common", "Ammo", 0.65], ["Uncommon", "Ammo", 0.35]], [["Common", "Ammo", 0.3], ["Uncommon", "Ammo", 0.1]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, ammo["Heavy Rounds"].graphic, [color(80), color(150)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(140), color(165), color(185)]);
-        return get(0, 0, 400, 400);
-    }], // (0) Ammo Crate
-    [[["Common", "Gun", 0.75, ["Shotgun"]], ["Uncommon", "Gun", 0.25, ["Shotgun"]]], [["Uncommon", "Ammo", 0.5, ["Shotgun Rounds"]], ["Common", "Attachment", 0.25], ["Uncommon", "Attachment", 0.1]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, guns[3].graphic, [color(130, 80, 80), color(180, 150, 150)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(140), color(170, 130, 130), color(190, 150, 150)]);
-        return get(0, 0, 400, 400);
-    }], // (1) Shotgun Crate
-    [[["Common", "Medical", 0.9], ["Uncommon", "Medical", 0.1]], [["Common", "Medical", 0.6], ["Common", "Medical", 0.4], ["Uncommon", "Medical", 0.02]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, medical[1].graphic, [color(80, 130, 130), color(150, 180, 180)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(130), color(130, 165, 165), color(150, 185, 185)]);
-        return get(0, 0, 400, 400);
-    }], // (2) Medical Crate
-    [[["Common", "Gun", 0.8, ["Pistol", "SMG", "AR"]], ["Uncommon", "Gun", 0.2]], [["Common", "Ammo", 0.4], ["Uncommon", "Ammo", 0.2], ["Common", "Gun", 0.1], ["Common", "Attachment", 0.5], ["Uncommon", "Attachment", 0.2], ["Rare", "Attachment", 0.05]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, guns[5].graphic, [color(80, 130, 80), color(150, 180, 150)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(125), color(130, 165, 130), color(150, 185, 150)]);
-        return get(0, 0, 400, 400);
-    }], // (3) Weapons Crate
-    [[["Rare", "Gun", 1, ["RPG"]]], [["Impossible", "Ammo", 0.2, ["Rockets"]]], [30, 70], function() {
-        crateGraphic(0, 0, 30, 70, 0, guns[9].graphic, [color(50), color(120)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 70, 1, 0, [color(40), color(130), color(110), color(140)]);
-        return get(0, 0, 400, 400);
-    }], // (4) RPG Crate
-    [[["Common", "Gun", 0.75, ["Pistol", "LMG", "SMG"]], ["Uncommon", "Gun", 0.2, ["Pistol", "LMG", "SMG"]], ["Rare", "Gun", 0.05, ["LMG"]]], [["Common", "Ammo", 0.5, ["Light Rounds", "Heavy Rounds", "Metallic Bolts"]], ["Common", "Attachment", 0.5], ["Uncommon", "Attachment", 0.25], ["Rare", "Attachment", 0.05]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, guns[4].graphic, [color(130, 130, 80), color(180, 180, 150)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(125), color(165, 165, 130), color(185, 185, 150)]);
-        return get(0, 0, 400, 400);
-    }], // (5) Pistol / SMG / LMG Crate
-    [[["Common", "Attachment", 0.7], ["Uncommon", "Attachment", 0.2], ["Rare", "Attachment", 0.1]], [["Common", "Attachment", 0.5], ["Common", "Attachment", 0.4], ["Uncommon", "Attachment", 0.25], ["Uncommon", "Attachment", 0.15], ["Rare", "Attachment", 0.05]], [30, 50], function() {
-        var a = ["Magazine", "Extended Mag"];
-        crateGraphic(0, 0, 30, 50, 0, attachments[a[0]][a[1]].graphic, [color(80), color(150)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(140), color(165), color(185)]);
-        return get(0, 0, 400, 400);
-    }], // (6) Attachment Crate
-    [[["", "Grenade", 1]], [["", "Grenade", 0.8], ["", "Grenade", 0.5]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, grenades[0].graphic, [color(50), color(120)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(130), color(110), color(140)]);
-        return get(0, 0, 400, 400);
-    }], // (7) Grenade Crate
-    [[["Common", "Armor", 0.65], ["Uncommon", "Armor", 0.25], ["Rare", "Armor", 0.1]], [], [30, 30], function() {
-        crateGraphic(0, 0, 30, 30, 0, armor[3].graphic, [color(110, 60, 110), color(160, 130, 160)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 30, 1, 0, [color(40), color(125), color(145, 110, 145), color(165, 130, 165)]);
-        return get(0, 0, 400, 400);
-    }], // (8) Superior Armor Crate
-    [[["Uncommon", "Gun", 0.65, ["Sniper Rifle"]], ["Common", "Attachment", 0.2, ["Scope"]], ["Uncommon", "Attachment", 0.1, ["Scope"]], ["Rare", "Attachment", 0.05, ["Scope"]]], [["Common", "Ammo", 0.25, ["Heavy Rounds"]], ["Common", "Attachment", 0.5], ["Uncommon", "Attachment", 0.75, ["Scope"]], ["Uncommon", "Attachment", 0.25]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, guns[7].graphic, [color(110, 60, 60), color(160, 130, 130)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(140), color(150, 110, 110), color(170, 130, 130)]);
-        return get(0, 0, 400, 400);
-    }], // (9) Sniper Crate
-    [[["Common", "Backpack", 0.35], ["Common", "Armor", 0.35], ["Uncommon", "Backpack", 0.1], ["Uncommon", "Armor", 0.1], ["Rare", "Backpack", 0.05], ["Rare", "Armor", 0.05]], [["Common", "Backpack", 0.1], ["Common", "Armor", 0.1], ["Uncommon", "Backpack", 0.05], ["Uncommon", "Armor", 0.05]], [30, 50], function() {
-        crateGraphic(0, 0, 30, 50, 0, backpack[3].graphic, [color(130, 80, 130), color(180, 150, 180)]);
-        return get(0, 0, 400, 400);
-    }, function() {
-        crateGraphic(0, 0, 30, 50, 1, 0, [color(40), color(125), color(165, 130, 165), color(185, 150, 185)]);
-        return get(0, 0, 400, 400);
-    }], // (10) Gear Crate
+    // [Guaranteed], [Other], [Width, Height], graphic
+    // MORARK {
+    [[["Common", "Ammo", 0.5], ["Common", "Medical", 0.3], ["Common", "Gun", 0.2]], [["Common", "Armor", 0.15], ["Common", "Backpack", 0.05], ["Common", "Melee", 0.05]], [30, 50], function() {}, function() {}], // (0) Supply Crate
+    [[["Common", "Ammo", 0.9], ["Uncommon", "Ammo", 0.1]], [["Common", "Ammo", 0.3], ["Uncommon", "Ammo", 0.05]], [30, 50], function() {}, function() {}], // (1) Ammo Crate
+    [[["Common", "Medical", 1]], [["Common", "Medical", 0.5], ["Uncommon", "Medical", 0.1]], [30, 50], function() {}, function() {}], // (2) Medical Crate
+    [[["Common", "Attachment", 0.6], ["Common", "Armor", 0.2], ["Common", "Backpack", 0.2]], [["Uncommon", "Attachment", 0.1], ["Uncommon", "Armor", 0.05]], [30, 50], function() {}], // (3) Gear Crate
+    [[["Common", "Gun", 0.8], ["Uncommon", "Gun", 0.2]], [["Common", "Gun", 0.2]], [30, 50], function() {}, function() {}], // (4) Weapons Crate
+    //}
+    // CYIN {
+    [[["Common", "Ammo", 0.45], ["", "Medical", 0.25], ["Common", "Gun", 0.25], ["Uncommon", "Gun", 0.05]], [["Common", "Armor", 0.2], ["Common", "Backpack", 0.1], ["Common", "Melee", 0.1], ["Uncommon", "Armor", 0.1], ["Uncommon", "Backpack", 0.05]], [30, 50], function() {}, function() {}], // (5) Supply Crate
+    [[["Common", "Ammo", 0.8], ["Uncommon", "Ammo", 0.2]], [["Rare", "Ammo", 0.15]], [30, 50], function() {}, function() {}], // (6) Ammo Crate
+    [[["", "Medical", 1]], [["", "Medical", 0.6], ["", "Medical", 0.15]], [30, 50], function() {}, function() {}], // (7) Medical Crate
+    [[["Common", "Attachment", 0.5], ["Common", "Armor", 0.25], ["Common", "Backpack", 0.25]], [["Uncommon", "Attachment", 0.2], ["Uncommon", "Armor", 0.1]], [30, 50], function() {}, function() {}], // (8) Gear Crate
+    [[["Common", "Gun", 0.75], ["Uncommon", "Gun", 0.25]], [["Common", "Gun", 0.25], ["Uncommon", "Gun", 0.05], ["Common", "Ammo", 0.3]], [30, 50], function() {}], // (9) Weapons Crate
+    [[["Common", "Gun", 0.75, ["LMG", "SMG"]], ["Uncommon", "Gun", 0.25, ["LMG", "SMG"]]], [["Common", "Gun", 0.3, ["LMG", "SMG"]], ["Uncommon", "Gun", 0.3, ["LMG", "SMG"]]], [30, 50], function() {}], // (10) LMG / SMG Crate
+    [[["Common", "Gun", 0.75, ["Sniper Rifle", "Marksman Rifle"]], ["Uncommon", "Gun", 0.25, ["Sniper Rifle", "Marksman Rifle"]]], [["Common", "Gun", 0.3, ["Sniper Rifle", "Marksman Rifle"]], ["Uncommon", "Gun", 0.3, ["Sniper Rifle", "Marksman Rifle"]], ["Common", "Attachment", 0.25, ["Scope", "Stock"]], ["Uncommon", "Attachment", 0.2, ["Scope"]]], [30, 50], function() {}], // (11) Sniper Rifle / Marksman Rifle
+    //}
 ];
 var gameVars = {
-    temp: "NONE",
-    codeRoom: [],
-    haveDatapad: true,
-    aaGuns: [0, 0, 0],
-    fuel: [0, 120, 0],
-    hangar: 0,
-    spawn1: [125, -1000],
-    spawn2: [1000, -125],
-    move1: [300, -1000],
-    move2: [1000, -300],
+    commonGuns: [],
+    orders: [],
     wallType: color(200),
     dMult: 5,
-    transport1: [-1000, -1000, 180, 2.5, 0],
-    transport2: [1000, -1000, 180, 1.75, false],
-    orders: [],
-    commonGuns: [],
+    haveDatapad: true,
+};
+var objectiveList = [
+    ["Locate the Agent", function() {
+        if (gameMap[0] === "KoliosIII" && inBox(allies[0].x, allies[0].y, -2300, -800, 200, 200)) {
+            levelEnds.push(construct(levelEnd, [function() {
+                cinematic = ["2", 0, [0, 0, 1]];
+                scene = "cinematic";
+                //clearArrays();
+            }]));
+            return [true, false];
+        }
+    }],
+    ["Break into the Compound", function() {
+        if (gameMap[0] === "KoliosI" && !checkLock(3) && inBox(allies[0].x, allies[0].y, -2600, -3400, 500, 500)) {
+            return [true, false];
+        }
+    }],
+    ["Open the Main Blast Doors", function() {
+        if (gameMap[0] === "KoliosI" && !checkLock(3)) {
+            return [true, false];
+        }
+    }],
+    ["Find the Prison Cells", function() {
+        if (gameMap[0] === "KoliosIII" && inBox(allies[0].x, allies[0].y, -2300, -800, 600, 1000)) {
+            return [true, false];
+        }
+    }],
+    ["Return to the Starhawk", function() {}],
+    ["Speak to Councilor Arkator", function() {}],
+    ["Locate the Security Office", function() {}],
+    ["Return to the Starhawk", function() {}],
+    ["Defeat the Red Dawn Soldiers", function() {}],
+    ["Follow the Red Dawn Soldiers", function() {}],
+    ["Sneak Past the Base Defenses", function() {}],
+    ["Find Another Route to the Bunker", function() {}],
+    ["Chase Isha Ail'an and Skar Darin", function() {}],
+    ["Find the Red Dawn Crimelords", function() {}],
+    ["Find Ukovia", function() {}],
+    ["Defeat Ukovia", function() {}],
+    ["Follow the Escaping Crimelords", function() {}],
+    ["Return to the Starhawk", function() {}],
+    ["Find Max", function() {}],
+    ["Recover the Brooch", function() {}],
+    ["Head to Section 12A", function() {}],
+    ["Defeat the Junkers", function() {}],
+    ["Return the Heirloom", function() {}],
+    ["Head to the Red Dawn Stronghold", function() {}],
+    ["Attack the Outpost", function() {}],
+    ["Head to the Outpost Garage", function() {}],
+    ["Find a Way into the Stronghold", function() {}],
+    ["Navigate the Maintenance Pipes", function() {}],
+    ["Find the Base Schematics", function() {}],
+    ["Head to the Meeting Hall", function() {}],
+    ["Return to the Starhawk", function() {}],
+    ["Find an Alternative Route", function() {}],
+    ["Head to the Palace", function() {}],
+    ["Fend off the Rebels", function() {}],
+    ["Save the Reactor Core", function() {}],
+    ["Head to the Royal Landing Field", function() {}],
+    ["Infiltrate the Rebel Base", function() {}],
+    ["Find the Rebel Records", function() {}],
+    ["Exit the Base", function() {}],
+    ["Return to the Starhawk", function() {}],
+    ["Find the Gravity Beam Controls", function() {}],
+    ["Defeat Lathar", function() {}],
+    ["Flee the Cruiser", function() {}],
+    ["Head to the Grand Arathean Fortress", function() {}],
+    ["Return to the Starhawk", function() {}],
+    ["Rescue Arkator", function() {}],
+    ["Defeat the Iethans", function() {}],
+];
+var environment = {
+    night: false,
 };
 for (var i = 0; i < guns.length; i++) {
     if (guns[i][28] === "Common") {
@@ -3573,98 +3328,38 @@ for (var i = 0; i < guns.length; i++) {
     }
 }
 var gameVarsDefault = copyArray4(gameVars);
-var environment = {
-    night: false,
-};
 var environmentDefault = copyArray4(environment);
-var objectiveList = [
-    ["Escape the Cell Block", function() {
-        if (allies[0].x > 400) {
-            objectives.push(construct(objective, [1, false]));
-            return [true, false];
-        }
-    }], // 0
-    ["Find a Way to Enter the Armory", function() {
-        if (allies[0].y > 120 && allies[0].x > 400) {
-            objectives.push(construct(objective, [2, false]));
-           return [true, false];
-        }
-    }], // 1
-    ["Find a Datapad", function() {
-        if (sq(allies[0].x - 550) + sq(allies[0].y - 220) < sq(50)) {
-            objectives.push(construct(objective, [3, false]));
-            cinematic = ["Datapad", 0, [550, 220, 1 / 1.5]];
-            scene = "cinematic";
-            unlockDoors(13);
-            return [true, false];
-        }
-    }], // 2
-    ["Exit the Floor", function() {
-        if (gameMap[0] === "Defenses") {
-            return [true, true];
-        }
-    }], // 3
-    ["Find the Medical Bay", function() {
-        if (gameMap[0] === "Infirmary" && inBox(allies[0].x, allies[0].y, 1330, 10, 100, 100)) {
-            gameMap[1] = 2;
-            cinematic = ["Med Bay", 0, [1330, 60, 1]];
-            scene = "cinematic";
-            return [true, false];
-        }
-    }], // 4
-    ["Find the Master Switch", function() {
-        if (gameMap[0] === "Defenses" && inBox(allies[0].x, allies[0].y, 0, -470, 400, 200)) {
-            objectives.push(construct(objective, [6, false]));
-            return [true, false];
-        }
-    }], // 5
-    ["Deactivate the AA Guns", function() {
-        if (gameMap[0] === "Defenses" && gameVars.aaGuns[0] === 1 && gameVars.aaGuns[1] === 1 && gameVars.aaGuns[2] === 1) {
-            objectives.push(construct(objective, [7, false]));
-            unlockDoors(4);
-            return [true, false];
-        }
-    }], // 6
-    ["Open the Hangar Bay", function() {
-        if (gameMap[0] === "Hangars" && gameVars.hangar === 1) {
-            objectives.push(construct(objective, [8, false]));
-            return [true, false];
-        }
-    }], // 7
-    ["Start Fueling the Shuttle", function() {
-        if (gameMap[0] === "Hangars" && gameVars.fuel[2] === 1) {
-            return [true, false];
-        }}], // 8
-    ["Defend the Shuttle", function() {
-        if (gameVars.fuel[0] >= gameVars.fuel[1]) {
-            return [true, true];
-        }
-    }], // 9
-    ["Defeat the Troopers", function() {
-        if (enemies.length === 0) {
-            objectives.push(construct(objective, [11, false]));
-            gameMap[1] = 7;
-            return [true, false];
-        }
-    }], // 10
-    ["Board the Transport", function() {
-        if (gameMap[0] === "Hangars" && gameMap[1] === 8) {
-            objectives.clear();
-            return [true, false];
-        }
-    }], // 11
-];
-var attachChances = ["Common", "Uncommon", "Rare"]; 
-var attachChoices = [];
-var scopeChances = [];
-var scopeChoices = [];
-var ammoNames = [];
+for (var i = 0; i < codes.length; i++) {
+    var a = codes[i];
+    codes[i].name = a[0];
+    codes[i].date = a[1];
+    codes[i].playerInfo = {
+        firstName: a[2][0],
+        lastName: a[2][1],
+        gender: a[2][2],
+        skinColor: a[2][3],
+        hairColor: a[2][4],
+    };
+    codes[i].inventory = copyArray2(a[3]);
+    codes[i].firstWeapon = [a[4][0],a[4][1],a[4][2],a[4][3],a[4][4],a[4][5]];
+    codes[i].secondWeapon = [a[5][0],a[5][1],a[5][2],a[5][3],a[5][4],a[5][5]];
+    codes[i].meleeWeapon = a[6];
+    codes[i].backpack = a[7];
+    codes[i].objectives = copyArray2(a[8]);
+    codes[i].player = copyArray2(a[9]);
+    codes[i].partner = copyArray2(a[10]);
+    codes[i].difficulty = a[11];
+    codes[i].map = {
+        which: a[12][0],
+        phase: a[12][1],
+    };
+}
 for (var i = 0; i < guns.length; i++) {
     var a = guns[i];
     guns[i].name = a[0];
     guns[i].type = a[1];
     guns[i].ammo = a[2];
-    if (i <= 34) {
+    if (i <= 40) {
         ammo[a[2]][7].push(i);
     }
     guns[i].description = a[3];
@@ -3720,6 +3415,19 @@ for (var i = 0; i < melee.length; i++) {
     melee[i].special = a[9];
     melee[i].level = a[10];
     melee[i].chance = a[11];
+}
+for (var i = 0; i < abilities.length; i++) {
+    var a = abilities[i];
+    abilities[i].name = a[0];
+    abilities[i].type = a[1];
+    abilities[i].init = a[2];
+    abilities[i].effect = a[3];
+    abilities[i].end = a[4];
+    abilities[i].range = a[5];
+    abilities[i].minCost = a[6];
+    abilities[i].time = a[7];
+    abilities[i].description = a[8];
+    abilities[i].reload = a[9];
 }
 for (var i = 0; i < crates.length; i++) {
     var a = crates[i];
@@ -3826,7 +3534,6 @@ for (var i = 0; i < Object.keys(doorTypes).length; i++) {
     a.unlocked = a[5];
     a.opaque = a[6];
 }
-var defAmmo = "Rockets";
 //} END "OBJECTS"
 
 // "COLLISIONS" {
@@ -3911,7 +3618,7 @@ var circleLine = function(c1, c2, closer) {
     var x2 = c2[2];
     var y2 = c2[3];
     var closer = closer || false;
-    var Result = [["NO", "NO"], ["NO", "NO"], 0];
+    var Result = [["NO", "NO"], ["NO", "NO"], "NO"];
     var m = (y2 - y1) / (x2 - x1);
     var b = y1 - (m * x1);
     var N1, N2, N3, N4, N5, N6, N7, N8, N9, N10, A, B, C, Q1, Q2, Q3, connected1 = false, connected2 = false, connected3 = false, connected4 = false;
@@ -3940,7 +3647,7 @@ var circleLine = function(c1, c2, closer) {
             Result[0][1] = (m * Result[0][0]) + b;
             Result[1][1] = (m * Result[1][0]) + b;
         } else {
-            Result = [["NO", "NO"], ["NO", "NO"]];
+            Result = [["NO", "NO"], ["NO", "NO"], "NO"];
         }
     } else {
         Result[0][0] = Result[1][0] = x1;
@@ -3958,7 +3665,7 @@ var circleLine = function(c1, c2, closer) {
             Result[0][1] = (Q1 - Q2) / Q3;
             Result[1][1] = (Q1 + Q2) / Q3;
         } else {
-            Result = [["NO", "NO"], ["NO", "NO"]];
+            Result = [["NO", "NO"], ["NO", "NO"], "NO"];
         }
     }
     if (Result[0][0] !== "NO" || Result[1][0] !== "NO") {
@@ -4008,7 +3715,7 @@ var circleLine = function(c1, c2, closer) {
     }
     return Result;
 };
-var rectSegment = function(RECT, LINE, Closer) {
+var rectSegment = function(RECT, LINE, closer) {
     var x1 = LINE[0];
     var y1 = LINE[1];
     var x2 = LINE[2];
@@ -4019,11 +3726,19 @@ var rectSegment = function(RECT, LINE, Closer) {
     var point2 = [RECT[0] + (w / 2), RECT[1] - (h / 2)];
     var point3 = [RECT[0] + (w / 2), RECT[1] + (h / 2)];
     var point4 = [RECT[0] - (w / 2), RECT[1] + (h / 2)];
-    var closer = Closer || false;
-    var Return = [["NO", "NO"], ["NO", "NO"], "NO"];
     var i1 = ["NO", "NO"];
     var i2 = ["NO", "NO"];
-    var i1 = findIntersect([point1[0] + 0.1, point1[1], point2[0] - 0.1, point2[1]], LINE);
+    if (x1 < point1[0]) {
+        i1 = findIntersect([point4[0], point4[1] + 0.1, point1[0], point1[1] - 0.1], LINE, 0.09);
+    } else if (x1 > point3[0]) {
+        i1 = findIntersect([point2[0], point2[1] + 0.1, point3[0], point3[1] - 0.1], LINE, 0.09);
+    }
+    if (y1 < point1[1]) {
+        i2 = findIntersect([point1[0] + 0.1, point1[1], point2[0] - 0.1, point2[1]], LINE);
+    } else if (y1 > point3[1]) {
+        i2 = findIntersect([point3[0] + 0.1, point3[1], point4[0] - 0.1, point4[1]], LINE);
+    }
+    /*var i1 = findIntersect([point1[0] + 0.1, point1[1], point2[0] - 0.1, point2[1]], LINE);
     var i2 = findIntersect([point2[0], point2[1] + 0.1, point3[0], point3[1] - 0.1], LINE, 0.09);
     if (i1[0] !== "NO") {
         Return[0] = i1;
@@ -4050,22 +3765,17 @@ var rectSegment = function(RECT, LINE, Closer) {
                 Return[1] = i4;
             }
         }
-    }
-    var X1 = Return[0][0];
-    var Y1 = Return[0][1];
-    var X2 = Return[1][0];
-    var Y2 = Return[1][1];
-    if (closer) {
-        if (X1 === "NO" && X2 !== "NO") {
-            Return[2] = 1;
-        } else if (X1 !== "NO" && X2 === "NO") {
-            Return[2] = 0;
-        } else if (X1 !== "NO" && X2 !== "NO") {
-            if ((Y1 === Y2 && X1 > X2 && y1 === Y1 && x1 >= X1 - 0.1) || (Y1 > Y2 && X1 > X2 && y1 >= Y1 - 0.1 && x1 >= X1 - 0.1) || (X1 === X2 && Y1 > Y2 && x1 === X1 && y1 >= Y1 - 0.1) || (Y1 > Y2 && X1 < X2 && y1 >= Y1 - 0.1 && x1 <= X1 + 0.1) || (Y1 === Y2 && X1 < X2 && y1 === Y1 && x1 <= X1 + 0.1) || (Y1 < Y2 && X1 < X2 && y1 <= Y1 + 0.1 && x1 <= X1 + 0.1) || (X1 === X2 && Y1 < Y2 && x1 === X1 && y1 <= Y1 + 0.1) || (Y1 < Y2 && X1 > X2 && y1 <= Y1 + 0.1 && x1 >= X1 - 0.1)) {
-                Return[2] = 0;
-            } else {
-                Return[2] = 1;
-            }
+    }*/
+    var X1 = i1[0];
+    var Y1 = i1[1];
+    var X2 = i2[0];
+    var Y2 = i2[1];
+    var Return = [[X1, Y1], [X2, Y2], "NO"];
+    if (X1 === "NO" && X2 !== "NO") {
+        Return = [[X2, Y2], [X1, Y1]];
+    } else if (X1 !== "NO" && X2 !== "NO") {
+        if (!((Y1 === Y2 && X1 > X2 && y1 === Y1 && x1 >= X1 - 0.1) || (Y1 > Y2 && X1 > X2 && y1 >= Y1 - 0.1 && x1 >= X1 - 0.1) || (X1 === X2 && Y1 > Y2 && x1 === X1 && y1 >= Y1 - 0.1) || (Y1 > Y2 && X1 < X2 && y1 >= Y1 - 0.1 && x1 <= X1 + 0.1) || (Y1 === Y2 && X1 < X2 && y1 === Y1 && x1 <= X1 + 0.1) || (Y1 < Y2 && X1 < X2 && y1 <= Y1 + 0.1 && x1 <= X1 + 0.1) || (X1 === X2 && Y1 < Y2 && x1 === X1 && y1 <= Y1 + 0.1) || (Y1 < Y2 && X1 > X2 && y1 <= Y1 + 0.1 && x1 >= X1 - 0.1))) {
+            Return = [[X2, Y2], [X1, Y1]];
         }
     }
     return Return;
@@ -4082,9 +3792,9 @@ rectArc = function(RECT, ARC) {
     if (inBox(x, y, RECT[0], RECT[1], RECT[2], RECT[3]) || (sq(x - closestPoint[0]) + sq(y - closestPoint[1]) < sq(w) && (rot2 <= avg || rot2 >= 360 - avg))) {
         return true;
     } else {
-        var a = rectSegment(RECT, [x, y, x3, y3], true);
+        var a = rectSegment(RECT, [x, y, x3, y3]);
         if (a[0][0] === "NO" && a[1][0] === "NO") {
-            a = rectSegment(RECT, [x, y, x4, y4], true);
+            a = rectSegment(RECT, [x, y, x4, y4]);
             if (a[0][0] === "NO" && a[1][0] === "NO") {
                 return false;
             } else {
@@ -4197,6 +3907,7 @@ var block = function(type, x, y, w, h, special) {
             this.img = a[1];
         }
     }
+    this.color = color(255, 0, 0);
 };
 block.prototype.draw = function() {
     noStroke();
@@ -4205,12 +3916,12 @@ block.prototype.draw = function() {
         if (this.type[0] === "Rectangle") {
             rect(this.x, this.y, this.width, this.height);
             if (this.img !== "NONE") {
-                image(images[this.img], this.x, this.y, this.width, this.height);
+                //image(images[this.img], this.x, this.y, this.width, this.height);
             }
         } else if (this.type[0] === "Circle") {
             ellipse(this.x, this.y, this.width, this.width);
             if (this.img !== "NONE") {
-                image(images[this.img], this.x, this.y, this.width, this.height);
+                //image(images[this.img], this.x, this.y, this.width, this.height);
             }
         }
     }
@@ -4290,6 +4001,8 @@ door.prototype.draw = function() {
     } else {
         renderImage(this.type.unlocked, 0, 0);
     }
+    fill(255, 0, 0);
+    rect(0, 0, this.type.width, this.type.height);
     popMatrix();
 };
 door.prototype.open = function() {
@@ -4492,7 +4205,53 @@ openDoors = function(bound) {
     }
 };
 //}
-// (6) "OTHER" {
+// (6) "OTHER WALLS" {
+var wallWireFrame = function(c, thick) {
+    this.coordinates = c;
+    this.thickness = thick;
+};
+wallWireFrame.prototype.draw = function() {
+    stroke(255, 0, 0);
+    strokeWeight(this.thickness);
+    for (var i = 0; i < this.coordinates.length - 2; i += 2) {
+        line(this.coordinates[i], this.coordinates[i + 1], this.coordinates[i + 2], this.coordinates[i + 3]);
+    }
+};
+wallWireFrame.prototype.collideWith = function(obj, width, nextC, speed) {
+    var a = this.coordinates, ret = copyArray(nextC);
+    for (var j = 0; j < a.length - 2; j += 2) {
+        var x1 = a[j], y1 = a[j + 1], x2 = a[j + 2], y2 = a[j + 3], m = atan2(y2 - y1, x2 - x1) - 90, d = (width + this.thickness) / 2, x3 = x1 + d * cos(m), y3 = y1 + d * sin(m), x4 = x1 + d * cos(m + 180), y4 = y1 + d * sin(m + 180), d1 = sq(allies[0].x - x3) + sq(allies[0].y - y3), d2 = sq(allies[0].x - x4) + sq(allies[0].y - y4), s = 0.01;
+        if (d1 > d2) {
+            m += 180;
+        }
+        var l = [x1 + d * cos(m), y1 + d * sin(m), x2 + d * cos(m), y2 + d * sin(m)];
+        var INT = findIntersect(l, [obj.x, obj.y, nextC[0], nextC[1]], 0.01);
+        if (INT[0] !== "NO") {
+            var d2 = distToLine(l, nextC);
+            nextC[0] = nextC[0] + (0.01 + d2) * cos(m);
+            nextC[1] = nextC[1] + (0.01 + d2) * sin(m);
+        } else {
+            INT = circleLine([x1, y1, d * 2], [obj.x, obj.y, nextC[0], nextC[1]], true);
+            var lA = [x1, y1];
+            if (INT[2] === "NO" && j === a.length - 4) {
+                INT = circleLine([x2, y2, d * 2], [obj.x, obj.y, nextC[0], nextC[1]], true);
+                lA = [x2, y2];
+            }
+            // BROKEN EDIT HERE ERROR HERE
+            if (INT[2] !== "NO") {
+                println(INT);
+                var boogie = INT[INT[2]];
+                var rot = atan2(boogie[1] - lA[1], boogie[0] - lA[0]), d3 = dist(boogie[0], boogie[1], lA[0], lA[1]);
+                nextC[0] = lA[0] + (d + 0.01) * cos(rot);
+                nextC[1] = lA[1] + (d + 0.01) * sin(rot);
+            }
+        }
+    }
+    ret = nextC;
+    return ret;
+};
+//}
+// (7) "OTHER" {
 var noScopeZone = function(obj, type, bounds) {
     //obj.inSmoke = false;
     if (type === "Circle" && sq(obj.x - bounds[0]) + sq(obj.y - bounds[1]) < sq(bounds[2])) {
@@ -4588,28 +4347,26 @@ var loot = function(x, y, element, number, type, other, startVelocity) {
     this.timeAlive = 0;
 };
 loot.prototype.draw = function() {
-    if (!freePlay || (this.timeAlive <= 1200 || (this.timeAlive > 1200 && this.timeAlive <= 1500 && (this.timeAlive - 1200) % 40 <= 20) || (this.timeAlive > 1500 && this.timeAlive < 1680 && (this.timeAlive - 1500) % 30 <= 15) || (this.timeAlive >= 1680 && this.timeAlive < 1740 && (this.timeAlive - 1680) % 20 <= 10) || (this.timeAlive >= 1740 && (this.timeAlive - 1740) % 10 <= 5))) {
-        noFill();
-        stroke(this.color);
-        strokeWeight(2);
-        arc(this.x, this.y, this.width, this.width, 200, 340);
-        arc(this.x, this.y, this.width, this.width, 20, 160);
-        noStroke();
-        ellipse(this.x, this.y, this.width, this.width);
-        noStroke();
-        fill(0, 50);
-        ellipse(this.x, this.y, this.width - 1, this.width - 1);
-        var a = [this.width - 5, this.width - 5];
-        if (this.type === "Gun") {
-            a = [this.width + 5, this.width - 20];
-        } else if (this.type === "Ammo") {
-            a = [this.width - 20, this.width - 10];
-        }
-        pushMatrix();
-        translate(this.x, this.y);
-        renderImage(this.element.graphic, 0, 0, a[0], a[1]);
-        popMatrix();
+    noFill();
+    stroke(this.color);
+    strokeWeight(2);
+    arc(this.x, this.y, this.width, this.width, 200, 340);
+    arc(this.x, this.y, this.width, this.width, 20, 160);
+    noStroke();
+    ellipse(this.x, this.y, this.width, this.width);
+    noStroke();
+    fill(0, 50);
+    ellipse(this.x, this.y, this.width - 1, this.width - 1);
+    var a = [this.width - 5, this.width - 5];
+    if (this.type === "Gun") {
+        a = [this.width + 5, this.width - 20];
+    } else if (this.type === "Ammo") {
+        a = [this.width - 20, this.width - 10];
     }
+    pushMatrix();
+    translate(this.x, this.y);
+    renderImage(this.element.graphic, 0, 0, a[0], a[1]);
+    popMatrix();
 };
 loot.prototype.move = function() {
     for (var i = 0; i < walls.length; i++) {
@@ -4818,9 +4575,6 @@ var crate = function(x, y, rot, type) {
 };
 crate.prototype.draw = function() {
     this.timeAlive += compensateFPS;
-    if (freePlay && this.timeAlive >= crateDelay[crateDelay[crateDelay.length - 1]] * 60) {
-        this.opened = false;
-    }
     fill(0, 255, 0);
     pushMatrix();
     translate(this.x, this.y);
@@ -5006,10 +4760,11 @@ bullet.prototype.draw = function() {
     if (this.trail > 0 && this.trailOn) {
         noStroke();
         fill(this.color);
-        var trailWidth = (this.trail / this.speed);
+        /*var trailWidth = (this.trail / this.speed);
         if (trailWidth > this.type.size) {
             trailWidth = this.type.size;
-        }
+        }*/
+        var trailWidth = this.type.size;
         arc(0, 0, trailWidth * 2, trailWidth * 2, 180, 360);
         triangle(-trailWidth, 0, trailWidth, 0, 0, this.trail - 2);
         noStroke();
@@ -5129,35 +4884,52 @@ bullet.prototype.hitCharacter = function() {
 };
 bullet.prototype.collide = function() {
     if (this.trailOn && this.deathTime === 0) {
+        var x = this.x2, y = this.y2, hit, hit2 = false;
         for (var i = 0; i < walls.length; i++) {
             if (walls[i].barrier) {
-                var x, y;
                 if (walls[i].type[0] === "Rectangle") {
-                    var collide = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [this.x, this.y, this.x2, this.y2], true);
-                    var BOB_IS_MY_HERO = collide[2];
-                    var NO_ROB_IS = collide[BOB_IS_MY_HERO] || ["NO", "NO"];
-                    x = NO_ROB_IS[0];
-                    y = NO_ROB_IS[1];
+                    var collide = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [this.x, this.y, this.x2, this.y2]);
+                    if (collide[0][0] !== "NO") {
+                        x = collide[0][0];
+                        y = collide[0][1];
+                    }
                 } else if (walls[i].type[0] !== "Rectangle") {
-                    var collide = circleLine([walls[i].x, walls[i].y, walls[i].width], [this.x, this.y, this.x2, this.y2], true);
-                    var BOB_IS_MY_HERO = collide[2];
-                    var NO_ROB_IS = collide[BOB_IS_MY_HERO] || ["NO", "NO"];
-                    x = NO_ROB_IS[0];
-                    y = NO_ROB_IS[1];
+                    var collide = circleLine([walls[i].x, walls[i].y, walls[i].width], [this.x, this.y, this.x2, this.y2], true), BOB_IS_MY_HERO = collide[2], NO_ROB_IS = collide[BOB_IS_MY_HERO] || ["NO", "NO"];
+                    if (NO_ROB_IS[0] !== "NO") {
+                        x = NO_ROB_IS[0];
+                        y = NO_ROB_IS[1];
+                    }
                 }
                 if (x !== "NO") {
-                    walls[i].health -= this.damage;
-                    debriz.push(construct(debris, [x, y, 40, walls[i].color]));
-                    this.speed = dist(x, y, this.x, this.y);
-                    this.x2 = this.x - (this.speed * sin(-this.rot));
-                    this.y2 = this.y - (this.speed * cos(-this.rot));
-                    if (this.explosive > 1) {
-                        this.speed -= 0.2;
-                    }
-                    this.dead = true;
-                    this.damageWho = ["NONE", 0];
+                    hit = i;
+                    hit2 = true;
                 }
             }
+        }
+        for (var i = 0; i < wallWireFrames.length; i++) {
+            var a = wallWireFrames[i].coordinates;
+            for (var j = 0; j < a.length - 2; j += 2) {
+                var b = findIntersect([a[j], a[j + 1], a[j + 2], a[j + 3]], [this.x, this.y, x, y]);
+                if (b[0] !== "NO") {
+                    x = b[0];
+                    y = b[1];
+                    hit2 = true;
+                }
+            }
+        }
+        if (hit2) {
+            if (hit !== undefined) {
+                walls[hit].health -= this.damage;
+            }
+            //debriz.push(construct(debris, [x, y, 40, walls[i].color]));
+            this.speed = dist(x, y, this.x, this.y);
+            this.x2 = this.x - (this.speed * sin(-this.rot));
+            this.y2 = this.y - (this.speed * cos(-this.rot));
+            if (this.explosive > 1) {
+                this.speed -= 0.2;
+            }
+            this.dead = true;
+            this.damageWho = ["NONE", 0];
         }
     }
 };
@@ -5224,6 +4996,8 @@ bomb.prototype.draw = function() {
     translate(this.x, this.y);
     rotate(this.rot2);
     renderImage(this.type.game, 0, 0);
+    fill(255, 0, 0);
+    ellipse(0, 0, 10, 10);
     popMatrix();
 };
 bomb.prototype.move = function() {
@@ -5241,11 +5015,9 @@ bomb.prototype.collide = function() {
     for (var i = 0; i < walls.length; i++) {
         var x, y;
         if (walls[i].type[0] === "Rectangle") {
-            var collide = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [this.x, this.y, this.x2, this.y2], true);
-            var BOB_IS_MY_HERO = collide[2];
-            var NO_ROB_IS = collide[BOB_IS_MY_HERO] || ["NO", "NO"];
-            x = NO_ROB_IS[0];
-            y = NO_ROB_IS[1];
+            var collide = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [this.x, this.y, this.x2, this.y2]);
+            x = collide[0][0];
+            y = collide[0][1];
         } else if (walls[i].type[0] !== "Rectangle") {
             var collide = circleLine([walls[i].x, walls[i].y, walls[i].width], [this.x, this.y, this.x2, this.y2], true);
             var BOB_IS_MY_HERO = collide[2];
@@ -5289,6 +5061,7 @@ boom = function(x, y, size, type, other) {
     this.damage = type[1];
     this.harm = type[2] || "NOT";
     this.exploType = type[3] || "Normal";
+    this.tyonUsed = type[4] || 0;
     this.side = type[5] || "";
     this.time = 0;
     this.initialized = false;
@@ -5373,11 +5146,20 @@ boom.prototype.findTargets = function() {
             if (i !== 0 || (i === 0 && !godMode)) {
                 if (this.harm === "NOT") {
                     var hurt = (this.size / 2 - allyTargets[i][1]) * 5;
-                    allies[a].health -= dealDamage(hurt, allies[a]);
+                    if (this.exploType !== "Tyon") {
+                        allies[a].health -= dealDamage(hurt, allies[a]);
+                    } else {
+                        allies[a].health -= dealDamage2(allies[a], hurt);
+                    }
                 }
             }
         }
-        allies[a].stunTime = constrain(allies[a].stunTime, 0, Infinity) + this.stun;
+        if (this.exploType !== "Tyon") {
+            allies[a].stunTime = constrain(allies[a].stunTime, 0, Infinity) + this.stun;
+        } else {
+            allies[a].stunTime += dealDamage2(allies[a], this.stun);
+            allies[a].energyPool += this.tyonUsed * allies[a].energyRegain;
+        }
         allies[a].stunType = "Normal";
         allies[a].warned = true;
     }
@@ -5386,11 +5168,19 @@ boom.prototype.findTargets = function() {
         if (this.damage) {
             if (this.harm === "NOT") {
                 var hurt = (this.size / 2 - enemyTargets[i][1]) * 5;
-                //println(round(dealDamage(hurt, enemies[a])) + ", " + round(enemyTargets[i][1]) + ", " + this.size);
-                enemies[a].health -= dealDamage(hurt, enemies[a]);
+                if (this.exploType !== "Tyon") {
+                    enemies[a].health -= dealDamage(hurt, enemies[a]);
+                } else {
+                    enemies[a].health -= dealDamage2(enemies[a], hurt);
+                }
             }
         }
-        enemies[a].stunTime = constrain(enemies[a].stunTime, 0, Infinity) + this.stun;
+        if (this.exploType !== "Tyon") {
+            enemies[a].stunTime = constrain(enemies[a].stunTime, 0, Infinity) + this.stun;
+        } else {
+            enemies[a].stunTime += dealDamage2(enemies[a], this.stun);
+            enemies[a].energyPool += this.tyonUsed * enemies[a].energyRegain;
+        }
         enemies[a].stunType = "Normal";
         enemies[a].warned = true;
     }
@@ -5613,7 +5403,7 @@ turret.prototype.update = function() {
     this.inMag = this.occupiedBy.inMag;
 };
 turret.prototype.leave = function(obj, a) {
-    if (this.occupiedBy === obj && obj.currentWeapon === 2 && (((!obj.NPC && canPressT && pressed(commandKeys.use) && !obj.reloading) || (obj.NPC && obj.warned && !obj.targetVisible && obj.zoom > obj.scope * 0.95 && obj.positionInSquad !== "Bruiser")) || a || obj.dead)) {
+    if (this.occupiedBy === obj && obj.currentWeapon === 2 && (((!obj.NPC && canPressT && (pressed(commandKeys.use) || pressed(commandKeys.cancel))) || (obj.NPC && obj.warned && !obj.targetVisible && obj.zoom > obj.scope * 0.95 && obj.positionInSquad !== "Bruiser")) || a || obj.dead)) {
         this.occupied = false;
         this.occupiedBy = "NONE";
         obj.onTurret = false;
@@ -5628,7 +5418,7 @@ turret.prototype.leave = function(obj, a) {
 
 // "ENVIRONMENT" {
 // (1) "WEATHER" {
-var weather = function(t, x, y, r, s, v) {
+weather = function(t, x, y, r, s, v) {
     this.type = t.split(" ");
     this.x = x;
     this.y = y;
@@ -5659,7 +5449,7 @@ weather.prototype.draw = function() {
     rotate(this.r);
     this.t += this.v * compensateFPS;
     for (var i = 0; i < this.imgs.length; i++) {
-        image(this.imgs[i][0], this.imgs[i][1], absValue(this.imgs[i][2] + this.t, this.s[1]) - this.s[1] / 2);
+        //image(this.imgs[i][0], this.imgs[i][1], absValue(this.imgs[i][2] + this.t, this.s[1]) - this.s[1] / 2);
     }
     popMatrix();
 };
@@ -5884,7 +5674,7 @@ seeTarget = function(obj, coordinates, doorsBlock, addOn) {
         var collision;
         if (walls[i].type[1] !== "Invisible" && ((walls[i].opaque && (!walls[i].partOfDoor || doorsBlock)) || (!walls[i].barrier && walls[i].partOfDoor && !walls[i].opaque) || walls[i].type[1] === "Visible")) {
             if (walls[i].type[0] === "Rectangle") {
-                collision = rectSegment([walls[i].x, walls[i].y, walls[i].width + add, walls[i].height + add], [X, Y, x, y], false);
+                collision = rectSegment([walls[i].x, walls[i].y, walls[i].width + add, walls[i].height + add], [x, y, X, Y]);
             } else {
                 collision = circleLine([walls[i].x, walls[i].y, walls[i].width + add], [X, Y, x, y], false);
             }
@@ -6151,7 +5941,7 @@ findDamage = function(obj) {
                 var collided = false, a = obj.damageWireFrame;
                 if (walls[i].type[0] === "Rectangle") {
                     for (var k = 0; k < obj.damageWireFrame.length - 1; k++) {
-                        var b = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [a[k][0], a[k][1], a[k + 1][0], a[k + 1][1]], true);
+                        var b = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [a[k][0], a[k][1], a[k + 1][0], a[k + 1][1]]);
                         if (b[0][0] !== "NO" || b[1][0] !== "NO" || inBox(a[k][0], a[k][1], walls[i].x, walls[i].y, walls[i].width, walls[i].height)) {
                             obj.meleeDamages.push(["wall", walls[i]]);
                             walls[i].health -= obj.meleeDamage;
@@ -6182,6 +5972,336 @@ findDamage = function(obj) {
                 }
             }
         }
+    }
+};
+var canUseMagic = function(obj, which) {
+    var minCost = abilities[which].minCost, lvl = tyonLevelToNumber(obj.tyonLvls[which]);
+    if (isNaN(minCost) && lvl > 0) {
+        minCost = abilities[which].minCost[lvl - 1]; 
+    }
+    return (!obj.tyonUsed[which] && obj.tyonReload[which] <= 0 && lvl > 0 && obj.energyPool >= minCost);
+};
+var determinePowers2 = function() {
+    var wantToUse = [];
+    if (pressed(commandKeys.push)) {
+        wantToUse.push(0);
+    }
+    if (pressed(commandKeys.pull)) {
+        wantToUse.push(1);
+    }
+    if (pressed(commandKeys.speed)) {
+        wantToUse.push(2);
+    }
+    if (pressed(commandKeys.influence)) {
+        wantToUse.push(3);
+    }
+    if (pressed(commandKeys.heal)) {
+        wantToUse.push(4);
+    }
+    if (pressed(commandKeys.immobilize)) {
+        wantToUse.push(5);
+    }
+    if (pressed(commandKeys.lightning)) {
+        wantToUse.push(6);
+    }
+    if (pressed(commandKeys.rage)) {
+        wantToUse.push(7);
+    }
+    if (pressed(commandKeys.absorb)) {
+        wantToUse.push(8);
+    }
+    if (pressed(commandKeys.protect)) {
+        wantToUse.push(9);
+    }
+    if (pressed(commandKeys.drain)) {
+        wantToUse.push(10);
+    }
+    if (pressed(commandKeys.sight)) {
+        wantToUse.push(11);
+    }
+    return wantToUse;
+};
+var determinePowers3 = function(obj, howMany) {
+    var wantToUse = [false, false, false, false, false, false, false, false, false, false, false, false], wantToFinal = [];
+    var otherSide = allies;
+    if (obj.side === "ally") {
+        otherSide = enemies;
+    }
+    var target = obj.target;
+    if (target !== "none") {
+        var usingHostile = false, usingDefense = false;
+        if (/*random(0, 10) > obj.skillTyon / 3 && */(obj.tyonUsed[3] || obj.tyonUsed[5] || obj.tyonUsed[6] || obj.tyonUsed[10])) {
+            usingHostile = true;
+        }
+        if (/*random(0, 10) > obj.skillTyon / 3 && */(/*obj.tyonUsed[2] || */obj.tyonUsed[4] || obj.tyonUsed[8] || obj.tyonUsed[9])) {
+            usingDefense = true;
+        }
+        if (canUseMagic(obj, 0) || canUseMagic(obj, 1) || (!usingHostile && (canUseMagic(obj, 3) || canUseMagic(obj, 5) || canUseMagic(obj, 6) || canUseMagic(obj, 10)))) {
+            var canUse = [];
+            if (canUseMagic(obj, 0)) {
+                canUse.push(0);
+            }
+            if (canUseMagic(obj, 1)) {
+                canUse.push(1);
+            }
+            if (canUseMagic(obj, 3) && !usingHostile && !usingDefense) {
+                canUse.push(3);
+            }
+            if (canUseMagic(obj, 5) && !usingHostile && (target.speed !== 0 || target.speed2 !== 0 || random(0, 10) > obj.skillAggression / 2) && !usingDefense) {
+                canUse.push(5);
+            }
+            if (canUseMagic(obj, 6) && !usingHostile && !usingDefense) {
+                canUse.push(6);
+            }
+            if (canUseMagic(obj, 10) && !usingHostile && (obj.health < obj.maxHealth * 0.75 || obj.skillAggression > random(0, 10)) && !usingDefense) {
+                canUse.push(10);
+            }
+            for (var i = 0; i < canUse.length; i++) {
+                var lvl = obj.tyonLvls[canUse[i]];
+                var range, radius, maxIntelligence = Infinity;
+                if (canUse[i] === 0 || canUse[i] === 1) {
+                    range = 100;
+                    radius = 45;
+                    if (lvl === "2") {
+                        range = 150;
+                        radius = 60;
+                    } else if (lvl === "3") {
+                        range = 200;
+                        radius = 90;
+                    } else if (lvl === "4a") {
+                        range = 250;
+                        radius = 180;
+                    } else if (lvl === "5b") {
+                        range = 300;
+                        radius = 360;
+                    }
+                } else if (canUse[i] === 3) {
+                    range = 150;
+                    radius = 45;
+                    maxIntelligence = 5;
+                    if (lvl === "2") {
+                        range = 175;
+                        radius = 60;
+                        maxIntelligence = 6;
+                    } else if (lvl === "3") {
+                        range = 200;
+                        radius = 90;
+                        maxIntelligence = 7;
+                    } else if (lvl === "4a") {
+                        range = 300;
+                        radius = 360;
+                        maxIntelligence = 8;
+                    } else if (lvl === "4b") {
+                        range = Infinity;
+                        radius = 360;
+                        maxIntelligence = 10;
+                    }
+                } else if (canUse[i] === 5) {
+                    range = 200;
+                    radius = 45;
+                    if (lvl === "2") {
+                        range = 250;
+                        radius = 60;
+                    } else if (lvl === "3") {
+                        range = 300;
+                        radius = 90;
+                    } else if (lvl === "4a") {
+                        range = 300;
+                        radius = 120;
+                    } else if (lvl === "4b") {
+                        range = 250;
+                        radius = 360;
+                    }
+                } else if (canUse[i] === 6) {
+                    range = 200;
+                    radius = 45;
+                    if (lvl === "2") {
+                        range = 250;
+                        radius = 60;
+                    } else if (lvl === "3") {
+                        range = 300;
+                        radius = 90;
+                    } else if (lvl === "4a") {
+                        range = 300;
+                        radius = 120;
+                    } else if (lvl === "4b") {
+                        range = 250;
+                        radius = 360;
+                    }
+                } else if (canUse[i] === 10) {
+                    range = 150;
+                    radius = 45;
+                    if (lvl === "2") {
+                        range = 175;
+                        radius = 60;
+                    } else if (lvl === "3") {
+                        range = 200;
+                        radius = 90;
+                    } else if (lvl === "4a") {
+                        range = 300;
+                        radius = 180;
+                    } else if (lvl === "4b") {
+                        range = 200;
+                        radius = 360;
+                    }
+                }
+                var b = absValue(atan2(target.y - obj.y, target.x - obj.x) + 90, 360), c = absValue(absValue(obj.rot + 180, 360) - b, 360);
+                if (target.skillTyon <= maxIntelligence && sq(obj.x - target.x) + sq(obj.y - target.y) <= sq(range) && (c <= radius / 2 || c >= 360 - radius / 2) && seeTarget([obj.x, obj.y], [target.x, target.y], true)) {
+                    wantToUse[canUse[i]] = true;
+                }
+            }
+        }
+        if (canUseMagic(obj, 2) && !usingDefense) {
+            wantToUse[2] = true;
+        }
+        if (canUseMagic(obj, 4) && obj.health < obj.maxHealth * 0.8 && !usingHostile) {
+            wantToUse[4] = true;
+        }
+        if (canUseMagic(obj, 7) && !usingDefense) {
+            wantToUse[7] = true;
+        }
+        if (canUseMagic(obj, 8) && !usingDefense && !usingHostile) {
+            wantToUse[8] = true;
+        }
+        if (canUseMagic(obj, 9) && target.hasTyon && !usingDefense && !usingHostile) {
+            wantToUse[9] = true;
+        }
+        if (canUseMagic(obj, 11)) {
+            wantToUse[11] = true;
+        }
+        var chosen, wantToAdd = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], LAA = 1, MAA = 1, HAA = 1, total = 0;
+        if (wantToUse.length > 0) {
+            if (obj.skillAggression <= 4) {
+                LAA = obj.skillAggression + 1;
+            } else if (obj.skillAggression <= 7) {
+                MAA = obj.skillAggression - 3;
+            } else {
+                HAA = obj.skillAggression - 6;
+            }
+            if (obj.stage === "Attack" || obj.stage === "Retreat" || obj.stage === "Attack 2") {
+                if (obj.targetVisible) {
+                    if (obj.health / obj.maxHealth <= 0.3 - obj.skillAggression / 10) {
+                        wantToAdd = [MAA, MAA, 0, MAA, 0, HAA, HAA, MAA, LAA, LAA, 0, 0];
+                    } else {
+                        wantToAdd = [MAA, 0, 0, MAA, 0, HAA, HAA, HAA, LAA, LAA, 2, 0];
+                    }
+                } else {
+                    wantToAdd[11] = 1;
+                    if (obj.health / obj.maxHealth <= 0.3 - obj.skillAggression / 10) {
+                        wantToAdd[4] = 1;
+                    }
+                }
+            } else if (obj.stage === "Attack 3" || obj.stage === "Evade 2") {
+                if (obj.targetVisible) {
+                    if (obj.health / obj.maxHealth <= 0.3 - obj.skillAggression / 10) {
+                        wantToAdd = [MAA * 3, MAA, 0, MAA, 0, HAA * 3, HAA * 5, 0/*MAA * 2*/, LAA, LAA, 0, 0];
+                    } else {
+                        wantToAdd = [MAA * 3, 0, 3, MAA, 0, HAA * 3, HAA * 5, 0/*HAA * 2*/, LAA, LAA, 2, 0];
+                    }
+                } else {
+                    wantToAdd[11] = 1;
+                    if (obj.health / obj.maxHealth <= 0.3 - obj.skillAggression / 10) {
+                        wantToAdd[4] = 1;
+                    }
+                }
+            } else if (obj.stage === "Evade") {
+                if (obj.health / obj.maxHealth <= 0.3 - obj.skillAggression / 10) {
+                    wantToAdd = [MAA, MAA, 2, MAA, 0, HAA, HAA, HAA, 2, 2, MAA, 0];
+                } else {
+                    wantToAdd = [MAA * 2, MAA * 2, 2, MAA, 0, HAA * 2, HAA, HAA, 4, 4, MAA * 3, 0];
+                }
+            } else if (obj.stage === "Flee" || obj.stage === "Flee 2") {
+                wantToAdd = [MAA, 0, 2, MAA, 0, MAA, HAA, 0, 2, 2, 0, 0];
+                if (obj.health / obj.maxHealth <= 0.3 - obj.skillAggression / 10) {
+                    wantToAdd[10] = MAA;
+                }
+            } else if (obj.stage === "Move In") {
+                wantToAdd = [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0];   
+                if (!obj.targetVisible) {    
+                    wantToAdd[11] = 1;
+                }
+            } else if (obj.stage === "Recalled") {
+                wantToAdd = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0];
+            } else if (obj.stage === "Return") {
+                wantToAdd = [0, 0, 1, 0, 4, 0, 0, 0, 0, 0, 0, 0];
+            } else if (obj.stage === "Wait") {
+                wantToAdd = [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1];
+                if (obj.targetVisible) {
+                    wantToAdd[11] = 0;
+                }
+            }
+            if (obj.health < obj.maxHealth * 0.75) {
+                wantToAdd[0] *= 1.5;
+                wantToAdd[4] *= 1.5;
+                wantToAdd[10] *= 1.5;
+            }
+            if (obj.currentWeapon === 2 && sq(target.x - obj.x) + sq(target.y - obj.y) < sq(40)) {
+                wantToAdd[1] *= 1.5;
+            }
+            if (obj.gettingShot > 0) {
+                wantToAdd[2] *= 1.5;
+                wantToAdd[8] *= 1.5;
+            }
+            if (obj.energyPool / obj.energyMax < 0.4) {
+                wantToAdd[5] *= 0.5;
+            }
+            if (obj.energyPool / obj.energyMax <= 0.6) {
+                wantToAdd[6] *= 0.5;
+                wantToAdd[7] *= 0.5;
+                if (obj.energyPool <= 30) {
+                    wantToAdd[6] *= 0.5;
+                    wantToAdd[7] *= 0.5;
+                }
+            }
+            if (target.hasTyon) {
+                for (var i = 0; i < target.tyonTime.length; i++) {
+                    if (target.tyonTime[i] > 0 && (i === 0 || i === 1 || i === 3 || i === 5 || i === 6 || i === 10)) {
+                        wantToAdd[9] *= 1.5;
+                        i = 12;
+                    }
+                }
+            }
+            for (var i = 0; i < wantToAdd.length; i++) {
+                if (!wantToUse[i]) {
+                    wantToAdd[i] = 0;
+                }
+                total += wantToAdd[i];
+            }
+            if (total > 0) {
+                var rand = random(0, total);
+                var current = 0;
+                for (var i = 0; i < wantToAdd.length; i++) {
+                    if (rand >= current && rand <= current + wantToAdd[i]) {
+                        var a;
+                        if (obj.energyPool / obj.energyMax >= 0.7) {
+                            a = 4 + obj.skillAggression / 10;
+                        } else if (obj.energyPool / obj.energymax >= 0.4) {
+                            a = 2 + obj.skillAggression / 10;
+                        } else {
+                            a = 1 + obj.skillAggression / 10;
+                        }
+                        if (obj.stage === "Evade 2" || obj.stage === "Attack 2" || obj.stage === "Attack 3") {
+                            a += (10 - a) * 4 / 5;
+                        }
+                        if ((random(0, 10) <= a && (i === 0 || i === 1 || i === 3 || i === 5 || i === 6 || i === 10)) || (i === 2 || i === 4 || i === 7 || i === 8 || i === 9 || i === 11)) {
+                            wantToFinal.push(i);
+                        }
+                        i = wantToAdd.length;
+                    } else {
+                        current += wantToAdd[i];
+                    }
+                }
+            }
+        }
+        if (obj.health === obj.maxHealth && obj.tyonUsed[4]) {
+            wantToFinal.push(4);
+        }
+        if (obj.targetVisible && obj.tyonUsed[11]) {
+            wantToFinal.push(11);
+        }
+        return wantToFinal;
+    } else {
+        return [4];
     }
 };
 var crawler = function(x, y, rot, allNodes) {
@@ -6234,8 +6354,12 @@ squad.prototype.assignPositions = function() {
             } else if (guns[a.weapons[0]].type === "Sniper Rifle" || guns[a.weapons[0]].type === "Marksman Rifle") {
                 this.members[i].positionInSquad = "Sniper";
             }
-        } else if (a.positionInSquad !== "Commander" && a.weapons[0] === "NONE") {
-            this.members[i].positionInSquad = "Bruiser";
+        } else if (a.positionInSquad !== "Commander" && a.weapons[0] === "NONE") {            
+            if (a.hasTyon) {
+                this.members[i].positionInSquad = "Magician";
+            } else {
+                this.members[i].positionInSquad = "Bruiser";
+            }
         }
     }
 };
@@ -6293,87 +6417,7 @@ levelEnd.prototype.work = function() {
     levelEnds.splice(findInIndex(levelEnds, this), 1);
 };
 //}
-// (5) "FREE PLAY" {
-var spawnCharacter = function(side) {
-    var optimalSpawn, oppTeam = enemies, maxDist = 0;
-    if (side === "enemy") {
-        oppTeam = allies;
-    }
-    for (var i = 0; i < spawnPoints.length; i++) {
-        for (var j = 0; j < oppTeam.length; j++) {
-            var a = sq(oppTeam[j].x - spawnPoints[i][0]) + sq(oppTeam[j].y - spawnPoints[i][1]);
-            if (a > maxDist) {
-                optimalSpawn = i;
-                maxDist = a;
-            }
-        }
-    }
-    return optimalSpawn;
-};
-var createCharacters = function() {
-    //println(maxEnemies[maxEnemies[maxEnemies.length - 1]]);
-    if (enemies.length < maxEnemies[maxEnemies[maxEnemies.length - 1]] && respawnRate[0] % 600 >= 300) {
-        var a = spawnPoints[spawnCharacter("enemy")];
-        enemies.push(construct(character, [a[0], a[1], 0, true, "Red_Team", 0, ["wep1", gameVars.commonGuns[round(random(gameVars.commonGuns.length - 1))]]]));
-        respawnRate[0] = 0;
-    }
-    if (allies.length < maxTeammates[maxTeammates[maxTeammates.length - 1]] - 1 && respawnRate[1] % 600 >= 300) {
-        var a = spawnPoints[spawnCharacter("ally")];
-        allies.push(construct(character, [a[0], a[1], 0, true, "Blue_Team", 0, ["wep1", gameVars.commonGuns[round(random(gameVars.commonGuns.length - 1))]]]));
-        respawnRate[1] = 0;
-    }
-};
-var freePlayPlayer = function(obj) {
-    var a = spawnPoints[round(random(spawnPoints.length - 1))];
-    allies.unshift(construct(character, [a[0], a[1], 0, false, "Player", 0, ["wep1", gameVars.commonGuns[round(random(gameVars.commonGuns.length - 1))]]]));
-};
-var checkMoveOpps = function(obj) {
-    var opps = [];
-    for (var i = 0; i < spawnPoints.length; i++) {
-        var works = true;
-        for (var j = 0; j < obj.movePath.length; j++) {
-            if (i === obj.movePath[j]) {
-                works = false;
-            }
-        }
-        if (works && seeTarget([obj.x, obj.y], [spawnPoints[i][0], spawnPoints[i][1]], false)) {
-            opps.push(i);
-        }
-    }
-    //println("opps: " + opps);
-    return opps;
-};
-var findMove = function(obj) {
-    var opportunities = checkMoveOpps(obj);
-    if (opportunities.length === 0) {
-        obj.movePath.clear();
-        opportunities = checkMoveOpps(obj);
-    }
-    var closest = 0, closestDist = Infinity;
-    for (var i = 0; i < opportunities.length; i++) {
-        var a = spawnPoints[opportunities[i]], b = sq(obj.x - a[0]) + sq(obj.y - a[1]);
-        if (b < closestDist) {
-            closest = i;
-            closestDist = b;
-        }
-    }
-    var decide = spawnPoints[opportunities[closest]];
-    obj.moveLoc = [decide[0], decide[1]];
-    obj.stage = "Move In";
-    obj.warned = true;
-    obj.movePath.push(opportunities[closest]);
-    //println("chose: " + opportunities[closest] + " -- " + obj.moveLoc + " -- " + obj.x + "," + obj.y);
-};
-var runMove = function(obj) {
-    if (inBox(obj.x, obj.y, obj.moveLoc[0], obj.moveLoc[1], 20, 20) || obj.moveLoc[0] === "NO") {
-        if (obj.movePath.length >= 3) {
-            obj.movePath.splice(0, 1);
-        }
-        findMove(obj);
-    }
-};
-//}
-// (6) "CAMPAIGN" {
+// (5) "CAMPAIGN" {
 character = function(x, y, rot, NPC, type, rank, other) {
     // "MAIN ATTRIBUTES" {
     this.x = x;
@@ -6398,6 +6442,7 @@ character = function(x, y, rot, NPC, type, rank, other) {
     this.skillReaction = this.skill[1];
     this.skillEvasion = this.skill[2];
     this.skillAggression = this.skill[3];
+    this.skillTyon = this.skill[4];
     //} END "MAIN ATTRIBUTES"
     // "SECONDARY ATTRIBUTES" {
     this.stealthTime = 0;
@@ -6443,6 +6488,8 @@ character = function(x, y, rot, NPC, type, rank, other) {
     this.GSmax = 50;
     this.pushMomentum = [];
     this.damageReduction = 1;
+    this.energyReduction = 1;
+    this.energyRegain = 0;
     this.onlyReduce = true;
     this.healing = false;
     this.hearShotsFrom = [];
@@ -6451,6 +6498,17 @@ character = function(x, y, rot, NPC, type, rank, other) {
     this.onTurret = false;
     this.whichTurret = "NONE";
     //} END "SECONDARY ATTRIBUTES"
+    // "TYON ABILITIES" {
+    this.energyPool = 100;
+    this.energyMax = 100;
+    this.tyonTime = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+    this.tyonTime2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.tyonLvls = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+    this.tyonUsed = [false, false, false, false, false, false, false, false, false, false, false, false];
+    this.tyonUsed2 = copyArray(this.tyonUsed);
+    this.hasTyon = false;
+    this.tyonReload = copyArray(this.tyonTime);
+    //} END "TYON ABILITIES"
     // "MELEE" {
     this.meleeWeapon = melee[this.weapons[2]] || melee[0];
     this.meleeDamage = 1;
@@ -6537,6 +6595,7 @@ character = function(x, y, rot, NPC, type, rank, other) {
     this.initialized = false;
     this.grenadeSwitch = true;
     this.canScope = true;
+    this.sightActive = false;
     this.seeAll = false;
     this.seeHealth = false;
     //} END "OTHER"
@@ -6574,15 +6633,23 @@ character = function(x, y, rot, NPC, type, rank, other) {
     this.changeInterval = 60;
     this.messUp = [0, 0];
     this.messUp2 = [0, 0];
-    this.moveRanges = [0, 0, 0];
+    this.moveRanges = [10, 10, 10];
     this.arrayIn = allies;
     this.sight = 400 + 10 * this.skillAim + 5 * this.skillReaction;
     //} END "NPC-ONLY"
-    // "FREE PLAY" {
-    this.movePath = [];
-    //}
 };
 character.prototype.initialize = function() {
+    if (this.NPC && this.type[8] !== undefined && this.type[8].length > 0) {
+        this.hasTyon = true;
+        this.energyPool = this.type[9] || 100;
+        this.energyMax = this.energyPool;
+        this.tyonTime = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+        this.tyonReload = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1];
+        this.tyonUsed = [false, false, false, false, false, false, false, false, false, false, false, false];
+        this.tyonLvls = this.type[8];
+    } else if (this.NPC && (this.type[8] === undefined || this.type[8].length === 0)) {
+        this.hasTyon = false;
+    }
     var g1 = ["N", "N", "N", "NONE"], g2 = ["N", "N", "N", "NONE"];
     if (this.other !== undefined) {
         var other = this.other;
@@ -6641,6 +6708,20 @@ character.prototype.initialize = function() {
                 this.stunTime = piece2;
             } else if (piece1 === "epool") {
                 this.energyPool = piece2;
+            } else if (piece1 === "hastyon") {
+                this.hasTyon = piece2;
+            } else if (piece1 === "tyontime") {
+                this.tyonTime = copyArray(piece2);
+            } else if (piece1 === "tyontime2") {
+                this.tyonTime2 = copyArray(piece2);
+            } else if (piece1 === "tyonlvls") {
+                this.tyonLvls = copyArray(piece2);
+            } else if (piece1 === "tyonused") {
+                this.tyonUsed = copyArray(piece2);
+            } else if (piece1 === "tyonused2") {
+                this.tyonUsed2 = copyArray(piece2);
+            } else if (piece1 === "tyonreload") {
+                this.tyonTime = copyArray(piece2);
             } else if (piece1 === "attacking") {
                 this.attacking = piece2;
             } else if (piece1 === "meleeattack") {
@@ -6709,6 +6790,8 @@ character.prototype.initialize = function() {
                 this.grenadeSwitch = false;
             } else if (piece1 === "cscope") {
                 this.canScope = false;
+            } else if (piece1 === "sactive") {
+                this.sightActive = true;
             } else if (piece1 === "sall") {
                 this.seeAll = true;
             } else if (piece1 === "shealth") {
@@ -6792,6 +6875,13 @@ character.prototype.initialize = function() {
             }
         }
     }
+    if (this.NPC && this.hasTyon) {
+        for (var i = 0; i < this.tyonTime.length; i++) {
+            if (this.tyonTime[i] > 0 && !this.tyonUsed[i]) {
+                this.tyonUsed[i] = true;
+            }
+        }
+    }
     var weapon = guns[this.weapons[0]] || "NONE";
     if (this.weapons[0] === "NONE" || this.weapons[0] === undefined) {
         weapon = "NONE";
@@ -6814,7 +6904,7 @@ character.prototype.initialize = function() {
             scopeAccuracy: 1,
             bulletVelocity: weapon.bullet.velocity,
             bulletDamage: weapon.bullet.damage,
-            bulletExplode: weapon.bullet.explosive * 100,
+            bulletExplode: weapon.bullet.explosive,
             spawn: weapon.bullet.spawn,
             reload: weapon.reload,
             allAttachments: weapon.attachments,
@@ -6857,7 +6947,7 @@ character.prototype.initialize = function() {
             scopeAccuracy: 1,
             bulletVelocity: weapon.bullet.velocity,
             bulletDamage: weapon.bullet.damage,
-            bulletExplode: weapon.bullet.explosive * 100,
+            bulletExplode: weapon.bullet.explosive,
             spawn: weapon.bullet.spawn,
             reload: weapon.reload,
             allAttachments: weapon.attachments,
@@ -6983,8 +7073,13 @@ character.prototype.initialize = function() {
                 this.moveRanges = [sq((190 - (this.skillAggression * 4)) * this.scope), sq((175 - (this.skillAggression * 2.5)) * this.scope), (100 - (this.skillAggression * 2.5)) * this.scope];
             }
         } else {
-            this.positionInSquad = "Bruiser";
-            this.moveRanges = [sq(50), sq(this.width / 2 + 10), 10];
+            if (!this.hasTyon) {
+                this.positionInSquad = "Bruiser";
+                this.moveRanges = [sq(50), sq(this.width / 2 + 10), 10];
+            } else {
+                this.positionInSquad = "Magician";
+                this.moveRanges = [sq(200), sq(75), 50];
+            }
         }
     }
 };
@@ -7077,11 +7172,13 @@ character.prototype.die = function() {
                 allLoot.push(construct(loot, [this.x, this.y, armor[this.armor], this.armorHealth, "Armor", this.armor]));
             }
             var a = random(1);
-            if (a <= 0.01) {
+            if (a <= 0.0001) {
+                spawnLoot(compileLoot("Attachment", "Legendary"), "Attachment", [this.x, this.y, 5, 5]);
+            } else if (a <= 0.005) {
                 spawnLoot(compileLoot("Attachment", "Rare"), "Attachment", [this.x, this.y, 5, 5]);
-            } else if (a <= 0.1) {
+            } else if (a <= 0.05) {
                 spawnLoot(compileLoot("Attachment", "Uncommon"), "Attachment", [this.x, this.y, 5, 5]);
-            } else if (a <= 0.2) {
+            } else if (a <= 0.1) {
                 spawnLoot(compileLoot("Attachment", "Common"), "Attachment", [this.x, this.y, 5, 5]);
             }
             a = random(1);
@@ -7998,7 +8095,7 @@ character.prototype.grabLoot = function() {
                 maxRecoil: weapon.maxRecoil,
                 bulletVelocity: weapon.bullet.velocity,
                 bulletDamage: weapon.bullet.damage,
-                bulletExplode: weapon.bullet.explosive * 100, 
+                bulletExplode: weapon.bullet.explosive, 
                 spawn: weapon.bullet.spawn,
                 reload: weapon.reload,
                 allAttachments: weapon.attachments,
@@ -8272,11 +8369,13 @@ character.prototype.draw = function() {
         stroke(0);
         strokeWeight(2);
         renderImage(obj.type[7][0], 0, 0, 100, 100);
+body(0, 0, 30, 20, 100, 30);
         scale(obj.width / 20);
         renderImage(armor[obj.armor].game, 0, 0);
         renderImage(backpack[obj.backpack || 0].game, 0, 0);
         scale(20 / obj.width);
         renderImage(obj.type[7][1], 0, 0, 100, 100);
+head(0, 0, 20, color(230, 200, 150), color(250, 220, 170));
         noStroke();
     };
     if ((this.currentWeapon === 2 && !this.onTurret) || this.storeWeapon !== "NONE") {
@@ -8291,6 +8390,8 @@ character.prototype.draw = function() {
             var compensateWidth = 6 * (this.width / 20);
             renderImage(this.type[7][2], this.hand1[0], this.hand1[1], 100, 100);
             renderImage(this.type[7][2], this.hand2[0], this.hand2[1], 100, 100);
+head(this.hand1[0], this.hand1[1], 6, color(230, 200, 150), color(250, 220, 170));
+head(this.hand2[0], this.hand2[1], 6, color(230, 200, 150), color(250, 220, 170));
         }
         if (this.currentWeapon !== 2 && this.storeWeapon !== "NONE") {
             pushMatrix();
@@ -8334,6 +8435,7 @@ character.prototype.draw = function() {
                 var b = obj.fireDelay - obj.animationDelay;
                 if (hand.length === 2 || obj.currentFire <= 0 || obj.currentFire >= b) {
                     renderImage(obj.type[7][2], hand[0], hand[1], 100, 100);
+head(hand[0], hand[1], 6, color(230, 200, 150), color(250, 220, 170));
                 } else {
                     var a = 0;
                     if (obj.currentFire >= b / 2) {
@@ -8342,6 +8444,7 @@ character.prototype.draw = function() {
                         a = obj.currentFire * 2 / b;
                     }
                     renderImage(obj.type[7][2], hand[0] + (hand[2] - hand[0]) * a, hand[1] + (hand[3] - hand[1]) * a, 100, 100);
+head(hand[0] + (hand[2] - hand[0]) * a, hand[1] + (hand[3] - hand[1]) * a, 6, color(230, 200, 150), color(250, 220, 170));
                 }
             };
             handy(this.hand1, this);
@@ -8367,15 +8470,20 @@ character.prototype.draw = function() {
             } else {
                 renderImage(this.whichTurret.type.game, 0, 0);
             }
+stroke(255, 0, 0);
+strokeWeight(4);
+line(0, 0, 0, this.muzzle);
         } else if (this.currentWeapon === 3) {
             pushMatrix();
             rotate(this.grenadePull * 0.75);
             renderImage(this.type[7][2], 6, 10 + (this.grenadePull / 15), 100, 100);
+head(6, 10 + (this.grenadePull / 15), 6, color(230, 200, 150), color(250, 220, 170));
             popMatrix();
             if (this.grenadePull <= 5) {
                 pushMatrix();
                 translate(-6 - (this.grenadePull / 15), 10 - (this.grenadePull / 3));
                 renderImage(this.type[7][2], 0, 0, 100, 100);
+head(0, 0, 6, color(230, 200, 150), color(250, 220, 170));
                 if ((!this.grenadePulled && this.grenadePull <= 1) || (this.grenadePulled)) {
                     renderImage(grenades[this.allGrenades[this.bombSelect][0]].game, -2, 2);
                 }
@@ -8406,6 +8514,7 @@ character.prototype.draw = function() {
         if ((!this.grenadePulled && this.grenadePull <= 1) || (this.grenadePulled)) {
             renderImage(grenades[this.allGrenades[this.bombSelect][0]].game, -2, 2);
         }
+head(0, 0, 6, color(230, 200, 150), color(250, 220, 170));
         popMatrix();
         noStroke();
     }
@@ -8432,11 +8541,7 @@ character.prototype.draw = function() {
 character.prototype.move = function() {
     this.stim = constrain(this.stim - (0.0075 * compensateFPS), 0, 100);
     this.health = constrain(this.health + ((this.stim / 3000) * compensateFPS) * this.maxHealth / 100, 0, this.maxHealth);
-    if (freePlay && this.target === "none") {
-        runMove(this);
-    } else if (freePlay && this.target !== "none" && !this.contingency) {
-        this.moveLoc = [this.target.x, this.target.y];
-    }
+    var nextX = this.x, nextY = this.y;
     if (!this.onTurret) {
         if (!this.NPC) {
             if (!this.dead && !this.NPC && !console.activated) {
@@ -8490,8 +8595,8 @@ character.prototype.move = function() {
                 }
                 var currentRecoil;
                 if (this.stunTime <= 0 || this.stunType === "smoke") {
-                    this.x += this.speed2;
-                    this.y += this.speed;
+                    nextX += this.speed2;
+                    nextY += this.speed;
                 }
                 if ((!pressed(commandKeys.up) && !pressed(commandKeys.down)) || (pressed(commandKeys.up) && pressed(commandKeys.down))) {
                     this.speed = 0;
@@ -8519,6 +8624,9 @@ character.prototype.move = function() {
                         y = this.targetLoc[1];
                     }
                     var theDistance = sq(this.x - x) + sq(this.y - y), theDistance2 = sq((this.width / 2) + (this.target.width / 2) + 10), a = moveToward(this, theDistance, this.moveRanges[0], this.moveRanges[1], this.moveRanges[2]);
+                    if (this.hasTyon && this.currentWeapon === 2 && (this.stage !== "Recall" && this.stage !== "Send In" && this.stage !== "Send In 2" && this.stage !== "Send In 3" && this.stage !== "Final Wait")) {
+                        canChange = false;
+                    }
                     if (canChange && this.whichSquad === "NONE") {
                         if (this.gettingShot <= 0 || this.skillEvasion <= 3) {
                             if (!this.targetVisible && this.stage !== "Flee" && this.stage !== "Flee 2" && this.stage !== "Evade" && this.stage !== "Evade 2") {
@@ -8673,32 +8781,38 @@ character.prototype.move = function() {
                             } else if (a[0] === "Retreat" && this.stage !== "Flee 2" && this.stage !== "Attack 2" && this.stage !== "Evade 2" && this.stage !== "Attack 3") {
                                 this.stage = "Retreat";
                             } else if (theDistance >= sq(this.moveRanges[2]) && theDistance <= this.moveRanges[0] && random(0, 10) >= 5 && round(this.timeAlive) % (this.changeInterval / (11 - this.skillReaction)) === 0) {
-                                var theRand = random(0, 15), f1 = 1.5 - this.skillAggression / 10, f2 = 5 - this.skillAggression / 10, f3 = 8 - this.skillAggression / 10, f4 = 11.5;
-                                if (theRand < f1) {
-                                    this.stage = "Wait";
-                                    this.changeInterval = round(random(0.5, 1) * (21 - this.skillAggression));
-                                } else if (theRand < f2) {
-                                    this.stage = "Evade 2";
-                                    this.circleTime = 0;
-                                    this.circleDirection = 0;   
-                                    this.changeInterval = round(random(60, 120));
-                                } else if (theRand < f3) {
-                                    this.stage = "Flee 2";
-                                    this.circleTime = 0;
-                                    this.circleDirection = 0;   
-                                    this.changeInterval = round(random(1, 2) * (11 - this.skillAggression) + random(75, 100));
-                                } else if (theRand < f4) {
+                                if (this.tyonUsed[7] || this.tyonUsed[9]) {
                                     this.stage = "Attack 2";
                                     this.moveRanges[2] = 20;
                                     this.changeInterval = round(random(0.5, 1) * (30 + this.skillAggression));
                                 } else {
-                                    this.stage = "Attack 3";
-                                    this.changeInterval = round(random(0.5, 1) * (60 + this.skillAggression * 2));
-                                    var rand = 100 - this.skillAggression * 2 + random(-10, 10), rand2 = random(360);
-                                    this.moveLoc = [this.targetLoc[0] + rand * sin(rand2), this.targetLoc[1] + rand * cos(rand2)];
-                                }
-                                if (theRand < f3) {
-                                    this.moveRanges[2] = 50;
+                                    var theRand = random(0, 15), f1 = 1.5 - this.skillAggression / 10, f2 = 5 - this.skillAggression / 10, f3 = 8 - this.skillAggression / 10, f4 = 11.5;
+                                    if (theRand < f1) {
+                                        this.stage = "Wait";
+                                        this.changeInterval = round(random(0.5, 1) * (21 - this.skillAggression));
+                                    } else if (theRand < f2) {
+                                        this.stage = "Evade 2";
+                                        this.circleTime = 0;
+                                        this.circleDirection = 0;   
+                                        this.changeInterval = round(random(60, 120));
+                                    } else if (theRand < f3) {
+                                        this.stage = "Flee 2";
+                                        this.circleTime = 0;
+                                        this.circleDirection = 0;   
+                                        this.changeInterval = round(random(1, 2) * (11 - this.skillAggression) + random(75, 100));
+                                    } else if (theRand < f4) {
+                                        this.stage = "Attack 2";
+                                        this.moveRanges[2] = 20;
+                                        this.changeInterval = round(random(0.5, 1) * (30 + this.skillAggression));
+                                    } else {
+                                        this.stage = "Attack 3";
+                                        this.changeInterval = round(random(0.5, 1) * (60 + this.skillAggression * 2));
+                                        var rand = 100 - this.skillAggression * 2 + random(-10, 10), rand2 = random(360);
+                                        this.moveLoc = [this.targetLoc[0] + rand * sin(rand2), this.targetLoc[1] + rand * cos(rand2)];
+                                    }
+                                    if (theRand < f3) {
+                                        this.moveRanges[2] = 50;
+                                    }
                                 }
                             }
                         } else {
@@ -8793,8 +8907,8 @@ character.prototype.move = function() {
                     this.speed *= 0.5;
                     this.speed2 *= 0.5;
                 }
-                this.x += this.speed2;
-                this.y += this.speed;
+                nextX += this.speed2;
+                nextY += this.speed;
             }
         }
     } else if (!this.dead) {
@@ -8826,31 +8940,20 @@ character.prototype.move = function() {
             this.pushMomentum.splice(i, 1);
         } else {
             var x = this.x + cos(this.pushMomentum[i][0]) * momentum, y = this.y + sin(this.pushMomentum[i][0]) * momentum;
-            for (var j = 0; j < walls.length; j++) {
-                if (walls[j].type[0] === "Rectangle") {
-                    var a = rectSegment([walls[j].x, walls[j].y, walls[j].width + this.width, walls[j].height + this.width], [this.x, this.y, x, y], true);
-                    if (a[2] !== "NO") {
-                        x = a[a[2]][0];
-                        y = a[a[2]][1];
-                    }
-                } else if (walls[j].type[0] === "Circle") {
-                    var a = circleLine([walls[j].x, walls[j].y, walls[j].width + this.width], [this.x, this.y, x, y], true);
-                    if (a[2] !== "NO") {
-                        x = a[a[2]][0];
-                        y = a[a[2]][1];
-                    }
-                }
-            }
-            this.x = x;
-            this.y = y;
+            nextX = x;
+            nextY = y;
             this.pushMomentum[i][1] += momentum;
         }
     }
     if (this !== allies[0] || !noClip) {
-        for (var i = 0; i < walls.length; i++) {
-            collide(walls[i].type[0], walls[i].x, walls[i].y, walls[i].width, walls[i].height, this);
+        for (var i = 0; i < wallWireFrames.length; i++) {
+            var a = wallWireFrames[i].collideWith(this, this.width, [nextX, nextY], this.maxSpeed);
+            nextX = a[0];
+            nextY = a[1];
         }
     }
+    this.x = nextX;
+    this.y = nextY;
 };
 character.prototype.squadFormation = function() {
     if (this.NPC && this.arrayIn.length > 1) {
@@ -8983,11 +9086,6 @@ character.prototype.findTarget = function() {
             this.circleTime = 0;
             this.circleDirection = 0;
             this.targetLoc = ["none", "none"];
-            if (freePlay) {
-                this.movePath.clear();
-                this.moveLoc = ["NO", "NO"];
-                findMove(this);
-            }
         }
         if (this.side !== "neutral" && ((this.skillReaction < 10 && round(this.timeAlive) % ceil((10 - this.skillReaction) * compensateFPS) === 0) || this.skillReaction === 10)) {
             getTarget(this);
@@ -9196,7 +9294,7 @@ character.prototype.getAlerted = function() {
     }
 };
 character.prototype.detectWall = function() {
-    if (this.NPC && !this.onTurret) {
+    if (this.NPC && !this.onTurret && this !== allies[0]) {
         var addition = (this.maxSpeed * 12) + (this.width / 2);
         if (this.contingency) {
             addition = (this.maxSpeed * 6) + (this.width / 2);
@@ -9356,8 +9454,8 @@ character.prototype.shoot = function() {
                     for (var i = 0; i < walls.length; i++) {
                         if (walls[i].barrier) {
                             if (walls[i].type[0] === "Rectangle") {
-                                var collide = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [gun_X, gun_Y, spawnX, spawnY])[0];
-                                if (collide[0] !== "NO") {
+                                var collide = rectSegment([walls[i].x, walls[i].y, walls[i].width, walls[i].height], [gun_X, gun_Y, spawnX, spawnY]);
+                                if (collide[0][0] !== "NO") {
                                     spawnX = gun_X;
                                     spawnY = gun_Y;
                                     recoil = 0;
@@ -9400,6 +9498,21 @@ character.prototype.shoot = function() {
                                         var a = atan2(gunY - walls[i].y, gunX - walls[i].x);
                                         debriz.push(construct(debris, [cos(a) * walls[i].width / 2, sin(a) * walls[i].width / 2, 40, walls[i].color]));
                                     }
+                                }
+                            }
+                        }
+                    }
+                    if (trailOn) {
+                        for (var i = 0; i < wallWireFrames.length; i++) {
+                            var a = wallWireFrames[i].coordinates;
+                            for (var j = 0; j < a.length - 2; j += 2) {
+                                var b = findIntersect([a[j], a[j + 1], a[j + 2], a[j + 3]], [gun_X, gun_Y, spawnX, spawnY]);
+                                if (b[0] !== "NO") {
+                                    spawnX = gun_X;
+                                    spawnY = gun_Y;
+                                    recoil = 0;
+                                    trailOn = false;
+                                    damageWho[0] = "NONE";
                                 }
                             }
                         }
@@ -9571,10 +9684,14 @@ character.prototype.checkRounds = function() {
     if (this.NPC) {
         haveRounds = this.mag;
     } else {
-        for (var i = 0; i < this.inventory.length; i++) {
-            var a = this.inventory[i];
-            if (a[1] === "Ammo" && a[0] === this.ammo) {
-                haveRounds += a[2];
+        if (this.autoReloading) {
+            haveRounds = this.mag;
+        } else {
+            for (var i = 0; i < this.inventory.length; i++) {
+                var a = this.inventory[i];
+                if (a[1] === "Ammo" && a[0] === this.ammo) {
+                    haveRounds += a[2];
+                }
             }
         }
     }
@@ -9597,8 +9714,9 @@ character.prototype.reloadGun = function() {
                 if (this.reloadType !== "Round-by-Round") {
                     this.currentReload = this.reload;
                 } else {
-                    var a = this.checkRounds();
-                    this.currentReload = this.reload * constrain(this.mag - this.inMag, 0, a) / this.mag;
+                    if (this.checkRounds() > 0) {
+                        this.currentReload = this.reload / this.mag;
+                    }
                 }
                 this.reloading = true;
                 this.firingBurst = false;
@@ -9637,30 +9755,26 @@ character.prototype.reloadGun = function() {
                 this.burstsLeft = this.burst;
             }
         }
-        if (this.reloadType === "Round-by-Round" && this.reloading) {
-            var a = this.reload - this.currentReload;
-            for (var i = 0; i < this.reload; i += (this.reload / this.mag)) {
-                if (a >= i && this.inMag <= (this.mag * (a / this.reload)) - 1) {
-                    if (this.autoReloading) {
+        if (this.reloadType === "Round-by-Round" && this.reloading && this.currentReload <= 0) {
+            if (this.autoReloading) {
+                this.inMag++;
+            } else {
+                for (var i = this.inventory.length - 1; i >= 0; i--) {
+                    var a = this.inventory[i];
+                    if (a[1] === "Ammo" && a[0] === this.ammo) {
+                        this.inventory[i][2]--;
                         this.inMag++;
-                    } else {
-                        for (var i = this.inventory.length - 1; i >= 0; i--) {
-                            var a = this.inventory[i];
-                            if (a[1] === "Ammo" && a[0] === this.ammo) {
-                                this.inventory[i][2]--;
-                                this.inMag++;
-                                if (a[2] <= 0) {
-                                    this.inventory[i][0] = "EMPTY";
-                                    this.inventory[i][1] = "EMPTY";
-                                    this.inventory[i][2] = "EMPTY";
-                                }
-                                i = -1;
-                            }
+                        if (a[2] <= 0) {
+                            this.inventory[i][0] = "EMPTY";
+                            this.inventory[i][1] = "EMPTY";
+                            this.inventory[i][2] = "EMPTY";
                         }
                     }
                 }
             }
-            if (this.currentReload <= 0) {
+            if (this.checkRounds() > 0 && this.inMag < this.mag) {
+                this.currentReload = this.reload / this.mag;
+            } else {
                 this.reloading = false;
             }
             if (this.fireMode !== "Full-Auto") {
@@ -9813,8 +9927,12 @@ character.prototype.punchAttack = function() {
 };
 character.prototype.update = function() {
     if (!this.NPC) {
-        if (pressed(commandKeys.scope) && !pressed(192) && this.canScope && (this.currentWeapon < 2 || this.onTurret)) {
-            this.zoom += ((this.scope - this.zoom) / 25) * compensateFPS;
+        if ((pressed(commandKeys.scope) && !pressed(192) && this.canScope && (this.currentWeapon < 2 || this.onTurret)) || this.sightActive) {
+            if (!this.sightActive) {
+                this.zoom += ((this.scope - this.zoom) / 25) * compensateFPS;
+            } else {
+                this.zoom += ((this.scope2 - this.zoom) / 25) * compensateFPS;
+            }
         } else {
             this.zoom += ((1 - this.zoom) / 25) * compensateFPS;
         }
@@ -9824,7 +9942,16 @@ character.prototype.update = function() {
         } else {
             this.zoom += ((1 - this.zoom) / 25) * compensateFPS;
         }
-        this.zoom += ((this.scope - this.zoom) / 25) * compensateFPS;
+        if (!this.sightActive) {
+            this.zoom += ((this.scope - this.zoom) / 25) * compensateFPS;
+        } else {
+            this.zoom += ((this.scope2 - this.zoom) / 25) * compensateFPS;
+        }
+    }
+    if (this.currentWeapon === 0) {
+        this.gun1.inMag = this.inMag;
+    } else if (this.currentWeapon === 1) {
+        this.gun2.inMag = this.inMag;
     }
     if (this.dead) {
         this.deadTime++;
@@ -9837,6 +9964,135 @@ character.prototype.update = function() {
         this.armor = 0;
         this.armorHealth = 0;
         this.armorHelp = 0;
+    }
+};
+character.prototype.useTyon = function() {
+    if (this.hasTyon && !this.onTurret) {
+        noStroke();
+        var wantToUse = [], useType = "0", cancelWhich = [], canUse = true, cancelItself = false, minCost, arkator = [];
+        if (!this.NPC && UIpieces[12].subAmount.length < 6) {
+            wantToUse = determinePowers2();
+        } else if (this.NPC && round(this.timeAlive) % (140 - this.skillTyon * 5) === 0/* && random(0, 10) > 4 + this.skillTyon / 3*/) {
+            var howMany = 0;
+            for (var i = 0; i < this.tyonUsed.length; i++) {
+                howMany += (this.tyonUsed[i] === true) ? 1 : 0;
+            }
+            wantToUse = determinePowers3(this, howMany);
+        }
+        for (var blub = 0; blub < wantToUse.length; blub++) {
+            var a = wantToUse[blub];
+            minCost = abilities[a].minCost;
+            if (isNaN(minCost)) {
+                minCost = abilities[a].minCost[tyonLevelToNumber(this.tyonLvls[a]) - 1]; 
+            }
+            if (((!this.tyonUsed[a] && minCost <= this.energyPool && this.tyonReload[a] <= 0 && this.tyonTime[a] <= 0) || (cancellationChart[a][a] === "1" && !this.tyonUsed2[a] && this.tyonUsed[a])) && tyonLevelToNumber(this.tyonLvls[a]) > 0) {
+                if (!this.tyonUsed[a]) {
+                    for (var i = 0; i < this.tyonUsed.length; i++) {
+                        if (this.tyonLvls[i] !== "-1" && this.tyonLvls[i] !== "0") {
+                            if (a !== i) {
+                                useType = cancellationChart[a][i];
+                                if (this.tyonUsed[i]) {
+                                    if (useType === "0" || useType === "3") {
+                                        canUse = false;
+                                    } else if (useType === "1") {
+                                        cancelWhich.push(i);
+                                    }
+                                } else if (this.tyonReload[i] > 0 && useType === "3") {
+                                    canUse = false;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if (cancellationChart[a][a] === "1") {
+                        cancelItself = true;
+                        cancelWhich.clear();
+                        cancelWhich.push(a);
+                    } else {
+                        canUse = false;
+                    }
+                }
+                if (canUse) {
+                    for (var i = 0; i < cancelWhich.length; i++) {
+                        var bob = cancelWhich[i];
+                        this.tyonTime[bob] = -1;
+                        var reloadWeWant = 0;
+                        if (abilities[bob].reload.length > 1) {
+                            reloadWeWant = abilities[bob].reload[tyonLevelToNumber(this.tyonLvls[bob]) - 1];
+                        } else {
+                            reloadWeWant = abilities[bob].reload[0];
+                        }
+                        if (this.tyonReload[bob] !== reloadWeWant) {
+                            abilities[bob].end(this, this.tyonLvls[bob]);
+                            this.tyonReload[bob] = reloadWeWant;
+                        }
+                        this.tyonUsed[cancelWhich[i]] = false;
+                        this.tyonTime2[cancelWhich[i]] = 0;
+                    }
+                    if (!cancelItself) {
+                        var hi = tyonLevelToNumber(this.tyonLvls[a]) - 1;
+                        if (this === allies[0] && scene !== "cinematic") {
+                            UIpieces[12].subAmount.push(abilities[a].time[hi]);
+                            UIpieces[12].subMax.push(abilities[a].time[hi]);
+                            UIpieces[12].subLevel.push(abilities[a].name);
+                        }
+                        this.tyonUsed[a] = true;
+                        this.tyonTime[a] = abilities[a].time[hi];
+                        abilities[a].init(this, this.tyonLvls[a]);
+                    }
+                }
+            }
+            useType = "0";
+            cancelWhich = [];
+            canUse = true;
+            cancelItself = false;
+        }
+        if (!this.NPC) {
+            this.tyonUsed2 = [false, false, false, false, false, false, false, false, false, false, false, false];
+            checkForPress(this);
+        } else {
+            for (var i = 0; i < this.tyonUsed.length; i++) {
+                arkator[i] = this.tyonUsed[i];
+            }
+            if (this.energyPool <= 70 && round(this.timeAlive) % 30 - this.skillTyon === 0) {
+                if (arkator[5] && this.tyonTime2[5] > 20 + this.skillAggression && random(0, 10) < 10 - this.skillAggression / 3) {
+                    arkator[5] = false;
+                }
+                if (arkator[6] && this.tyonTime2[6] > 20 + this.skillAggression && random(0, 10) < 10 - this.skillAggression / 3) {
+                    arkator[6] = false;
+                }
+                if (arkator[10] && this.tyonTime2[10] > 20 + this.skillAggression && random(0, 10) < 10 - this.skillAggression / 3) {
+                    arkator[10] = false;
+                }
+            }
+        }
+        var usingAny = false;
+        for (var i = 0; i < this.tyonTime.length; i++) {
+            if (this.tyonUsed[i] && this.tyonTime[i] >= 0) {
+                abilities[i].effect(this, this.tyonLvls[i], arkator[i]);
+                this.tyonTime2[i] += compensateFPS;
+            }
+            if ((this.tyonTime[i] <= 0 || this.energyPool <= 0) && this.tyonUsed[i]) {
+                abilities[i].end(this, this.tyonLvls[i]);
+                this.tyonTime[i] = -1;
+                if (abilities[i].reload.length > 1) {
+                    this.tyonReload[i] = abilities[i].reload[tyonLevelToNumber(this.tyonLvls[i]) - 1];
+                } else {
+                    this.tyonReload[i] = abilities[i].reload[0];
+                }
+                this.tyonUsed[i] = false;
+                this.tyonTime2[i] = 0;
+            }
+            if (this.tyonReload[i] > 0) {
+                this.tyonReload[i] -= compensateFPS;
+            }
+            if (this.tyonUsed[i] || this.tyonTime[i] >= 0 || this.tyonReload[i] >= 0) {
+                usingAny = true;
+            }
+        }
+        if (!usingAny) {
+            this.energyPool = constrain(this.energyPool + compensateFPS / 5, 0, this.energyMax);
+        }
     }
 };
 character.prototype.returnData = function() {
@@ -9864,7 +10120,22 @@ character.prototype.returnData = function() {
     if (this.currentWeapon !== 0) {
         ret.push("cw", this.currentWeapon);
     }
-    if (this.inMag < this.mag) {
+    if (this.hasTyon) {
+        ret.push("hasTyon", true);
+        var printWhich = false;
+        for (var i = 0; i < 12; i++) {
+            if (this.tyonLvls[i] !== "0") {
+                printWhich = true;
+            }
+        }
+        if (this.tyonLvls !== this.type[8]) {
+            printWhich = true;
+        }
+        if (printWhich) {
+            ret.push("tyonLvls", copyArray(this.tyonLvls[i]));
+        }
+    }
+    if ((this.currentWeapon === 0 && this.inMag < guns[this.weapons[0]].mag) || (this.currentWeapon === 1 && this.inMag < guns[this.weapons[1]].mag)) {
         ret.push("inmag", this.inMag);
     }
     if (!this.NPC) {
@@ -9875,12 +10146,12 @@ character.prototype.returnData = function() {
             ret.push("mselect", this.medSelect);
         }
         if (this.gun1 !== "NONE") {
-            if (this.gun1.inMag < this.gun1.mag) {
+            if (this.gun1.inMag !== guns[this.weapons[0]].mag) {
                 ret.push("G1M", this.gun1.inMag);
             }
         }
         if (this.gun2 !== "NONE") {
-            if (this.gun2.inMag < this.gun2.mag) {
+            if (this.gun2.inMag !== guns[this.weapons[1]].mag) {
                 ret.push("G2M", this.gun2.inMag);
             }
         }
@@ -10061,54 +10332,56 @@ var showButtonToClick = function(x, y, size, which, buttonLength, buttonHeight, 
     popMatrix();
 };
 var lootInfo = function(x, y, firstButton, secondButton, Name, Second, Info, moreInfo) {
-    //textFont(fonts.TimesNewRoman10);
+    //textFont(fonts.TNR10);
     textFont(fonts.Calibri10);
     var whichButton1, whichButton2;
     if (scene === "game") {
         //println(lootOn + ", " + allLoot.length);
-        if (lootOn === "NONE" || (lootOn !== "NONE" && lootOn < allLoot.length && sq(allies[0].x - allLoot[lootOn].x) + sq(allies[0].y - allLoot[lootOn].y) > sq(allLoot[lootOn].width / 2)) || (lootOn !== "NONE" && lootOn >= allLoot.length)) {
+        if (lootOn === "NONE" || (lootOn !== "NONE" && lootOn < allLoot.length && sq(allies[0].x - allLoot[lootOn].x) + sq(allies[0].y - allLoot[lootOn].y) > sq(allLoot[lootOn].width / 2)) || (lootOn !== "NONE" && (allies[0].onTurret || lootOn >= allLoot.length))) {
             onLoot = false;
-            for (var i = 0; i < allLoot.length; i++) {
-                if (sq(allies[0].x - allLoot[i].x) + sq(allies[0].y - allLoot[i].y) <= sq(allLoot[i].width / 2)) {
-                    if (i !== lootOn) {
-                        onLoot = "NONE";
-                        lootOn = "NONE";
-                        lootBoxSize += (-lootBoxSize / 5) * compensateFPS;
-                        lootName = "";
-                        lootAmmo = "";
-                        lootText = "";
-                        lootTextAlpha = 255;
-                    }
-                    lootOn = i;
-                    onLoot = true;
-                    lootName = allLoot[i].name;
-                    lootAmmo = allLoot[i].number;
-                    if (allLoot[i].type === "Gun") {
-                        lootAmmo = allLoot[i].ammo;
-                    } else if (allLoot[i].type === "Armor") {
-                        lootAmmo = round(allLoot[i].number) + " HP left";
-                    } else if (allLoot[i].type === "Attachment") {
-                        if (allLoot[i].other[0] === "Scope") {
+            if (!allies[0].onTurret) {
+                for (var i = 0; i < allLoot.length; i++) {
+                    if (sq(allies[0].x - allLoot[i].x) + sq(allies[0].y - allLoot[i].y) <= sq(allLoot[i].width / 2)) {
+                        if (i !== lootOn) {
+                            onLoot = "NONE";
+                            lootOn = "NONE";
+                            lootBoxSize += (-lootBoxSize / 5) * compensateFPS;
+                            lootName = "";
                             lootAmmo = "";
-                        } else {
-                            lootAmmo = "Level " + (allLoot[i].number + 1);
+                            lootText = "";
+                            lootTextAlpha = 255;
                         }
-                    } else if (allLoot[i].type === "Backpack") {
-                        lootAmmo = "Level " + allLoot[i].number;
-                    } else if (allLoot[i].type === "Melee") {
-                        lootAmmo = "";
+                        lootOn = i;
+                        onLoot = true;
+                        lootName = allLoot[i].name;
+                        lootAmmo = allLoot[i].number;
+                        if (allLoot[i].type === "Gun") {
+                            lootAmmo = allLoot[i].ammo;
+                        } else if (allLoot[i].type === "Armor") {
+                            lootAmmo = round(allLoot[i].number) + " HP left";
+                        } else if (allLoot[i].type === "Attachment") {
+                            if (allLoot[i].other[0] === "Scope") {
+                                lootAmmo = "";
+                            } else {
+                                lootAmmo = "Level " + (allLoot[i].number + 1);
+                            }
+                        } else if (allLoot[i].type === "Backpack") {
+                            lootAmmo = "Level " + allLoot[i].number;
+                        } else if (allLoot[i].type === "Melee") {
+                            lootAmmo = "";
+                        }
+                        lootAmmoTextWidth = textWidth(lootName) + textWidth(lootAmmo) + 10;
+                        lootText = allLoot[i].description;
+                        if (lootAmmoTextWidth <= 150) {
+                            lootTextWidth = constrain(textWidth(lootText), lootAmmoTextWidth, 150);   
+                        } else {
+                            lootTextWidth = constrain(textWidth(lootText), 150, lootAmmoTextWidth);
+                        }
+                        boxFinalWidth = 20 + lootTextWidth;
+                        lootText = text2(lootText, 150);
+                        lootBoxHeight = 35 + lootText.length * 15;
+                        i = allLoot.length;
                     }
-                    lootAmmoTextWidth = textWidth(lootName) + textWidth(lootAmmo) + 10;
-                    lootText = allLoot[i].description;
-                    if (lootAmmoTextWidth <= 150) {
-                        lootTextWidth = constrain(textWidth(lootText), lootAmmoTextWidth, 150);   
-                    } else {
-                        lootTextWidth = constrain(textWidth(lootText), 150, lootAmmoTextWidth);
-                    }
-                    boxFinalWidth = 20 + lootTextWidth;
-                    lootText = text2(lootText, 150);
-                    lootBoxHeight = 35 + lootText.length * 15;
-                    i = allLoot.length;
                 }
             }
         }
@@ -10173,7 +10446,7 @@ var lootInfo = function(x, y, firstButton, secondButton, Name, Second, Info, mor
         if (secondButton !== "NONE" && onLoot !== "NONE") {
             showButtonToClick(lootBoxSize + 3 + (whichButton2 / 2), lootBoxHeight / 2, 1, secondButton, whichButton2, lootBoxHeight + 1, lootBoxFinalAlpha);
         }
-        //textFont(fonts.TimesNewRoman10);
+        //textFont(fonts.TNR10);
         textFont(fonts.Calibri10);
         rectMode(CORNER);
         stroke(255, lootBoxFinalAlpha);
@@ -10436,6 +10709,7 @@ var UIpiece = function(x, y, size, which, type) {
             this.y = 193.25;
             this.width = 350;
             this.height = 326.5;
+            this.subLevel = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
         break;
         case "Datapad Gun Info":
             this.x = 200;
@@ -10586,7 +10860,7 @@ UIpiece.prototype.draw = function() {
         fill(0, 50);
         rect(0, 0, this.width, this.height, 2);
         fill(255);
-        textFont(fonts.TimesNewRoman8);
+        textFont(fonts.TNR8);
         textAlign(CENTER, BOTTOM);
         if (this.level > 0) {
             text("Lvl " + this.level, 0, (this.height / 2) - 1);
@@ -10606,7 +10880,7 @@ UIpiece.prototype.draw = function() {
         fill(255, 0, 0, 100);
         rect(0, (this.height / 2) - (this.height * ((this.amount / this.max) / 2)), this.width, this.height * (this.amount / this.max));
         fill(255);
-        textFont(fonts.TimesNewRoman8);
+        textFont(fonts.TNR8);
         textAlign(CENTER, BOTTOM);
         if (this.level > 0) {
             text("Lvl " + this.level, 0, (this.height / 2) - 1);
@@ -10625,7 +10899,7 @@ UIpiece.prototype.draw = function() {
             fill(255, 100);
             rect((-this.width / 2) + (this.width * ((this.amount / this.max) / 2)), 0, this.width * (this.amount / this.max), this.height);
         }
-        if (this.current > this.amount && allies[0].currentWeapon !== 3 && !allies[0].healing) {
+        if (this.current !== this.amount && allies[0].currentWeapon !== 3 && !allies[0].healing) {
             fill(100, 150);
             rect((-this.width / 2) + (this.width * ((this.current / this.max) / 2)), 0, this.width * (this.current / this.max), this.height);
         }
@@ -10733,6 +11007,10 @@ UIpiece.prototype.draw = function() {
             arc(0, 0, this.width, this.height, 0, (grenadeButtonTime * 12));
             if (allies[0].allGrenades.length > 0) {
                 renderImage(grenades[allies[0].allGrenades[allies[0].bombSelect][0]].graphic, 0, 0, this.width - 4, this.height - 4);
+                fill(255);
+                textFont(fonts.Calibri10);
+                text(allies[0].allGrenades[allies[0].bombSelect][1], this.width / 3, this.height / 3);
+                noFill();
             } else {
                 renderImage(armor[0].graphic, 0, 0, this.width - 10, this.height - 10);
                 fill(255);
@@ -10744,6 +11022,10 @@ UIpiece.prototype.draw = function() {
             arc(0, 0, this.width, this.height, 0, (medButtonTime * 12));
             if (allies[0].allMeds.length > 0) {
                 renderImage(medical[allies[0].allMeds[allies[0].medSelect][0]].graphic, 0, 0, this.width - 4, this.height - 4);
+                textFont(fonts.Calibri10);
+                fill(255);
+                text(allies[0].allMeds[allies[0].medSelect][1], this.width / 3, this.height / 3);
+                noFill();
             } else {
                 renderImage(armor[0].graphic, 0, 0, this.width - 10, this.height - 10);
                 fill(255);
@@ -10838,6 +11120,50 @@ UIpiece.prototype.draw = function() {
             translate(this.x, this.y);
             scale(this.size);
         }
+    } else if (this.which === "Energy Meter" && allies[0].hasTyon) {
+        fill(0);
+        rect(0, 0, this.width, this.height, 3);
+        var theColor = color(255, 200, 255, 220);
+        for (var i = 0; i < 10; i++) {
+            if (this.amount >= 10 * (i + 1)) {
+                fill(theColor);
+            } else {
+                var a = (this.amount - i * 10) / 10;
+                fill(theColor, 220 * a);
+            }
+            var b = (this.height / 10);
+            rect(0, 38 - b / 2 - i * 7.6, this.width - 2, b * 0.9, 5);
+        }
+        if (this.current > this.amount) {
+            for (var i = floor(this.amount / 10); i < 10; i++) {
+                if (this.current >= 10 * (i + 1)) {
+                    fill(theColor);
+                } else {
+                    var a = (this.current - i * 10) / 10;
+                    fill(theColor, 150 * a);
+                }
+                var b = (this.height / 10);
+                rect(0, 38 - b / 2 - i * 7.6, this.width - 2, b * 0.9, 1);
+            }
+        }
+    } else if (this.which === "Energy Used" && allies[0].hasTyon) {
+        for (var i = 0; i < (this.subAmount.length / 3); i++) {
+            var a = 0;
+            if (i === 0) {
+                a = (this.subAmount.length >= 3) ? 3 : this.subAmount.length;
+            } else {
+                a = (this.subAmount.length === 6) ? 3 : this.subAmount.length - 3;
+            }
+            for (var j = 0; j < a; j++) {
+                noStroke();
+                var b = j + (3 * i), x = -13 + (i * 26), y = 26 - (j * 26);
+                fill(0, 50);
+                rect(x, y, 24, 24, 2);
+                fill(255, 100);
+                rect(x, y + 11 - ((24 / this.subMax[b]) * this.subAmount[b]) / 2, 24, 24 / this.subMax[b] * this.subAmount[b], 0, 0, 2, 2);
+                tyonGraphics[this.subLevel[b]](x, y);
+            }
+        }
     } else if (this.which === "First Weapon Inventory" || this.which === "Second Weapon Inventory" || this.which === "Armor Inventory" || this.which === "Melee Inventory" || this.which === "Backpack Inventory") {
         strokeWeight(2);
         if (this.level > 0 && this.level < levelColors.length && this.which !== "First Weapon Inventory" && this.which !== "Second Weapon Inventory") {
@@ -10888,6 +11214,7 @@ UIpiece.prototype.draw = function() {
                     var x = ((this.x + (this.width / 2)) - 15) - (25 * i), y = (this.y + (this.height / 2)) - 15;
                     rect(x - this.x, y - this.y, 20, 20, 3);
                     if (MOUSEX >= x - 10 && MOUSEX <= x + 10 && MOUSEY >= y - 10 && MOUSEY <= y + 10) {
+                        cursor(HAND);
                         mouseOnTheAttachment = true;
                         fill(255, 50);
                         rect(x - this.x, y - this.y, 20, 20, 3);
@@ -10909,14 +11236,23 @@ UIpiece.prototype.draw = function() {
             rect(x2, y2, 20, 20, 3);
             if (MOUSEX >= x - 10 && MOUSEX <= x + 10 && MOUSEY >= y - 10 && MOUSEY <= y + 10) {
                 mouseOnTheAttachment = true;
-                fill(255, 50);
-                rect(x2, y2, 20, 20, 3);
+                if (gameVars.haveDatapad) {
+                    fill(255, 50);
+                    rect(x2, y2, 20, 20, 3);
+                    cursor(HAND);
+                } else {
+                    cursor('no-drop');
+                }
             }
-            fill(255);
+            if (gameVars.haveDatapad) {
+                fill(255);
+            } else {
+                fill(200);
+            }
             textFont(fonts.Calibri18);
             text("?", x2 + 1, y2);
             fill(230);
-            textFont(fonts.CalibriBold14);
+            textFont(fonts.Calibri14Bold);
             textAlign(LEFT, TOP);
             if (this.which === "First Weapon Inventory") {
                 text(guns[allies[0].weapons[0]].name, -this.width / 2 + 3, -this.height / 2 + 3);
@@ -10955,7 +11291,9 @@ UIpiece.prototype.draw = function() {
         }
         noStroke();
         if (MOUSEX >= this.x - (this.width / 2) && MOUSEX <= this.x + (this.width / 2) && MOUSEY >= this.y - (this.height / 2) && MOUSEY <= this.y + (this.height / 2) && (this.which === "Armor Inventory" || this.which === "Melee Inventory" || this.which === "Backpack Inventory" || ((this.which === "First Weapon Inventory" && allies[0].gun1 !== "NONE") || (this.which === "Second Weapon Inventory" && allies[0].gun2 !== "NONE")))) {
-            cursor(HAND);
+            if (!mouseOnTheAttachment) {
+                cursor(HAND);
+            }
             if (!mouseOnTheAttachment) {
                 fill(255, 50);
                 rect(0, 0, this.width - 2, this.height - 2, 3);
@@ -10990,6 +11328,8 @@ UIpiece.prototype.draw = function() {
                         stroke(ammo[allies[0].inventory[b][0]].lootFill);
                     } else if (allies[0].inventory[b][1] === "Medical") {
                         stroke(medical[allies[0].inventory[b][0]].type === "Health" ? color(150, 0, 0) : color(0, 150, 150));
+                    } else if (allies[0].inventory[b][1] === "Grenade") {
+                        stroke(150);
                     }
                 }
                 rect(x, y, a, a);
@@ -11032,7 +11372,7 @@ UIpiece.prototype.draw = function() {
                 } else {
                     text("LOCKED", x, (y + (a / 2)) - 1);
                     var img = "lock";
-                    image(images[img], x, y - 4, 250, 250);
+                    //image(images[img], x, y - 4, 250, 250);
                 }
                 textAlign(CENTER, CENTER);
             }
@@ -11158,7 +11498,7 @@ UIpiece.prototype.draw = function() {
             line(-(this.width / 2) + 3, (this.height / 2), 88, (this.height / 2));
         }
         fill(255);
-        textFont(fonts.AgencyFB25);
+        textFont(fonts.AFB25);
         if (this.which === "Datapad Map Info" && datapadOn === 0) {
             var theLength = textWidth("MAP");
             text("MAP", 0, -140);
@@ -11167,7 +11507,7 @@ UIpiece.prototype.draw = function() {
             line(-theLength / 2, -125, theLength / 2, -125);
             line(-theLength / 2, -154, theLength / 2, -154);
             var a = maps[gameMap[0]].map();
-            image(images[a[0]], 0, 0);
+            //image(images[a[0]], 0, 0);
             noStroke();
             fill(0, 255, 0);
             ellipse((allies[0].x - a[1]) * a[3], (allies[0].y - a[2]) * a[3], 5, 5);
@@ -11178,7 +11518,7 @@ UIpiece.prototype.draw = function() {
             strokeWeight(2);
             line(-theLength / 2, -125, theLength / 2, -125);
             line(-theLength / 2, -154, theLength / 2, -154);
-            textFont(fonts.CalibriBold18);
+            textFont(fonts.Calibri18Bold);
             textAlign(LEFT, TOP);
             stroke(255);
             strokeWeight(2);
@@ -11230,11 +11570,11 @@ UIpiece.prototype.draw = function() {
                     text("Mag\nReload\nFire Delay\nDamage\nBullet Speed", -160, 150);
                     text("Accuracy\nRecoil\nADS Accuracy\nRange\nNoise", 10, 150);
                     fill(255, 255, 0);
-                    text(((whichGun2.mag === whichGun.mag) ? "" : whichGun2.mag) + "\n" + ((whichGun2.reload === whichGun.reload) ? "" : whichGun2.reload) + "\n" + ((whichGun2.fireDelay === whichGun.fireSpeed) ? "" : whichGun2.fireDelay) + "\n" + ((whichGun2.bulletDamage === whichGun.bullet.damage) ? "" : (whichGun2.bulletDamage + " x " + whichGun.bullet.flechettes)) + "\n" + ((whichGun2.bulletVelocity === whichGun.bullet.velocity) ? "" : whichGun2.bulletVelocity), -35, 150);
+                    text(((whichGun2.mag === whichGun.mag) ? "" : whichGun2.mag) + "\n" + ((whichGun2.reload === whichGun.reload) ? "" : Round(whichGun2.reload / 60, 10)) + "\n" + ((whichGun2.fireDelay === whichGun.fireSpeed) ? "" : whichGun2.fireDelay) + "\n" + ((whichGun2.bulletDamage === whichGun.bullet.damage) ? "" : (whichGun2.bulletDamage + " x " + whichGun.bullet.flechettes)) + "\n" + ((whichGun2.bulletVelocity === whichGun.bullet.velocity) ? "" : whichGun2.bulletVelocity), -35, 150);
                     text(((whichGun2.veer === whichGun.accuracy) ? "" : Round(whichGun2.veer, 1000)) + "\n" + ((whichGun2.recoil === whichGun.recoil) ? "" : Round(whichGun2.recoil, 1000)) + "\n" + ((whichGun2.scopeAccuracy === 1) ? "" : Round(whichGun2.scopeAccuracy * (whichGun.accuracy / 3), 1000)) + "\n" + ((whichGun2.range === whichGun.range) ? "" : whichGun2.range) + "\n" + ((whichGun2.noise === whichGun.noise) ? "" : whichGun2.noise), 135, 150);
                     fill(255);
                     textAlign(RIGHT, BOTTOM);
-                    text(whichGun.mag + "\n" + whichGun.reload + "\n" + whichGun.fireSpeed + "\n" + whichGun.bullet.damage + " x " + whichGun.bullet.flechettes + "\n" + whichGun.bullet.velocity, -45, 150);
+                    text(whichGun.mag + "\n" + Round(whichGun.reload / 60, 10) + " s\n" + whichGun.fireSpeed + "\n" + whichGun.bullet.damage + " x " + whichGun.bullet.flechettes + "\n" + whichGun.bullet.velocity, -45, 150);
                     text(whichGun.accuracy + "\n" + whichGun.recoil + "\n" + Round(whichGun.accuracy / 3, 100) + "\n" + whichGun.bullet.range + "\n" + whichGun.noise, 125, 150);
                     stroke(255);
                     line(130, 150, 130, 52);
@@ -11310,19 +11650,71 @@ UIpiece.prototype.draw = function() {
             line(-160, -80, -150, -70);
             noStroke();
         } else if (this.which === "Datapad Tyon Info" && datapadOn === 3) {
-            var theLength = textWidth("INFO");
-            text("INFO", 0, -140);
+            this.subLevel = allies[0].tyonLvls;
+            var level = tyonLevelToNumber(this.subLevel[tyonFocusingOn]);
+            var n = "TYON " + abilities[tyonFocusingOn].name.toUpperCase();
+            var theLength = textWidth(n);
+            text(n, 0, -140);
             stroke(255);
             strokeWeight(2);
             line(-theLength / 2, -125, theLength / 2, -125);
             line(-theLength / 2, -154, theLength / 2, -154);
-            textFont(fonts.CalibriBold18);
-            textAlign(LEFT, TOP);
-            text("Name:\nHealth:\nLevel:", -160, -110);
-            textAlign(RIGHT, TOP);
-            text(playerInfo[0] + " " + playerInfo[1] + "\n" + round(allies[0].health) + "\n" + gameMap[0], 160, -110);
+            textFont(fonts.Calibri12);
+            var description = "RANK " + this.subLevel[tyonFocusingOn].toUpperCase() + " - " + abilities[tyonFocusingOn].description[level - 1], dLength;
+            if (level === 0) {
+                description = "Ability has not been learned yet.";
+            }
+            dLength = (ceil(textWidth(description) / 280) * 17) + 6;
             noStroke();
+            fill(0, 50);
+            rectMode(CORNER);
+            rect(-145, -25, 290, dLength);
+            rectMode(CENTER);
+            fill(255);
+            textAlign(CENTER, TOP);
+            text(description, -140, -20, 280, 200);
+            noStroke();
+            if (level !== 0) {
+                textFont(fonts.Calibri15);
+                textAlign(RIGHT, BOTTOM);
+                var details = "";
+                var whatOn = abilities[tyonFocusingOn].range[level - 1];
+                for (var i = 0; i < whatOn.length - 1; i += 2) {
+                    details += "\n" + whatOn[i];
+                }
+                text(details, -5, 150);
+                textAlign(LEFT, BOTTOM);
+                details = "";
+                var whatOn = abilities[tyonFocusingOn].range[level - 1];
+                for (var i = 0; i < whatOn.length - 1; i += 2) {
+                    details += "\n" + whatOn[i + 1];
+                }
+                text(details, 5, 150);
+            }
             textAlign(CENTER, CENTER);
+            pushMatrix();
+            translate(0, -80);
+            scale(3);
+            tyonGraphics[abilities[tyonFocusingOn].name](0, 0);
+            popMatrix();
+            noStroke();
+            if (inBox(MOUSEX, MOUSEY, this.x+155, this.y-80, 20, 30)) {
+                cursor(HAND);
+                fill(255, 50);
+                rect(155, -80, 20, 30);
+            }
+            if (inBox(MOUSEX, MOUSEY, this.x-155, this.y-80, 20, 30)) {
+                cursor(HAND);
+                fill(255, 50);
+                rect(-155, -80, 20, 30);
+            }
+            stroke(255);
+            strokeWeight(2);
+            line(160, -80, 150, -90);
+            line(160, -80, 150, -70);
+            line(-160, -80, -150, -90);
+            line(-160, -80, -150, -70);
+            noStroke();
         }
     } else if (this.which === "Datapad Map Button" || this.which === "Datapad Tyon Button" || this.which === "Datapad Gun Button" || this.which === "Datapad Objective Button") {
         strokeWeight(2);
@@ -11374,7 +11766,7 @@ UIpiece.prototype.draw = function() {
         if (this.which === "Datapad Map Button") {
             text("Map", 0, 0);
         } else if (this.which === "Datapad Tyon Button") {
-            text("Info", 0, 0);
+            text("Tyon", 0, 0);
         } else if (this.which === "Datapad Gun Button") {
             text("Weapons", 0, 0);
         } else if (this.which === "Datapad Objective Button") {
@@ -11620,8 +12012,12 @@ UIpiece.prototype.update = function() {
         } else {
             if (allies[0].currentWeapon < 2 || allies[0].onTurret) {
                 if (allies[0].reloading) {
+                    if (allies[0].reloadType === "Round-by-Round") {
+                        this.max = allies[0].reload / allies[0].mag;
+                    } else {
+                        this.max = allies[0].reload;
+                    }
                     this.amount = allies[0].currentReload;
-                    this.max = allies[0].reload;
                 } else {
                     if (allies[0].spool <= 0 || allies[0].spool === "NONE") {
                         if (allies[0].fireMode === "Burstfire" && !allies[0].canFire) {
@@ -11655,8 +12051,13 @@ UIpiece.prototype.update = function() {
     } else if (this.which === "First Weapon") {
         if (allies[0].currentWeapon === 0) {
             if (allies[0].reloading) {
-                this.amount = allies[0].reload - allies[0].currentReload;
-                this.max = allies[0].reload;
+                if (allies[0].reloadType === "Round-by-Round") {
+                    this.max = allies[0].reload / allies[0].mag;
+                    this.amount = allies[0].reload / allies[0].mag - allies[0].currentReload;
+                } else {
+                    this.max = allies[0].reload;
+                    this.amount = allies[0].reload - allies[0].currentReload;
+                }
             } else {
                 this.amount = allies[0].inMag;
                 this.max = allies[0].mag;
@@ -11668,8 +12069,13 @@ UIpiece.prototype.update = function() {
     } else if (this.which === "Second Weapon") {
         if (allies[0].currentWeapon === 1) {
             if (allies[0].reloading) {
-                this.amount = allies[0].reload - allies[0].currentReload;
-                this.max = allies[0].reload;
+                if (allies[0].reloadType === "Round-by-Round") {
+                    this.max = allies[0].reload / allies[0].mag;
+                    this.amount = allies[0].reload / allies[0].mag - allies[0].currentReload;
+                } else {
+                    this.max = allies[0].reload;
+                    this.amount = allies[0].reload - allies[0].currentReload;
+                }
             } else {
                 this.amount = allies[0].inMag;
                 this.max = allies[0].mag;
@@ -11714,6 +12120,37 @@ UIpiece.prototype.update = function() {
                 }
             }
             this.selected = false;
+        }
+    } else if (this.which === "Energy Meter" && allies[0].hasTyon) {
+        this.amount = allies[0].energyPool;
+    } else if (this.which === "Energy Used" && allies[0].hasTyon) {
+        for (var i = 0; i < this.subAmount.length; i++) {
+            var a = convertTyonToNumber2(this.subLevel[i]);
+            if (allies[0].tyonReload[a] > 0 || allies[0].tyonTime[a] < 0) {
+                this.subAmount[i] = allies[0].tyonReload[a];
+                if (abilities[a].reload.length > 1) {
+                    this.subMax[i] = abilities[a].reload[tyonLevelToNumber(allies[0].tyonLvls[a]) - 1];
+                } else {
+                    this.subMax[i] = abilities[a].reload[0];
+                }
+            } else {
+                var type = "i", hi = tyonLevelToNumber(allies[0].tyonLvls[a]) - 1;
+                if (abilities[a].type.length === 1) {
+                    type = abilities[a].type[0];
+                } else {
+                    type = abilities[a].type[hi];
+                }
+                if (type !== "a") {
+                    this.subAmount[i] = allies[0].tyonTime[a];
+                } else {
+                    this.subAmount[i] = 1;
+                }
+            }
+            if (this.subAmount[i] < 0) {
+                this.subAmount.splice(i, 1);
+                this.subMax.splice(i, 1);
+                this.subLevel.splice(i, 1);
+            }
         }
     } else if (this.which === "First Weapon Inventory" && allies[0].gun1 !== "NONE") {
         if (allies[0].gun1.attachments.muzzle === "NONE") {
@@ -12391,6 +12828,7 @@ UIpiece.prototype.clickOn = function() {
                 datapadOn = 1;
             } else if (this.which === "Datapad Gun Button") {
                 datapadOn = 2;
+                gunFocusingOn = allies[0].currentWeapon % 3;
             } else if (this.which === "Datapad Tyon Button") {
                 datapadOn = 3;
             }
@@ -12402,9 +12840,16 @@ UIpiece.prototype.clickOn = function() {
         if (MOUSEX <= this.x - 145 && MOUSEX >= this.x - 165 && MOUSEY >= this.y - 95 && MOUSEY <= this.y - 65) {
             gunFocusingOn = absValue(gunFocusingOn - 1, 3);
         }
+    } else if (this.which === "Datapad Tyon Info") {
+        if (MOUSEX >= this.x + 145 && MOUSEX <= this.x + 165 && MOUSEY >= this.y - 95 && MOUSEY <= this.y - 65) {
+            tyonFocusingOn = (tyonFocusingOn + 1) % abilities.length;
+        }
+        if (MOUSEX <= this.x - 145 && MOUSEX >= this.x - 165 && MOUSEY >= this.y - 95 && MOUSEY <= this.y - 65) {
+            tyonFocusingOn = absValue(tyonFocusingOn - 1, abilities.length);
+        }
     } else if (this.which === "First Weapon Inventory" || this.which === "Second Weapon Inventory") {
         var x = (this.x - (this.width / 2)) + 15, y = (this.y + (this.height / 2)) - 15;
-        if (MOUSEX >= x - 10 && MOUSEX <= x + 10 && MOUSEY >= y - 10 && MOUSEY <= y + 10) {
+        if (MOUSEX >= x - 10 && MOUSEX <= x + 10 && MOUSEY >= y - 10 && MOUSEY <= y + 10 && gameVars.haveDatapad) {
             lastScene = "inventory";
             scene = "datapad";
             datapadOn = 2;
@@ -12442,13 +12887,13 @@ UIpiece.prototype.clickOn = function() {
                 scene = "pause2";
             } else if (this.which === "Pause2 Yes") {
                 levelEnds.push(construct(levelEnd, [function() {
-                    if (freePlay) {
-                        codes.splice(codes.length - 1, 1);
-                    }
                     scene = "selectGame";
                     weathers2.clear();
                     weathers2.push(construct(weather, ["snow 2", 400, 400, 20, [800, 1600], 50]));
                     clearArrays();
+                    if (gameMap[0] === "Tutorial") {
+                        codes.splice(codes.length - 1);
+                    }
                 }, true]));
             } else if (this.which === "Pause2 No") {
                 scene = "pause";
@@ -12469,7 +12914,9 @@ UIpieces.push(
     construct(UIpiece, ["normal", "normal", 1, "Second Weapon"]),
     construct(UIpiece, ["normal", "normal", 1, "Melee Weapon"]),
     construct(UIpiece, ["normal", "normal", 1, "Grenade"]),
-    construct(UIpiece, ["normal", "normal", 1, "Meds"])
+    construct(UIpiece, ["normal", "normal", 1, "Meds"]),
+    construct(UIpiece, ["normal", "normal", 1, "Energy Meter", "Rectangle"]),
+    construct(UIpiece, ["normal", "normal", 1, "Energy Used", "Rectangle"])
 );
 UIpiecesInventory.push(
     construct(UIpiece, ["normal", "normal", 1, "First Weapon Inventory"]),
@@ -12543,14 +12990,14 @@ objective.prototype.work = function() {
         this.time += compensateFPS;
     }
     if (this.time > 0 && this.time <= 300) {
-        textFont(fonts.AgencyFB20);
+        textFont(fonts.AFB20);
         fill(0);
         for (var i = 0; i < 8; i++) {
             text("NEW OBJECTIVE:", 200 + cos(i * 45) * 2, 85 + sin(i * 45) * 2);
         }
         fill(255);
         text("NEW OBJECTIVE:", 200, 85);
-        textFont(fonts.AgencyFB25);
+        textFont(fonts.AFB25);
         textAlign(CENTER, TOP);
         fill(0);
         for (var i = 0; i < 8; i++) {
@@ -12576,7 +13023,14 @@ tip = function(says, tip) {
     lastScene = scene;
     scene = "tips";
     textFont(fonts.Calibri12);
-    this.tWidth = textWidth(this.says);
+    this.height = text2(this.says, 350);
+    this.tWidth = textWidth(this.height[0]);
+    for (var i = 1; i < this.height.length; i++) {
+        var a = textWidth(this.height[i]);
+        if (a > this.tWidth) {
+            this.tWidth = a;
+        }
+    }
     this.hoverAlpha = 50;
     this.tip = tip || "TIP";
 };
@@ -12587,28 +13041,28 @@ tip.prototype.work = function() {
         pushMatrix();
         translate(200, 200);  
         fill(0, 0, 150);
-        rect(0, 0, this.tWidth + 35, 60);  
+        rect(0, 0, this.tWidth + 35, 45 + this.height.length * 12);  
         fill(0, 50);
         noFill();
         strokeWeight(2);
         stroke(0);
-        rect(0, 0, this.tWidth + 35, 60);
+        rect(0, 0, this.tWidth + 35, 45 + this.height.length * 12);
         fill(0, 0, 200);
-        rect(0, 0, this.tWidth + 15, 40);
+        rect(0, 0, this.tWidth + 15, 35 + this.height.length * 6);
         fill(255);
-        textFont(fonts.AgencyFB20);
-        text("- " + this.tip + " -", 0, -18);
+        textFont(fonts.AFB20);
+        text("- " + this.tip + " -", 0, -11 - this.height.length * 6);
         textFont(fonts.Calibri12);
-        text(this.says, 0, 3);
+        text3(this.height, 0, 9 - this.height.length * 6, 12);
         fill(0, this.hoverAlpha);
         noStroke();
-        ellipse(0, 50, 30, 30);
+        ellipse(0, 44 + this.height.length * 6, 30, 30);
         stroke(255);
         strokeWeight(3);
-        line(-7, 43, 7, 57);
-        line(-7, 57, 7, 43);
+        line(-7, 37 + this.height.length * 6, 7, 51 + this.height.length * 6);
+        line(-7, 51 + this.height.length * 6, 7, 37 + this.height.length * 6);
         popMatrix();
-        if (sq(MOUSEX - 200) + sq(MOUSEY - 250) <= 225) {
+        if (sq(MOUSEX - 200) + sq(MOUSEY - (244 + this.height.length * 6)) <= 225) {
             this.hoverAlpha += (100 - this.hoverAlpha) / 5;
             cursor(HAND);
         } else {
@@ -12617,7 +13071,7 @@ tip.prototype.work = function() {
     }
 };
 tip.prototype.exit = function() {
-    if (this.onTop && sq(MOUSEX - 200) + sq(MOUSEY - 250) <= 225) {
+    if (this.onTop && sq(MOUSEX - 200) + sq(MOUSEY - (244 + this.height.length * 6)) <= 225) {
         if (tips.length > 1) {
             for (var i = 0; i < tips.length; i++) {
                 if (tips[i] !== this) {
@@ -12697,7 +13151,7 @@ var commands = [
                 name: "clear",
                 command: function() {
                     console.text.clear();
-                    console.text = [("DEVELOPER CONSOLE -- ESCAPE 2 -- VERSION " + version)];
+                    console.text = [("DEVELOPER CONSOLE -- DARKSTAR -- VERSION " + version)];
                 },
             },
         ],
@@ -12817,10 +13271,58 @@ var commands = [
             },
         ],
     },
+    {
+        name: "settyonall",
+        second: [
+            {
+                name: "CHOSEN",
+                command: function(input) {
+                    if (input === "0" || input === "1" || input === "2" || input === "3" || input === "4a" || input === "4b") {
+                        for (var i = 0; i < allies[0].tyonLvls.length; i++) {
+                            allies[0].tyonLvls[i] = input;
+                            allies[0].tyonTime[i] = -1;
+                            allies[0].tyonUsed[i] = false;
+                            allies[0].tyonUsed2[i] = false;
+                        }
+                        console.text.push("All Tyon levels set to " + input + ".");
+                    } else {
+                        console.text.push("Unknown command.");
+                    }
+                },
+            },
+        ],
+    },
+    {
+        name: "give",
+        second: [
+            {
+                name: "tyon",
+                command: function() {
+                    allies[0].energyPool = 100;
+                },
+            },
+        ],
+    },
+    {
+        name: "autoreload",
+        second: [
+            {
+                name: "",
+                command: function() {
+                    allies[0].autoReloading = !allies[0].autoReloading;
+                    if (allies[0].autoReloading) {
+                        console.text.push("Automatic reloading activated."); 
+                    } else {
+                        console.text.push("Automatic reloading deactivated."); 
+                    }
+                },
+            },
+        ],
+    },
 ]; // All commands
 var Console = function() {
     this.activated = false;
-    this.text = [("DEVELOPER CONSOLE -- ESCAPE 2 -- VERSION " + version), ("| ")];
+    this.text = [("DEVELOPER CONSOLE -- DARKSTAR -- VERSION " + version), ("| ")];
     this.y = -6;
     this.currentTextLength = 0;
     this.typingTime = 0;
@@ -12833,21 +13335,21 @@ Console.prototype.draw = function() {
     pushMatrix();
     translate(0, this.y - 102);
     fill(0);
-    image(images["star background"], 200, 4, 400, 200);
-    image(images["escape logo"], 200, 25, 400, 200);
+    //image(images["star background"], 200, 4, 400, 200);
+    //image(images["escape logo"], 200, 25, 400, 200);
     strokeWeight(4);
     stroke(0, 0, 200);
     fill(0, 150);
     rect(200, 0, 410, 210);
     fill(255);
-    textFont(fonts.TimesNewRoman10);
+    textFont(fonts.TNR10);
     textAlign(LEFT, TOP);
     for (var i = 0; i < this.text.length; i++) {
         if (i < 12) {
             fill(255);
-            if (this.text[i] === "Unknown command." && this.text[i][0] !== "|" && this.text[i] !== ("DEVELOPER CONSOLE -- ESCAPE 2 -- VERSION " + version)) {
+            if (this.text[i] === "Unknown command." && this.text[i][0] !== "|" && this.text[i] !== ("DEVELOPER CONSOLE -- DARKSTAR -- VERSION " + version)) {
                 fill(255, 0, 0);
-            } else if (this.text[i] !== "Unknown command." && this.text[i][0] !== "|" && this.text[i] !== ("DEVELOPER CONSOLE -- ESCAPE 2 -- VERSION " + version)) {
+            } else if (this.text[i] !== "Unknown command." && this.text[i][0] !== "|" && this.text[i] !== ("DEVELOPER CONSOLE -- DARKSTAR -- VERSION " + version)) {
                 fill(0, 255, 0);
             }
             if (i !== this.text.length - 1) {
@@ -13013,7 +13515,7 @@ makeSave = function() {
     };
 };
 var printSave = function() {
-    var theRet = "var codes = [\n";
+    var theRet = "\/\/ Close the \"codes\" array, highlight it all, and replace it with the following:\nvar codes = [\n";
     for (var i = 0; i < codes.length; i++) {
         var a = codes[i];
         theRet += "\t[\n\t\t\"" + a.name + "\",\"" + a.date + "\",[\"" + a.playerInfo.firstName + "\",\"" + a.playerInfo.lastName + "\",\"" + a.playerInfo.gender + "\"," + a.playerInfo.skinColor + "," + a.playerInfo.hairColor + "],";
@@ -13079,383 +13581,10 @@ order.prototype.run = function(v) {
 //}
 // (2) "CINEMATIC VARIABLES" {
 var cinVars = {
-    intro: [0, true, 0, ["                    Civil War!                    ", "The peoples of Mov Gaalidran\nare in the midst of a planetary conflict.", "The vast Rathanian Empire has moved\n against the rebellious Independence Front\nin a stunning move.", "Victim to this assault are\nhundreds of Independence Front bases.", "One such location, Outpost Delta 32,\nhas been taken by Rathanian special forces.", "Though most of its valiant defenders fell\nprotecting it, some survived\nand were captured.", "However, Independence Front commandos\nhave located them and now seek\nto free these soldiers.", "                    But will they succeed?                    "]],
-    credits: [["","Credits",""],[],["Chief Producer","","Captain Argon"],[],["Game Engine", "", "Captain Argon"],["Help Provided By","","Non-Pirate"],["","","KWC"],["","","Ski"],["","","Kruxe"],["","","Guilherme"],["","","JentGent"],[],["Graphics","","Captain Argon"],["Help Provided By","","OOPS! Studios!"],[],["Level Design","","Captain Argon"],["Help Provided By","","Non-Pirate"],[],["Beta Testers","","Non-Pirate"],["","","Quantom Coding"],["","","AquA217"],["","","Owen Foley"],["","","Timothy"],["","","CZS"],["","","Coder Guy"],[],["User Interface","","Captain Argon"],["Help Provided By","","Non-Pirate"],["","","The Lightning Programmer"]],
-    creditsLoc: 0,
 };
 //}
 // (3) "ALL CINEMAICS" {
 var cinematics = {
-    "Intro": {
-        run: function(time) {
-            background(0);
-            image(images["star background"], 0, 0);
-            if (time > 420) {
-                textFont(fonts.AgencyFB25);
-                if (cinVars.intro[1]) {
-                    if (cinVars.intro[2] === 0) {
-                        cinVars.intro[0] += compensateFPS * 40;
-                    } else {
-                        cinVars.intro[0] += compensateFPS * 5;
-                    }
-                } else {
-                    if (cinVars.intro[2] === cinVars.intro[3].length - 1 || cinVars.intro[2] === 0) {
-                        cinVars.intro[0] -= compensateFPS * 2;
-                    } else {
-                        cinVars.intro[0] -= compensateFPS * 5;
-                    }
-                }
-                if (cinVars.intro[0] >= 255 + textWidth(cinVars.intro[3][cinVars.intro[2]])) {
-                    cinVars.intro[1] = false;
-                } else if (cinVars.intro[0] <= -70 && !cinVars.intro[1]) {
-                    cinVars.intro[1] = true;
-                    cinVars.intro[2]++;
-                }
-                fill(255, constrain(cinVars.intro[0], 0, 255));
-                text(cinVars.intro[3][cinVars.intro[2]], 0, 0);
-            }
-            if (cinVars.intro[2] === cinVars.intro[3].length || endCinematic) {
-                cinematic = ["Prison Unlocked", -1, [-70, 470, 0.75]];
-            }
-        },
-        subtitleList: [
-            ["", 0],
-        ],
-    },
-    "Prison Unlocked": {
-        run: function(time) {
-            background(255);
-            if (time === 0) {
-                allies.clear();
-                allies.push(construct(character, [-70, 470, 45, true, "Player", 0, []]));
-                orders.push(construct(order, [135, function() {
-                    allies[0].targetLoc = [0, 400];
-                    allies[0].warned = true;
-                    allies[0].warnTime = 0;
-                }]));
-                orders.push(construct(order, [570, function() {
-                    allies[0].targetLoc = [50, 385];
-                    allies[0].moveLoc = [50, 385];
-                }]));
-            }
-            displayMap();
-            if (time >= 510) {
-                cinematic[2][0] = allies[0].x;
-                cinematic[2][1] = allies[0].y;
-                if (inBox(allies[0].x, allies[0].y, 50, 385, 10, 10)) {
-                    allies[0].targetLoc = [200, 385];
-                    allies[0].moveLoc = [150, 385];
-                }
-            }
-            if (levelEnds.length === 0 && (time >= 570 || endCinematic)) {
-                levelEnds.push(construct(levelEnd, [function() {
-                    scene = "game";
-                    gameMap = ["Prisons", 1];
-                    allies.clear();
-                    allies.push(construct(character, [150, 385, 180, false, "Player", 0, []]));
-                    codes.splice(selectedSaveCode, 1);
-                    makeSave();
-                    selectedSaveCode = codes.length - 1;
-                    saveMadeMessage("Save Created: [" + codes[selectedSaveCode].name + "]");
-
-                }, true]));
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["[Alarm blares]", 120],
-            ["", 240],
-            ["Announcement: Warning. Independence Front troops have breached the facility. Warning.", 300],
-            ["", 480],
-            ["Player: This might be my only opportunity for escape ... I have to take it!", 510],
-            ["", 750],
-        ],
-    },
-    "Datapad": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].moveLoc = [550, 220];
-                allies[0].targetLoc = [550, 220];
-                allies[0].warned = true;
-                allies[0].warnTime = 0;
-            }
-            displayMap();
-            if (time >= 180 || endCinematic) {
-                godMode = false;
-                allies[0].NPC = false;
-                scene = "game";
-                gameVars.haveDatapad = true;
-                tips.push(construct(tip, ["You can now use your datapad! [" + commandKeys.datapad[1] + "]"]));
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["Player: This datapad should work quite well!", 120],
-            ["", 180]
-        ],
-    },
-    "Med Bay": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].moveLoc = [1425, 60];
-                allies[0].targetLoc = [1425, 60];
-                allies[0].warned = true;
-                allies[0].warnTime = 0;
-                orders.push(construct(order, [290, function() {
-                    allies[0].targetLoc = [1365, 0];
-                }]));
-            }
-            if (inBox(allies[0].x, allies[0].y, 1425, 60, 10, 10) && time < 290) {
-                allies[0].targetLoc = [1450, 60];
-            }
-            displayMap();
-            if (time >= 570 || endCinematic) {
-                godMode = false;
-                allies[0].NPC = false;
-                scene = "game";
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["Player: These crates look promising!", 60],
-            ["", 210],
-            ["Announcement: Warning. Primary reactor unstable. Warning.", 270],
-            ["", 420],
-            ["Player: Hmm ... Seems like I need to move quickly.", 450],
-        ],
-    },
-    "Thinking": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].moveLoc = [0, 535];
-                allies[0].targetLoc = [0, 535];
-                allies[0].warned = true;
-                allies[0].warnTime = 0;
-            }
-            displayMap();
-            if (inBox(allies[0].x, allies[0].y, 0, 535, 20, 20)) {
-                allies[0].targetLoc = [0, 400];
-            }
-            if (time >= 210) {
-                if (!computers[3].used[0]) {
-                    computers[3].use(true);
-                }
-                allies[0].targetLoc = [0, 400];
-            }
-            if (time >= 320 || endCinematic) {
-                if (!computers[3].used[0]) {
-                    computers[3].use(true);
-                }
-                godMode = false;
-                allies[0].NPC = false;
-                scene = "game";
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["Player: I can't fly out of here with these defensive guns online ... ", 60],
-            ["", 180],
-            ["Player: This should turn them off.", 210],
-        ],
-    },
-    "Success": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].moveLoc = [0, -670];
-                allies[0].targetLoc = [0, -670];
-                allies[0].warned = true;
-                allies[0].warnTime = 0;
-            }
-            displayMap();
-            if (inBox(allies[0].x, allies[0].y, 0, -670, 10, 10)) {
-                allies[0].targetLoc = [0, 0];
-            }
-            if (levelEnds.length === 0 && (time >= 180 || endCinematic)) {
-                levelEnds.push(construct(levelEnd, [function() {
-                    godMode = false;
-                    allies[0].NPC = false;
-                    scene = "game";
-                    allies[0].x = 0;
-                    allies[0].y = -470;
-                    gameMap[1] = 4;
-                    unlockDoors(4, true);
-                    falseDoors[0].locked = false;
-                    falseDoors[1].locked = false;
-                }, true]));
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["Player: Now I should be safe -- if only I can find a shuttle!", 60],
-        ],
-    },
-    "Transport": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].moveLoc = [1560, -1300];
-                allies[0].targetLoc = [1560, -1300];
-                allies[0].warned = true;
-                allies[0].warnTime = 0;
-            }
-            displayMap();
-            if (time >= 210) {
-                if (!computers[1].used[0]) {
-                    computers[1].use(true);
-                }
-                allies[0].targetLoc = [1700, -1300];
-            }
-            if (time >= 320 || endCinematic) {
-                if (!computers[1].used[0]) {
-                    computers[1].use(true);
-                }
-                godMode = false;
-                allies[0].NPC = false;
-                scene = "game";
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["Player: The transport doesn't have any fuel! I'll fix that.", 120],
-            ["", 240],
-        ],
-    },
-    "Destruction": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].x = 1000;
-                allies[0].y = -1600;
-                allies[0].moveLoc = [allies[0].x, allies[0].y];
-                allies[0].targetLoc = [1000, -2000];
-                allies[0].warned = true;
-                allies[0].warnTime = 0;
-                gameVars.transport1 = [3000, -2200, -90, 2.5, 0];
-            }
-            displayMap();
-            if (time <= 120) {
-                gameVars.transport1[0] += (1000 - gameVars.transport1[0]) / 60 * compensateFPS;
-            } else if (time <= 140) {
-                stroke(255, 0, 0, 50);
-                for (var i = 0; i < 10; i++) {
-                    strokeWeight(random(4, 5));
-                    line(gameVars.transport1[0], gameVars.transport1[1], 1000, -1000);
-                }
-            } else if (time <= 150) {
-                allies[0].stunTime = 60;
-                gameVars.transport2[4] = true;
-            } else {
-                cinematic[2][0] = allies[0].x;
-                cinematic[2][1] = allies[0].y;
-                cinematic[2][2] += (1 - cinematic[2][2]) / 60 * compensateFPS;
-                gameVars.transport2[2] = 200;
-                gameVars.transport1 = [-1000, -1000, 180, 2.5];
-            }
-            if (time >= 470) {
-                allies[0].targetLoc = [200, -1000];
-                allies[0].moveLoc = [200, -1000];
-            }
-            if (levelEnds.length === 0 && (time >= 560 || endCinematic)) {
-                levelEnds.push(construct(levelEnd, [function() {
-                    scene = "game";
-                    godMode = false;
-                    allies[0].NPC = false;
-                    allies[0].x = -300;
-                    allies[0].y = -1000;
-                    allLoot.clear();
-                    gameVars.transport1 = [-1000, -1000, 180, 2.5];
-                }, true]));
-            }
-        },
-        subtitleList: [
-            ["", 0],
-            ["Player: [Grunts]", 140],
-            ["", 260],
-            ["Player: I have to escape!", 290],
-            ["", 410],
-            ["Player: Their ship is my only escape. It should be in the next hangar.", 440],
-        ],
-    },
-    "Flight": {
-        run: function(time) {
-            if (time === 0) {
-                allies[0].NPC = true;
-                godMode = true;
-                allies[0].x = -1000;
-                allies[0].y = -1000;
-                allies[0].moveLoc = [-1000, -1000];
-            }
-            displayMap();
-            if (time >= 150 && time <= 330) {
-                gameVars.transport1[2] = constrain(gameVars.transport1[2] - 1 * compensateFPS, 0, 180);
-                gameVars.transport1[3] = constrain(gameVars.transport1[3] + 0.5 / 180 * compensateFPS, 0, 3);
-            } else if (time > 330 && time <= 390) {
-                gameVars.transport1[4] = constrain(gameVars.transport1[4] + 100 / 60 * compensateFPS, 0, 100);
-            } else if (time > 390 && time <= 510) {
-                gameVars.transport1[1] -= 50 * compensateFPS;
-            } else if (levelEnds.length === 0 && (time > 510 || endCinematic)) {
-                levelEnds.push(construct(levelEnd, [function() {
-                    cinematic = ["Credits", 0, [0, 0, 1]];
-                    scene = "cinematic";
-                }, true]));
-            }
-        },
-        subtitleList: [
-            ["", 0],
-        ],
-    },
-    "Credits": {
-        run: function(time) {
-            image(images["star background"], 0, 0);
-            if (time > 90) {
-                var a = -time * 2 / 3 + 320;
-                fill(255);
-                cinVars.loc = 0;
-                for (var i = 0; i < cinVars.credits.length; i++) {
-                    textFont(fonts.AgencyFB20Simple);
-                    if (cinVars.credits[i][0] === "Help Provided By") {
-                        fill(200);
-                        textFont(fonts.AgencyFB20Italics);
-                    }
-                    textAlign(LEFT, TOP);
-                    text(cinVars.credits[i][0], -180, a + cinVars.loc);
-                    fill(255);
-                    textFont(fonts.AgencyFB20Simple);
-                    textAlign(RIGHT, TOP);
-                    text(cinVars.credits[i][2], 180, a + cinVars.loc);
-                    textFont(fonts.AgencyFB30);
-                    textAlign(CENTER, TOP);
-                    text(cinVars.credits[i][1], 0, a + cinVars.loc);
-                    if (cinVars.credits[i][1] === "") {
-                        cinVars.loc += 30;
-                    } else {
-                        cinVars.loc += 40;
-                    }
-                }
-                textAlign(CENTER, CENTER);
-                if (levelEnds.length === 0 && (a <= -cinVars.credits.length * 30 - 200 || endCinematic)) {
-                    levelEnds.push(construct(levelEnd, [function() {
-                        scene = "selectGame";
-                        weathers2.clear();
-                        weathers2.push(construct(weather, ["snow 2", 400, 400, 20, [800, 1600], 50]));
-                    }, true]));
-                }
-            }
-        },
-        subtitleList: [
-            ["", 0],
-        ],
-    },
 };
 //}
 //} END "CINEMATICS"
@@ -13543,386 +13672,456 @@ var spawn = function(place, spec, type) {
     }
 };
 maps = {
-    // Campaign
-    "Prisons": {
+    "KoliosI": {
         run: function(stage) {
             switch (stage) {
-                case 0:
-                    gameVars.haveDatapad = false;
-                    gameVars.wallType = color(150);
-                    createObj(allies, character, [
-						[150, 385, 180, false, "Player", 0, []],
-					]);
+                case 0: 
 					createObj(walls, block, [
-					    ["Rectangle", -100, -55, 10, 1120],
-                        ["Rectangle", 150, 500, 510, 10],
-                        ["Rectangle", 200, 50, 610, 10],
-                        ["Rectangle", 550, 50, 100, 10, [["health",100],["img","crack1"]]],
-                        ["Rectangle", 655, 50, 110, 10],
-                        ["Rectangle", 400, 307, 10, 384],
-                        ["Rectangle", -25, 350, 160, 10],
-                        ["Rectangle", 50, 460, 10, 90],
-                        ["Rectangle", -25, 200, 160, 10],
-                        ["Rectangle", 50, 310, 10, 90],
-                        ["Rectangle", 50, 160, 10, 90],
-                        ["Rectangle", 250, 390, 10, 90],
-                        ["Rectangle", 325, 350, 160, 10],
-                        ["Rectangle", 250, 240, 10, 90],
-                        ["Rectangle", 325, 200, 160, 10],
-                        ["Rectangle", 250, 90, 10, 90],
-                        ["Rectangle", 555, 120, 310, 10],
-                        ["Rectangle", 590, 320, 380, 10],
-                        ["Rectangle", 400, -50, 10, 200],
-                        ["Rectangle", 400, -270, 10, 100],
-                        ["Rectangle", 585, -320, 380, 10],
-                        ["Rectangle", 290, -225, 210, 10],
-                        ["Rectangle", 370, -317.5, 70, 15],
-                        ["Rectangle", 335, -350, 10, 80],
-                        ["Rectangle", 160, -385, 350, 10],
-                        ["Rectangle", -20, -305, 10, 170],
-                        ["Rectangle", 45, -225, 140, 10],
-                        ["Rectangle", 290, -145, 210, 10],
-                        ["Rectangle", 65, -145, 100, 10],
-                        ["Rectangle", -5, -145, 50, 10, [["health", 100],["img","crack2"]]],
-                        ["Rectangle", -65, -145, 80, 10],
-                        ["Rectangle", 155, -465, 360, 10],
-                        ["Rectangle", 335, -497.5, 10, 75],
-                        ["Rectangle", 555, -530, 450, 10],
-                        ["Rectangle", 530, -355, 10, 70],
-                        ["Rectangle", 530, -495, 10, 70],
-                        ["Rectangle", 340, -610, 880, 10],
-                        ["Rectangle", 432.5, -425, 80, 30],
-                        ["Rectangle", 775, -105, 10, 850],
-                    ]);
-					gameVars.wallType = color(100);
-                    createObj(doors, door, [
-                        [400, 85, 1, false, "Cell_Door", 0],
-                        [50, 385, 1, false, "Cell_Door", 0],
-                        [250, 165, 3, false, "Cell_Door", 0],
-                        [50, 85, 1, true, "Cell_Door", 1],
-                        [50, 235, 1, true, "Cell_Door", 2],
-                        [250, 465, 3, true, "Cell_Door", 3],
-                        [250, 315, 3, true, "Cell_Door", 4],
-                        [740, 50, 0, true, "Cell_Door", 5],
-                        [740, 120, 0, true, "Cell_Door", 6],
-                        [150, -225, 0, true, "Cell_Door", 7],
-                        [-60, -225, 0, true, "Cell_Door", 9],
-                        [150, -145, 2, true, "Cell_Door", 8],
-                        [-20, -425, 1, true, "Cell_Door", 10],
-                        [530, -425, 1, true, "Cell_Door", 11],
-                        [335, -425, 1, true, "Cell_Door", 12],
-                        [400, -185, 1, true, "Cell_Door", 13],
-                        //[775, -570, 1, true, "Cell_Door"],
-                    ]);
-                    falseDoors.push(construct(falseDoor, [775, -570, 1, false, "Cell_Door"]));
-                    createObj(boxes, crate, [
-                        [420, 160, 0, 1],
-                        [420, 220, 0, 3],
-                        [420, 280, 0, 5],
-                        [755, 220, 2, 2],
-                        [755, 280, 2, 3],
-                        [755, -270, 2, 2],
-                        [755, -210, 2, 6],
-                        [-50, -125, 1, 2],
-                        [350, -125, 1, 10],
-                        [-60, -590, 1, 3],
-                        [0, -590, 1, 2],
-                        [0, -270, 0, 0]
-                    ]);
+						["Rectangle", 0, 500, 1000, 10],
+						["Rectangle", 500, 0, 10, 1000],
+						["Rectangle", -500, 200, 10, 600],
+						["Rectangle", -500, -350, 10, 300],
+						["Rectangle", 0, -500, 1000, 10],
+						["Rectangle", 500, -500, 400, 500],
+						["Rectangle", -350, -200, 200, 200],
+						["Rectangle", -600, -100, 210, 10],
+						["Rectangle", -790, -400, 10, 420],
+						["Rectangle", -800, -650, 400, 30],
+						["Rectangle", -500, -650, 10, 200],
+						["Rectangle", -675, -750, 200, 10],
+						["Rectangle", -990, -750, 50, 400],
+						["Rectangle", -300, -930, 1000, 40],
+						["Rectangle", -800, -1030, 400, 40],
+						["Rectangle", -550, -1800, 10, 500],
+						["Rectangle", -1800, -1000, 600, 10],
+						["Rectangle", -2650, -1800, 500, 500],
+						["Rectangle", -2200, -800, 1000, 10],
+						["Rectangle", -2700, -1000, 40, 200],
+						["Rectangle", -2700, -1420, 40, 200],
+						["Rectangle", -2000, -1600, 10, 210],
+						["Rectangle", -1800, -1662.5, 10, 75],
+						["Rectangle", -1800, -1537.5, 10, 75],
+						["Rectangle", -1900, -1700, 210, 10],
+						["Rectangle", -1900, -1500, 210, 10],
+						["Rectangle", -2800, -700, 400, 400],
+						["Rectangle", -3200, -1000, 600, 10],
+						["Rectangle", -3700, -1300, 10, 700],
+						["Rectangle", -3900, -2000, 10, 700],
+						["Rectangle", -3800, -2400, 600, 50],
+						["Rectangle", -3000, -2400, 200, 50],
+						["Rectangle", -2700, -2400, 200, 50],
+						["Rectangle", -2925, -2440, 50, 40],
+						["Rectangle", -2775, -2440, 50, 40],
+						["Rectangle", -2850, -2440, 200, 50],
+						["Rectangle", -4400, -2400, 600, 800],
+						["Rectangle", -4900, -3000, 600, 10],
+						["Rectangle", -4900, -3240, 600, 10],
+						["Rectangle", -5200, -3120, 10, 250],
+						["Rectangle", -2800, -2575, 400, 300],
+						["Rectangle", -950, -2500, 400, 400],
+						["Rectangle", -500, -2700, 600, 10],
+						["Rectangle", 200, -3000, 10, 1000],
+						["Rectangle", -300, -3500, 500, 10],
+						["Rectangle", -700, -3645, 500, 10],
+						["Rectangle", -1000, -3445, 10, 700],
+						["Rectangle", -550, -3525, 10, 100],
+						["Rectangle", -550, -3325, 10, 100],
+						["Rectangle", -813, -3750, 36, 200],
+						["Rectangle", -2000, -2200, 600, 10],
+						["Rectangle", -3350, -3880, 1500, 10],
+						["Rectangle", -2600, -2950, 50, 500],
+						["Rectangle", -2600, -3750, 50, 300],
+						["Rectangle", -2650, -2775, 300, 300],
+						["Rectangle", -2275, -3625, 600, 10],
+						["Rectangle", -2275, -3175, 600, 10],
+						["Rectangle", -1975, -3210, 30, 280],
+						["Rectangle", -1975, -3540, 30, 180],
+						["Rectangle", -1825, -3300, 300, 10],
+						["Rectangle", -1825, -3500, 300, 10],
+						["Rectangle", -1475, -3300, 300, 10],
+						["Rectangle", -1475, -3500, 300, 10],
+						["Rectangle", -1325, -3210, 30, 280],
+						["Rectangle", -1325, -3775, 30, 650],
+						["Rectangle", -1650, -3055, 260, 10],
+						["Rectangle", -1775, -3065, 10, 20],
+						["Rectangle", -1525, -3065, 10, 20],
+						["Rectangle", -1875, -3075, 210, 10],
+						["Rectangle", -1425, -3075, 210, 10],
+						["Rectangle", -1175, -3300, 300, 10],
+						["Rectangle", -1055, -3445, 110, 700],
+						["Rectangle", -725, -3870, 775, 50],
+						["Rectangle", -840, -4100, 1000, 10],
+						["Rectangle", -1000, -3920, 10, 50],
+						["Rectangle", -1000, -4070, 10, 50],
+						["Rectangle", -345, -3975, 20, 260],
+						["Circle", -2600, -2500, 300, 300],
+						["Circle", -1800, -2300, 250, 250],
+						["Circle", -4500, -4000, 1200, 1200],
+						["Circle", -1000, -3250, 400, 400],
+						["Circle", -550, -3645, 300, 300],
+						["Circle", -500, -3100, 500, 500],
+						["Circle", 320, -3200, 400, 400],
+						["Circle", 200, -3500, 500, 500],
+						["Circle", 200, -2500, 500, 500],
+						["Circle", 200, -2700, 200, 200],
+						["Circle", -50, -2100, 1000, 1000],
+						["Circle", -200, -2995, 600, 600],
+						["Circle", -900, -2900, 800, 800],
+						["Circle", -420, -1750, 300, 300],
+						["Circle", -2950, -2750, 200, 200],
+						["Circle", -2800, -2725, 400, 400],
+						["Circle", -4700, -3340, 400, 400],
+						["Circle", -4700, -2800, 600, 600],
+						["Circle", -3750, -2400, 400, 400],
+						["Circle", -4100, -2400, 800, 800],
+						["Circle", -2800, -2000, 400, 400],
+						["Circle", -3900, -1600, 500, 500],
+						["Circle", -3800, -1200, 500, 500],
+						["Circle", -3500, -350, 1500, 1500],
+						["Circle", -2700, -1550, 400, 400],
+						["Circle", -2500, -1550, 200, 200],
+						["Circle", -2800, -900, 400, 400],
+						["Circle", -2600, -820, 200, 200],
+						["Circle", -2500, -2200, 600, 600],
+						["Circle", -1900, -2200, 300, 300],
+						["Circle", -1700, -2100, 400, 400],
+						["Circle", -1400, -2300, 700, 700],
+						["Circle", -1980, -850, 400, 400],
+						["Circle", -1500, -900, 400, 400],
+						["Circle", -1000, -2150, 600, 600],
+						["Circle", 500, -250, 400, 400],
+						["Circle", -360, -115, 150, 150],
+						["Circle", -320, -290, 150, 150],
+						["Circle", 240, 360, 200, 200],
+						["Circle", 320, 400, 100, 100],
+						["Circle", -500, -400, 400, 400],
+						["Circle", -800, -100, 200, 200],
+						["Circle", -850, -200, 160, 160],
+						["Circle", -840, -400, 160, 160],
+						["Circle", -800, -600, 160, 160],
+						["Circle", 400, -500, 500, 500],
+						["Circle", -100, -650, 500, 500],
+						["Circle", 700, 500, 500, 500],
+						["Circle", 650, 150, 600, 600],
+						["Circle", -500, 600, 600, 600],
+						["Circle", 0, 750, 600, 600],
+						["Circle", -700, 150, 600, 600],
+						["Circle", -500, -800, 200, 200],
+						["Circle", -750, -825, 220, 220],
+						["Circle", -1000, -650, 220, 220],
+						["Circle", -50, -1000, 1000, 1000],
+						["Circle", -300, -1400, 600, 600],
+						["Circle", -1265, -950, 600, 600],
+						["Circle", -450, -2000, 400, 400],
+						["Rectangle", -550, -650, 100, 30, [["health", 100]]],
+						["Rectangle", -4700, -3120, 10, 40, [["health", 100]]],
+					]);
+					createObj(allies, character, [
+						[0, 400, 180, false, "Player", 10, []],
+					]);
+					createObj(enemies, character, [
+						[-1200, -1500, -90, true, "Dawn_Guard_1", 1, []],
+						[-1150, -1500, 90, true, "Dawn_Guard_2", 2, []],
+						[-2550, -1210, 270, true, "Dawn_Lieutenant", 2, []],
+						[-2850, -1210, -90, true, "Dawn_Lieutenant", 2, []],
+						[-1945, -1600, -90, true, "Dawn_Technician", 2, []],
+						[-2850, -2365, 180, true, "Dawn_Technician", 1, []],
+						[-1825, -1645, 0, true, "Dawn_Guard_1", 1, []],
+						[-3320, -2350, -45, true, "Dawn_Sniper_1", 2, []],
+						[-3295, -2325, 135, true, "Dawn_Sniper_2", 3, []],
+						[-150, -2650, 80, true, "Dawn_Guard_2", 1, []],
+						[-500, -3420, -90, true, "Dawn_Guard_1", 1, []],
+						[-850, -3750, -90, true, "Dawn_Technician", 1, []],
+						[-850, -3685, -90, true, "Dawn_Technician", 2, []],
+						[-850, -3815, -90, true, "Dawn_Lieutenant", 3, []],
+						[-2700, -3400, 90, true, "Dawn_Guard_2", 1, []],
+						[-2700, -3500, 90, true, "Dawn_Sniper_1", 3, []],
+						[-2700, -3300, 90, true, "Dawn_Sniper_2", 2, []],
+						[-3300, -2500, 235, true, "Dawn_Guard_1", 2, []],
+						[-3265, -2535, 45, true, "Dawn_Guard_1", 2, []],
+						[-3350, -3250, 0, true, "Dawn_Sniper_1", 3, []],
+						[-3335, -3215, 135, true, "Dawn_Sniper_2", 2, []],
+						[-3370, -3220, 230, true, "Dawn_Sniper_2", 1, []],
+						[-2125, -3400, 90, true, "Dawn_Lieutenant", 4, []],
+						[-2010, -3465, 90, true, "Dawn_Guard_1", 3, []],
+						[-2010, -3335, 90, true, "Dawn_Guard_2", 2, []],
+						[-1600, -3330, 180, true, "Dawn_Guard_2", 1, []],
+						[-1680, -3150, -80, true, "Dawn_Guard_2", 2, []],
+						[-1640, -3140, 100, true, "Dawn_Technician", 1, []],
+						[-1375, -3400, 90, true, "Dawn_Guard_2", 4, []],
+						[-1215, -3800, 0, true, "Dawn_Guard_2", 2, []],
+						[-1215, -3760, 180, true, "Dawn_Guard_1", 1, []],
+					]);
+					createObj(boxes, crate, [
+						[-1900, -1680, 1, 0],
+						[-1900, -1520, 3, 0],
+						[-5185, -3120, 0, 2],
+						[-5185, -3190, 0, 1],
+						[-5185, -3050, 0, 2],
+						[-1945, -3230, 0, 0],
+						[-1945, -3145, 0, 3],
+						[-1355, -3230, 2, 1],
+						[-1355, -3145, 2, 4],
+					]);
                     createObj(computers, computer, [
-                        [670, 30, 3, "Console_1", function() {
-                            unlockDoors(5);
+                        [-2665, -1070, 0, "Console_1", function() {
+                            openDoors(0);
                         }],
-                        [450, 30, 3, "Console_1", function() {
-                            unlockDoors(6);
+                        [-1980, -1600, 0, "Console_1", function() {
+                            openDoors(1);
                         }],
-                        [350, 30, 3, "Console_1", function() {
-                            unlockDoors(7);
-                        }],
-                        [-50, 30, 3, "Console_1", function() {
-                            unlockDoors(10);
-                        }],
-                        [150, 30, 3, "Console_1", function() {
-                            unlockDoors(8);
-                        }],
-                        [380, -270, 2, "Console_1", function() {
-                            unlockDoors(9);
-                        }],
-                        [550, -355, 0, "Console_1", function() {
-                        }],
-                        [550, -495, 0, "Console_1", function() {
-                            unlockDoors(1);
-                        }],
-                        [755, -355, 2, "Console_1", function() {
+                        [-2850, -2400, 1, "Console_1", function() {
                             unlockDoors(2);
                         }],
-                        [755, -425, 2, "Console_1", function() {
-                            unlockDoors(3);
+                        [-820, -3750, 2, "Console_1", function() {
+                            unlockDoors(3, false);
                         }],
-                        [755, -495, 2, "Console_1", function() {
+                        [-1575, -3075, 3, "Console_1", function() {
+                            unlockDoors(6);
+                        }],
+                        [-1650, -3075, 3, "Console_1", function() {
+                            unlockDoors(5);
+                        }],
+                        [-1725, -3075, 3, "Console_1", function() {
                             unlockDoors(4);
                         }],
-                        [355, -495, 0, "Console_1", function() {
-                            gameVars.codeRoom.push("RED");
-                        }],
-                        [355, -355, 0, "Console_1", function() {
-                            gameVars.codeRoom.push("GREEN");
-                        }],
-                        [510, -355, 2, "Console_1", function() {
-                            gameVars.codeRoom.push("BLUE");
-                        }],
-                        [510, -495, 2, "Console_1", function() {
-                            if (gameVars.codeRoom[0] === "RED" && gameVars.codeRoom[1] === "GREEN" && gameVars.codeRoom[2] === "BLUE") {
-                                unlockDoors(11);
-                            }
-                            gameVars.codeRoom = [];
-                        }],
-                        [315, -500, 2, "Console_1", function() {
-                            unlockDoors(12);
-                        }],
                     ]);
-                    createObj(enemies, character, [
-                        [650, 220, 0, true, "Guard_4", 1, []],
-                        [325, 120, 0, true, "Guard_0", 1, []],
-                        //[500, -185, 0, true, "Guard_3", 1, ["scope", 2]],
-                        [180, -75, 0, true, "Guard_3", 1, []],
-                        [150, -40, 0, true, "Guard_Sergeant", 1, []],
-                        [150, -185, 0, true, "Guard_Sergeant", 1, ["scope", 1.5]],
-                        [450, 0, 180, true, "Guard_2", 1, []],
-                        [650, 85, 0, true, "Guard_1", 1, ["scope", 1.5]],
-                        [160, -425, 0, true, "Guard_4", 1, ["scope", 1.5]],
-                        [432.5, -460, 0, true, "Guard_Sergeant", 1, []],
-                        [432.5, -390, 0, true, "Guard_Lieutenant", 1, []],
-                        [200, -550, 0, true, "Guard_3", 1, ["scope", 1.5]],
-                        [350, -270, 0, true, "Guard_3", 1, []],
-                        [150, -350, 0, true, "Guard_2", 1, []]
+                    createObj(doors, door, [
+                        [-2690, -1335, 3, true, "Door_1", 0, 1],
+                        [-2690, -1085, 1, true, "Door_1", 0, 1],
+                        [-2710, -1335, 3, true, "Laser_1", 1],
+                        [-2710, -1085, 1, true, "Laser_1", 1],
+                        [-1800, -1600, 1, false, "Door_2"],
+                        [-3300, -2400, 2, true, "Door_3", 2],
+                        [-550, -3450, 1, false, "Door_1"],
+                        [-975, -3645, 0, false, "Door_2"],
+                        [-1000, -3820, 1, true, "Door_2"],
+                        [-2600, -3400, 1, true, "Door_3", 3],
+                        [-1975, -3375, 1, false, "Door_2", 4, 2],
+                        [-1975, -3425, 3, false, "Door_2", 4, 2],
+                        [-1650, -3500, 0, true, "Door_2", 5, 3],
+                        [-1650, -3300, 2, false, "Door_2", 5, 3],
+                        [-1325, -3375, 1, true, "Door_2", 6, 4],
+                        [-1325, -3425, 3, true, "Door_2", 6, 4],
+                        [-1105, -3820, 1, true, "Door_2"],
+                        [-1000, -3970, 1, false, "Door_2", Infinity, 5],
+                        [-1000, -4020, 3, false, "Door_2", Infinity, 5],
                     ]);
                     createObj(allLoot, loot, [
-                        [-25, 275, medical[1], 2, "Medical", 1, false],
-                        [-25, 125, medical[3], 2, "Medical", 3, false],
-                        [325, 275, grenades[0], 2, "Grenade", 0, false],
-                        [325 + cos(-90) * 30, 425 + sin(-90) * 30, armor[2], 250, "Armor", 2, false],
-                        [325 + cos(30) * 30, 425 + sin(30) * 30, melee[2], 1, "Melee", 2, false],
-                        [325 + cos(150) * 30, 425 + sin(150) * 30, backpack[2], 1, "Backpack", 2, false],
+                        [-850, -3480, grenades[0], 1, "Grenade", 0]
                     ]);
                     createObj(objectives, objective, [
                         [0, false],
+                        [1, false],
                     ]);
-                    if (gameMap[1] === 0) {
-                        nextScene = "cinematic";
-                        cinematic = ["Intro", 0, [0, 0, 1]];
-                    }
                 break;
                 case 1:
-                    if (inBox(allies[0].x, allies[0].y, 700, -570, 150, 80)) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            gameMap = ["Infirmary", 0];
-                            scene = "loadmap";
-                            loadOn = 0;
-                        }]));
+                    if (inBox(allies[0].x, allies[0].y, -2600, -3400, 500, 500)) {
+                        if (checkLock(3)) {
+                            createObj(objectives, objective, [
+                                [2, false],
+                            ]);
+                        }
                         gameMap[1] = 2;
                     }
                 break;
+                case 2:
+                    if (inBox(allies[0].x, allies[0].y, -950, -3995, 100, 200)) {
+                        levelEnds.push(construct(levelEnd, [function() {
+                            gameMap = ["KoliosII", 0];
+                        }]));
+                        gameMap[1] = 3;
+                        playerData = allies[0].returnData();
+                        clearArrays();
+                    }
+                break;
                 default:
                 break;
             }
         },
         draw: [
-            [true, function(stage) {
+            [true, function() {
                 background(50);
-                floorImg(-100, -610, 775, 500);
-            }, [-100, -610, 775, 500]],
-            [false, function(stage) {
-                if ((objectives.length <= 2) || (objectives.length > 2 && !objectives[2].completed) || scene === "cinematic") {
-                    var a = "datapad";
-                    image(images[a], 550, 220);
-                }
-            }],
+            }, [0, 0, 400, 400]],
             [false, function() {
                 drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting", doors, falseDoors, walls, weathers);
-                stroke(0);
-                strokeWeight(3);
-                for (var i = 0; i < 3; i++) {
-                    if (gameVars.codeRoom[i] === "RED") {
-                        fill(200, 0, 0, 200);
-                    } else if (gameVars.codeRoom[i] === "GREEN") {
-                        fill(0, 200, 0, 200);
-                    } else if (gameVars.codeRoom[i] === "BLUE") {
-                        fill(0, 0, 200, 200);
-                    } else {
-                        noFill();   
-                    }   
-                    rect(407.5 + (i * 25), -425, 20, 20, 2);
-                }
-                noStroke();
-                fill(0);
-                rect(830, 0, 100, 10000);
             }],
         ],
         map: function() {
-            return ["prisonMap", 337.5, -120, 0.21];
+            return ["KoliosI", 0, 0, 1];
         },
         images: [],
     },
-    "Infirmary": {
+    "KoliosII": {
         run: function(stage) {
             switch (stage) {
                 case 0:
-                    gameVars.wallType = color(150);
-					createObj(allies, character, [
-						[-400, 0, 270, false, "Player", 0, playerData],
-					]);
 					createObj(walls, block, [
-						["Rectangle", -200, -40, 610, 10],
-						["Rectangle", -200, 40, 610, 10],
-						["Rectangle", 100, 95, 10, 110],
-						["Rectangle", 300, 150, 410, 10],
-						["Rectangle", 500, 190, 10, 100],
-						["Rectangle", 500, 10, 10, 100],
-						["Rectangle", 640, -40, 290, 10],
-						["Rectangle", 640, 240, 290, 10],
-						["Rectangle", 780, 10, 10, 100],
-						["Rectangle", 780, 190, 10, 100],
-						["Rectangle", 640, -90, 10, 100],
-						["Rectangle", 830, 150, 100, 10],
-						["Rectangle", 880, 95, 10, 490],
-						["Rectangle", 655, -140, 40, 10],
-						["Rectangle", 900, -140, 110, 10],
-						["Rectangle|Visible", 760, -140, 170, 8, [["opaque",false],["color",color(255,100)]]],
-						["Rectangle|Visible", 760, -240, 170, 8, [["opaque",false],["color",color(255,100)]]],
-						["Rectangle", 900, -240, 110, 10],
-						["Rectangle", 880, -380, 10, 300],
-						["Rectangle", 710, -530, 350, 10],
-						["Rectangle", 655, -240, 40, 10],
-						["Rectangle", 640, -290, 10, 100],
-						["Rectangle", 975, -340, 210, 10],
-						["Rectangle", 710, -340, 160, 10],
-						["Rectangle", 100, -190, 10, 310],
-						["Rectangle", 325, -340, 450, 10],
-						["Rectangle", 540, -435, 10, 190],
-						["Rectangle", 1080, -290, 10, 110],
-						["Rectangle", 1080, -90, 10, 100],
-						["Rectangle", 1020, -40, 270, 10],
-						["Rectangle", 1280, -90, 10, 100],
-						["Rectangle", 1145, -140, 280, 10],
-						["Rectangle", 1145, -240, 280, 10],
-						["Rectangle", 1245, -40, 80, 10],
-						["Rectangle", 1280, -390, 10, 300],
-						["Rectangle", 1580, -240, 410, 410],
-						["Rectangle", 1530, -540, 510, 10],
-						["Rectangle", 1082.5, 340, 415, 10],
-						["Rectangle", 1030, 150, 10, 270],
-						["Rectangle", 1180, 150, 10, 270],
-						["Rectangle", 1480, 150, 10, 270],
-						["Rectangle", 1630, 150, 10, 270],
-						["Rectangle", 1575, 340, 410, 10],
-						["Rectangle", 1780, -52.5, 10, 795],
-						["Rectangle", 1780, -535, 10, 10],
+						["Rectangle", -1000, 80, 10, 60],
+						["Rectangle", -1000, -80, 10, 60],
+						["Rectangle", -700, -105, 600, 10],
+						["Rectangle", -595, 105, 810, 10],
+						["Rectangle", -400, -300, 10, 400],
+						["Rectangle", -190, -200, 10, 600],
+						["Rectangle", -145, -500, 100, 10],
+						["Rectangle", -445, -500, 100, 10],
+						["Rectangle", -95, -700, 10, 400],
+						["Rectangle", -495, -700, 10, 400],
+						["Rectangle", -145, -900, 100, 10],
+						["Rectangle", -445, -900, 100, 10],
+						["Rectangle", -190, -1000, 10, 210],
+						["Rectangle", -400, -1105, 10, 420],
+						["Rectangle", -220, -1000, 50, 10],
+						["Rectangle", -370, -1000, 50, 10],
+						["Rectangle", -95, -1310, 600, 10],
+						["Rectangle", 105, -1520, 600, 10],
+						["Rectangle", -190, -1620, 10, 210],
+						["Rectangle", -400, -1520, 10, 410],
+						["Rectangle", -220, -1620, 50, 10],
+						["Rectangle", -370, -1620, 50, 10],
+						["Rectangle", -145, -1720, 100, 10],
+						["Rectangle", -445, -1720, 100, 10],
+						["Rectangle", -95, -1820, 10, 200],
+						["Rectangle", -495, -1820, 10, 200],
+						["Rectangle", -495, -2095, 10, 150],
+						["Rectangle", -750, -2095, 510, 10],
+						["Rectangle", -750, -1845, 510, 10],
+						["Rectangle", -495, -2310, 10, 75],
+						["Rectangle", -1000, -2095, 10, 500],
+						["Rectangle", -675, -2345, 660, 10],
+						["Rectangle", -95, -2310, 10, 75],
+						["Rectangle", -95, -2095, 10, 150],
+						["Rectangle", 160, -1845, 510, 10],
+						["Rectangle", 85, -2345, 660, 10],
+						["Rectangle", 310, -1970, 200, 40],
+						["Rectangle|Metal2", 210, -1917.5, 8, 40, [["health", 50]]],
+						["Rectangle", 210, -1970, 10, 70],
+						["Rectangle", 210, -1880, 10, 40],
+						["Rectangle", 210, -2060, 10, 40],
+						["Rectangle", 150, -2075, 130, 50],
+						["Rectangle", 150, -1865, 130, 50],
+						["Circle", 85, -2345, 90, 90],
+						["Circle", 85, -2095, 90, 90],
+						["Circle", 85, -1845, 90, 90],
+						["Rectangle", 85, -2310, 35, 35],
+						["Rectangle", 85, -2130, 35, 35],
+						["Rectangle", 85, -2060, 35, 35],
+						["Rectangle", 85, -1880, 35, 35],
+						["Rectangle|Glass", 315, -2095, 110, 6],
+						["Rectangle", 85, -2095, 360, 10],
+						["Rectangle", 390, -2095, 50, 10],
+						["Rectangle", 410, -1600, 10, 1000],
+						["Rectangle", 1610, -3340, 1610, 10],
+						["Rectangle", 1110, -1100, 2610, 10],
+						["Rectangle", 855, -3385, 100, 100],
+						["Rectangle", 365, -2890, 100, 1095],
+						["Rectangle", 410, -3420, 200, 40],
+						["Rectangle", 810, -3420, 200, 40],
+						["Rectangle", 2460, -3195, 100, 300],
+						["Rectangle", 2460, -1245, 100, 300],
+						["Rectangle", 2460, -2220, 40, 2000],
+						["Rectangle", 410, -3820, 10, 800],
+						["Rectangle", 810, -3820, 10, 800],
+						["Rectangle", 410, -4220, 40, 200],
+						["Rectangle", 810, -4220, 40, 200],
+						["Rectangle", 410, -4220, 300, 30],
+						["Rectangle", 810, -4220, 300, 30],
+						["Rectangle", 410, -4220, 30, 300],
+						["Rectangle", 810, -4220, 30, 300],
+						["Circle", 610, -1100, 300, 300],
+						["Circle", 1010, -1100, 300, 300],
+						["Circle", 1410, -1100, 300, 300],
+						["Circle", 1810, -1100, 300, 300],
+						["Circle", 2210, -1100, 300, 300],
+						["Rectangle|Metal2", -230, -200, 40, 40, [["health", 100]]],
+						["Rectangle|Metal2", -220, -160, 40, 40, [["health", 100]]],
+						["Rectangle|Metal2", -375, -400, 40, 40, [["health", 100]]],
+					]);
+					createObj(allies, character, [
+						[-950, 0, -90, false, "Player", 10, []],
 					]);
 					createObj(enemies, character, [
-						[500, -190, 45, true, "Guard_3", 1, ["scope",1.5]],
-						[540, -195, 45, true, "Guard_4", 0, ["scope",1.7]],
-						[675, -290, 90, true, "Guard_Sergeant", 2, []],
-						[675, -90, 90, true, "Guard_Sergeant", 3, []],
-						[860, -260, 160, true, "Guard_Sergeant", 1, []],
-						[750, -400, 70, true, "Guard_4", 0, []],
-						[830, -20, 0, true, "Guard_Sergeant", 2, []],
-						[750, 30, 90, true, "Guard_2", 1, ["scope",1.3]],
-						[750, 170, 90, true, "Guard_3", 0, ["scope",1.3]],
-						[1240, -190, 90, true, "Guard_Sergeant", 1, ["scope",1.3]],
-						[1265, -165, 90, true, "Guard_4", 0, ["scope",1.3]],
-						[1140, 50, 50, true, "Medical_Bot", 0, []],
-						[1520, 200, 180, true, "Medical_Bot", 1, ["scope",1.3]],
-						[1260, -70, 90, true, "Medical_Bot", 0, []],
-						[1225, -70, 90, true, "Medical_Bot", 1, []],
-					]);
-					createObj(computers, computer, [
-						[645, -90, 0, "Console_2", function() {
-							openDoors(2);
-						}],
-						[645, -290, 0, "Console_2", function() {
-							unlockDoors(1);
-						}],
-					]);
-					gameVars.wallType = color(100);
-					createObj(doors, door, [
-						[500, 120, 1, false, "Door_1", Infinity, 1],
-						[500, 80, 3, false, "Door_1", Infinity, 1],
-						[780, 80, 3, false, "Door_1", Infinity, 2],
-						[780, 120, 1, false, "Door_1", Infinity, 2],
-						[880, -170, 1, true, "Door_1", 1, 3],
-						[880, -210, 3, true, "Door_1", 1, 3],
-						[850, -340, 0, false, "Door_1", Infinity, 4],
-						[810, -340, 2, false, "Door_1", Infinity, 4],
-						[610, -340, 0, false, "Door_1", Infinity, 5],
-						[570, -340, 2, false, "Door_1", Infinity, 5],
-						[980, -240, 0, false, "Door_2"],
-						[980, -140, 2, false, "Door_2"],
-						[1180, -40, 0, false, "Door_2"],
-						[1350, 340, 0, true, "Door_1"],
-						[1310, 340, 2, true, "Door_1"],
-					]);
-					createObj(falseDoors, falseDoor, [
-						[-500, 0, 1, true, "Cell_Door"],
-						[1780, -510, 1, false, "Door_1"],
-						[1780, -470, 3, false, "Door_1"],
-				    ]);
-					gameVars.wallType = color(255, 100, 0);
-					createObj(doors, door, [
-						[870, -190, 1, true, "Laser_1", 2],
+						[-295, -700, 0, true, "Dawn_Henchman", 0, []],
+						[-445, -700, 330, true, "Dawn_Guard_2", 1, []],
+						[-145, -700, 30, true, "Dawn_Guard_1", 2, []],
+						[-365, -945, 0, true, "Dawn_Sniper_1", 1, []],
+						[-225, -945, 0, true, "Dawn_Sniper_1", 2, []],
+						[-365, -1565, 0, true, "Dawn_Sniper_1", 1, []],
+						[-225, -1565, 0, true, "Dawn_Sniper_1", 2, []],
+						[-295, -2290, 0, true, "Dawn_Guard_3", 1, []],
+						[-295, -1970, 0, true, "Dawn_Hunter_1", 3, []],
+						[175, -1970, 90, true, "Dawn_Guard_4", 1, []],
+						[315, -2060, 180, true, "Dawn_Guard_2", 2, []],
+						[200, -2220, 90, true, "Dawn_Hunter_1", 2, []],
+						[1000, -2000, 315, true, "Dawn_Technician", 1, []],
+						[1050, -1995, 50, true, "Dawn_Technician", 1, []],
+						[1020, -1950, 185, true, "Dawn_Technician", 1, []],
+						[760, -3350, 0, true, "Dawn_Hunter_2", 2, []],
+						[460, -3350, 0, true, "Dawn_Hunter_2", 2, []],
 					]);
 					createObj(boxes, crate, [
-						[1460, 150, 2, 2],
-						[1460, 60, 2, 2],
-						[1460, 240, 2, 2],
-						[1200, 150, 0, 2],
-						[1200, 60, 0, 2],
-						[1200, 240, 0, 2],
-						[1180, -120, 1, 2],
-						[1120, -120, 1, 2],
-						[1240, -120, 1, 2],
-						[920, -320, 1, 0],
-						[980, -320, 1, 1],
-						[1040, -320, 1, 3],
-						[920, -60, 3, 5],
-						[980, -60, 3, 6],
-						[1040, -60, 3, 10],
+						[-980, -2150, 0, 0],
+						[-980, -2220, 0, 1],
+						[-980, -2290, 0, 2],
+						[-980, -1900, 0, 0],
+						[-980, -1970, 0, 1],
+						[-980, -2040, 0, 2],
+						[310, -1860, 3, 5],
 					]);
-                    gameVars.wallType = color(230);
-                    var beds = function(x) {
-                        createObj(walls, block, [
-                            ["Rectangle", x, 30, 70, 35, [["shootThrough", true],["opaque",false]]],
-                            ["Rectangle", x, 90, 70, 35, [["shootThrough", true],["opaque",false]]],
-                            ["Rectangle", x, 150, 70, 35, [["shootThrough", true],["opaque",false]]],
-                            ["Rectangle", x, 210, 70, 35, [["shootThrough", true],["opaque",false]]],
-                            ["Rectangle", x, 270, 70, 35, [["shootThrough", true],["opaque",false]]],
-						]);
-                    };
-					beds(925);
-					beds(1075);
-					beds(1585);
-					beds(1735);
-					objectives.clear();
-                    objectives.push(construct(objective, [4, false]));
-                break;
-                case 2:
-					createObj(enemies, character, [
-						[1330, -350, 0, true, "Guard_Lieutenant", 4, ["scope",4]],
-						[1355, -380, 0, true, "Guard_Sergeant", 3, ["scope",4]],
-						[1305, -380, 0, true, "Guard_4", 2, ["scope",4]],
-						[1355, -420, 0, true, "Guard_3", 1, ["scope",4]],
-						[1305, -420, 0, true, "Guard_3", 0, ["scope",4]],
+					createObj(turrets, turret, [
+						[-295, -700, 0, 30, 3],
 					]);
-					gameMap[1] = 3;
+                    createObj(doors, door, [
+                        [-1000, -25, 3, true, "Door_2"],
+                        [-1000, 25, 1, true, "Door_2"],
+                        [-270, -1000, 0, false, "Door_2", Infinity, 1],
+                        [-320, -1000, 2, false, "Door_2", Infinity, 1],
+                        [-270, -1620, 0, false, "Door_2", Infinity, 2],
+                        [-320, -1620, 2, false, "Door_2", Infinity, 2],
+                        [-495, -1945, 1, true, "Door_2", 0, 3],
+                        [-495, -1995, 3, true, "Door_2", 0, 3],
+                        [-495, -2195, 1, true, "Door_2", 1, 4],
+                        [-495, -2245, 3, true, "Door_2", 1, 4],
+                        [-270, -2345, 0, true, "Door_2", Infinity, 5],
+                        [-320, -2345, 2, true, "Door_2", Infinity, 5],
+                        [-95, -1945, 1, false, "Door_2", Infinity, 6],
+                        [-95, -1995, 3, false, "Door_2", Infinity, 6],
+                        [-95, -2195, 1, true, "Door_2", 2, 7],
+                        [-95, -2245, 3, true, "Door_2", 2, 7],
+                        [210, -2022.5, 1, false, "Door_2"],
+                        [77.5, -2220, 1, true, "Laser_1", 3],
+                        [92.5, -2220, 1, true, "Laser_1", 3],
+                        [660, -3420, 0, false, "Door_4", Infinity, 8],
+                        [560, -3420, 2, false, "Door_4", Infinity, 8],
+                        [635, -4220, 0, true, "Door_2", 4, 9],
+                        [585, -4220, 2, true, "Door_2", 4, 9],
+                    ]);
+                    createObj(computers, computer, [
+                        [210, -1970, 2, "Console_1", function() {
+                            unlockDoors(2);
+                        }],
+                        [130, -2050, 1, "Console_1", function() {
+                            unlockDoors(1);
+                        }],
+                        [130, -1890, 3, "Console_1", function() {
+                            unlockDoors(0);
+                        }],
+                        [210, -2075, 0, "Console_1", function() {
+                            openDoors(3);
+                        }],
+                    ]);
+                    createObj(objectives, objective, [
+                        [3, false],
+                    ]);
                 break;
-                case 3:
-                    if (inBox(allies[0].x, allies[0].y, 1730, -490, 200, 100)) {
+                case 1:
+                    if (inBox(allies[0].x, allies[0].y, 610, -3820, 400, 600)) {
                         levelEnds.push(construct(levelEnd, [function() {
-                            gameMap = ["Defenses", 0];
-                            scene = "loadmap";
-                            loadOn = 0;
+                            gameMap = ["KoliosIII", 0];
                         }]));
-                        gameMap[1] = 1;
+                        gameMap[1] = 2;
+                        playerData = allies[0].returnData();
+                        clearArrays();
                     }
                 break;
                 default:
@@ -13930,1037 +14129,508 @@ maps = {
             }
         },
         draw: [
-            [true, function(stage) {
+            [true, function() {
                 background(50);
-                floorImg(-500, -540, 1780, 340);
-                var beds = function(x) {
-                    fill(255);
-                    rect(x, 30, 70, 35);
-                    rect(x, 90, 70, 35);
-                    rect(x, 150, 70, 35);
-                    rect(x, 210, 70, 35);
-                    rect(x, 270, 70, 35);
-                    fill(50);
-                    if (x < 1500) {
-                        rect(x - 20, 30, 20, 30);
-                        rect(x - 20, 90, 20, 30);
-                        rect(x - 20, 150, 20, 30);
-                        rect(x - 20, 210, 20, 30);
-                        rect(x - 20, 270, 20, 30);
-                    } else {
-                        rect(x + 20, 30, 20, 30);
-                        rect(x + 20, 90, 20, 30);
-                        rect(x + 20, 150, 20, 30);
-                        rect(x + 20, 210, 20, 30);
-                        rect(x + 20, 270, 20, 30);
-                    }
-                };
-				beds(925);
-				beds(1075);
-				beds(1585);
-				beds(1735);
-            }, [-500, -540, 1780, 340]],
+            }, [0, 0, 400, 400]],
             [false, function() {
-                drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting");  
-                if (!doors[doors.length - 1].alwaysOpen) {
-                    fill(random(200, 255), random(20, 50), 0, 10);
-                    noStroke();
-                    for (var i = 0; i < 10; i++) {
-                        rect(random(869, 871), -190, random(6, 10), 100);
-                    }
-                }
-                drawImages(doors, falseDoors, walls, weathers);
+                drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting", doors, falseDoors, walls, weathers);
             }],
         ],
         map: function() {
-            return ["infirmaryMap", 640, -150, 0.14];
+            return ["KoliosI", 0, 0, 1];
         },
         images: [],
     },
-    "Defenses": {
+    "KoliosIII": {
         run: function(stage) {
             switch (stage) {
                 case 0:
-					var a = [["shootThrough",true],["opaque",false],["color",color(150)]];
-					gameVars.wallType = color(200);
-                    objectives.push(construct(objective, [5, false]));
-					createObj(walls, block, [
-						["Circle|Metal", 0, 0, 200, 200],
-						["Rectangle", 0, -170, 400, 10],
-						["Rectangle", 200, 0, 10, 350],
-						["Rectangle", -200, 0, 10, 350],
-						["Rectangle", -120, 170, 160, 10],
-						["Rectangle", 120, 170, 160, 10],
-						["Rectangle", 0, 270, 600, 10],
-						["Rectangle", 300, 0, 10, 550],
-						["Rectangle", -300, 0, 10, 550],
-						["Rectangle", -170, -270, 260, 10],
-						["Rectangle", 170, -270, 260, 10],
-						["Rectangle", -220, -370, 360, 10],
-						["Rectangle", 220, -370, 360, 10],
-						["Rectangle", 400, 0, 10, 750],
-						["Rectangle", -400, 0, 10, 750],
-						["Rectangle", 395, -370, 10, 10],
-						["Rectangle", -395, -370, 10, 10],
-						["Rectangle", -220, 370, 360, 10],
-						["Rectangle", 220, 370, 360, 10],
-						["Rectangle|Invisible", 0, 470, 210, 70, [["shootThrough",true],["opaque",false]]],
-						["Rectangle", -300, 570, 210, 400],
-						["Rectangle", 300, 570, 210, 400],
-						["Rectangle", -270, 870, 460, 10],
-						["Rectangle", 270, 870, 460, 10],
-						["Rectangle", -1000, 0, 1000, 10],
-						["Rectangle", -500, 435, 10, 880],
-						["Rectangle", 1000, 0, 1000, 10],
-						["Rectangle", 500, 435, 10, 880],
-						["Rectangle", 0, 667.5, 400, 205],
-						["Rectangle", -420, -570, 760, 10],
-						["Rectangle", 420, -570, 760, 10],
-						["Rectangle", -1145, -100, 710, 10],
-						["Rectangle", -555, -100, 310, 10],
-						["Rectangle", 1145, -100, 710, 10],
-						["Rectangle", 555, -100, 310, 10],
-						["Rectangle", 1495, -95, 10, 10],
-						["Rectangle", 1495, -5, 10, 10],
-						["Rectangle", -1495, -95, 10, 10],
-						["Rectangle", -1495, -5, 10, 10],
-						["Rectangle", -800, -400, 10, 600],
-						["Rectangle", 800, -400, 10, 600],
-						["Rectangle", -1200, -700, 810, 10],
-						["Rectangle", 1200, -700, 810, 10],
-						["Rectangle", -1600, -850, 10, 310],
-						["Rectangle", -2000, -1000, 800, 10],
-						["Rectangle", 1600, -850, 10, 310],
-						["Rectangle", 2000, -1000, 800, 10],
-						["Rectangle|Invisible", -1430, -1000, 350, 10, a],
-						["Rectangle|Invisible", 1430, -1000, 350, 10, a],
-						["Rectangle|Invisible", -600, -1000, 1090, 10, a],
-						["Rectangle|Invisible", 600, -1000, 1090, 10, a],
-						["Circle|Invisible", 0, 505, 20, 20, [["shootThrough",true],["opaque",false]]],
-						["Rectangle", 0, -90, 50, 20],
-						["Rectangle|Invisible", 0, -570, 200, 8, [["shootThrough",true],["opaque",false]]],
+                    var prisonCell = function(x, y, dir, id) {
+                        createObj(walls, block, [
+                            ["Rectangle", x - 53, y - 68, 60, 30],
+                            ["Rectangle", x + 53, y - 68, 60, 30],
+                            ["Rectangle", x - 53, y + 68, 60, 30],
+                            ["Rectangle", x + 53, y + 68, 60, 30],
+                        ]);
+                        if (dir === 0) {
+                            createObj(doors, door, [[x + 100, y, 1, true, "Laser_2", id]]);
+                            createObj(computers, computer, [
+                                [x + 117, y + 50, 0, "Console_2", function() {
+                                    openDoors(id);
+                                }]
+                            ]);
+                        } else {
+                            createObj(doors, door, [[x - 100, y, 3, true, "Laser_2", id]]);
+                            createObj(computers, computer, [[x - 117, y - 50, 2, "Console_2", function() {
+                                openDoors(id);
+                                }]
+                            ]);
+                        }
+                    };
+                    createObj(walls, block, [
+                        ["Rectangle", -200, 400, 200, 40],
+                        ["Rectangle", 200, 400, 200, 40],
+                        ["Rectangle", -200, 0, 10, 800],
+                        ["Rectangle", 200, 0, 10, 800],
+                        ["Rectangle", -200, -400, 200, 40],
+                        ["Rectangle", 200, -400, 200, 40],
+                        ["Rectangle", 200, -800, 200, 40],
+                        ["Rectangle", -200, -800, 200, 40],
+                        ["Rectangle", 200, -800, 40, 200],
+                        ["Rectangle", -200, -400, 40, 200],
+                        ["Rectangle", 200, -400, 40, 200],
+                        ["Rectangle", -200, -400, 300, 30],
+                        ["Rectangle", 200, -400, 300, 30],
+                        ["Rectangle", 200, -800, 300, 30],
+                        ["Rectangle", -200, -800, 30, 300],
+                        ["Rectangle", 200, -800, 30, 300],
+                        ["Rectangle", -200, -400, 30, 300],
+                        ["Rectangle", 200, -400, 30, 300],
+                        ["Rectangle", -600, -400, 300, 30],
+                        ["Rectangle", -600, -400, 200, 40],
+                        ["Rectangle", -200, -800, 200, 40],
+                        ["Rectangle", -600, -800, 40, 200],
+                        ["Rectangle", -600, -800, 200, 40],
+                        ["Rectangle", -600, -800, 30, 300],
+                        ["Rectangle", -600, -400, 40, 200],
+                        ["Rectangle", -600, -400, 30, 300],
+                        ["Rectangle", -350, -800, 600, 30],
+                        ["Rectangle", -900, -705, 600, 10],
+                        ["Rectangle", -900, -495, 600, 10],
+                        ["Rectangle", -1225, -500, 70, 30],
+                        ["Rectangle", -1225, -700, 70, 30],
+                        ["Rectangle", -1375, -700, 70, 30],
+                        ["Rectangle", -1475, -500, 270, 30],
+                        ["Rectangle", -1600, -600, 30, 230],
+                        ["Rectangle", -1780, -900, 60, 30],
+                        ["Rectangle", -1470, -900, 170, 30],
+                        ["Rectangle", -1720, -700, 260, 30],
+                        ["Rectangle", -1800, -800, 30, 230],
+                        ["Rectangle", -1400, -770, 30, 260],
+                        ["Rectangle", -1975, -700, 50, 30],
+                        ["Rectangle", -1400, -500, 30, 120],
+                        ["Rectangle|Glass", -1400, -350, 15, 200],
+                        ["Rectangle|Glass", -1650, -900, 200, 15],
+                        ["Rectangle", -1570, -200, 460, 30],
+                        ["Rectangle", -1230, -200, 60, 30],
+                        ["Rectangle", -1400, -230, 30, 60],
+                        ["Rectangle", -1800, -350, 30, 330],
+                        ["Rectangle", -1200, -280, 30, 560],
+                        ["Rectangle", -1600, 0, 830, 30],
+                        ["Rectangle", -2000, -180, 30, 360],
+                        ["Rectangle", -2100, -700, 200, 30],
+                        ["Rectangle", -2100, -900, 200, 30],
+                        ["Rectangle", -1925, -1100, 550, 30],
+                        ["Rectangle", -2600, -800, 30, 1030],
+                        ["Rectangle", -2500, -500, 200, 30],
+                        ["Rectangle", -2500, -700, 200, 30],
+                        ["Rectangle", -2500, -900, 200, 30],
+                        ["Rectangle", -2500, -1100, 200, 30],
+                        ["Rectangle", -2400, -300, 30, 120],
+                        ["Rectangle", -2400, -500, 30, 120],
+                        ["Rectangle", -2400, -700, 30, 120],
+                        ["Rectangle", -2400, -900, 30, 120],
+                        ["Rectangle", -2400, -1100, 30, 120],
+                        ["Rectangle", -2400, -1300, 30, 120],
+                        ["Rectangle", -2200, -522.5, 30, 75],
+                        ["Rectangle", -2200, -700, 30, 120],
+                        ["Rectangle", -2200, -900, 30, 120],
+                        ["Rectangle", -2200, -1077.5, 30, 75],
+                        ["Rectangle", -1400, -1300, 2400, 30],
+                        ["Rectangle", -2000, -500, 400, 30],
+                        ["Rectangle", -2000, -1300, 30, 120],
+                        ["Rectangle", -2000, -800, 30, 720],
+                        ["Rectangle", -2125, -300, 250, 30],
+                        ["Rectangle", -2475, -300, 250, 30],
+                        ["Rectangle", -1200, -892.5, 30, 537.5],
+                        ["Rectangle", -1200, -1270, 30, 60],
+                        ["Rectangle", -875, -1100, 1350, 30],
+                        ["Rectangle", -200, -1300, 30, 120],
+                        ["Rectangle", -200, -930, 40, 460],
+                    ]);
+                    createObj(doors, door, [
+                        [50, 400, 0, true, "Door_4"],
+                        [-50, 400, 2, true, "Door_4"],
+                        [25, -400, 0, false, "Door_2", Infinity, 1],
+                        [-25, -400, 2, false, "Door_2", Infinity, 1],
+                        [25, -800, 0, true, "Door_2"],
+                        [-25, -800, 2, true, "Door_2"],
+                        [200, -625, 3, true, "Door_2"],
+                        [200, -575, 1, true, "Door_2"],
+                        [-200, -625, 3, false, "Door_2", Infinity, 2],
+                        [-200, -575, 1, false, "Door_2", Infinity, 2],
+                        [-375, -400, 0, true, "Door_2"],
+                        [-425, -400, 2, true, "Door_2"],
+                        [-600, -625, 3, false, "Door_2", Infinity, 3],
+                        [-600, -575, 1, false, "Door_2", Infinity, 3],
+                        [-1200, -620, 3, false, "Door_5", Infinity, 4],
+                        [-1200, -580, 1, false, "Door_5", Infinity, 4],
+                        [-1400, -620, 3, false, "Door_5", Infinity, 5],
+                        [-1400, -580, 1, false, "Door_5", Infinity, 5],
+                        [-1320, -700, 0, true, "Door_5", 0, 6],
+                        [-1280, -700, 2, true, "Door_5", 0, 6],
+                        [-1925, -700, 0, false, "Door_2", Infinity, 7],
+                        [-1875, -700, 2, false, "Door_2", Infinity, 7],
+                        [-1320, -500, 0, true, "Door_5", 1, 8],
+                        [-1280, -500, 2, true, "Door_5", 1, 8],
+                        [-1320, -200, 0, true, "Door_5", 2, 9],
+                        [-1280, -200, 2, true, "Door_5", 2, 9],
+                        [-2000, -420, 3, false, "Door_5", Infinity, 10],
+                        [-2000, -380, 1, false, "Door_5", Infinity, 10],
+                        [-2000, -1220, 3, false, "Door_5", Infinity, 11],
+                        [-2000, -1180, 1, false, "Door_5", Infinity, 11],
+                        [-2300, -300, 0, true, "Door_4"],
+                        [-1200, -1220, 3, false, "Door_5", Infinity, 12],
+                        [-1200, -1180, 1, false, "Door_5", Infinity, 12],
+                        [-200, -1220, 3, true, "Door_5", Infinity],
+                        [-200, -1180, 1, true, "Door_5", Infinity],
+                        [-1625, -1100, 0, true, "Door_2", 11, 13],
+                        [-1575, -1100, 2, true, "Door_2", 11, 13],
+                    ]);
+                    createObj(turrets, turret, [
+                        [0, -600, 0, 30, 2],
+                    ]);
+                    createObj(allies, character, [
+                        [0, 300, 180, false, "Player", 10, []],
+                        [-2553, -962, 0, true, "Partner", 9, []],
+                    ]);
+                    createObj(enemies, character, [
+                        [0, -600, 0, true, "Dawn_Henchman", 0, []],
+                        [-400, -430, 180, true, "Dawn_Guard_4", 1, []],
+                        [-900, -610, -90, true, "Dawn_Guard_2", 1, []],
+                        [-900, -575, -90, true, "Dawn_Guard_3", 1, []],
+                        [-1735, -800, 90, true, "Dawn_Lieutenant", 2, []],
+                        [-1550, -780, -30, true, "Dawn_Guard_3", 1, []],
+                        [-1615, -1000, -90, true, "Dawn_Lieutenant", 3, []],
+                        [-1650, -1025, -90, true, "Dawn_Hunter_2", 2, []],
+                        [-1650, -975, -90, true, "Dawn_Hunter_1", 1, []],
+                        [-1450, -350, -90, true, "Dawn_Captain", 4, []],
+                        [-1435, -270, 10, true, "Dawn_Technician", 1, []],
+                        [-1465, -265, -20, true, "Dawn_Technician", 2, []],
+                        [-1900, -550, 180, true, "Dawn_Guard_2", 3, []],
+                        [-1300, -350, 180, true, "Dawn_Prison_Bot", 1, []],
+                        [-1600, -100, -90, true, "Dawn_Prison_Bot", 1, []],
+                        [-2300, -800, 0, true, "Dawn_Prison_Bot", 1, []],
+                        [-2520, -390, -100, true, "Dawn_Prisoner", 1, []],
+                        [-2480, -405, 80, true, "Dawn_Prisoner", 2, []],
+                        [-2030, -600, 90, true, "Dawn_Prisoner", 1, []],
+                        [-2520, -1210, -45, true, "Dawn_Prisoner", 1, []],
+                        [-2480, -1200, 60, true, "Dawn_Prisoner", 2, []],
+                        [-2505, -1170, -170, true, "Dawn_Prisoner", 3, []],
+                        [-1800, -1200, -90, true, "Dawn_Lieutenant_2", 3, []],
+                        [-1770, -1225, 0, true, "Dawn_Hunter_1", 3, []],
+                        [-1740, -1225, 0, true, "Dawn_Hunter_1", 3, []],
+                        [-1770, -1175, 180, true, "Dawn_Guard_3", 3, []],
+                        [-1740, -1175, 180, true, "Dawn_Guard_3", 3, []],
+                    ]);
+                    createObj(computers, computer, [
+                        [-1770, -800, 0, "Console_1", function() {
+                            unlockDoors(0);
+                        }],
+                        [-1450, -470, 1, "Console_1", function() {
+                            unlockDoors(1);
+                        }],
+                        [-1450, -230, 3, "Console_1", function() {
+                            unlockDoors(2);
+                        }],
+                        [-1540, -1117, 3, "Console_2", function() {
+                            unlockDoors(11);
+                        }],
+                    ]);
+                    prisonCell(-2500, -400, 0, 3);
+                    prisonCell(-2500, -600, 0, 4);
+                    prisonCell(-2500, -800, 0, 5);
+                    prisonCell(-2500, -1000, 0, 6);
+                    prisonCell(-2500, -1200, 0, 7);
+                    prisonCell(-2100, -600, 2, 8);
+                    prisonCell(-2100, -800, 2, 9);
+                    prisonCell(-2100, -1000, 2, 10);
+                    createObj(boxes, crate, [
+                        [-1450, -870, 1, 0],
+                        [-1750, -230, 3, 2],
+                        [-1685, -230, 3, 2],
+                    ]);
+                break;
+                case 1:
+                    /*if (inBox(allies[0].x, allies[0].y, -2300, -800, 200, 200)) {
+                        levelEnds.push(construct(levelEnd, [function() {
+                            cinematic = ["2", 0, [0, 0, 1]];
+                            scene = "cinematic";
+                            //clearArrays();
+                        }]));
+                    }*/
+                    if (inBox(allies[0].x, allies[0].y, -2300, -800, 200, 200)) {
+                        createObj(objectives, objectives, [
+                            [4, false],
+                        ]);
+                    }
+                break;
+                default:
+                break;
+            }
+        },
+        draw: [
+            [true, function() {
+                background(50);
+            }, [0, 0, 400, 400]],
+            [false, function() {
+                drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting", doors, falseDoors, walls, weathers);
+            }],
+        ],
+        map: function() {
+            return ["KoliosI", 0, 0, 1];
+        },
+        images: [],
+    },
+    "KoliosIV": {
+        run: function(stage) {
+            switch (stage) {
+                case 0: 
+                    createObj(walls, block, [
+						["Rectangle", 200, 400, 200, 40],
+						["Rectangle", -200, 400, 200, 40],
+						["Rectangle", 200, 400, 300, 30],
+						["Rectangle", -200, 400, 300, 30],
+						["Rectangle", 200, -400, 200, 40],
+						["Rectangle", -200, -400, 200, 40],
+						["Rectangle", 200, -400, 300, 30],
+						["Rectangle", -200, -400, 300, 30],
+						["Rectangle", -700, -100, 1000, 30],
+						["Rectangle", -700, 100, 1000, 30],
+						["Rectangle", -1200, -100, 30, 120],
+						["Rectangle", -1200, 100, 30, 120],
+						["Rectangle", -200, 270, 40, 460],
+						["Rectangle", -200, -270, 40, 460],
+						["Rectangle", 200, 270, 40, 460],
+						["Rectangle", 200, -270, 40, 460],
+						["Rectangle", 700, -100, 1000, 30],
+						["Rectangle", 425, 100, 450, 30],
+						["Rectangle", 975, 100, 450, 30],
+						["Rectangle", 1200, -200, 30, 320],
+						["Rectangle", 1200, -360, 100, 30],
+						["Rectangle", 1550, -360, 500, 30],
+						["Rectangle", 1150, -460, 30, 230],
+						["Rectangle", 1275, -560, 280, 30],
+						["Rectangle", 1400, -460, 30, 200],
+						["Circle", 1800, -380, 400, 400],
+						["Circle", 1840, -200, 200, 200],
+						["Circle", 1570, -25, 220, 220],
+						["Circle", 1480, -80, 100, 100],
+						["Rectangle", 1850, -100, 30, 800],
+						["Rectangle", 1200, 170, 30, 260],
+						["Rectangle", 1750, 250, 220, 120],
+						["Rectangle", 1800, 180, 100, 100],
+						["Rectangle", 1690, 460, 200, 400],
+						["Circle", 1600, 420, 200, 200],
+						["Circle", 1210, 300, 220, 220],
+						["Rectangle", 1580, 520, 300, 200],
+						["Rectangle", 1240, 500, 30, 400],
+						["Circle", 1430, 520, 200, 200],
+						["Circle", 1260, 800, 300, 300],
+						["Circle", 1550, 600, 200, 200],
+						["Circle", 1350, 900, 320, 320],
+						["Rectangle", 1500, 1200, 20, 600],
+						["Circle", 1510, 1400, 400, 400],
+						["Circle", 1700, 1600, 500, 500],
+						["Circle", 2000, 1900, 700, 700],
+						["Circle", 2175, 2235, 500, 500],
+						["Rectangle", 2025, 2480, 300, 10],
+						["Rectangle", 1860, 2625, 100, 300],
+						["Rectangle", 1860, 4575, 100, 300],
+						["Rectangle", 1860, 3600, 40, 2000],
+						["Circle", 1800, 650, 300, 300],
+						["Circle", 1630, 670, 100, 100],
+						["Rectangle", 2000, 650, 300, 200],
+						["Circle", 2150, 750, 400, 400],
+						["Circle", 2300, 900, 300, 300],
+						["Rectangle", 2450, 1040, 300, 20],
+						["Circle", 2600, 950, 300, 300],
+						["Circle", 2750, 1150, 400, 400],
+						["Rectangle", 3000, 1150, 600, 300],
+						["Circle", 3300, 1150, 300, 300],
+						["Rectangle|Invisible", 3200, 3000, 10, 4000, [["shootThrough", true]]],
+						["Rectangle", 2025, 4720, 300, 10],
+						["Circle", 2175, 4965, 500, 500],
+						["Rectangle", 2175, 5400, 200, 520],
+						["Rectangle", 2475, 5650, 600, 20],
+						["Circle", 2775, 5840, 400, 400],
+						["Circle", 3150, 5200, 450, 450],
+						["Rectangle", 2970, 6140, 10, 600],
+						["Circle", 3350, 5300, 400, 400],
+						["Circle", 2950, 6600, 500, 500],
+						["Rectangle", 3100, 7000, 10, 800],
+						["Rectangle", 3100, 7400, 200, 500],
+						["Circle", 3200, 7500, 300, 300],
+						["Circle", 3050, 7600, 400, 400],
+						["Rectangle", 3050, 8400, 10, 1600],
+						["Circle", 2900, 9200, 450, 450],
+						["Rectangle", 2950, 9600, 10, 800],
+						["Circle", 2850, 10300, 800, 800],
+						["Circle", 2600, 10600, 500, 500],
+						["Rectangle", 2650, 10900, 10, 300],
+						["Circle", 2500, 11050, 310, 310],
+						["Rectangle", 3500, 5700, 10, 600],
+						["Circle", 3700, 6000, 410, 410],
+						["Rectangle", 3700, 6350, 150, 400],
+						["Circle", 3900, 6550, 350, 350],
+						["Rectangle", 3950, 6950, 10, 600],
+						["Rectangle", 3960, 7245, 20, 10],
+						["Rectangle", 3960, 7355, 20, 10],
+						["Rectangle", 3970, 7300, 10, 120],
+						["Circle", 3950, 7500, 300, 300],
+						["Rectangle", 3950, 7500, 350, 50],
+						["Rectangle", 3200, 7500, 350, 50],
+						["Rectangle", 3905, 7800, 10, 600],
+						["Circle", 4100, 8100, 500, 500],
+						["Circle", 700, 1415, 600, 600],
+						["Circle", 1200, 1565, 600, 600],
+						["Rectangle", 5150, 8345, 2100, 10],
+						["Circle", 4100, 10300, 500, 500],
+						["Rectangle", 5150, 10055, 2100, 10],
+						["Rectangle", 6200, 9200, 10, 1710],
+						["Rectangle", 3855, 10800, 10, 1000],
+						["Circle", 4055, 11590, 1500, 1500],
+						["Circle", 2500, 11500, 310, 310],
+						["Rectangle", 3000, 11500, 1000, 10],
 					]);
 					createObj(allies, character, [
-					    [-1450, -50, 270, false, "Player", 1, playerData]
+						[-1000, 0, -90, false, "Player", 10, []],
+						[-1030, 30, -90, true, "Partner", 9, []],
 					]);
 					createObj(enemies, character, [
-					    [-625, -325, 30, true, "Guard_4", 1, ["scope",1.5]],
-					    [-600, -300, 30, true, "Guard_Sergeant", 2, ["scope",1.5]],
-					    [-600, -1600, 0, true, "Guard_Gunner", 0, []],
-					    [600, -1600, 0, true, "Guard_Gunner", 0, []],
-					    [0, 525, 180, true, "Guard_Captain", 4, ["scope",1.5]],
-					    [150, 470, 135, true, "Guard_Specialist", 3, []],
-					    [0, 340, 180, true, "Guard_Sergeant", 2, ["scope",2]],
-					    [350, 0, 180, true, "Guard_4", 0, ["scope",2]],
-					    [-350, 0, 180, true, "Guard_4", 1, ["scope",2]],
-					    [150, 0, 45, true, "Guard_3", 0, ["scope",1.5]],
-					    [0, -140, 0, true, "Guard_Lieutenant", 2, []],
-					    [0, 200, 0, true, "Guard_4", 1, ["scope",1.5]],
-					    [430, 800, 315, true, "Guard_3", 0, []],
-					    [460, 830, 135, true, "Guard_4", 1, []],
-					    [-60, -540, 0, true, "Guard_3", 0, ["scope",1.3]],
-					    [60, -540, 0, true, "Guard_3", 1, ["scope",1.3]],
-					    [-1100, -840, 270, true, "Defense_Bot", 0, ["scope",1.3]],
-					    [-200, -780, 315, true, "Defense_Bot", 1, ["scope",1.3]],
-					    [200, -780, 45, true, "Defense_Bot", 2, ["scope",1.3]],
-					    [1100, -840, 90, true, "Defense_Bot", 3, ["scope",1.3]],
+						[0, -100, 60, true, "Dawn_Hunter_1", 1, []],
+						[0, 100, 120, true, "Dawn_Hunter_2", 2, []],
+						[700, 50, 180, true, "Dawn_Guard_2", 1, []],
+						[1400, 200, 135, true, "Dawn_Lieutenant", 3, []],
+						[1440, 195, 135, true, "Dawn_Guard_4", 2, []],
+						[1395, 240, 135, true, "Dawn_Sniper_2", 1, []],
+						[1275, -315, 0, true, "Dawn_Lieutenant", 1, []],
+						[1295, 520, 200, true, "Dawn_Hunter_1", 1, []],
+						[1800, 1000, 135, true, "Dawn_Sniper_2", 1, []],
+						[2000, 1200, 135, true, "Dawn_Henchman", 1, []],
+						[2520, 3800, 190, true, "Dawn_Sniper_1", 0, []],
+						[2500, 3750, 320, true, "Dawn_Sniper_2", 0, []],
+						[2550, 3760, 40, true, "Dawn_Hunter_2", 0, []],
+						[2650, 5200, 180, true, "Dawn_Lieutenant", 3, []],
+						[2700, 5200, 180, true, "Dawn_Lieutenant_2", 4, []],
+						[2675, 5175, 180, true, "Dawn_Captain", 5, []],
+						[2675, 5090, 0, true, "Dawn_Hunter_2", 0, []],
+						[3100, 5613, 135, true, "Dawn_Guard_4", 0, []],
+						[3915, 7300, 270, true, "Dawn_Lieutenant", 2, []],
+						[3775, 7425, 90, true, "Dawn_Guard_4", 1, []],
+						[3375, 7425, 270, true, "Dawn_Hunter_1", 0, []],
+						[3450, 8400, 300, true, "Dawn_Pilot", 0, []],
+						[3465, 8450, 230, true, "Dawn_Pilot", 1, []],
+						[3500, 8420, 80, true, "Dawn_Lieutenant_2", 2, []],
+						[3625, 10275, 90, true, "Dawn_Guard_3", 1, []],
+						[3450, 10275, 270, true, "Dawn_Guard_4", 0, []],
+						[3500, 9250, 180, true, "Dawn_Prison_Bot", 0, []],
+						[3425, 9240, 180, true, "Dawn_Prison_Bot", 2, []],
+						[3350, 9250, 180, true, "Dawn_Prison_Bot", 1, []],
+						[5150, 9200, 135, true, "Dawn_Henchman", 0, []],
 					]);
 					createObj(computers, computer, [
-						[0, -115, 3, "Console_1", function() {
-							unlockDoors(3);
-						}],
-						[0, -175, 3, "Console_3", function() {
+						[1310, -343, 1, "Console_2", function() {
 							unlockDoors(1);
 						}],
-						[0, 275, 1, "Console_3", function() {
+						[3955, 7300, 2, "Console_1", function() {
 							unlockDoors(2);
 						}],
-						[0, 490, 1, "Console_1", function() {
-						    unlockDoors(4);
-						    gameMap[1] = 2;
-						}]
 					]);
-					gameVars.wallType = color(100);
 					createObj(doors, door, [
-						[-20, 170, 2, true, "Door_1", 1, 1],
-						[20, 170, 0, true, "Door_1", 1, 1],
-						[-20, -270, 2, true, "Door_1", 2, 2],
-						[20, -270, 0, true, "Door_1", 2, 2],
-						[-20, 370, 2, true, "Door_1", 3, 3],
-						[20, 370, 0, true, "Door_1", 3, 3],
-						[-20, -570, 2, true, "Door_1", 4, 4],
-						[20, -570, 0, true, "Door_1", 4, 4],
-						[-20, -370, 2, false, "Door_1", Infinity, 5],
-						[20, -370, 0, false, "Door_1", Infinity, 5],
-						[770, -100, 0, false, "Door_1", Infinity, 7],
-						[730, -100, 2, false, "Door_1", Infinity, 7],
-						[-770, -100, 2, false, "Door_1", Infinity, 8],
-						[-730, -100, 0, false, "Door_1", Infinity, 8],
-					]);
-					createObj(falseDoors, falseDoor, [
-						[1495, -30, 1, true, "Door_1"],
-						[1495, -70, 3, true, "Door_1"],
-						[-1495, -30, 1, true, "Door_1"],
-						[-1495, -70, 3, true, "Door_1"],
-						[20, 870, 0, true, "Door_1", Infinity, 6],
-						[-20, 870, 2, true, "Door_1", Infinity, 6],
-					]);
-					createObj(turrets, turret, [
-					    [-600, -1600, 0, 6, 4],
-					    [600, -1600, 0, 6, 4],
-					]);
-					createObj(weathers, weather, [
-					    ["snow 3", 0, -2070, 0, [4200, 3000], 50],
-					]);
-					var aaGun = function(x) {
-					    createObj(walls, block, [
-						["Rectangle|Invisible", x+60, -1600, 10, 1200, a],
-						["Rectangle|Invisible", x-60, -1600, 10, 1200, a],
-						["Rectangle|Invisible", x-155, -2200, 200, 10, a],
-						["Rectangle|Invisible", x+155, -2200, 200, 10, a],
-						["Rectangle|Invisible", x, -2700, 500, 10, a],
-						["Rectangle|Invisible", x+250, -2450, 10, 500, a],
-						["Rectangle|Invisible", x-250, -2450, 10, 500, a],
-						["Circle", x, -2450, 300, 300],
-						["Rectangle", x, -2450, 50, 300],
-						]);
-						createObj(cliffs, cliff, [
-						    [[x-60,-1000,x-60,-2200,x-250,-2200,x-250,-2700,x+250,-2700,x+250,-2200,x+60,-2200,x+60,-1000]],
-						    [[x-110,-1050,x-110,-2150,x-300,-2150,x-300,-2750,x+300,-2750,x+300,-2150,x+110,-2150,x+110,-1050],[["s2",5]]],
-						    [[x-160,-1100,x-160,-2100,x-350,-2100,x-350,-2800,x+350,-2800,x+350,-2100,x+160,-2100,x+160,-1100],[["s2",6]]],
-						]);
-						computers.push(construct(computer, [x, -2285, 1, "Console_1", function() {
-						    gameVars.aaGuns[(x + 1200) / 1200] = 1;
-						}]));
-						boxes.push(construct(crate, [x, -2615, 3, 9]));
-						if (x === 0) {
-						    enemies.push(construct(character, [x, -2200, 0, true, "Guard_Rockettrooper", 0, ["scope",1.3]]));
-						} else {
-					        enemies.push(construct(character, [x, -2200, 0, true, "Guard_Sniper", 0, ["scope",2]]));
-						}
-					};
-					aaGun(0);
-					aaGun(1200);
-					aaGun(-1200);
-                break;
-                case 1:
-                    if (inBox(allies[0].x, allies[0].y, 0, 530, 120, 80)) {
-                        gameMap[1] = 5;
-                        scene = "cinematic";
-                        cinematic = ["Thinking", 0, [0, 530, 0.5]];
-                    }
-                break;
-                case 2:
-                    if (inBox(allies[0].x, allies[0].y, 0, -470, 200, 200)) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            unlockDoors(4, true);
-                            allies[0].x = 0;
-                            allies[0].y = -670;
-                            transition[1] = 0;
-                        }, true]));
-                        gameMap[1] = 3;
-                    }
-                break;
-                case 3:
-                    if (levelEnds.length === 0 && inBox(allies[0].x, allies[0].y, 0, -670, 200, 200) && gameVars.aaGuns[0] === 1 && gameVars.aaGuns[1] === 1 && gameVars.aaGuns[2] === 1) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            scene = "cinematic";
-                            cinematic = ["Success", 0, [0, -670, 0.75]];
-                            transition[1] = 0;
-                        }, true]));
-                    }
-                break;
-                case 4:
-                    if (inBox(allies[0].x, allies[0].y, 1445, -50, 100, 100)) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            gameMap = ["Hangars", 0];
-                            scene = "loadmap";
-                            loadOn = 0;
-                        }]));
-                        gameMap[1] = 2;
-                    }
-                break;
-                default:
-                break;
-            }
-        },
-        draw: [
-            [true, function() {
-                background(0, 0);
-                cliffs.clear();
-                createObj(cliffs, cliff, [
-                    [[-2300, -1000, -1260, -1000]],
-                    [[-1140, -1000, -60, -1000]],
-                    [[60, -1000, 1140, -1000]],
-                    [[1260, -1000, 2300, -1000]],
-                    [[-2300, -1050, -1310, -1050], [["s2", 5]]],
-                    [[-1090, -1050, -110, -1050], [["s2", 5]]],
-                    [[110, -1050, 1090, -1050], [["s2", 5]]],
-                    [[1310, -1050, 2300, -1050], [["s2", 5]]],
-                    [[-2300, -1100, -1360, -1100], [["s2", 6]]],
-                    [[-1040, -1100, -160, -1100], [["s2", 6]]],
-                    [[160, -1100, 1040, -1100], [["s2", 6]]],
-                    [[1360, -1100, 2300, -1100], [["s2", 6]]],
-                    [[-700,-1700,-500,-1700,-500,-1500,-700,-1500,-700,-1700]],
-                    [[500,-1700,700,-1700,700,-1500,500,-1500,500,-1700]],
-                    [[-725,-1725,-475,-1725,-475,-1475,-725,-1475,-725,-1725],[["s2",5]]],
-                    [[475,-1725,725,-1725,725,-1475,475,-1475,475,-1725],[["s2",5]]],
-                    [[-750,-1750,-450,-1750,-450,-1450,-750,-1450,-750,-1750],[["s2",6]]],
-                    [[450,-1750,750,-1750,750,-1450,450,-1450,450,-1750],[["s2",6]]],
-                ]);
-                var aaGun = function(x) {
-					createObj(cliffs, cliff, [
-					    [[x-60,-1000,x-60,-2200,x-250,-2200,x-250,-2700,x+250,-2700,x+250,-2200,x+60,-2200,x+60,-1000]],
-					    [[x-110,-1050,x-110,-2150,x-300,-2150,x-300,-2750,x+300,-2750,x+300,-2150,x+110,-2150,x+110,-1050],[["s2",5]]],
-					    [[x-160,-1100,x-160,-2100,x-350,-2100,x-350,-2800,x+350,-2800,x+350,-2100,x+160,-2100,x+160,-1100],[["s2",6]]],
-					]);
-				};
-				aaGun(0);
-				aaGun(1200);
-				aaGun(-1200);
-            }, [0, 0, 1, 1]],
-            [true, function(stage) {
-                background(50);
-                floorImg(-1550, -570, 1550, 870);
-                fill(0);
-                ellipse(0, 505, 20, 20);
-                fill(100, 50, 15);
-                rect(0, 470, 210, 70);
-                var a = "datapad";
-                image(images[a], 40, 485);
-            }, [-1550, -570, 1550, 870]],
-            [true, function(stage) {
-                defensesBack();
-            }, [-2300, -3400, 0, -1000]],
-            [true, function(stage) {
-                defensesBack();
-            }, [0, -3400, 2300, -1000]],
-            [true, function() {
-                var aaGun = function(x) {
-                    fill(110);
-                    rect(x, -1600, 120, 1200);
-                    rect(x, -2450, 500, 500);
-                    fill(100);
-					rect(x+60, -1600, 10, 1200);
-					rect(x-60, -1600, 10, 1200);
-					rect(x-155, -2200, 200, 10);
-					rect(x+155, -2200, 200, 10);
-					rect(x, -2700, 510, 10);
-					rect(x+250, -2450, 10, 500);
-					rect(x-250, -2450, 10, 500);
-                };
-                noStroke();
-                fill(125);
-                rect(-600,-1600,200,200);
-                rect(600,-1600,200,200);
-			    aaGun(0);
-				aaGun(1200);
-				aaGun(-1200);
-                fill(110);
-                rect(0, -785, 3200, 430);
-                fill(100);
-                rect(-1430, -1000, 350, 10);
-				rect(1430, -1000, 350, 10);
-				rect(-600, -1000, 1090, 10);
-				rect(600, -1000, 1090, 10);
-            }, [-2300, -3400, 2300, -570]],
-            [false, function() {
-                drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting", doors, falseDoors, walls);
-                var a = "turret";
-				image(images[a], -1200, -2450);
-				image(images[a], 0, -2450);
-				image(images[a], 1200, -2450);
-				if (gameMap[1] === 3) {
-				    drawImages(weathers);
-                    fill(0);
-                    rect(0, -70, 5000, 990);
-                    rect(0, -560, 80, 12);
-                    rect(1800, -600, 1990, 190);
-                    rect(-1800, -600, 1990, 190);
-                    rect(2100, -845, 990, 300);
-                    rect(-2100, -845, 990, 300);
-				}
-            }],
-        ],
-        map: function() {
-            return ["defensesMap", 0, -1130, 0.07];
-        },
-        images: [],
-    },
-    "Hangars": {
-        run: function(stage) {
-            switch (stage) {
-                case 0:
-                    objectives.push(construct(objective, [7, false]));
-					gameVars.wallType = color(200);
-					createObj(walls, block, [
-					    ["Rectangle", -122.5, -300, 165, 10],
-					    ["Rectangle", 122.5, -300, 165, 10],
-					    ["Rectangle", -120, 300, 160, 10],
-					    ["Rectangle", 120, 300, 160, 10],
-					    ["Rectangle", 200, 170, 10, 260],
-					    ["Rectangle", -200, 170, 10, 260],
-					    ["Rectangle", -300, 120, 10, 160],
-					    ["Rectangle", -300, -120, 10, 160],
-					    ["Rectangle", 300, 120, 10, 160],
-					    ["Rectangle", 300, -120, 10, 160],
-					    ["Rectangle", 495, 200, 910, 10],
-					    ["Rectangle", -495, 200, 910, 10],
-					    ["Rectangle", 495, -200, 910, 10],
-					    ["Rectangle", -495, -200, 910, 10],
-					    ["Rectangle", 200, -495, 10, 910],
-					    ["Rectangle", -200, -495, 10, 910],
-					    ["Rectangle", -1425, -200, 750, 10],
-					    ["Rectangle", -1425, 200, 750, 10],
-					    ["Rectangle", 1425, -200, 750, 10],
-					    ["Rectangle", 1425, 200, 750, 10],
-					    ["Rectangle", -200, -1425, 10, 750],
-					    ["Rectangle", 200, -1425, 10, 750],
-					    ["Rectangle", -1800, 122.5, 10, 165],
-					    ["Rectangle", -2150, -50, 710, 10],
-					    ["Rectangle", -2080, 50, 560, 10],
-					    ["Rectangle", -2472.5, 50, 65, 10],
-					    ["Rectangle", -2500, 45, 10, 10],
-					    ["Rectangle", -2500, -45, 10, 10],
-					    ["Rectangle", 1800, 122.5, 10, 165],
-					    ["Rectangle", 1800, -750, 10, 1420],
-					    ["Rectangle", 1800, -1670, 10, 260],
-					    ["Rectangle", -1800, -750, 10, 1420],
-					    ["Rectangle", -1800, -1670, 10, 260],
-					    ["Rectangle", 2000, 0, 10, 210],
-					    ["Rectangle", 1900, -100, 200, 10],
-					    ["Rectangle", 1900, 100, 200, 10],
-					    ["Rectangle", 240, -1840, 90, 90],
-					    ["Rectangle", -240, -1840, 90, 90],
-					    ["Rectangle", 1760, -1840, 90, 90],
-					    ["Rectangle", -1760, -1840, 90, 90],
-					    ["Rectangle", -1000, -1840, 1600, 10, [["opaque",false],["color",color(0, 200, 255)]]],
-					    ["Rectangle", 1000, -1840, 1600, 10, [["opaque",false],["color",color(0, 200, 255)]]],
-					    ["Rectangle", 2000, -3500, 10, 210],
-					    ["Rectangle", 1900, -3600, 200, 10],
-					    ["Rectangle", 1900, -3400, 200, 10],
-					    ["Rectangle", 1800, -3670, 10, 260],
-					    ["Rectangle", 1800, -3330, 10, 260],
-					    ["Rectangle", 200, -3670, 10, 260],
-					    ["Rectangle", 200, -3330, 10, 260],
-					    ["Rectangle", -220, -3200, 50, 410],
-					    ["Rectangle", -220, -3800, 50, 410],
-					    ["Rectangle", 800, -3800, 2000, 10],
-					    ["Rectangle", 800, -3200, 2000, 10],
-					    ["Rectangle", -940, -3500, 10, 1000],
-					    ["Rectangle", -590, -4000, 710, 10],
-					    ["Rectangle", -590, -3000, 710, 10],
-					    ["Circle|Invisible", -590, -3500, 200, 200, [["shootThrough",true],["opaque",false]]],
-					    ["Rectangle", 1000, -1000, 800, 800, [["color",color(255,0)],["opaque",false]]],
-					    ["Rectangle", -1000, -1000, 800, 800, [["color",color(255,0)],["opaque",false]]],
-					    ["Circle", 1700, -700, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", 1700, -900, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", 1700, -1100, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", 1700, -1300, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", -1700, -700, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", -1700, -900, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", -1700, -1100, 200, 200,[["color",color(150,0,0)]]],
-					    ["Circle", -1700, -1300, 200, 200,[["color",color(150,0,0)]]],
-					    ["Rectangle", 1700, -1300, 200, 50],
-					    ["Rectangle", 1400, -3670, 10, 260],
-					    ["Rectangle", 1400, -3330, 10, 260],
-					    ["Rectangle", 0, -1800, 400, 10],
-					    ["Rectangle", 0, -1880, 400, 10],
-					    ["Rectangle", 1750, -1000, 100, 800,[["color",color(50,0,0)]]],
-					    ["Rectangle", -1750, -1000, 100, 800,[["color",color(50,0,0)]]],
-					]);
-					createObj(allies, character, [
-					    [-2400, 0, 270, false, "Player", 0, playerData],
-					]);
-					createObj(enemies, character, [
-					    [-1770, -70, 270, true, "Guard_3", 0, []],
-					    [-1770, 70, 270, true, "Guard_4", 1, []],
-					    [-1000, -170, 0, true, "Guard_Sergeant", 2, ["scope",1.3]],
-					    [-250, -70, 0, true, "Guard_3", 0, []],
-					    [-250, 70, 180, true, "Guard_4", 1, []],
-					    [0, 0, 90, true, "Guard_Gunner", 0, ["scope",1.3]],
-					    [1000, 0, 90, true, "Guard_Lieutenant", 2, ["scope",1.3]],
-					    [1030, 30, 90, true, "Guard_Sergeant", 1, ["scope",1.4]],
-					    [1770, -70, 0, true, "Guard_4", 0, ["scope",1.3]],
-					    [900, -440, 270, true, "Tech", 0, []],
-					    [935, -440, 90, true, "Tech", 1, []],
-					    [1200, -3500, 270, true, "Guard_Lieutenant", 2, ["scope",1.4]],
-					    [1180, -3400, 250, true, "Guard_Specialist", 1, ["scope",1.4]],
-					    [1180, -3600, 290, true, "Guard_Sergeant", 0, ["scope",1.4]],
-					    [230, -3570, 270, true, "Guard_Sergeant", 0, ["scope",1.3]],
-					    [230, -3430, 270, true, "Guard_Sniper", 1, ["scope",1.3]],
-					    [-720, -3500, 270, true, "Guard_Colonel", 5, []],
-					    [-720, -3450, 180, true, "Guard_Captain", 4, ["scope",1.3]],
-					    [-220, -3575, 0, true, "Guard_Specialist", 2, ["scope",1.3]],
-					    [-220, -3425, 180, true, "Guard_Sergeant", 3, ["scope",1.3]],
-					    [-390, -3975, 180, true, "Guard_Lieutenant", 1, ["scope",1.2]],
-					]);
-					createObj(computers, computer, [
-					    [-920, -3500, 0, "Console_1", function() {
-					        unlockDoors(1);
-					        gameVars.hangar = 1;
-                            objectives.push(construct(objective, [8, false]));
-					    }],
-					    [1585, -1300, 2, "Console_1", function() {
-                            gameVars.fuel[2] = 1;
-                            objectives.push(construct(objective, [9, false]));
-					        createObj(walls, block, [
-					            ["Rectangle", 125, -1055, 150, 10, [["shootThrough", true],["opaque",false]]],
-					            ["Rectangle", 125, -945, 150, 10, [["shootThrough", true],["opaque",false]]],
-					            ["Rectangle", 50, -1000, 10, 100, [["shootThrough", true],["opaque",false]]],
-					            ["Rectangle", 1055, -125, 10, 150, [["shootThrough", true],["opaque",false]]],
-					            ["Rectangle", 945, -125, 10, 150, [["shootThrough", true],["opaque",false]]],
-					            ["Rectangle", 1000, -50, 100, 10, [["shootThrough", true],["opaque",false]]],
-			                ]);
-					        unlockDoors(1, false);
-					        unlockDoors(2, false);
-					        allLoot.clear();
-					        enemies.clear();
-					        var c = ["mLoc", gameVars.move1, "tLoc", gameVars.move1, "stage", "Move In", "warned", true, "scope", 1.2], d = ["mLoc", gameVars.move2, "tLoc", gameVars.move2, "stage", "Move In", "warned", true, "scope", 1.2];
-					        gameVars.orders.push(
-                                [0, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_Sergeant", "Guard_3"]);
-                                    spawn(gameVars.spawn2, d, ["Guard_4", "Guard_Specialist"]);
-                                }],
-                                [20, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_3", "Guard_Lieutenant"]);
-                                    spawn(gameVars.spawn2, d, ["Guard_2"]);
-                                }],
-                                [30, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_2", "Guard_2"]);
-                                    spawn(gameVars.spawn2, d, ["Guard_1"]);
-                                }],
-                                [40, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_Lieutenant"]);
-                                    spawn(gameVars.spawn2, d, ["Guard_Sergeant"]);
-                                }],
-                                [50, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_2"]);
-                                }],
-                                [60, function() {
-                                    spawn(gameVars.spawn2, d, ["Guard_3"]);
-                                }],
-                                [70, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_Sniper"]);
-                                }],
-                                [80, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_Rockettrooper"]);
-                                    spawn(gameVars.spawn2, d, ["Guard_Specialist"]);
-                                }],
-                                [90, function() {
-                                    spawn(gameVars.spawn2, d, ["Guard_Sniper"]);
-                                }],
-                                [100, function() {
-                                    spawn(gameVars.spawn1, c, ["Guard_Captain"]);
-                                    spawn(gameVars.spawn2, d, ["Guard_4"]);
-                                }]
-                            );
-					    }, false],
-					]);
-					gameVars.wallType = color(100);
-					createObj(doors, door, [
-					    [-20, -200, 2, false, "Door_1", Infinity, 1],
-					    [20, -200, 0, false, "Door_1", Infinity, 1],
-					    [-20, 200, 2, false, "Door_1", Infinity, 2],
-					    [20, 200, 0, false, "Door_1", Infinity, 2],
-					    [-200, -20, 3, false, "Door_1", Infinity, 3],
-					    [-200, 20, 1, false, "Door_1", Infinity, 3],
-					    [200, -20, 3, false, "Door_1", Infinity, 4],
-					    [200, 20, 1, false, "Door_1", Infinity, 4],
-					    [-300, -20, 3, false, "Door_1", Infinity, 6],
-					    [-300, 20, 1, false, "Door_1", Infinity, 6],
-					    [300, -20, 3, false, "Door_1", Infinity, 7],
-					    [300, 20, 1, false, "Door_1", Infinity, 7],
-					    [200, -975, 1, true, "Door_2", 2, 8],
-					    [200, -1025, 3, true, "Door_2", 2, 8],
-					    [975, -200, 2, true, "Door_2", 1, 10],
-					    [1025, -200, 0, true, "Door_2", 1, 10],
-					    [-1800, -20, 3, false, "Door_1", Infinity, 12],
-					    [-1800, 20, 1, false, "Door_1", Infinity, 12],
-					    [1800, -20, 3, false, "Door_1", Infinity, 13],
-					    [1800, 20, 1, false, "Door_1", Infinity, 13],
-					    [1800, -3520, 3, false, "Door_1", Infinity, 15],
-					    [1800, -3480, 1, false, "Door_1", Infinity, 15],
-					    [200, -3520, 3, false, "Door_1", Infinity, 16],
-					    [200, -3480, 1, false, "Door_1", Infinity, 16],
-					    [1400, -3520, 3, false, "Door_1", Infinity, 17],
-					    [1400, -3480, 1, false, "Door_1", Infinity, 17],
-					]);
-					createObj(falseDoors, falseDoor, [
-					    [-2500, -20, 3, true, "Door_1"],
-					    [-2500, 20, 1, true, "Door_1"],
-					    [-2420, 50, 2, true, "Door_1"],
-					    [-2380, 50, 0, true, "Door_1"],
-					    [975, 200, 2, true, "Door_2"],
-					    [1025, 200, 0, true, "Door_2"],
-					    [-1025, 200, 2, true, "Door_2"],
-					    [-975, 200, 0, true, "Door_2"],
-					    [-1025, -200, 2, true, "Door_2"],
-					    [-975, -200, 0, true, "Door_2"],
-					    [-20, 300, 2, true, "Door_1"],
-					    [20, 300, 0, true, "Door_1"],
-					    [-20, -300, 2, true, "Door_1"],
-					    [20, -300, 0, true, "Door_1"],
-					    [-200, -975, 1, true, "Door_2"],
-					    [-200, -1025, 3, true, "Door_2"],
-					    [1800, -1520, 3, true, "Door_1"],
-					    [1800, -1480, 1, true, "Door_1"],
-					    [-1800, -1520, 3, true, "Door_1"],
-					    [-1800, -1480, 1, true, "Door_1"],
+						[25, 400, 0, true, "Door_2"],
+						[-25, 400, 2, true, "Door_2"],
+						[25, -400, 0, true, "Door_2"],
+						[-25, -400, 2, true, "Door_2"],
+						[-200, -20, 3, false, "Door_5", Infinity, 1],
+						[-200, 20, 1, false, "Door_5", Infinity, 1],
+						[200, -20, 3, false, "Door_5", Infinity, 2],
+						[200, 20, 1, false, "Door_5", Infinity, 2],
+						[725, 100, 0, true, "Door_2"],
+						[675, 100, 2, true, "Door_2"],
+						[1200, -20, 3, false, "Door_5", Infinity, 3],
+						[1200, 20, 1, false, "Door_5", Infinity, 3],
+						[1275, -360, 0, true, "Door_2", 1],
+						[3575, 7500, 0, true, "Door_3", 2],
+						[-1200, -20, 3, true, "Door_5"],
+						[-1200, 20, 1, true, "Door_5"],
+						[2500, 11275, 1, true, "Door_3"],
 					]);
 					createObj(boxes, crate, [
-					    [1600, -3780, 1, 3],
-					    [1520, -3780, 1, 5],
-					    [1680, -3780, 1, 7],
-					    [1600, -3220, 3, 6],
-					    [1520, -3220, 3, 8],
-					    [1680, -3220, 3, 10],
+						[1180, -400, 0, 4],
+						[1180, -520, 0, 5],
+						[1180, -460, 0, 4],
+						[1370, -400, 2, 3],
+						[1370, -520, 2, 2],
+						[1370, -460, 2, 3],
 					]);
 					createObj(turrets, turret, [
-					    [0, 0, 90, 4, 1],
+						[2000, 1200, 0, 30, 3],
+						[5150, 9200, 90, 31, 5],
 					]);
-					createObj(weathers, weather, [
-					    ["snow 3", 0, -2840, 5, [5000, 2800], 50],
-					]);
-                break;
-                case 1:
-                    if (inBox(allies[0].x, allies[0].y, 1900, 0, 200, 200)) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            allies[0].x = 1900;
-                            allies[0].y = -3500;
-                        }, true]));
-                        gameMap[1] = 2;
-                    }
-                    if (inBox(allies[0].x, allies[0].y, 1585, -1300, 200, 200)) {
-                        scene = "cinematic";
-                        cinematic = ["Transport", 0, [1585, -1300, 0.75]];
-                        gameMap[1] = 5;
-                    }
-                break;
-                case 2:
-                    if (allies[0].x < 1750) {
-                        gameMap[1] = 3;
-                    }
-                break;
-                case 3:
-                    if (inBox(allies[0].x, allies[0].y, 1900, -3500, 200, 200)) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            allies[0].x = 1900;
-                            allies[0].y = 0;
-                        }, true]));
-                        gameMap[1] = 4;
-                    }
-                break;
-                case 4:
-                    if (allies[0].x < 1750) {
-                        gameMap[1] = 1;
-                    }
-                break;
-                case 5:
-                    squads.clear();
-                    for (var i = 0; i < gameVars.orders.length; i++) {
-                        if (gameVars.fuel[0] >= gameVars.orders[i][0]) {
-                            gameVars.orders[i][1]();
-                            gameVars.orders.splice(i, 1);
-                            i--;
-                        }
-                    }
-                    for (var i = 0; i < enemies.length; i++) {
-                        if ((enemies[i].moveLoc.equals(gameVars.spawn1) && inBox(enemies[i].x, enemies[i].y, gameVars.spawn1[0], gameVars.spawn1[1], enemies[i].width, enemies[i].width)) || (enemies[i].moveLoc.equals(gameVars.spawn2) && inBox(enemies[i].x, enemies[i].y, gameVars.spawn2[0], gameVars.spawn2[1], enemies[i].width, enemies[i].width)) || (!enemies[i].moveLoc.equals(gameVars.spawn1) && !enemies[i].moveLoc.equals(gameVars.spawn2))) {
-                            enemies[i].moveLoc = enemies[i].targetLoc = [allies[0].x, allies[0].y];
-                        }
-                    }
-                    if (gameVars.fuel[0] >= gameVars.fuel[1]) {
-                        levelEnds.push(construct(levelEnd, [function() {
-                            enemies.clear();
-                            createObj(enemies, character, [
-                                [-1000, -500, 0, true, "Elite_Trooper_Captain", 5, []],
-                                [-435, -385, 180, true, "Elite_Trooper", 4, []],
-                                [-440, -1422, 180, true, "Elite_Trooper", 3, []],
-                                [-1496, -1015, 180, true, "Elite_Trooper", 2, []],
-                                [-1532, -394, 180, true, "Elite_Trooper", 1, []],
-                                [-1000, -450, 180, true, "Elite_Trooper", 0, []]
-                            ]);
-                            walls.length -= 6;
-                            objectives.push(construct(objective, [10, false]));
-                            scene = "cinematic";
-                            cinematic = ["Destruction", 0, [1000, -1600, 5]];
-                        }, true]));
-                        gameMap[1] = 6;
-                    }
-                    gameVars.fuel[0] += compensateFPS / 60;
-                break;
-                case 7:
-                    if (inBox(allies[0].x, allies[0].y, -1000, -550, 100, 100)) {
-                        gameMap[1] = 8;
-                        levelEnds.push(construct(levelEnd, [function() {
-                            scene = "cinematic";
-                            cinematic = ["Flight", 0, [-1000, -1000, 5]];
-                        }, true]));
-                    }
-                break;
-                default:
-                break;
+				break;
+				case 1:
+				break;
+				default:
+				break;
             }
         },
         draw: [
             [true, function() {
-                cliffs.clear();
-				createObj(cliffs, cliff, [
-				    [[250, -1850, 1750, -1850]],
-				    [[-2000, -1875, 2000, -1875], [["s2",5]]],
-				    [[-2100, -1900, 2100, -1900], [["s2",6]]],
-				]);
-            }, [0, 0, 1, 1]],
-            [true, function(stage) {
-                background(30, 70, 110);
-            }, [-2200, -3000, 2200, -2240]],
-            [true, function(stage) {
-                background(30, 70, 110);
-                hangarsBack();
-            }, [-2200, -2240, 2200, -1840]],
-            [false, function() {
-                if (gameMap[1] === 1 || gameMap[1] === 5 || gameMap[1] === 6) {
-                    drawImages(weathers);
-                }
-            }],
-            [true, function(stage) {
                 background(50);
-                noStroke();
-                fill(60);
-                stroke(0);
-                strokeWeight(4);
-                rect(1900, 0, 194, 194);
-                stroke(0, 100);
-                strokeWeight(1);
-                for (var i = -2500; i < 1800; i += 100) {
-                    line(i, 300, i, -1850);
-                }
-                for (var i = -1850; i < 300; i += 100) {
-                    line(-2500, i, 1800, i);
-                }
-                noStroke();
-                fill(150, 0, 0);
-                triangle(-1000, -580, -980, -560, -1020, -560);
-                triangle(-950, -580, -930, -560, -970, -560);
-                triangle(-1050, -580, -1030, -560, -1070, -560);
-            }, [-2500, -1850, 2000, 300]],
-            [true, function() {
-                background(50);
-                fill(60);
-                stroke(0);
-                strokeWeight(4);
-                rect(1900, -3500, 194, 194);
-            }, [1800,-3600,2000,-3400]],
-            [true, function(stage) {
-                stroke(0, 100);
-                strokeWeight(1);
-                for (var i = 1800; i > -940; i -= 100) {
-                    line(i, -3000, i, -4000);
-                }
-                for (var i = -4000; i < -3000; i += 100) {
-                    line(-940, i, 1800, i);
-                }
-            }, [-940, -4000, 2000, -3000]],
-            [false, function() {
-                fill(30);
-                rect(1000, -1842, 1440, 30);
-                rect(-1000, -1842, 1440, 30);
-                fill(100);
-                rect(1000, -1842, 1440, 6);
-                rect(-1000, -1842, 1440, 6);
-                var img = ["holotable", "hologram"];
-                image(images[img[0]], -590, -3500);
-                if (timeOnLevel % 120 >= random(0, 1)) {
-                    pushMatrix();
-                    translate(-590, -3500);
-                    rotate(timeOnLevel / 10);
-                    fill(255, 5);
-                    for (var i = 0; i < 360; i += 2) {
-                        var a = random(i - 1, i + 1), b = 3, c = random(55, 65);
-                        triangle(0, 0, c * cos(a - b), c * sin(a - b), c * cos(a + b), c / 1.5 * sin(a + b));
-                    }
-                    popMatrix();
-                }
-                drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds);
-                noStroke();
-                fill(0, 200, 255, 20);
-                for (var i = 0; i < 10; i++) {
-                    rect(1000, random(-1841, -1843), 1440, random(13, 15));
-                }
-                for (var i = 0; i < 10; i++) {
-                    rect(-1000, random(-1841, -1843), 1440, random(13, 15));
-                }
-                if (timeOnLevel % 120 >= random(0, 1)) {
-                    pushMatrix();
-                    translate(-590, -3500);
-                    rotate(timeOnLevel / 10);
-                    image(images[img[1]], 0, 0);
-                    popMatrix();
-                }
-                drawImages("lighting", doors, falseDoors, walls);
-            }],
-            [true, function(stage) {
-                background(0, 0);
-                noStroke();
-                fill(55);
-                rect(-1000, -1000, 800, 800);
-                fill(65);
-                quad(-1400, -1400, -600, -1400, -650, -1350, -1350, -1350);
-                quad(-1400, -600, -600, -600, -650, -650, -1350, -650);
-                fill(0);
-                rect(-1000, -1000, 708, 708);
-                fill(60);
-                rect(-1000, -1000, 700, 700);
-                fill(255, 255, 0, 100);
-                for (var i = -1325; i < -650; i += 25) {
-                    rect(-1160, i, 40, 10);
-                    rect(-1000, i, 40, 10);
-                    rect(-840, i, 40, 10);
-                }
-                fill(200, 0, 0);
-                ellipse(-1700, -1300, 190, 190);
-                ellipse(-1700, -1100, 190, 190);
-                ellipse(-1700, -900, 190, 190);
-                ellipse(-1700, -700, 190, 190);
-            }, [-1800, -1800, -200, -200]],
-            [true, function(stage) {
-                background(0, 0);
-                noStroke();
-                fill(55);
-                rect(1000, -1000, 800, 800);
-                fill(65);
-                quad(1400, -1400, 600, -1400, 650, -1350, 1350, -1350);
-                quad(1400, -600, 600, -600, 650, -650, 1350, -650);
-                fill(0);
-                rect(1000, -1000, 708, 708);
-                fill(60);
-                rect(1000, -1000, 700, 700);
-                fill(255, 255, 0, 100);
-                for (var i = -1325; i < -650; i += 25) {
-                    rect(1160, i, 40, 10);
-                    rect(1000, i, 40, 10);
-                    rect(840, i, 40, 10);
-                }
-                fill(200, 0, 0);
-                ellipse(1700, -1300, 190, 190);
-                ellipse(1700, -1100, 190, 190);
-                ellipse(1700, -900, 190, 190);
-                ellipse(1700, -700, 190, 190);
-            }, [200, -1800, 1800, -200]],
-            [false, function() {
-                advancedShuttle(gameVars.transport1[0], gameVars.transport1[1], gameVars.transport1[2], gameVars.transport1[3], gameVars.transport1[4]);
-                notSoAdvancedShuttle(gameVars.transport2[0], gameVars.transport2[1], gameVars.transport2[2], gameVars.transport2[3], gameVars.transport2[4]);
-            }],
-        ],
-        map: function() {
-            if (allies[0].y > -2000) {
-                return ["hangarsMap1", -250, -950, 0.068];
-            } else {
-                return ["hangarsMap2", 530, -3560, 0.105];
-            }
-        },
-        images: [],
-    },
-    // Free Play
-    "Servers": {
-        run: function(stage) {  
-            switch (stage) {
-                case 0:
-                    gameVars.wallType = color(165);
-                    createObj(walls, block, [
-                        ["Rectangle", 145, -350, 210, 10],
-                        ["Rectangle", -145, -350, 210, 10],
-                        ["Rectangle", 145, 350, 210, 10],
-                        ["Rectangle", -145, 350, 210, 10],
-                        ["Rectangle", 250, -197.5, 10, 315],
-                        ["Rectangle", -250, -197.5, 10, 315],
-                        ["Rectangle", 250, 197.5, 10, 315],
-                        ["Rectangle", -250, 197.5, 10, 315],
-                        ["Rectangle", 70, -500, 60, 10],
-                        ["Rectangle", -70, -500, 60, 10],
-                        ["Rectangle", 45, 500, 10, 10],
-                        ["Rectangle", -45, 500, 10, 10],
-                        ["Rectangle", 100, -475, 10, 60],
-                        ["Rectangle", -100, -475, 10, 60],
-                        ["Rectangle", 50, 475, 10, 60],
-                        ["Rectangle", -50, 475, 10, 60],
-                        ["Rectangle", 350, -2.5, 10, 215],
-                        ["Rectangle", 380, -100, 60, 10],
-                        ["Rectangle", 380, 100, 60, 10],
-                        ["Rectangle", 495, -100, 10, 10],
-                        ["Rectangle", 495, 100, 10, 10],
-                        ["Rectangle", 500, 150, 10, 710],
-                        ["Rectangle", 175, -450, 160, 10],
-                        ["Rectangle", 250, -475, 10, 60],
-                        ["Rectangle", 650, -350, 10, 310],
-                        ["Rectangle", 575, -200, 160, 10],
-                        ["Rectangle", 350, -275, 10, 170],
-                        ["Rectangle", 350, -472.5, 10, 65],
-                        ["Rectangle", 350, 275, 10, 160],
-                        ["Rectangle", 400, 275, 10, 160],
-                        ["Rectangle", 375, 200, 60, 10],
-                        ["Rectangle", 375, 350, 60, 10],
-                        ["Rectangle", 450, 500, 110, 10],
-                        ["Rectangle", 400, 475, 10, 60],
-                        ["Rectangle", 225, 450, 360, 10],
-                        ["Rectangle", -100, 450, 110, 10],
-                        ["Rectangle", -150, 475, 10, 60],
-                        ["Rectangle", -200, 500, 110, 10],
-                        ["Rectangle", -250, 475, 10, 60],
-                        ["Rectangle", -200, -475, 10, 60],
-                        ["Rectangle", -150, -450, 110, 10],
-                        ["Rectangle", -230, -500, 60, 10],
-                        ["Rectangle", -350, -550, 10, 110],
-                        ["Rectangle", 302.5, -500, 115, 10],
-                        ["Rectangle", 547.5, -500, 215, 10],
-                        ["Rectangle", 450, -550, 10, 110],
-                        ["Rectangle", 50, -600, 810, 10],
-                        ["Rectangle", -650, -25, 10, 960],
-                        ["Rectangle", -497.5, -500, 315, 10],
-                        ["Rectangle", -450, 450, 410, 10],
-                        ["Rectangle", -450, -100, 10, 410],
-                        ["Rectangle", -280, -300, 60, 10],
-                        ["Rectangle", -422.5, -300, 65, 10],
-                        ["Rectangle", -280, 100, 60, 10],
-                        ["Rectangle", -422.5, 100, 65, 10],
-                        ["Rectangle", -450, 200, 210, 10],
-                        ["Rectangle", -450, 350, 210, 10],
-                        ["Rectangle", -350, 215, 10, 40],
-                        ["Rectangle", -350, 335, 10, 40],
-                        ["Rectangle", -550, 215, 10, 40],
-                        ["Rectangle", -550, 335, 10, 40],
-                        ["Rectangle", 150, -200, 200, 300, [["opaque",false],["shootThrough",true]]],
-                        ["Rectangle", -150, -200, 200, 300, [["opaque",false],["shootThrough",true]]],
-                        ["Rectangle", 150, 200, 200, 300, [["opaque",false],["shootThrough",true]]],
-                        ["Rectangle", -150, 200, 200, 300, [["opaque",false],["shootThrough",true]]],
-                    ]);
-                    gameVars.wallType = color(0);
-                    for (var i = -200; i <= 200; i += 100) {
-                        for (var j = -300; j <= 300; j += 100) {
-                            if (i !== 0 && j !== 0) {
-                                walls.push(construct(block, ["Rectangle", i, j, 60, 60, [["opaque",false]]]));
-                            }
-                        }
-                    }
-                    gameVars.wallType = color(100);
-                    createObj(doors, door, [
-                        [-20, -350, 2, false, "Door_1", Infinity, 0],
-                        [20, -350, 0, false, "Door_1", Infinity, 0],
-                        [-20, 350, 2, false, "Door_1", Infinity, 1],
-                        [20, 350, 0, false, "Door_1", Infinity, 1],
-                        [250, -20, 3, false, "Door_1", Infinity, 2],
-                        [250, 20, 1, false, "Door_1", Infinity, 2],
-                        [-250, -20, 3, false, "Door_1", Infinity, 3],
-                        [-250, 20, 1, false, "Door_1", Infinity, 3],
-                        [430, -100, 2, false, "Door_1", Infinity, 4],
-                        [470, -100, 0, false, "Door_1", Infinity, 4],
-                        [430, 100, 2, false, "Door_1", Infinity, 5],
-                        [470, 100, 0, false, "Door_1", Infinity, 5],
-                        [350, -170, 3, false, "Door_1", Infinity, 6],
-                        [350, -130, 1, false, "Door_1", Infinity, 6],
-                        [350, -420, 3, false, "Door_1", Infinity, 7],
-                        [350, -380, 1, false, "Door_1", Infinity, 7],
-                        [-20, -500, 2, false, "Door_1", Infinity, 8],
-                        [20, -500, 0, false, "Door_1", Infinity, 8],
-                        [-320, -500, 2, false, "Door_1", Infinity, 9],
-                        [-280, -500, 0, false, "Door_1", Infinity, 9],
-                        [380, -500, 2, false, "Door_1", Infinity, 10],
-                        [420, -500, 0, false, "Door_1", Infinity, 10],
-                        [-370, -300, 2, false, "Door_1", Infinity, 11],
-                        [-330, -300, 0, false, "Door_1", Infinity, 11],
-                        [-370, 100, 2, false, "Door_1", Infinity, 12],
-                        [-330, 100, 0, false, "Door_1", Infinity, 12],
-                        [-350, 255, 3, false, "Door_1", Infinity, 13],
-                        [-350, 295, 1, false, "Door_1", Infinity, 13],
-                        [-550, 255, 3, false, "Door_1", Infinity, 14],
-                        [-550, 295, 1, false, "Door_1", Infinity, 14],
-                    ]);
-                    createObj(falseDoors, falseDoor, [
-                        [-20, 500, 2, true, "Door_1"],
-                        [20, 500, 0, true, "Door_1"],
-                    ]);
-                    createObj(boxes, crate, [
-                        [-200, 480, 3, 0],
-                        [-450, 330, 3, 1],
-                        [630, -350, 2, 2],
-                        [370, 0, 0, 3],
-                        [450, 480, 3, 5],
-                        [-150, -470, 3, 6],
-                        [300, -480, 1, 7],
-                        [-430, -100, 0, 9],
-                    ]);
-                    spawnPoints.push([-150, 0],[150, 0],[0, -200],[0,200],[0,0],[300,0],[-300,0],[300,-250],[150,-400],[0,-550],[175,-475],[400,-550],[450,-450],[450,-200],[450,0],[450,200],[450,400],[300,400],[300,200],[0,475],[-200,400],[-300,200],[-600,400],[-300,400],[-450,240],[-600,200],[-350,-200],[-550,0],[-550,-200],[-550,-400],[-350,-400],[-150,-400],[-300,-550]);
-                    freePlayPlayer();
-                break;
-                case 1:
-                    createCharacters();
-                break;
-            }
-        },
-        draw: [
-            [true, function() {                
-                background(220);
-                stroke(0, 50);
-                strokeWeight(1);
-                for (var i = -650; i < 650; i += 100) {
-                    line(i, -600, i, 500);
-                }
-                for (var i = 500; i > -600; i -= 100) {
-                    line(-650, i, 650, i);
-                }
-                noStroke();
-                stroke(200);
-                strokeWeight(10);
-                fill(180);
-                rect(-150, -200, 200, 300, 10);
-                rect(150, -200, 200, 300, 10);
-                rect(-150, 200, 200, 300, 10);
-                rect(150, 200, 200, 300, 10);
-            }, [-650, -600, 650, 500]],
+            }, [0, 0, 400, 400]],
             [false, function() {
                 drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting", doors, falseDoors, walls, weathers);
             }],
-            [true, function() {
-                fill(0);
-                rect(555, 0, 100, 300);
-            }, [500, -150, 600, 150]],
-            [true, function() {
-                var serverRack = function(x, y, r) {
-                    pushMatrix();
-                    translate(x, y);
-                    rotate(r * 90);
-                    fill(0);
-                    rect(0, 0, 60, 60, 2);
-                    fill(50);
-                    rect(0, 0, 50, 50, 2);
-                    fill(0);
-                    rect(0, 0, 2, 30);
-                    rect(-10, 0, 2, 30);
-                    rect(10, 0, 2, 30);
-                    fill(100);
-                    rect(0, 27, 40, 8, 10, 10, 0, 0);
-                    var a = round(random(0, 2));
-                    fill((a === 1 || a === 3) ? 255 : 0, a === 2 ? 255 : 0, 0, 100);
-                    rect(-11, 27, 12, 4, 10);
-                    a = round(random(0, 2));
-                    fill((a === 1 || a === 3) ? 255 : 0, a === 2 ? 255 : 0, 0, 100);
-                    rect(4, 27, 12, 4, 10);
-                    fill(0);
-                    ellipse(15, 27, 4, 4);
-                    popMatrix();
-                };
-                for (var i = -200; i <= 200; i += 100) {
-                    for (var j = -300; j <= 300; j += 100) {
-                        if (i !== 0 && j !== 0) {
-                            serverRack(i, j, (i < 0) ? 3 : 1);
-                        }
-                    }
-                }
-            }, [-250, -350, 250, 350]],
         ],
         map: function() {
-            return ["serversMap", 0, -115, 0.23];
+            return ["KoliosI", 0, 0, 1];
+        },
+        images: [],
+    },
+    "test": {
+        run: function(stage) {
+            switch (stage) {
+                case 0:
+                    createObj(allies, character, [
+					    [0, 0, 270, false, "Player", 1, []]
+					]);
+					createObj(enemies, character, [
+					    //[200, 0, 90, true, "Dawn_Henchman", 0, []],
+					]);
+					createObj(walls, block, [
+					    //["Rectangle", 50, 0, 10, 100],
+					    //["Circle", 250, 0, 100, 100],
+					]);
+					createObj(turrets, turret, [
+					    //[200, 0, 0, 6, 4],
+					]);
+					for (var i = 0; i < guns.length; i++) {
+					    //turrets.push(construct(turret, [fjkdafkjs + i * 100, 0, 0, i, 4]));
+					    //allLoot.push(construct(loot, [0, 0, "a", 0, "Gun", i, 0]));
+					}
+					createObj(wallWireFrames, wallWireFrame, [
+					    [[-100, 200, 100, 200, 200, 100, 200, -100, 100, -200, -100, -200, -100, -100], 20],
+					    [[50, 0, 50, 0], 50],
+					]);
+				break;
+				default:
+			    break;
+            }
+        },
+        draw: [
+            [true, function() {
+                background(50);
+            }, [0, 0, 400, 400]],
+            [false, function() {
+                drawImages("drawBox", turrets, allLoot, computers, boxes, debriz, bullets, enemies, allies, bombs, booms, smokeClouds, "lighting", doors, falseDoors, walls, weathers, wallWireFrames);
+                for (var i = 0; i < guns.length; i++) {
+                    //text(guns[i].name, fjkdafkjs + i * 100, -60);
+                }
+            }],
+        ],
+        map: function() {
+            return ["KoliosI", 0, 0, 1];
         },
         images: [],
     },
@@ -14994,9 +14664,9 @@ keyPressed = function() {
     if (!(keys[192] && keys[SHIFT])) {
         console.typeChain();
     }
-    if ((scene === "New Game" || scene === "Free Play") && settingsSelected === 5 && playerInfo[0].length > 0 && (keyCode === BACKSPACE || keyCode === DELETE)) {
+    if (scene === "New Game" && settingsSelected === 5 && playerInfo[0].length > 0 && (keyCode === BACKSPACE || keyCode === DELETE)) {
         playerInfo[0] = playerInfo[0].substring(playerInfo[0], playerInfo[0].length - 1);
-    } else if ((scene === "New Game" || scene === "Free Play") && settingsSelected === 6 && playerInfo[1].length > 0 && (keyCode === BACKSPACE || keyCode === DELETE)) {
+    } else if (scene === "New Game" && settingsSelected === 6 && playerInfo[1].length > 0 && (keyCode === BACKSPACE || keyCode === DELETE)) {
         playerInfo[1] = playerInfo[1].substring(playerInfo[1], playerInfo[1].length - 1);
     }
 };
@@ -15063,7 +14733,7 @@ keyReleased = function() {
                 datapadOn = 0;
             }
         }
-        if (scene === "New Game" || scene === "Free Play") {
+        if (scene === "New Game") {
             if (settingsSelected === 5 && widths[5] < 120) {
                 for (var i = 0; i < allLetters2.length; i++) {
                     if (key.toString().toUpperCase() === allLetters2[i].toUpperCase()) {
@@ -15095,7 +14765,7 @@ keyReleased = function() {
     keys[keyCode] = false;
 };
 mouseReleased = function() {
-    if (levelEnds.length === 0 && transition[1] <= 50) {
+    if (levelEnds.length === 0 && transition[1] <= 100) {
         if (scene === "inventory" && mouseButton === LEFT) {
             for (var i = 0; i < UIpiecesInventory.length; i++) {
                 UIpiecesInventory[i].transferLoot();
@@ -15162,26 +14832,16 @@ mouseReleased = function() {
         } else if (scene === "backgroundImage2") {
             if (inBox(MOUSEX, MOUSEY, 200, 265, 100, 15)) {
                 levelEnds.push(construct(levelEnd, [function() {
-                    if (freePlay) {
-                        scene = "selectGame";
-                        weathers2.clear();
-                        weathers2.push(construct(weather, ["snow 2", 400, 400, 20, [800, 1600], 50]));
-                        codes.splice(codes.length - 1, 1);
-                    } else {
-                        clearArrays();
-                        scene = "loadSave";
-                    }
+                    clearArrays();
+                    scene = "loadSave";
                 }, true]));
             } else {
                 levelEnds.push(construct(levelEnd, [function() {
-                    if (freePlay) {
-                        allies.splice(0, 1);
-                        freePlayPlayer();
-                        scene = "game";
-                    } else {
-                        scene = "selectGame";
-                        weathers2.clear();
-                        weathers2.push(construct(weather, ["snow 2", 400, 400, 20, [800, 1600], 50]));
+                    scene = "selectGame";
+                    weathers2.clear();
+                    weathers2.push(construct(weather, ["snow 2", 400, 400, 20, [800, 1600], 50]));
+                    if (gameMap[0] === "Tutorial") {
+                        codes.splice(codes.length - 1);
                     }
                 }, true]));
             }
@@ -15206,12 +14866,13 @@ mouseReleased = function() {
                 }, true]));
             } else if (inBox(MOUSEX, MOUSEY, 333, 375, 100, 40)) {
                 levelEnds.push(construct(levelEnd, [function() {
-                    scene = "Free Play";
+                    scene = "settings";
+                    lastScene = "selectGame";
                     datapadOn = 0;
                     weathers2.clear();
                     weathers2.push(construct(weather, ["rain 2", 400, 400, 0, [800, 1600], 10]));
                     settingsSelected = "NONE";
-                    settingsScroll = 0;
+                    settingsScroll = -30;
                 }, true]));
             } else if (inBox(MOUSEX, MOUSEY, 360, 25, 66, 40)) {
                 levelEnds.push(construct(levelEnd, [function() {
@@ -15225,13 +14886,20 @@ mouseReleased = function() {
                 }, true]));
             } else if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
                 levelEnds.push(construct(levelEnd, [function() {
-                    scene = "settings";
-                    lastScene = "selectGame";
-                    datapadOn = 0;
+                    scene = "game";
                     weathers2.clear();
                     weathers2.push(construct(weather, ["rain 2", 400, 400, 0, [800, 1600], 10]));
-                    settingsSelected = "NONE";
-                    settingsScroll = -30;
+                    playerInfo[0] = "The";
+                    playerInfo[1] = "Player";
+                    playerInfo[2] = gOptions[0];
+                    playerInfo[3] = skinOptions[1][1];
+                    playerInfo[4] = skinOptions[2][1];
+                    gameDifficulty = [difficulty[2], pHealth[2]];
+                    clearArrays();
+                    gameMap = ["Tutorial", 0];
+                    makeSave();
+                    selectedSaveCode = codes.length - 1;
+                    scene = "loadSave";
                 }, true]));
             }
         } else if (scene === "settings") {
@@ -15346,7 +15014,6 @@ mouseReleased = function() {
             }
             if (inBox(MOUSEX, MOUSEY, 100, 375, 66, 40) && settingsSelected !== "NONE") {
                 selectedSaveCode = settingsSelected;
-                freePlay = false;
                 levelEnds.push(construct(levelEnd, [function() {
                     scene = "loadSave";
                 }, true]));
@@ -15363,7 +15030,7 @@ mouseReleased = function() {
             } else if (inBox(MOUSEX, MOUSEY, 360, 25, 66, 40)) {
                 println(printSave());
             }
-        } else if (scene === "New Game" || scene === "Free Play") {
+        } else if (scene === "New Game") {
             var clickedOn = false;
             if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
                 levelEnds.push(construct(levelEnd, [function() {
@@ -15380,15 +15047,10 @@ mouseReleased = function() {
                         playerInfo[4] = hairOptions[hairOptions[hairOptions.length - 1]][1];
                         gameDifficulty = [difficulty[difficulty[difficulty.length - 1]], pHealth[pHealth[pHealth.length - 1]]];
                         clearArrays();
-                        if (scene === "New Game") {
-                            gameMap = ["Prisons", 0];
-                            makeSave();
-                            selectedSaveCode = codes.length - 1;
-                            scene = "loadSave";
-                            freePlay = false;
-                        } else {
-                            scene = "editGame";
-                        }
+                        gameMap = ["Prisons", 0];
+                        makeSave();
+                        selectedSaveCode = codes.length - 1;
+                        scene = "loadSave";
                     }, true]));
                 } else {
                     tips.push(construct(tip, ["Please make certain all fields have an entry", "WARNING"]));
@@ -15423,40 +15085,6 @@ mouseReleased = function() {
             if (!clickedOn) {
                 settingsSelected = "NONE";
             }
-        } else if (scene === "editGame") {        
-            if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
-                levelEnds.push(construct(levelEnd, [function() {
-                    scene = "Free Play";
-                }, true]));
-            } else if (inBox(MOUSEX, MOUSEY, 200, 375, 66, 40)) {
-                levelEnds.push(construct(levelEnd, [function() {
-                    gameMap = [gameMaps[gameMaps[gameMaps.length - 1]], 0];
-                    freePlay = gameModes[gameModes[gameModes.length - 1]];
-                    makeSave();
-                    selectedSaveCode = codes.length - 1;
-                    scene = "loadSave";
-                }, true]));
-            } else if (inBox(MOUSEX, MOUSEY, 377.5, 110, 15, 20)) {
-                gameModes[gameModes.length - 1] = absValue(gameModes[gameModes.length - 1] + 1, gameModes.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 377.5, 170, 15, 20)) {
-                gameMaps[gameMaps.length - 1] = absValue(gameMaps[gameMaps.length - 1] + 1, gameMaps.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 377.5, 260, 15, 20)) {
-                maxEnemies[maxEnemies.length - 1] = absValue(maxEnemies[maxEnemies.length - 1] + 1, maxEnemies.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 377.5, 290, 15, 20)) {
-                maxTeammates[maxTeammates.length - 1] = absValue(maxTeammates[maxTeammates.length - 1] + 1, maxTeammates.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 377.5, 320, 15, 20)) {
-                crateDelay[crateDelay.length - 1] = absValue(crateDelay[crateDelay.length - 1] + 1, crateDelay.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[0], 110, 15, 20)) {
-                gameModes[gameModes.length - 1] = absValue(gameModes[gameModes.length - 1] - 1, gameModes.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[1], 170, 15, 20)) {
-                gameMaps[gameMaps.length - 1] = absValue(gameMaps[gameMaps.length - 1] - 1, gameMaps.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[2], 260, 15, 20)) {
-                maxEnemies[maxEnemies.length - 1] = absValue(maxEnemies[maxEnemies.length - 1] - 1, maxEnemies.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[3], 290, 15, 20)) {
-                maxTeammates[maxTeammates.length - 1] = absValue(maxTeammates[maxTeammates.length - 1] - 1, maxTeammates.length - 1);
-            } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[4], 320, 15, 20)) {
-                crateDelay[crateDelay.length - 1] = absValue(crateDelay[crateDelay.length - 1] - 1, crateDelay.length - 1);
-            }
         } else if (scene === "cinematic") {
             endCinematic = true;
         } else if (scene === "pause") {
@@ -15468,7 +15096,7 @@ mouseReleased = function() {
                 UIpiecesPause2[i].clickOn();
             }
         }
-    } else if (levelEnds.length === 0 && transition[1] > 50) {
+    } else if (levelEnds.length === 0 && transition[1] > 100) {
         transition[1] = 0;
     }
 };
@@ -15643,47 +15271,6 @@ draw = function() {
                 }
                 pushMatrix();
                 scale(width / 400, height / 400);
-            } else if (scene === "intro") {
-                background(0);
-                drawImages(weathers2);
-                fill(0, 50);
-                rect(200, 200, 400, 400);
-                image(images["escape logo"], 200, 200);
-                fill(255, sin(frameCount * 3) * 255 + 50);
-                textFont(fonts.AgencyFB20Italics);
-                text("PRESS ANYWHERE TO START", 200, 320);
-            } else if (scene === "selectGame") {
-                background(255);
-                image(images["select background"], 200, 200);
-                drawImages(weathers2);
-                fill(0);
-                rect(200, 375, 400, 50);
-                rect(200, 25, 400, 50);
-                fill(255);
-                textFont(fonts.AgencyFB20);
-                text("New Game", 66, 375);
-                text("Load Game", 200, 375);
-                text("Free Play", 333, 375);
-                text("Help", 360, 25);
-                text("Settings", 40, 25);
-                fill(255, 50);
-                if (inBox(MOUSEX, MOUSEY, 66, 375, 100, 40)) {
-                    cursor(HAND);
-                    rect(66, 375, 100, 40);
-                } else if (inBox(MOUSEX, MOUSEY, 200, 375, 100, 40)) {
-                    cursor(HAND);
-                    rect(200, 375, 100, 40);
-                } else if (inBox(MOUSEX, MOUSEY, 333, 375, 100, 40)) {
-                    cursor(HAND);
-                    rect(333, 375, 100, 40);
-                } else if (inBox(MOUSEX, MOUSEY, 360, 25, 66, 40)) {
-                    cursor(HAND);
-                    rect(360, 25, 66, 40);
-                } else if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
-                    cursor(HAND);
-                    rect(40, 25, 66, 40);
-                }
-                image(images["escape logo"], 200, 25, 100, 100);
             } else if (scene === "loadSave") {
                 background(255);
                 var save = codes[selectedSaveCode];
@@ -15744,13 +15331,7 @@ draw = function() {
                 } else {
                     gameMap[1] = 1;
                 }
-                if (!freePlay) {
-                    allies[0].other = copyArray(playerData);
-                } else {
-                    if (freePlay === "Warzone") {
-                        environment.night = true;
-                    }
-                }
+                allies[0].other = copyArray(playerData);
                 if (allies.length > 1 && allies[1].printOutType === "Partner") {
                     allies[1].other = copyArray(partnerData);
                 }
@@ -15760,11 +15341,13 @@ draw = function() {
                 timeOnLevel = 0;
                 nextScene = "game";
                 console.text.clear();
-                console.text = [("DEVELOPER CONSOLE -- ESCAPE 2 -- VERSION " + version), ("| ")];
+                console.text = [("DEVELOPER CONSOLE -- DARKSTAR -- VERSION " + version), ("| ")];
+                // TEMPORARY
+                for (var i = 0; i < maps[gameMap[0]].draw.length; i++) {
+                    createMapImage(gameMap[0], i);
+                }
             } else if (scene === "game") {
                 timeOnLevel += compensateFPS;
-                respawnRate[0] += compensateFPS;
-                respawnRate[1] += compensateFPS;
                 maps[gameMap[0]].run(gameMap[1]);
                 cursor("none");
                 background(50);
@@ -15781,7 +15364,7 @@ draw = function() {
                 byConsole[0] = false;
                 for (var i = allLoot.length - 1; i >= 0; i--) {
                     allLoot[i].move();
-                    if ((((allLoot[i].number <= 0 && (allLoot[i].type === "Ammo" || allLoot[i].type === "Armor")) || (allLoot[i].number < 0 && !(allLoot[i].type === "Ammo" || allLoot[i].type === "Armor"))) && allLoot[i].other[0] !== "Scope") || (freePlay && allLoot[i].timeAlive >= 1800)) {
+                    if ((((allLoot[i].number <= 0 && (allLoot[i].type === "Ammo" || allLoot[i].type === "Armor")) || (allLoot[i].number < 0 && !(allLoot[i].type === "Ammo" || allLoot[i].type === "Armor"))) && allLoot[i].other[0] !== "Scope")) {
                         allLoot.splice(i, 1);
                     }
                 }
@@ -15805,14 +15388,18 @@ draw = function() {
                         if (bullets[i].damageWho[0] === "ally" && (bello !== 0 || (bello === 0 && !godMode))) {
                             allies[bello].health -= dealDamage(bullets[i].damage, allies[bello]);
                             allies[bello].stunTime += bullets[i].stun;
+                            allies[bello].gettingShot = allies[bello].GSmax;
                             if (allies[bello].target === "none") {
                                 allies[bello].targetLoc = copyArray(bullets[i].og);
+                                allies[bello].moveLoc = copyArray(bullets[i].og);
                             }
                         } else if (bullets[i].damageWho[0] === "enemy") {
                             enemies[bello].health -= dealDamage(bullets[i].damage, enemies[bello]);
                             enemies[bello].stunTime += bullets[i].stun;
+                            enemies[bello].gettingShot = enemies[bello].GSmax;
                             if (enemies[bello].target === "none") {
                                 enemies[bello].targetLoc = copyArray(bullets[i].og);
+                                enemies[bello].moveLoc = copyArray(bullets[i].og);
                             }
                         }
                     }
@@ -15858,7 +15445,8 @@ draw = function() {
                         enemies[i].reloadGun();
                         enemies[i].update();
                         enemies[i].punchAttack();
-                        if (frameCount % 3 === 1) {
+                        enemies[i].useTyon();
+                        if (frameCount % 3 === 1 && !enemies[i].sightActive) {
                             enemies[i].canScope = true;
                         }
                     }
@@ -15905,7 +15493,8 @@ draw = function() {
                         allies[i].reloadGun();
                         allies[i].update();
                         allies[i].punchAttack();
-                        if (frameCount % 3 === 1) {
+                        allies[i].useTyon();
+                        if (frameCount % 3 === 1 && !allies[i].sightActive) {
                             allies[i].canScope = true;
                         }
                     }
@@ -16007,6 +15596,22 @@ draw = function() {
                 } else {
                     byConsole[1] += (-byConsole[1] / 5) * compensateFPS;
                 }
+                if (allies[0].sightActive) {
+                    fill(255, 0, 0, 50);
+                    for (var i = enemies.length - 1; i >= 0; i--) {
+                        var a = enemies[i];
+                        for (var j = 0; j < 5; j++) {
+                            ellipse(a.x + random(-3, 3), a.y + random(-3, 3), a.width + random(-3, 3), a.width + random(-3, 3));
+                        }
+                    }
+                    fill(0, 255, 0, 50);
+                    for (var i = allies.length - 1; i >= 0; i--) {
+                        var a = allies[i];
+                        for (var j = 0; j < 5; j++) {
+                            ellipse(a.x + random(-3, 3), a.y + random(-3, 3), a.width + random(-3, 3), a.width + random(-3, 3));
+                        }
+                    }
+                }
                 if (allies[0].seeHealth) {
                     rectMode(CORNER);
                     for (var i = enemies.length - 1; i >= 0; i--) {
@@ -16043,7 +15648,7 @@ draw = function() {
                     rectMode(CENTER);
                     textAlign(LEFT, CENTER);
                     fill(255);
-                    textFont(fonts.TimesNewRoman10);
+                    textFont(fonts.TNR10);
                     if (byConsole[1] >= cWidth - 2) {
                         text(consoleType, allies[0].drawX + 5, allies[0].drawY - 15);
                     }
@@ -16084,7 +15689,7 @@ draw = function() {
                 mouseReticle(graphic, color(0), 4, ((allies[0].currentRecoil * (wantedDistance / 19)) / 2) * allies[0].accuracyMultiplier);
                 mouseReticle(graphic, color(255), 2, ((allies[0].currentRecoil * (wantedDistance / 19)) / 2) * allies[0].accuracyMultiplier);
                 popMatrix();
-                textFont(fonts.CalibriBold18);
+                textFont(fonts.Calibri18Bold);
                 pushMatrix();
                 translate(200, 150);
                 var message = "";
@@ -16095,7 +15700,7 @@ draw = function() {
                 }
                 outlineText(message, color(0, 225 + 30 * sin(frameCount * 10)), color(255, 225 + 30 * sin(frameCount * 10)), 8, 3);
                 popMatrix();
-                textFont(fonts.AgencyFB20);
+                textFont(fonts.AFB20);
                 fill(255, 0, 0, message2[1]);
                 text(message2[0], 200, 170);
                 message2[1] -= compensateFPS * 4;
@@ -16114,17 +15719,17 @@ draw = function() {
                 }
                 console.draw();
                 fill(255);
-                textFont(fonts.TimesNewRoman10);
+                textFont(fonts.TNR10);
                 textAlign(LEFT, TOP);
                 if (devMode) {
-                    text(round(trueFPS) + " FPS\nTime: " + round(timeOnLevel) + "\nEnemies: " + enemies.length + "\nAllies: " + allies.length + "\nMap: " + gameMap + "\nStuff: " + (enemies.length > 0 ? enemies[0].movePath : ""), 5, 10 + console.y);
+                    text(round(trueFPS) + " FPS\n\nEnemies: " + enemies.length + "\nAllies: " + allies.length + "\nStuff: " + (enemies.length > 0 ? enemies[0].rot : ""), 5, 10 + console.y);
                 }
                 textAlign(CENTER, CENTER);
             } else if (scene === "pause") {
                 background(255);
                 image(backgroundImage, 200, 200, 400, 400);
                 fill(255);
-                textFont(fonts.AgencyFB25);
+                textFont(fonts.AFB25);
                 var theLength = textWidth("PAUSED");
                 text("PAUSED", 200, 60);
                 stroke(255);
@@ -16182,12 +15787,14 @@ draw = function() {
                             if (bullets[i].damageWho[0] === "ally" && (bello !== 0 || (bello === 0 && !godMode))) {
                                 allies[bello].health -= dealDamage(bullets[i].damage, allies[bello]);
                                 allies[bello].stunTime += bullets[i].stun;
+                                allies[bello].gettingShot = allies[bello].GSmax;
                                 if (allies[bello].target === "none") {
                                     allies[bello].targetLoc = copyArray(bullets[i].og);
                                 }
                             } else if (bullets[i].damageWho[0] === "enemy") {
                                 enemies[bello].health -= dealDamage(bullets[i].damage, enemies[bello]);
                                 enemies[bello].stunTime += bullets[i].stun;
+                                enemies[bello].gettingShot = enemies[bello].GSmax;
                                 if (enemies[bello].target === "none") {
                                     enemies[bello].targetLoc = copyArray(bullets[i].og);
                                 }
@@ -16226,6 +15833,7 @@ draw = function() {
                             enemies[i].reloadGun();
                             enemies[i].update();
                             enemies[i].punchAttack();
+                            enemies[i].useTyon();
                             if (frameCount % 3 === 1) {
                                 enemies[i].canScope = true;
                             }
@@ -16273,6 +15881,7 @@ draw = function() {
                             allies[i].reloadGun();
                             allies[i].update();
                             allies[i].punchAttack();
+                            allies[i].useTyon();
                             if (frameCount % 3 === 1) {
                                 allies[i].canScope = true;
                             }
@@ -16375,7 +15984,7 @@ draw = function() {
                 for (var i = 0; i < UIpiecesInventory.length; i++) {
                     UIpiecesInventory[i].showLootInfo();
                 }
-                textFont(fonts.AgencyFB20);
+                textFont(fonts.AFB20);
                 fill(255, 0, 0, message2[1]);
                 text(message2[0], 200, 170);
                 message2[1] -= compensateFPS * 4;
@@ -16396,628 +16005,37 @@ draw = function() {
                 fill(255, 0, 0, 150);
                 rect(200, 200, 400, 400);
                 fill(255);
-                textFont(fonts.AgencyFB40);
+                textFont(fonts.AFB40);
                 text(playerInfo[0].toUpperCase() + " " + playerInfo[1].toUpperCase() + " DIED", 200, 200);
                 fill(255, 0, 0);
-                textFont(fonts.AgencyFB20);
+                textFont(fonts.AFB20);
                 textAlign(CENTER, BOTTOM);
                 text("MISSION FAILED:", 200, 180);
                 fill(255, sin(frameCount * 3) * 255 + 50);
                 textAlign(CENTER, TOP);
-                textFont(fonts.AgencyFB20Italics);
-                if (freePlay) {
-                    text("PRESS ANYWHERE TO RESPAWN", 200, 220);
-                } else {
-                    text("PRESS ANYWHERE FOR THE MENU", 200, 220);
-                }
+                textFont(fonts.AFB20Italics);
+                text("PRESS ANYWHERE FOR THE MENU", 200, 220);
                 fill(200);
                 textFont(fonts.Calibri12);
                 text("- OR -", 200, 244);
                 textFont(fonts.Calibri14Italics);
                 fill(255);
                 textAlign(CENTER, CENTER);
-                if (freePlay) {
-                    text("exit to menu", 200, 265);
-                } else {
-                    text("load recent save", 200, 265);
-                }
+                text("load recent save", 200, 265);
                 if (inBox(MOUSEX, MOUSEY, 200, 265, 100, 15)) {
                     fill(255, 100);
                     rect(200, 265, 100, 15);
                     cursor(HAND);
                 }
-            } else if (scene === "settings") {
-                background(30, 70, 110);
-                drawImages(weathers2);
-                if (datapadOn === 0) {
-                    pushMatrix();
-                    translate(0, -settingsScroll);
-                    fill(255, 50);
-                    rect(200, (Object.keys(commandKeys).length + 1) * 15 + 37.5, 310, Object.keys(commandKeys).length * 30 + 30);
-                    for (var i = 0; i < Object.keys(commandKeys).length; i++) {
-                        fill(255);
-                        textFont(fonts.CalibriBold18);
-                        textAlign(LEFT, CENTER);
-                        text(commandKeys[Object.keys(commandKeys)[i]][2] + ":", 50, 82.5 + i * 30);
-                        textFont(fonts.Calibri18);
-                        textAlign(RIGHT, CENTER);
-                        if (commandKeys[Object.keys(commandKeys)[i]][1] === " - ") {
-                            fill(200);
-                            textFont(fonts.Calibri18Italics);
-                            text("none selected", 350, 82.5 + i * 30);
-                        } else {
-                            text(commandKeys[Object.keys(commandKeys)[i]][1], 350, 82.5 + i * 30);
-                        }
-                        var a = textWidth(commandKeys[Object.keys(commandKeys)[i]][1]);
-                        if ((MOUSEY >= 70 && MOUSEY <= 330 && inBox(MOUSEX, MOUSEY, 200, 82.5 + i * 30 - settingsScroll, 310, 25) && settingsSelected === "NONE") || settingsSelected === i) {
-                            if (settingsSelected === i) {
-                                fill(255, 50 + sin(frameCount * 15) * 30);
-                                stroke(255);
-                                strokeWeight(1);
-                            } else {
-                                fill(255, 50);
-                                cursor(HAND);
-                            }
-                            rect(200, 82.5 + i * 30, 310, 25);
-                        }
-                        noStroke();
-                    }
-                    fill(255);
-                    textFont(fonts.CalibriBold18);
-                    textAlign(CENTER, CENTER);
-                    text("Key Binds", 200, 52.5);
-                    popMatrix();
-                    stroke(255);
-                    strokeWeight(3);
-                    if (MOUSEY > 330 && MOUSEY <= 350) {
-                        if (settingsScroll < 19 * 30 - 267.5) {
-                            settingsScroll = constrain(settingsScroll + 5 * compensateFPS, -Infinity, 19 * 30 - 267.5);
-                            stroke(200);
-                        } else {
-                            cursor('no-drop');
-                        }
-                    }
-                    line(200, 345, 215, 340);
-                    line(200, 345, 185, 340);
-                    stroke(255);
-                    if (MOUSEY >= 50 && MOUSEY < 70) {
-                        if (settingsScroll > -30) {
-                            settingsScroll = constrain(settingsScroll - 5 * compensateFPS, -30, Infinity);
-                            stroke(200);
-                        } else {
-                            cursor('no-drop');
-                        }
-                    }
-                    line(200, 55, 215, 60);
-                    line(200, 55, 185, 60);
-                } else {
-                    fill(255, 50);
-                    rect(200, 162.5, 310, 210);
-                    fill(255);
-                    textFont(fonts.CalibriBold18);
-                    text("Other", 200, 70);
-                    textAlign(LEFT, CENTER);
-                    textFont(fonts.Calibri18);
-                    text("FPS:", 50, 100);
-                    text("Transition Speed:", 50, 160);
-                    text("Graphic Quality:", 50, 220);
-                    textFont(fonts.Calibri18);
-                    textAlign(CENTER, CENTER);
-                    text(fpsOptions[fpsOptions[fpsOptions.length - 1]], 325, 100);
-                    text(transitionOptions[transitionOptions[transitionOptions.length - 1]], 325, 160);
-            text(graphicOptions[graphicOptions[graphicOptions.length - 1]], 325, 220);
-                    fill(200);
-                    textFont(fonts.Calibri12Italics);
-                    text("*40, 45, 50, 55, 60 (default), 70, 90, or 120", 200, 130);
-                    text("*5, 10 (default), 15, or 20", 200, 190);
-                    text("*Low (default) or High", 200, 250);
-                    stroke(255);
-                    strokeWeight(2);
-                    line(350, 100, 345, 95);
-                    line(350, 100, 345, 105);
-                    line(300, 100, 305, 95);
-                    line(300, 100, 305, 105);
-                    line(350, 160, 345, 155);
-                    line(350, 160, 345, 165);
-                    line(300, 160, 305, 155);
-                    line(300, 160, 305, 165);
-                    line(350, 220, 345, 215);
-                    line(350, 220, 345, 225);
-                    line(300, 220, 305, 215);
-                    line(300, 220, 305, 225);
-                    noStroke();
-                    fill(255, 50);
-                    if (inBox(MOUSEX, MOUSEY, 347.5, 100, 15, 20)) {
-                        rect(347.5, 100, 15, 20);
-                        cursor(HAND);
-                    }
-                    if (inBox(MOUSEX, MOUSEY, 347.5, 160, 15, 20)) {
-                        rect(347.5, 160, 15, 20);
-                        cursor(HAND);
-                    }
-                    if (inBox(MOUSEX, MOUSEY, 347.5, 220, 15, 20)) {
-                        rect(347.5, 220, 15, 20);
-                        cursor(HAND);
-                    }
-                    if (inBox(MOUSEX, MOUSEY, 302.5, 100, 15, 20)) {
-                        rect(302.5, 100, 15, 20);
-                        cursor(HAND);
-                    }
-                    if (inBox(MOUSEX, MOUSEY, 302.5, 160, 15, 20)) {
-                        rect(302.5, 160, 15, 20);
-                        cursor(HAND);
-                    }
-                    if (inBox(MOUSEX, MOUSEY, 302.5, 220, 15, 20)) {
-                        rect(302.5, 220, 15, 20);
-                        cursor(HAND);
-                    }
-                }
-                strokeWeight(3);
-                stroke(255);
-                if (inBox(MOUSEX, MOUSEY, 380, 200, 40, 50) && settingsSelected === "NONE") {
-                    stroke(200);
-                    cursor(HAND);
-                }
-                line(390, 200, 385, 185);
-                line(390, 200, 385, 215);
-                stroke(255);
-                if (inBox(MOUSEX, MOUSEY, 20, 200, 40, 50) && settingsSelected === "NONE") {
-                    stroke(200);
-                    cursor(HAND);
-                }
-                line(10, 200, 15, 185);
-                line(10, 200, 15, 215);
-                noStroke();
-                textAlign(CENTER, CENTER);
-                fill(0);
-                rect(200, 25, 400, 50);
-                rect(200, 375, 400, 50);
-                fill(255);
-                textFont(fonts.AgencyFB20);
-                text("Back", 40, 25);
-                textFont(fonts.AgencyFB25);
-                text("SETTINGS", 200, 24.5);
-                var a = textWidth("SETTINGS");
-                stroke(255);
-                strokeWeight(2);
-                line(200 - a / 2, 10, 200 + a / 2, 10);
-                line(200 - a / 2, 40, 200 + a / 2, 40);
-                noStroke();
-                fill(255, 50);
-                if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40) && settingsSelected === "NONE") {
-                    rect(40, 25, 66, 40);
-                    cursor(HAND);
-                }
-            } else if (scene === "loadGame") {
-                background(30, 70, 110);
-                drawImages(weathers2);
-                fill(255, 50);
-                rect(200, 200, 370, 270);
-                pushMatrix();
-                translate(0, -settingsScroll);
-                for (var i = settingsScroll / 30; i < 9 + settingsScroll / 30; i++) {
-                    if (i >= 0 && i < codes.length) {
-                        fill(255);
-                        textFont(fonts.Calibri18);
-                        textAlign(RIGHT, CENTER);
-                        text(codes[i].date, 380, 80 + i * 30);
-                        textFont(fonts.CalibriBold18);
-                        textAlign(LEFT, CENTER);
-                        text(codes[i].name, 20, 80 + i * 30);
-                        var a = textWidth(codes[i].name);
-                        textFont(fonts.Calibri18Italics);
-                        fill(200);
-                        text("(\"" + codes[i].map.which + "\")", 25 + a, 80 + i * 30);
-                        textFont(fonts.Calibri12);
-                        fill(255, 0);
-                        if (inBox(MOUSEX, MOUSEY, 200, 80 + i * 30 - settingsScroll, 370, 25) || settingsSelected === i) {
-                            if (settingsSelected === i) {
-                                fill(255, 50 + sin(frameCount * 15) * 30);
-                                stroke(255);
-                                strokeWeight(2);
-                            } else {
-                                fill(255, 50);
-                                cursor(HAND);
-                            }
-                        }
-                        rect(200, 80 + i * 30, 370, 25);
-                        noStroke();
-                    }
-                    if (codes.length === 0 && i === settingsScroll / 30) {
-                        fill(200);
-                        textFont(fonts.Calibri18Italics);
-                        text("No saved games exist", 200, 80 + i * 30);
-                    }
-                }
-                popMatrix();
-                textAlign(CENTER, CENTER);
-                stroke(255);
-                strokeWeight(3);
-                if (MOUSEY > 330 && MOUSEY <= 350) {
-                    if (settingsScroll < 30 * (codes.length - 9)) {
-                        stroke(200);
-                        cursor(HAND);
-                    } else {
-                        cursor('no-drop');
-                    }
-                }
-                line(200, 345, 215, 340);
-                line(200, 345, 185, 340);
-                stroke(255);
-                if (MOUSEY >= 50 && MOUSEY < 70) {
-                    if (settingsScroll > 0) {
-                        cursor(HAND);
-                        stroke(200);
-                    } else {
-                        cursor('no-drop');
-                    }
-                }
-                line(200, 55, 215, 60);
-                line(200, 55, 185, 60);
-                noStroke();
-                fill(0);
-                rect(200, 25, 400, 50);
-                rect(200, 375, 400, 50);
-                fill(255);
-                textFont(fonts.AgencyFB20);
-                text("Back", 40, 25);
-                text("Print", 360, 25);
-                if (settingsSelected === "NONE") {
-                    fill(200);
-                }
-                text("Load", 100, 375);
-                text("Delete", 300, 375);
-                fill(255);
-                textFont(fonts.AgencyFB25);
-                text("LOAD GAME", 200, 24.5);
-                var a = textWidth("LOAD GAME");
-                stroke(255);
-                strokeWeight(2);
-                line(200 - a / 2, 10, 200 + a / 2, 10);
-                line(200 - a / 2, 40, 200 + a / 2, 40);
-                noStroke();
-                fill(255, 50);
-                if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
-                    rect(40, 25, 66, 40);
-                    cursor(HAND);
-                } else if (inBox(MOUSEX, MOUSEY, 360, 25, 66, 40)) {
-                    rect(360, 25, 66, 40);
-                    cursor(HAND);
-                }
-                if (inBox(MOUSEX, MOUSEY, 100, 375, 66, 40)) {
-                    if (settingsSelected !== "NONE") {
-                        rect(100, 375, 66, 40);
-                        cursor(HAND);
-                    } else {
-                        cursor('no-drop');
-                    }
-                } else if (inBox(MOUSEX, MOUSEY, 300, 375, 66, 40)) {
-                    if (settingsSelected !== "NONE") {
-                        rect(300, 375, 66, 40);
-                        cursor(HAND);
-                    } else {
-                        cursor('no-drop');
-                    }
-                }
-            } else if (scene === "New Game" || scene === "Free Play") {
-                background(255);
-                background(30, 70, 110);
-                drawImages(weathers2);
-                fill(255, 50);
-                rect(200, 200, 380, 280);
-                fill(0);
-                rect(200, 25, 400, 50);
-                rect(200, 375, 400, 50);
-                fill(255);
-                textAlign(LEFT, CENTER);
-                textFont(fonts.CalibriBold18);
-                text("Enemy Accuracy:", 20, 110);
-                text("Player Health:", 20, 140);
-                text("Gender:", 20, 200);
-                text("First Name:", 20, 230);
-                text("Last Name:", 20, 260);
-                text("Skin Color:", 20, 290);
-                text("Hair Color:", 20, 320);
-                textAlign(CENTER, CENTER);
-                text("Difficulty", 200, 80);
-                text("Player Settings", 200, 170);
-                textFont(fonts.Calibri18);
-                widths = [textWidth(difficulty[difficulty[difficulty.length - 1]]), textWidth(pHealth[pHealth[pHealth.length - 1]]), textWidth(gOptions[gOptions[gOptions.length - 1]]), textWidth(skinOptions[skinOptions[skinOptions.length - 1]][0]), textWidth(hairOptions[hairOptions[hairOptions.length - 1]][0]), textWidth(playerInfo[0]), textWidth(playerInfo[1])];
-                text(difficulty[difficulty[difficulty.length - 1]], 365 - widths[0] / 2, 110);
-                text(pHealth[pHealth[pHealth.length - 1]], 365 - widths[1] / 2, 140);
-                text(gOptions[gOptions[gOptions.length - 1]], 365 - widths[2] / 2, 200);
-                fill(skinOptions[skinOptions[skinOptions.length - 1]][1]);
-                text(skinOptions[skinOptions[skinOptions.length - 1]][0], 365 - widths[3] / 2, 290);
-                fill(hairOptions[hairOptions[hairOptions.length - 1]][1]);
-                text(hairOptions[hairOptions[hairOptions.length - 1]][0], 365 - widths[4] / 2, 320);
-                fill(255);
-                textFont(fonts.Calibri18);
-                if (playerInfo[0] === "") {
-                    fill(200);
-                    textFont(fonts.Calibri18Italics);
-                    widths[5] = textWidth("none");
-                    text("none", 365 - widths[5] / 2, 230);
-                }
-                text(playerInfo[0], 365 - widths[5] / 2, 230);
-                text((settingsSelected === 5 && frameCount % 150 >= 60) ? "|" : "", 368, 230);
-                fill(255);
-                textFont(fonts.Calibri18);
-                if (playerInfo[1] === "") {
-                    fill(200);
-                    textFont(fonts.Calibri18Italics);
-                    widths[6] = textWidth("none");
-                    text("none", 365 - widths[6] / 2, 260);
-                }
-                text(playerInfo[1], 365 - widths[6] / 2, 260);
-                text((settingsSelected === 6 && frameCount % 150 >= 60) ? "|" : "", 368, 260);
-                fill(255);
-                textFont(fonts.AgencyFB20);
-                text("Back", 40, 25);
-                if (playerInfo[0] === "" || playerInfo[1] === "") {
-                    fill(200);
-                }
-                if (scene === "New Game") {
-                    text("Begin", 200, 375);
-                } else {
-                    text("Continue", 200, 375);
-                }
-                fill(255);
-                textFont(fonts.AgencyFB25);
-                text(scene.toUpperCase(), 200, 24.5);
-                var a = textWidth(scene.toUpperCase());
-                stroke(255);
-                strokeWeight(2);
-                line(200 - a / 2, 10, 200 + a / 2, 10);
-                line(200 - a / 2, 40, 200 + a / 2, 40);
-                line(380, 110, 375, 105);
-                line(380, 110, 375, 115);
-                line(350 - widths[0], 110, 355 - widths[0], 105);
-                line(350 - widths[0], 110, 355 - widths[0], 115);
-                line(380, 140, 375, 135);
-                line(380, 140, 375, 145);
-                line(350 - widths[1], 140, 355 - widths[1], 135);
-                line(350 - widths[1], 140, 355 - widths[1], 145);
-                line(380, 200, 375, 195);
-                line(380, 200, 375, 205);
-                line(350 - widths[2], 200, 355 - widths[2], 195);
-                line(350 - widths[2], 200, 355 - widths[2], 205);
-                line(380, 290, 375, 285);
-                line(380, 290, 375, 295);
-                line(350 - widths[3], 290, 355 - widths[3], 285);
-                line(350 - widths[3], 290, 355 - widths[3], 295);
-                line(380, 320, 375, 315);
-                line(380, 320, 375, 325);
-                line(350 - widths[4], 320, 355 - widths[4], 315);
-                line(350 - widths[4], 320, 355 - widths[4], 325);
-                noStroke();
-                fill(255, 50);
-                if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
-                    rect(40, 25, 66, 40);
-                    cursor(HAND);
-                } else if (inBox(MOUSEX, MOUSEY, 200, 375, 66, 40)) {
-                    if (playerInfo[0] !== "" && playerInfo[1] !== "") {
-                        rect(200, 375, 66, 40);
-                        cursor(HAND);
-                    } else {
-                        cursor('no-drop');
-                    }
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 110, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 110, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 140, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 140, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 200, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 200, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 290, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 290, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 320, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 320, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[0], 110, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[0], 110, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[1], 140, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[1], 140, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[2], 200, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[2], 200, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[3], 290, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[3], 290, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[4], 320, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[4], 320, 15, 20);
-                }
-                if (inBox(MOUSEX, MOUSEY, 365 - widths[5] / 2, 230, widths[5] + 10, 20)) {
-                    cursor(HAND);
-                    if (settingsSelected !== 5) {
-                        rect(365 - widths[5] / 2, 230, widths[5] + 10, 20);
-                    }
-                }
-                if (settingsSelected === 5) {
-                    rect(365 - widths[5] / 2, 230, widths[5] + 10, 20);
-                }
-                if (inBox(MOUSEX, MOUSEY, 365 - widths[6] / 2, 260, widths[6] + 10, 20)) {
-                    cursor(HAND);
-                    if (settingsSelected !== 6) {
-                        rect(365 - widths[6] / 2, 260, widths[6] + 10, 20);
-                    }
-                }
-                if (settingsSelected === 6) {
-                    rect(365 - widths[6] / 2, 260, widths[6] + 10, 20);
-                }
-            } else if (scene === "help") {
-                cursor(ARROW);
-                background(30, 70, 110);
-                drawImages(weathers2);
-                pushMatrix();
-                translate(0, -settingsScroll);
-                fill(255, 50);
-                var a = 36;
-                rect(200, 12.15 * a + 67.5, 310, 24.3 * a);
-                fill(255);
-                textFont(fonts.CalibriBold18);
-                textAlign(CENTER, CENTER);
-                textAlign(LEFT, TOP);
-                text("Welcome to Escape v2!\n\t\tIn this game, you will progress through a series of different levels. You must eliminate your enemies and collect loot to defend yourself.\n\t\tThe controls are simple and can be changed in the settings. Remember to press [" + commandKeys.menu[1] + "] to pause the game!\n\t\tAccess the inventory with [" + commandKeys.inventory[1] + "]. You can equip your weapons with different attachments that you've grabbed from there and do much more.\n\t\tPress [" + commandKeys.datapad[1] + "] for your datapad. You can see your map from there.\n\t\tAttack with [" + commandKeys.attack[1] + "]. You can reload your weapon with [" + commandKeys.reload[1] + "] whenever your ammunition is low; it will automatically do so when you have nothing left. If it doesn't, you're out of ammo.\n\t\tPress [" + commandKeys.scope[1] + "] to open your scope. It will increase your accuracy but slow you down.\n\t\tPress [" + commandKeys.grenade[1] + "] to equip a grenade, and hold it to select one.\n\t\tPress [" + commandKeys.meds[1] + "] to equip medical supplies, and hold it to select.\n\t\tPress [" + commandKeys.firstWeapon[1] + "], [" + commandKeys.secondWeapon[1] + "], and [" + commandKeys.melee[1] + "] to switch between weapons.\n\t\tPress [" + commandKeys.pickUp[1] + "] to pick up loot.\n\t\tPress [" + commandKeys.use[1] + "] to use crates and consoles.\n\t\tNOTE: It is recommended that those without a separate mouse set the attacking button to a key to make it easier to aim and fire simultaneously!", 50, 70, 300, 1000);
-                textAlign(CENTER, CENTER);
-                popMatrix();
-                stroke(255);
-                strokeWeight(3);
-                if (MOUSEY > 330 && MOUSEY <= 350) {
-                    if (settingsScroll < 24.3 * a - 265) {
-                        settingsScroll = constrain(settingsScroll + 5 * compensateFPS, -Infinity, 24.3 * a - 265);
-                        stroke(200);
-                    } else {
-                        cursor('no-drop');
-                    }
-                }
-                line(200, 345, 215, 340);
-                line(200, 345, 185, 340);
-                stroke(255);
-                if (MOUSEY >= 50 && MOUSEY < 70) {
-                    if (settingsScroll > 0) {
-                        settingsScroll = constrain(settingsScroll - 5 * compensateFPS, 0, Infinity);
-                        stroke(200);
-                    } else {
-                        cursor('no-drop');
-                    }
-                }
-                line(200, 55, 215, 60);
-                line(200, 55, 185, 60);
-                noStroke();
-                fill(0);
-                rect(200, 25, 400, 50);
-                rect(200, 375, 400, 50);
-                fill(255);
-                textFont(fonts.AgencyFB20);
-                text("Back", 40, 25);
-                textFont(fonts.AgencyFB25);
-                text("INSTRUCTIONS", 200, 24.5);
-                var a = textWidth("INSTRUCTIONS");
-                stroke(255);
-                strokeWeight(2);
-                line(200 - a / 2, 10, 200 + a / 2, 10);
-                line(200 - a / 2, 40, 200 + a / 2, 40);
-                noStroke();
-                fill(255, 50);
-                if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40) && settingsSelected === "NONE") {
-                    rect(40, 25, 66, 40);
-                    cursor(HAND);
-                }
-            } else if (scene === "editGame") {
-                background(30, 70, 110);
-                drawImages(weathers2);
-                fill(255, 50);
-                rect(200, 200, 380, 280);
-                fill(0);
-                rect(200, 25, 400, 50);
-                rect(200, 375, 400, 50);
-                fill(255);
-                textAlign(LEFT, CENTER);
-                textFont(fonts.CalibriBold18);
-                text("Game Mode:", 20, 110);
-                text("Game Map:", 20, 170);
-                text("Max Enemies:", 20, 260);
-                text("Max Allies:", 20, 290);
-                text("Crate Respawn Delay:", 20, 320);
-                textAlign(CENTER, CENTER);
-                text("Game Type", 200, 80);
-                text("Game Settings", 200, 230);
-                widths = [textWidth(gameModes[gameModes[gameModes.length - 1]]), textWidth(gameMaps[gameMaps[gameMaps.length - 1]]), textWidth(maxEnemies[maxEnemies[maxEnemies.length - 1]]), textWidth(maxTeammates[maxTeammates[maxTeammates.length - 1]]), textWidth(crateDelay[crateDelay[crateDelay.length - 1]])];
-                text(gameModes[gameModes[gameModes.length - 1]], 365 - widths[0] / 2, 110);
-                text(gameMaps[gameMaps[gameMaps.length - 1]], 365 - widths[1] / 2, 170);
-                text(maxEnemies[maxEnemies[maxEnemies.length - 1]], 365 - widths[2] / 2, 260);
-                text(maxTeammates[maxTeammates[maxTeammates.length - 1]], 365 - widths[3] / 2, 290);
-                text(crateDelay[crateDelay[crateDelay.length - 1]], 365 - widths[4] / 2, 320);
-                textFont(fonts.AgencyFB20);
-                text("Back", 40, 25);
-                text("Begin", 200, 375);
-                fill(200);
-                textFont(fonts.Calibri18Italics);
-                text("\"" + gameDescriptions[gameModes[gameModes.length - 1]] + "\"", 200, 140);
-                text("\"" + mapDescriptions[gameMaps[gameMaps.length - 1]] + "\"", 200, 200);
-                fill(255);
-                textFont(fonts.AgencyFB25);
-                text("GAME SETTINGS", 200, 24.5);
-                var a = textWidth("GAME SETTINGS");
-                stroke(255);
-                strokeWeight(2);
-                line(200 - a / 2, 10, 200 + a / 2, 10);
-                line(200 - a / 2, 40, 200 + a / 2, 40);
-                line(380, 110, 375, 105);
-                line(380, 110, 375, 115);
-                line(350 - widths[0], 110, 355 - widths[0], 105);
-                line(350 - widths[0], 110, 355 - widths[0], 115);
-                line(380, 170, 375, 165);
-                line(380, 170, 375, 175);
-                line(350 - widths[1], 170, 355 - widths[1], 165);
-                line(350 - widths[1], 170, 355 - widths[1], 175);
-                line(380, 260, 375, 255);
-                line(380, 260, 375, 265);
-                line(350 - widths[2], 260, 355 - widths[2], 255);
-                line(350 - widths[2], 260, 355 - widths[2], 265);
-                line(380, 290, 375, 285);
-                line(380, 290, 375, 295);
-                line(350 - widths[3], 290, 355 - widths[3], 285);
-                line(350 - widths[3], 290, 355 - widths[3], 295);
-                line(380, 320, 375, 315);
-                line(380, 320, 375, 325);
-                line(350 - widths[4], 320, 355 - widths[4], 315);
-                line(350 - widths[4], 320, 355 - widths[4], 325);
-                noStroke();
-                fill(255, 50);
-                if (inBox(MOUSEX, MOUSEY, 40, 25, 66, 40)) {
-                    rect(40, 25, 66, 40);
-                    cursor(HAND);
-                } else if (inBox(MOUSEX, MOUSEY, 200, 375, 66, 40)) {
-                    rect(200, 375, 66, 40);
-                    cursor(HAND);
-                
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 110, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 110, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 170, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 170, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 260, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 260, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 290, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 290, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 377.5, 320, 15, 20)) {
-                    cursor(HAND);
-                    rect(377.5, 320, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[0], 110, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[0], 110, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[1], 170, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[1], 170, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[2], 260, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[2], 260, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[3], 290, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[3], 290, 15, 20);
-                } else if (inBox(MOUSEX, MOUSEY, 352.5 - widths[4], 320, 15, 20)) {
-                    cursor(HAND);
-                    rect(352.5 - widths[4], 320, 15, 20);
-                }
             }
             if (scene === "load" || scene === "loadSave" || scene === "loadmap") {
                 loadScreenTime += compensateFPS;
                 background(0);
-                textFont(fonts.AgencyFB40);
+                textFont(fonts.AFB40);
                 argonImagingCompany(100, 200, 1);
                 argonGames(300, 200, 1);
                 fill(200);
-                textFont(fonts.CenturyGothic12);
+                textFont(fonts.CG12);
                 var a = "";
                 if (loadScreenTime % 80 > 20 && loadScreenTime % 80 <= 40) {
                     a = ".";
