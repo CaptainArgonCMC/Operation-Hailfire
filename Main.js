@@ -58,8 +58,7 @@ var codes = [
 	],
 ];
 background(255, 0, 0);
-// UNCOMMENT THE FOLLOWING "/*" TO PLAY
-/*
+
 // "PJS SETUP" {
 noStroke();
 textAlign(CENTER, CENTER);
