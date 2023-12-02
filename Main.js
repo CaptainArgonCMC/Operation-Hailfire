@@ -37,6 +37,7 @@ Credits
 > Timothy (@ty11ty) for beta testing!
 > Coder Guy (@KingCobraVenom) for beta testing!
 > CZS (@theMinstrel) for beta testing and a piece of code to accurate find the height of a text box
+> Michael (on StackOverflow) for allowing me to convert radians to degrees without having to edit the entirety of the code
 }
 **/
 
@@ -65,12 +66,22 @@ textAlign(CENTER, CENTER);
 rectMode(CENTER);
 imageMode(CENTER);
 smooth();
-/*var setTimeout = function(time) {
-    this[["KAInfiniteLoopSetTimeout"]](time);
-    this[["KAInfiniteLoopCount"]] = -Infinity;
-};
-setTimeout(10000);
-(function () { this.$("body").css("overflow", "hidden"); }) ();*/
+var rotFn = processingInstance.rotate;
+processingInstance.rotate = function(angle) {
+	return rotFn(processingInstance.radians(angle));
+}
+var sinFn = processingInstance.sin;
+processingInstance.sin = function(angle) {
+	return sinFn(processingInstance.radians(angle));
+}
+var cosFn = processingInstance.cos;
+processingInstance.cos = function(angle) {
+	return cosFn(processingInstance.radians(angle));
+}
+var tanFn = processingInstance.tan;
+processingInstance.tan = function(angle) {
+	return tanFn(processingInstance.radians(angle));
+}
 //} END "PJS SETUP"
 
 // "MAIN VARIABLES" {
