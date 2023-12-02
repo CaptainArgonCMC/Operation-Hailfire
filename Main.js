@@ -65,12 +65,12 @@ textAlign(CENTER, CENTER);
 rectMode(CENTER);
 imageMode(CENTER);
 smooth();
-var setTimeout = function(time) {
+/*var setTimeout = function(time) {
     this[["KAInfiniteLoopSetTimeout"]](time);
     this[["KAInfiniteLoopCount"]] = -Infinity;
 };
 setTimeout(10000);
-(function () { this.$("body").css("overflow", "hidden"); }) ();
+(function () { this.$("body").css("overflow", "hidden"); }) ();*/
 //} END "PJS SETUP"
 
 // "MAIN VARIABLES" {
